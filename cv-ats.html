@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      CV ATS Muhammad Fahrel Yuliyanto | Fullstack Developer & Digital Marketing
+    </title>
+    <meta
+      name="description"
+      content="Curriculum Vitae Format ATS - Muhammad Fahrel Yuliyanto. Mahasiswa Sistem Informasi, Fullstack Developer, Owner 2 HKI Kemenkumham, AI Specialist & Digital Marketing."
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- App Header / Toolbar -->
+    <header class="app-header">
+      <div class="toolbar">
+        <div class="brand">
+          <i class="fa-solid fa-file-lines" style="color: var(--primary)"></i>
+          <span data-i18n="toolbar_brand">CV Studio (Format ATS Standard & Calibri Font)</span>
+          <span class="brand-badge" data-i18n="brand_badge">Calibri • ATS Compliant</span>
+        </div>
+        <div class="actions">
+          <select
+            id="langSelect"
+            class="btn btn-outline"
+            style="padding: 5px 10px; margin-right: 6px; font-weight: 600;"
+            title="Ganti Bahasa / Switch Language"
+          >
+            <option value="id">🇮🇩 Bahasa Indonesia</option>
+            <option value="en">🇬🇧 English (Global ATS)</option>
+          </select>
+          <select
+            id="themeSelect"
+            class="btn btn-outline"
+            style="padding: 5px 10px"
+          >
+            <option value="mono" data-i18n="theme_mono">
+              🖤 Classic ATS (Hitam Putih / Monochrome)
+            </option>
+            <option value="light" data-i18n="theme_light">🎨 Soft Blue (Executive)</option>
+            <option value="emerald" data-i18n="theme_emerald">🌿 Executive Emerald</option>
+            <option value="dark" data-i18n="theme_dark">🌙 Dark Mode</option>
+          </select>
+          <button id="btnPrint" class="btn btn-primary">
+            <i class="fa-solid fa-print"></i> <span data-i18n="btn_print">Cetak / Save PDF</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Printable A4 CV Document Container -->
+    <div class="page-wrapper">
+      <main class="cv-card" id="cvCard">
+        <!-- LEFT SIDEBAR (~28% Width) -->
+        <aside class="cv-sidebar">
+          <!-- Profile Picture - UNCROPPED FULL IMAGE -->
+          <div class="profile-photo-wrapper">
+            <img
+              src="foto_profile.png"
+              alt="Foto Profile Muhammad Fahrel Yuliyanto"
+              class="profile-photo"
+            />
+          </div>
+
+          <!-- Contact Section -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-address-book"></i> <span data-i18n="sidebar_contact">Kontak</span>
+            </h2>
+            <ul class="contact-list">
+              <li class="contact-item">
+                <i class="fa-solid fa-envelope contact-icon"></i>
+                <div class="contact-text">
+                  <strong data-i18n="sidebar_email">Email</strong>
+                  <a href="mailto:muhmmadfahrel@gmail.com"
+                    >muhmmadfahrel@gmail.com</a
+                  >
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-solid fa-phone contact-icon"></i>
+                <div class="contact-text">
+                  <strong data-i18n="sidebar_phone">Telepon</strong>
+                  <span>+62 889-8526-6525</span>
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-solid fa-location-dot contact-icon"></i>
+                <div class="contact-text">
+                  <strong data-i18n="sidebar_location">Lokasi</strong>
+                  <span data-i18n="location_val"
+                    >Krendowahono, Gondangrejo, Karanganyar, Jawa Tengah</span
+                  >
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-brands fa-linkedin contact-icon"></i>
+                <div class="contact-text">
+                  <strong data-i18n="sidebar_linkedin">LinkedIn</strong>
+                  <a
+                    href="https://www.linkedin.com/in/muhammad-fahrel-2b075131b/"
+                    target="_blank"
+                    >linkedin.com/in/muhammad-fahrel</a
+                  >
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-solid fa-globe contact-icon"></i>
+                <div class="contact-text">
+                  <strong data-i18n="sidebar_portfolio">Portofolio</strong>
+                  <a href="https://bit.ly/portofolio-fahrel" target="_blank"
+                    >bit.ly/portofolio-fahrel</a
+                  >
+                </div>
+              </li>
+              <li class="contact-item">
+                <i class="fa-brands fa-instagram contact-icon"></i>
+                <div class="contact-text">
+                  <strong data-i18n="sidebar_social">Social Media</strong>
+                  <span>@ryouko.chii</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Education Section -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="sidebar_education">Pendidikan</span>
+            </h2>
+
+            <div class="edu-item">
+              <div class="edu-degree" data-i18n="edu1_degree">S1 Sistem Informasi</div>
+              <div class="edu-school" data-i18n="edu1_school">
+                Universitas Bina Sarana Informatika (UBSI)
+              </div>
+              <div class="edu-date" data-i18n="edu1_period">Sep 2024 – 2028 (Semester 5)</div>
+              <ul class="edu-list">
+                <li data-i18n="edu1_bullet1">Penerima Beasiswa Jalur Undangan (BJU) UBSI</li>
+                <li data-i18n="edu1_bullet2">Ketua Umum HIMSI UBSI Solo</li>
+              </ul>
+            </div>
+
+            <div class="edu-item" style="margin-top: 8px">
+              <div class="edu-degree" data-i18n="edu2_degree">SMK Wihdatul Ummah</div>
+              <div class="edu-school" data-i18n="edu2_major">Jurusan Multimedia</div>
+              <div class="edu-date" data-i18n="edu2_period">2021 – 2024</div>
+              <ul class="edu-list">
+                <li data-i18n="edu2_bullet1">Lulusan Terbaik Jurusan Multimedia</li>
+                <li data-i18n="edu2_bullet2">Juara 1 LKS Graphic Design Technology</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Certifications -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-certificate"></i> <span data-i18n="sidebar_cert">Sertifikasi</span>
+            </h2>
+
+            <div class="cert-item">
+              <div class="cert-title" data-i18n="cert1_title">
+                Sertifikat BNSP — Database Administrator
+              </div>
+              <div class="cert-issuer" data-i18n="cert1_sub">LSP UBSI / BNSP</div>
+              <div class="cert-date">
+                Reg: DMS.1241.00995 2026 (2026 – 2029)
+              </div>
+            </div>
+
+            <div class="cert-item">
+              <div class="cert-title" data-i18n="cert2_title">Sertifikat Kompetensi SQA</div>
+              <div class="cert-issuer" data-i18n="cert2_sub">PT Tanjung Mulia Informatika (2026)</div>
+              <div class="cert-date" data-i18n="cert2_pred">Predikat: Pemula Baik</div>
+            </div>
+
+            <div class="cert-item">
+              <div class="cert-title" data-i18n="cert3_title">Pemakalah Seminar INOVATIF 2026</div>
+              <div class="cert-issuer" data-i18n="cert3_sub">UBSI & APTIKOM DKI Jakarta</div>
+              <div class="cert-date">No: INO-26-0290 (09 April 2026)</div>
+            </div>
+          </section>
+
+          <!-- Technical Skills -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-code"></i> <span data-i18n="sidebar_skills">Skill Teknis</span>
+            </h2>
+
+            <div class="skill-group">
+              <div class="skill-group-title" data-i18n="skill_cat_ai">Keahlian AI & Generative AI:</div>
+              <div class="badge-container">
+                <span class="badge badge-ai">Google Gemini</span>
+                <span class="badge badge-ai">Google AI Studio</span>
+                <span class="badge badge-ai">Google Flow / AI Tools</span>
+                <span class="badge badge-ai">ChatGPT (OpenAI)</span>
+                <span class="badge badge-ai">Claude (Anthropic)</span>
+                <span class="badge badge-ai">Prompt Engineering</span>
+                <span class="badge badge-ai">AI Content Creation</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-title" data-i18n="skill_cat_web">Mobile & Web Dev:</div>
+              <div class="badge-container">
+                <span class="badge badge-primary">Flutter</span>
+                <span class="badge badge-primary">Dart</span>
+                <span class="badge badge-primary">PHP (Laravel)</span>
+                <span class="badge badge-primary">JavaScript</span>
+                <span class="badge badge-primary">HTML/CSS</span>
+                <span class="badge badge-primary">Tailwind CSS</span>
+                <span class="badge badge-primary">REST API</span>
+                <span class="badge badge-primary">SQL</span>
+                <span class="badge badge-primary">PostgreSQL</span>
+                <span class="badge badge-primary">MySQL</span>
+                <span class="badge badge-primary">SQA Testing</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-title" data-i18n="skill_cat_creative">Digital Marketing & Creative:</div>
+              <div class="badge-container">
+                <span class="badge">Meta Ads Manager</span>
+                <span class="badge">Copywriting</span>
+                <span class="badge">Graphic Design</span>
+                <span class="badge">Video Editing</span>
+                <span class="badge">UI/UX (Figma)</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tools & Software -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-toolbox"></i> <span data-i18n="sidebar_tools">Tools & Platform AI</span>
+            </h2>
+            <div class="badge-container">
+              <span class="badge badge-primary">Flutter SDK</span>
+              <span class="badge badge-primary">Android Studio</span>
+              <span class="badge badge-ai">Google Gemini</span>
+              <span class="badge badge-ai">Google AI Studio</span>
+              <span class="badge badge-ai">Google Flow</span>
+              <span class="badge badge-ai">ChatGPT</span>
+              <span class="badge badge-ai">Claude</span>
+              <span class="badge">Adobe Illustrator</span>
+              <span class="badge">Photoshop</span>
+              <span class="badge">Meta Ads Manager</span>
+              <span class="badge">CapCut Mobile/PC</span>
+              <span class="badge">VS Code / Antigravity</span>
+              <span class="badge">GitHub</span>
+              <span class="badge">Figma</span>
+              <span class="badge">Canva</span>
+            </div>
+          </section>
+
+          <!-- Soft Skills -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-user-gear"></i> <span data-i18n="sidebar_soft">Soft Skill</span>
+            </h2>
+            <div class="badge-container">
+              <span class="badge" data-i18n="soft_lead">Kepemimpinan Organisasi</span>
+              <span class="badge" data-i18n="soft_public">Public Speaking & Presentasi</span>
+              <span class="badge" data-i18n="soft_pm">Project Management</span>
+              <span class="badge" data-i18n="soft_strat">Strategic Planning</span>
+              <span class="badge" data-i18n="soft_prob">Problem Solving</span>
+            </div>
+          </section>
+
+          <!-- Languages -->
+          <section class="sidebar-section">
+            <h2 class="sidebar-title">
+              <i class="fa-solid fa-language"></i> <span data-i18n="sidebar_lang">Bahasa</span>
+            </h2>
+            <div style="font-size: 12px">
+              <div data-i18n="lang_id_text"><strong>Bahasa Indonesia:</strong> Aktif / Native</div>
+              <div style="margin-top: 2px" data-i18n="lang_en_text">
+                <strong>Bahasa Inggris:</strong> Pasif / Elementary
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <!-- RIGHT MAIN CONTENT (~72% Width) -->
+        <section class="cv-main">
+          <!-- Header Title Block (19pt Calibri) -->
+          <header class="main-header">
+            <h1 class="user-name" data-i18n="main_name">MUHAMMAD FAHREL YULIYANTO</h1>
+            <div class="user-title" data-i18n="main_tagline">
+              <span>Mahasiswa Sistem Informasi</span>
+              <i class="fa-solid fa-circle dot-separator"></i>
+              <span>Fullstack Developer</span>
+              <i class="fa-solid fa-circle dot-separator"></i>
+              <span>Digital Marketing & Content Strategist</span>
+            </div>
+          </header>
+
+          <!-- Profile / Summary -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-user-large"></i> <span data-i18n="sec_profile">PROFIL</span>
+            </h2>
+            <p class="profile-text" data-i18n="profile_text">
+              Mahasiswa Sistem Informasi semester 5 di Universitas Bina Sarana
+              Informatika (UBSI) dengan spesialisasi Mobile App & Web Development (Flutter, Dart, Laravel), Database
+              Administration, Software Quality Assurance, Generative AI (Gemini,
+              Google AI Studio, ChatGPT, Claude), dan Digital Marketing.
+              Memiliki rekam jejak teruji dalam merancang ekosistem sistem
+              informasi berbasis AI, Gamifikasi, dan Web, dibuktikan dengan
+              pengakuan
+              <strong
+                >3 Hak Kekayaan Intelektual (HKI) resmi Kemenkumham</strong
+              >
+              (Platform MBG SPPG Surakarta, Smart Waste Management AI Kota
+              Bersih Surakarta, & Web Official Desa Baran Klaten). Peraih Medal Silver (Silver Award) Pekan Inovasi Nasional Vol.3 2026 Universitas
+              Mercu Buana, Diterima Magang di PT KAI (Persero) DAOP 6 Yogyakarta (Unit Sistem Informasi), dan Alumni BSI Explore 2026 (Lolos seleksi >2.000 peserta). Berpengalaman sebagai
+              Pemateri Workshop AI/Content Creation, Narasumber Kampus, Ketua
+              Umum HIMSI, serta praktisi Meta Ads dan kreator konten berprestasi
+              tingkat nasional (Juara 2 SobiFest & Juara 1 LKS Desain Grafis).
+            </p>
+          </section>
+
+          <!-- Research, Innovation & Projects -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-rocket"></i> <span data-i18n="sec_projects">RISET, INOVASI & PROYEK UNGGULAN</span>
+            </h2>
+            <div class="timeline">
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="p1_title">
+                      Lead Web Developer — Website Official Desa Baran Cawas Klaten
+                    </div>
+                    <div class="card-subtitle" data-i18n="p1_sub">
+                      Program BSI Explore 2026 — Pengabdian Masyarakat & Digitalisasi Desa
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="p1_period">Agustus 2026</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="p1_b1">
+                    Merancang dan merilis sistem informasi berbasis web untuk Website Official Desa Baran Klaten guna mendukung transparansi informasi publik, pelayanan digital warga, dan perwujudan visi-misi desa. <strong>Seluruh pemrograman sistem informasi web ini dikembangkan secara tunggal oleh Muhammad Fahrel Yuliyanto dalam kurun waktu 1 minggu</strong>, dengan penyusunan arsitektur basis data dibantu oleh Ilman Chairi & Zahra Salsabila Afifah.
+                  </li>
+                  <li data-i18n="p1_b2">
+                    <strong>Pencapaian:</strong> Memperoleh Hak Cipta/HKI Resmi Kemenkumham RI (No. 001442180 / EC002026153831 - Agustus 2026).
+                  </li>
+                  <li>
+                    <strong data-i18n="p1_b3">Akses Web Desa:</strong>
+                    <a
+                      href="https://desabaranklaten.site.je"
+                      target="_blank"
+                      style="color: var(--primary)"
+                      >desabaranklaten.site.je</a
+                    >
+                  </li>
+                </ul>
+                <div class="card-tech">
+                  <strong>Tech Stack:</strong> PHP, HTML/CSS, JavaScript, MySQL, Web Hosting Management.
+                </div>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="p2_title">
+                      Ketua Tim & Fullstack Developer — Web Platform Manajemen
+                      MBG SPPG
+                    </div>
+                    <div class="card-subtitle" data-i18n="p2_sub">
+                      Pekan Inovasi Nasional Vol.3 2026 (Universitas Mercu Buana) &
+                      SPPG Nusukan Surakarta
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="p2_period">Mei 2026 – Juli 2026</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="p2_b1">
+                    Merancang platform digitalisasi Program Makan Bergizi Gratis
+                    (MBG) berbasis GIS, integrasi data stok bahan baku
+                    real-time, monitoring gizi AKG, dan transparansi laporan
+                    anggaran publik.
+                  </li>
+                  <li data-i18n="p2_b2">
+                    <strong>Pencapaian:</strong> Memperoleh Medal Silver (Silver Award) Tingkat Nasional pada Pekan Inovasi Nasional Vol.3 2026 di Universitas Mercu Buana serta Hak Cipta/HKI Resmi Kemenkumham RI (No. EC002026096415).
+                  </li>
+                  <li>
+                    <strong data-i18n="p2_b3">Akses Web MBG:</strong>
+                    <a
+                      href="http://makanbergizigratis.great-site.net/"
+                      target="_blank"
+                      style="color: var(--primary)"
+                      >makanbergizigratis.great-site.net</a
+                    >
+                  </li>
+                </ul>
+                <div class="card-tech">
+                  <strong>Tech Stack:</strong> Laravel, PostgreSQL, Leaflet GIS,
+                  Tailwind CSS, JavaScript, REST API.
+                </div>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="p3_title">
+                      Ketua Tim & Fullstack Developer — Kota Bersih Surakarta
+                      (Smart Waste Management AI)
+                    </div>
+                    <div class="card-subtitle" data-i18n="p3_sub">
+                      Kompetisi Riset Perguruan Tinggi 2026 — BRIDA Surakarta &
+                      UBSI Innovation Hub
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="p3_period">Februari 2026 – Juni 2026</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="p3_b1">
+                    Memimpin pembuatan platform pengolahan sampah cerdas
+                    berbasis AI Assistant (Google Gemini/AI Studio) dan pemetaan
+                    operasional real-time untuk transparansi pelayanan publik
+                    Surakarta.
+                  </li>
+                  <li data-i18n="p3_b2">
+                    <strong>Pencapaian:</strong> Memperoleh Hak Cipta/HKI Resmi
+                    Kemenkumham (No. EC002026053217), Sertifikat Penghargaan
+                    BRIDA Kota Surakarta (No. B/500.10.30.6/778.14), serta
+                    diliput pada UBSI Solo News.
+                  </li>
+                  <li>
+                    <strong data-i18n="p3_b3">Akses Web:</strong>
+                    <a
+                      href="http://kotabersihsurakarta.wuaze.com"
+                      target="_blank"
+                      style="color: var(--primary)"
+                      >kotabersihsurakarta.wuaze.com</a
+                    >
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="p4_title">
+                      Developer & Founder — ZeloDrive (Aplikasi Gamifikasi & AI
+                      Learning)
+                    </div>
+                    <div class="card-subtitle" data-i18n="p4_sub">
+                      Proyek Mandiri & Ekosistem Edukasi Cerdas
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="p4_period">2025 – 2026</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="p4_b1">
+                    Merancang dan merilis aplikasi Android/Web interaktif
+                    berbasis gamifikasi dan Generative AI (Gemini/ChatGPT API)
+                    untuk membantu siswa sekolah, persiapan SNBT, dan Ujian
+                    Mandiri Perguruan Tinggi.
+                  </li>
+                  <li data-i18n="p4_b2">
+                    <strong>Pencapaian:</strong> Berhasil mengintegrasikan
+                    pendekatan psikologi gamifikasi dengan asisten AI interaktif
+                    untuk pembelajaran mandiri yang variatif dan menyenangkan.
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="p5_title">
+                      Ketua Tim & Developer — Rumah IT (Game-Based Learning)
+                    </div>
+                    <div class="card-subtitle" data-i18n="p5_sub">
+                      Universitas Bina Sarana Informatika
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="p5_period">2025 – 2026</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="p5_b1">
+                    Mengembangkan ekosistem edukasi interaktif berbasis
+                    Game-Based Learning (GBL) dan Generative AI untuk
+                    pembelajaran coding pemula.
+                  </li>
+                  <li data-i18n="p5_b2">
+                    <strong>Pencapaian:</strong> Dipublikasikan sebagai
+                    Pemakalah Seminar Nasional INOVATIF 2026 dan
+                    didemonstrasikan langsung saat Kunjungan Studi SMP Insan
+                    Cendekia Al-Mujtaba Boarding School (21 April 2026).
+                  </li>
+                  <li>
+                    <strong data-i18n="p5_b3">Akses Web:</strong>
+                    <a
+                      href="http://rumahinformasiteknologi.page.gd"
+                      target="_blank"
+                      style="color: var(--primary)"
+                      >rumahinformasiteknologi.page.gd</a
+                    >
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Work Experience (Separated into 3 Individual Entries) -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-briefcase"></i> <span data-i18n="sec_experience">PENGALAMAN KERJA & FREELANCE</span>
+            </h2>
+            <div class="timeline">
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="exp1_title">
+                      Junior Web Developer & IT Systems Intern
+                    </div>
+                    <div class="card-subtitle" data-i18n="exp1_sub">
+                      PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta — Unit Sistem Informasi
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="exp1_period">
+                    13 September 2026 – 13 November 2026
+                  </div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="exp1_b1">
+                    <strong>Kontribusi & Output:</strong> Diterima melalui seleksi pendaftaran InternHub KAI untuk penempatan pada Unit Sistem Informasi. Berkontribusi dalam membantu analisis kebutuhan sistem, pengembangan modul aplikasi web/mobile, pemeliharaan basis data (PostgreSQL/SQL), pengujian perangkat lunak (SQA Testing), serta penyusunan dokumentasi teknis sistem informasi operasional DAOP 6 Yogyakarta.
+                  </li>
+                  <li data-i18n="exp1_b2">
+                    <strong>Tools Digunakan:</strong> Laravel, Flutter, Dart, PostgreSQL, REST API, SQA Testing, Figma.
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="exp2_title">
+                      Digital Marketing Specialist & Content Creator
+                    </div>
+                    <div class="card-subtitle" data-i18n="exp2_sub">Volution Apparel</div>
+                  </div>
+                  <div class="card-period" data-i18n="exp2_period">
+                    Mei 2024 – Oktober 2024 (6 Bulan)
+                  </div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="exp2_b1">
+                    <strong>Kontribusi & Output:</strong> Merancang strategi
+                    materi promosi visual (Instagram & TikTok) untuk brand
+                    fashion, mengoptimalkan tata letak katalog produk, serta
+                    mengelola campaign Meta Ads yang meningkatkan brand
+                    awareness dan angka keterlibatan audiens (engagement rate).
+                  </li>
+                  <li data-i18n="exp2_b2">
+                    <strong>Tools Digunakan:</strong> Meta Ads Manager, Adobe
+                    Illustrator, Canva, CapCut.
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="exp3_title">
+                      Digital Marketing Specialist & Content Creator
+                    </div>
+                    <div class="card-subtitle" data-i18n="exp3_sub">Mataram Laundry</div>
+                  </div>
+                  <div class="card-period" data-i18n="exp3_period">
+                    November 2024 – Juni 2025 (8 Bulan)
+                  </div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="exp3_b1">
+                    <strong>Kontribusi & Output:</strong> Mengelola pemasaran
+                    digital layanan laundry profesional, merancang iklan lokal
+                    Meta Ads terintegrasi, dan memproduksi video promosi kreatif
+                    yang berhasil menaikkan rasio konversi pemesanan dan
+                    jangkauan pelanggan UMKM.
+                  </li>
+                  <li data-i18n="exp3_b2">
+                    <strong>Tools Digunakan:</strong> Meta Ads Manager, CapCut,
+                    Copywriting.
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="exp4_title">
+                      Digital Marketing Specialist & Content Creator
+                    </div>
+                    <div class="card-subtitle" data-i18n="exp4_sub">PT Tanur Muthmainnah Tour</div>
+                  </div>
+                  <div class="card-period" data-i18n="exp4_period">
+                    Juli 2025 – September 2025 (3 Bulan)
+                  </div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="exp4_b1">
+                    <strong>Kontribusi & Output:</strong> Memformulasi materi
+                    edukasi dan promosi paket travel/umrah, mengoptimalkan
+                    penulisan copywriting penawaran, serta mengelola publikasi
+                    konten promosi harian untuk meningkatkan kepercayaan dan
+                    calon jamaah.
+                  </li>
+                  <li data-i18n="exp4_b2">
+                    <strong>Tools Digunakan:</strong> Adobe Illustrator,
+                    Copywriting, Social Media Analytics.
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="exp5_title">
+                      Staff Produksi & Kreatif (Magang)
+                    </div>
+                    <div class="card-subtitle" data-i18n="exp5_sub">
+                      BUMDes Selomukti Digital Printing
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="exp5_period">
+                    Januari 2023 – April 2023 (4 Bulan)
+                  </div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="exp5_b1">
+                    <strong>Kontribusi & Output:</strong> Mengoperasikan mesin
+                    cetak digital dan pemrosesan finishing dengan akurasi
+                    presisi tinggi, serta mendokumentasikan produk dan mengelola
+                    konten promosi harian media sosial BUMDes.
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Leadership & Organization -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-users"></i> <span data-i18n="sec_org">ORGANISASI & KEPEMIMPINAN</span>
+            </h2>
+            <div class="timeline">
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="org1_title">Ketua Umum (President)</div>
+                    <div class="card-subtitle" data-i18n="org1_sub">
+                      Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Kampus
+                      Solo
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="org1_period">Januari 2026 – Sekarang</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="org1_b1">
+                    Memimpin arah strategis organisasi, mengawasi seluruh
+                    program kerja, dan mengelola hubungan dengan pimpinan
+                    universitas serta mitra eksternal.
+                  </li>
+                  <li data-i18n="org1_b2">
+                    Mengelola koordinasi tim internal dan menjalin kemitraan
+                    dengan pihak universitas serta mitra eksternal untuk
+                    penyelenggaraan kegiatan kemahasiswaan.
+                  </li>
+                </ul>
+              </article>
+
+              <article class="card-item">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title" data-i18n="org2_title">
+                      Ketua Divisi Komunikasi & Informasi (Kominfo)
+                    </div>
+                    <div class="card-subtitle" data-i18n="org2_sub">
+                      Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Kampus
+                      Solo
+                    </div>
+                  </div>
+                  <div class="card-period" data-i18n="org2_period">Januari 2025 – Desember 2025</div>
+                </div>
+                <ul class="card-bullets">
+                  <li data-i18n="org2_b1">
+                    Mengomandoi tim media publikasi, mengelola branding media
+                    sosial himpunan, dan meningkatkan pertumbuhan reach konten
+                    harian.
+                  </li>
+                  <li data-i18n="org2_b2">
+                    Meningkatkan visibilitas kegiatan himpunan melalui strategi
+                    konten yang konsisten dan informatif.
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <!-- Speaker & Public Service -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-chalkboard-user"></i> <span data-i18n="sec_speaker">PEMATERI, NARASUMBER & PENGABDIAN</span>
+            </h2>
+            <ul class="achievement-list">
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-hand-holding-heart achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div>
+                  <strong data-i18n="spk1_title"
+                    >Ketua Kelompok (Team Leader) & Tim Pengabdi — Program BSI Explore 2026 (05 – 21 Agustus 2026):</strong
+                  >
+                  <span data-i18n="spk1_desc">Lolos seleksi ketat nasional (>2.000 peserta, 200+ mahasiswa terpilih). Memimpin tim 6 mahasiswa dalam kegiatan pengabdian masyarakat & sekolah selama 21 hari di Desa Baran (9 Dukuh) & SDN 2 Baran, Kec. Cawas, Kab. Klaten:
+                  <br>• <strong>Edukasi Sekolah (SDN 2 Baran):</strong> Mengajar interaktif berbasis Game-Based Learning & Smart TV, memfasilitasi Pojok Baca, menggelar Lomba 17-an, serta sosialisasi web pembuat game interaktif bagi guru.
+                  <br>• <strong>Digitalisasi UMKM Desa:</strong> Memimpin digitalisasi UMKM gratis (desain banner usaha, pendaftaran QRIS digital, pembuatan lokasi Google Maps, dan produksi konten promosi media sosial).
+                  <br>• <strong>Inovasi Website Desa:</strong> Dikembangkan sepenuhnya oleh <strong>Muhammad Fahrel Yuliyanto</strong> dalam kurun waktu 1 minggu (pemrograman web tunggal) untuk Website Official Desa Baran Klaten (<a href="https://desabaranklaten.site.je" target="_blank" style="color: var(--primary)">desabaranklaten.site.je</a>) yang telah memperoleh Sertifikat Hak Cipta (HKI) Kemenkumham RI.</span>
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-microphone achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div>
+                  <strong data-i18n="spk2_title"
+                    >Pemateri / Speaker — Workshop Digital Kreatif "AI Video
+                    Creation":</strong
+                  >
+                  <span data-i18n="spk2_desc">DICO & SMK Wihdatul Ummah Surakarta (22 Juli 2026). Membawakan
+                  materi "Menciptakan Konten Berkualitas dengan Cepat
+                  Menggunakan AI (Gemini & CapCut AI)" di hadapan para siswa dan
+                  tenaga pendidik.</span>
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-microphone achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div>
+                  <strong data-i18n="spk3_title"
+                    >Narasumber — Seminar Parenting: "Strategi Cerdas Meraih
+                    Beasiswa Kampus":</strong
+                  >
+                  <span data-i18n="spk3_desc">UBSI Kampus Solo (Online via Zoom - 29 April 2026). Memberikan
+                  sharing session dan testimoni motivasi penerima Beasiswa Jalur
+                  Undangan (BJU).</span>
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-microphone achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div>
+                  <strong data-i18n="spk4_title"
+                    >Narasumber & Mentor — Bootcamp Ramadhan 2026: "Storytelling
+                    untuk Gen-Z":</strong
+                  >
+                  <span data-i18n="spk4_desc">Indonesia Cerdas Fest 2026 — UBSI Solo (05 Maret 2026).
+                  Mengisi sesi personal branding dan pengembangan karakter
+                  berbasis content creation.</span>
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-microphone achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div>
+                  <strong data-i18n="spk5_title">Narasumber & Speaker Testimoni Beasiswa BJU:</strong>
+                  <span data-i18n="spk5_desc">Indonesia Cerdas Fest 2025 (23 Oktober 2025) & Open House
+                  Kampus BSI Surakarta Live (28 Mei 2025).</span>
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-microphone achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div>
+                  <strong data-i18n="spk6_title"
+                    >Narasumber — Webinar Parent's Insight Day: Cara Tembus
+                    Beasiswa PTN & PTS:</strong
+                  >
+                  <span data-i18n="spk6_desc">UBSI Kampus Solo (Online via Zoom - 06 Mei 2025).</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Achievements & Patents (HKI) -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-trophy"></i> <span data-i18n="sec_awards">PRESTASI & HAK CIPTA (HKI)</span>
+            </h2>
+            <ul class="achievement-list">
+              <li class="achievement-item">
+                <i class="fa-solid fa-award achievement-icon"></i>
+                <div data-i18n="awd1">
+                  <strong>Hak Cipta (HKI) Resmi Kemenkumham RI:</strong> Website Official Pusat Pelayanan Masyarakat & Digitalisasi Desa Baran Cawas Klaten (No: 001442180 / EC002026153831 - Agustus 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-award achievement-icon"></i>
+                <div data-i18n="awd2">
+                  <strong>Hak Cipta (HKI) Resmi Kemenkumham RI:</strong> Web
+                  System Terintegrasi Program Makan Bergizi Gratis (MBG) SPPG
+                  Nusukan (No: 001300932 / EC002026096415 - Juni 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-trophy achievement-icon" style="color: #94a3b8;"></i>
+                <div data-i18n="awd3">
+                  <strong
+                    >Medal Silver (Perak) Tingkat Nasional — Pekan Inovasi Nasional Vol.3 2026:</strong
+                  >
+                  Universitas Mercu Buana (Karya: Web Platform Terintegrasi Program Makan Bergizi Gratis / MBG SPPG Nusukan - 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-award achievement-icon"></i>
+                <div data-i18n="awd4">
+                  <strong>Lolos Seleksi Peserta Program BSI Explore 2026:</strong>
+                  Terpilih dalam seleksi pengabdian masyarakat tingkat nasional (>2.000 pendaftar, 200+ mahasiswa lolos seleksi) — Universitas BSI (Agustus 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-award achievement-icon"></i>
+                <div data-i18n="awd5">
+                  <strong>Hak Cipta (HKI) Resmi Kemenkumham RI:</strong> Kota
+                  Bersih Surakarta - Platform Smart Waste Management AI (No:
+                  001205115 / EC002026053217 - April 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-certificate achievement-icon"></i>
+                <div data-i18n="awd6">
+                  <strong
+                    >Sertifikat Penghargaan Riset Perguruan Tinggi 2026:</strong
+                  >
+                  BRIDA Kota Surakarta (Tim Fresh Tech - April 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-trophy achievement-icon"></i>
+                <div data-i18n="awd7">
+                  <strong
+                    >Juara 2 Tingkat Nasional Video Reels Edukasi (SobiFest
+                    2025):</strong
+                  >
+                  Universitas BSI Jakarta.
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-ribbon achievement-icon"></i>
+                <div data-i18n="awd8">
+                  <strong>Partisipasi Lomba Video Kreatif:</strong> Fakultas
+                  Ilmu Komputer Universitas Brawijaya (2025).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-trophy achievement-icon"></i>
+                <div data-i18n="awd9">
+                  <strong>Juara 1 LKS Graphic Design Technology 2024:</strong>
+                  Tingkat Kabupaten Karanganyar.
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i class="fa-solid fa-graduation-cap achievement-icon"></i>
+                <div data-i18n="awd10">
+                  <strong
+                    >Penerima Beasiswa Jalur Undangan (BJU) UBSI 2024:</strong
+                  >
+                  Jalur Prestasi Akademik & Non-Akademik.
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Training, Seminars & Self Development -->
+          <section class="main-section">
+            <h2 class="section-header">
+              <i class="fa-solid fa-book-open"></i> <span data-i18n="sec_seminars">PELATIHAN, WEBINAR & PENGEMBANGAN DIRI</span>
+            </h2>
+            <ul class="achievement-list">
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-circle-check achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div data-i18n="sem1">
+                  Webinar "Membangun & Mengelola Website Profesional dengan
+                  Domain & Webhosting" — UBSI Solo (26 Juni 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-circle-check achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div data-i18n="sem2">
+                  Webinar IndoCEISS Jateng "Speak with Confidence, Influence
+                  with Impact" — IndoCEISS (22 Mei 2026).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-circle-check achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div data-i18n="sem3">
+                  Seminar Karir "Personal Branding & Portofolio Menuju Dunia
+                  Profesional" — HIMSI UBSI Yogyakarta (18 Nov 2025).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-circle-check achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div data-i18n="sem4">
+                  Pemasaran Digital dengan AI & Chat Apps untuk Wirausaha —
+                  Digital Entrepreneurship Academy (DTS Kominfo 2025).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-circle-check achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div data-i18n="sem5">
+                  Seminar Entrepreneurship "Wiramuda Bangkit, Merubah Peluang
+                  Menjadi Uang" — BEC UBSI (29 Okt 2024).
+                </div>
+              </li>
+              <li class="achievement-item">
+                <i
+                  class="fa-solid fa-circle-check achievement-icon"
+                  style="color: var(--primary)"
+                ></i>
+                <div data-i18n="sem6">
+                  Seminar Acceleration of Information Technology for IT Career
+                  (2024).
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </main>
+
+      <footer class="cv-footer">
+        <p>
+          © 2026 Muhammad Fahrel Yuliyanto • ATS Standard Format • Calibri
+          Typography
+        </p>
+      </footer>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

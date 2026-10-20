@@ -1,0 +1,242 @@
+KONTAK
+
+Email
+muhmmadfahrel@gmail.com
+
+Telepon
++62 889-8526-6525
+
+Lokasi
+Krendowahono, Gondangrejo,
+Karanganyar, Jawa Tengah
+
+LinkedIn
+linkedin.com/in/muhammad-fahrel-26075131b/
+
+Portofolio
+bit.ly/portofolio-fahrel
+
+Instagram & TikTok
+@ryouko.chii
+
+PENDIDIKAN
+
+S1 Sistem Informasi
+Universitas Bina Sarana Informatika (UBSI) Solo
+Sep 2024 – 2028
+•  Penerima Beasiswa BJU UBSI
+•  Ketua Umum HIMSI UBSI Solo
+
+SMK Wihdatul Ummah
+Jurusan Multimedia
+2021 – 2024
+•  Lulusan Terbaik Multimedia
+•  Juara 1 LKS Graphic Technology
+
+SERTIFIKASI & LISENSI
+
+Sertifikat BNSP – Database Administrator
+LSP UBSI / BNSP (No. Reg: DMS.1241.00995 2026)
+Maret 2026 – Maret 2029
+
+Sertifikat Kompetensi SQA
+PT Tanjung Mulia Informatika
+2026 | Predikat: Pemula Baik
+
+Pemakalah Seminar INOVATIF 2026
+UBSI & APTIKOM DKI Jakarta
+09 April 2026 | No. INO-26-0290
+
+SKILL TEKNIS
+
+• Web Dev: Flutter, Dart, PHP (Laravel), JavaScript, HTML/CSS, Tailwind CSS, REST API
+
+• Database & QA: SQL, PostgreSQL, MySQL, SQA (Manual Testing)
+
+• Digital Marketing: Meta Ads Manager, Copywriting
+
+• Creative: Graphic Design, Video Editing, UI/UX (Figma)
+
+TOOLS
+
+• Adobe Illustrator / Photoshop
+
+• Canva Design
+
+• Meta Ads Manager
+
+• CapCut Mobile / PC
+
+• Android Studio / VS Code / Antigravity
+
+• GitHub / Figma
+
+SOFT SKILL
+
+• Kepemimpinan Organisasi
+
+• Public Speaking & Presentasi
+
+• Project Management
+
+• Strategic Planning
+
+• Problem Solving
+
+BAHASA
+
+Bahasa Indonesia
+Aktif / Native
+
+Bahasa Inggris
+Pasif / Elementary
+
+MUHAMMAD FAHREL YULIYANTO
+
+Mahasiswa Sistem Informasi  |  Fullstack Developer  |  Digital Marketing & Content Strategist
+
+PROFIL
+
+Mahasiswa Sistem Informasi semester 5 di Universitas Bina Sarana Informatika (UBSI) dengan spesialisasi Mobile App & Web Development (Flutter, Dart, Laravel), Database Administration, Software Quality Assurance, Generative AI (Gemini, Google AI Studio, ChatGPT, Claude), dan Digital Marketing. Memiliki rekam jejak teruji dalam merancang ekosistem sistem informasi berbasis AI, Gamifikasi, dan Web, dibuktikan dengan pengakuan 3 Hak Kekayaan Intelektual (HKI) resmi Kemenkumham (Platform MBG SPPG Surakarta, Smart Waste Management AI Kota Bersih Surakarta, & Web Official Desa Baran Klaten). Peraih Medal Silver (Silver Award) Pekan Inovasi Nasional Vol.3 2026 Universitas Mercu Buana, Diterima Magang di PT KAI (Persero) DAOP 6 Yogyakarta (Unit Sistem Informasi), dan Ketua Tim / Alumni BSI Explore 2026 (Lolos seleksi >2.000 peserta). Berpengalaman sebagai Pemateri Workshop AI/Content Creation, Narasumber Kampus, Ketua Umum HIMSI, serta praktisi Meta Ads dan kreator konten berprestasi tingkat nasional (Juara 2 SobiFest & Juara 1 LKS Desain Grafis).
+
+RISET, INOVASI & PROYEK UNGGULAN
+
+Ketua Tim & Fullstack Developer — Web Platform Manajemen MBG SPPG
+
+Pekan Inovasi Nasional 2026 (Universitas Mercu Buana) & SPPG Nusukan Surakarta   •   Mei 2026 – Juli 2026
+
+•  Merancang platform digitalisasi Program Makan Bergizi Gratis (MBG) berbasis GIS, integrasi data stok bahan baku real-time, monitoring gizi AKG, dan transparansi laporan anggaran publik.
+
+•  Pencapaian: Memperoleh Hak Cipta/HKI Resmi Kemenkumham (No. EC002026096415) dan menjadi karya terpilih dalam Pekan Inovasi Nasional 2026 di Universitas Mercu Buana.
+
+•  Tech Stack: Laravel, PostgreSQL, Leaflet GIS, Tailwind CSS, JavaScript, REST API.
+
+Ketua Tim & Fullstack Developer — Kota Bersih Surakarta (Smart Waste Management AI)
+
+Kompetisi Riset Perguruan Tinggi 2026 – BRIDA Surakarta & UBSI Innovation Hub   •   Februari 2026 – Juni 2026
+
+•  Memimpin pembuatan platform pengolahan sampah cerdas berbasis AI Assistant dan pemetaan operasional real-time untuk transparansi pelayanan publik Surakarta.
+
+•  Pencapaian: Memperoleh Hak Cipta/HKI Resmi Kemenkumham (No. EC002026053217), Sertifikat Penghargaan BRIDA Kota Surakarta (No. B/500.10.30.6/778.14), serta diliput pada UBSI Solo News.
+
+•  Akses Web: kotabersihsurakarta.wuaze.com
+
+Developer & Founder — ZeloDrive (Aplikasi Gamifikasi & AI Learning)
+
+Proyek Mandiri & Ekosistem Edukasi Cerdas   •   2025 – 2026
+
+•  Merancang dan merilis aplikasi Android/Web interaktif berbasis gamifikasi dan Generative AI untuk membantu siswa sekolah, persiapan SNBT, dan Ujian Mandiri Perguruan Tinggi.
+
+•  Pencapaian: Berhasil mengintegrasikan pendekatan psikologi gamifikasi dengan asisten AI interaktif untuk pembelajaran mandiri yang variatif dan menyenangkan.
+
+Ketua Tim & Developer — Rumah IT (Game-Based Learning)
+
+Universitas Bina Sarana Informatika   •   2025 – 2026
+
+•  Mengembangkan ekosistem edukasi interaktif berbasis Game-Based Learning (GBL) dan Generative AI untuk pembelajaran coding pemula.
+
+•  Pencapaian: Dipublikasikan sebagai Pemakalah Seminar Nasional INOVATIF 2026 dan didemonstrasikan langsung saat Kunjungan Studi SMP Insan Cendekia Al-Mujtaba Boarding School (21 April 2026).
+
+•  Akses Web: rumahinformasiteknologi.page.gd
+
+PENGALAMAN KERJA & FREELANCE
+
+Digital Marketing Specialist & Content Creator (Freelance/Project)
+
+Volution Apparel (6 Bln) | Mataram Laundry (8 Bln) | PT Tanur Muthmainnah Tour (3 Bln)   •   Mei 2024 – Desember 2025
+
+•  Mengelola strategi materi promosi visual (Instagram, TikTok, YouTube) untuk meningkatkan brand awareness dan angka keterlibatan audiens.
+
+•  Mengoptimalkan toko online/marketplace dan mengelola iklan Meta Ads terintegrasi untuk menaikkan rasio konversi penjualan UMKM.
+
+•  Bertanggung jawab penuh atas desain katalog, copywriting, serta editing video promosi menggunakan Adobe Illustrator & Canva.
+
+Staff Produksi & Kreatif (Magang)
+
+BUMDes Selomukti Digital Printing   •   Januari 2023 – April 2023
+
+•  Mengoperasikan mesin dan melakukan pemrosesan finishing cetak digital dengan akurasi presisi tinggi.
+
+•  Mendokumentasikan produk dan mengelola konten promosi harian di media sosial.
+
+ORGANISASI & KEPEMIMPINAN
+
+Ketua Umum (President)
+
+Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Kampus Solo   •   Januari 2026 – Sekarang
+
+•  Memimpin arah strategis organisasi, mengawasi seluruh program kerja, dan mengelola hubungan dengan pimpinan universitas serta mitra eksternal.
+
+•  Mengelola koordinasi tim internal dan menjalin kemitraan dengan pihak universitas serta mitra eksternal untuk penyelenggaraan kegiatan kemahasiswaan.
+
+Ketua Divisi Komunikasi & Informasi (Kominfo)
+
+Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Kampus Solo   •   Januari 2025 – Desember 2025
+
+•  Mengomandoi tim media publikasi, mengelola branding media sosial himpunan, dan meningkatkan pertumbuhan reach konten harian.
+
+•  Meningkatkan visibilitas kegiatan himpunan melalui strategi konten yang konsisten dan informatif.
+
+PEMATERI, NARASUMBER & PENGABDIAN
+
+Pemateri / Speaker — Workshop Digital Kreatif "AI Video Creation"
+
+DICO & SMK Wihdatul Ummah Surakarta   •   22 Juli 2026
+
+•  Membawakan materi "Menciptakan Konten Berkualitas dengan Cepat Menggunakan AI" di hadapan para siswa dan tenaga pendidik.
+
+Narasumber — Seminar Parenting: "Strategi Cerdas Meraih Beasiswa Kampus"
+
+UBSI Kampus Solo (Online via Zoom)   •   29 April 2026
+
+•  Memberikan sharing session dan testimoni motivasi penerima Beasiswa Jalur Undangan (BJU).
+
+Narasumber & Mentor — Bootcamp Ramadhan 2026: "Storytelling untuk Gen-Z"
+
+Indonesia Cerdas Fest 2026 – UBSI Solo   •   05 Maret 2026
+
+•  Mengisi sesi personal branding dan pengembangan karakter berbasis content creation.
+
+Narasumber & Speaker Testimoni Beasiswa BJU
+
+Indonesia Cerdas Fest 2025 & Open House Kampus BSI Surakarta Live   •   23 Oktober 2025 & 28 Mei 2025
+
+•  Berbagi rekam jejak prestasi dan kiat menembus beasiswa pendidikan tinggi pada Indonesia Cerdas Fest 2025 (23 Okt 2025) dan Open House Kampus BSI Surakarta Live (28 Mei 2025).
+
+Narasumber — Webinar Parent's Insight Day: Cara Tembus Beasiswa PTN & PTS
+
+UBSI Kampus Solo (Online via Zoom)   •   06 Mei 2025
+
+•  Mewakili mahasiswa penerima Beasiswa Jalur Undangan 2024 sebagai narasumber dalam webinar bertema "Cara Tembus Beasiswa PTN & PTS: Membimbing Anak Menuju Karier Cemerlang di Era Digital".
+
+PRESTASI & HAK CIPTA (HKI)
+
+•  Hak Cipta (HKI) Resmi Kemenkumham RI: Web System Terintegrasi Program Makan Bergizi Gratis (MBG) SPPG Nusukan (No: 001300932 / EC002026096415 - Juni 2026).
+
+•  Medal Silver (Perak) Pekan Inovasi Nasional Vol.3 2026 — Universitas Mercu Buana (Proyek MBG SPPG - Juni 2026).
+
+•  Hak Cipta (HKI) Resmi Kemenkumham RI: Kota Bersih Surakarta - Platform Smart Waste Management AI (No: 001205115 / EC002026053217 - April 2026).
+
+•  Sertifikat Penghargaan Riset Perguruan Tinggi 2026 — BRIDA Kota Surakarta (Tim Fresh Tech - April 2026).
+
+•  Juara 2 Tingkat Nasional Video Reels Edukasi (SobiFest 2025) — Universitas BSI Jakarta.
+
+•  Partisipasi Lomba Video Kreatif — Fakultas Ilmu Komputer Universitas Brawijaya (2025).
+
+•  Juara 1 LKS Graphic Design Technology 2024 — Tingkat Kabupaten Karanganyar.
+
+•  Penerima Beasiswa Jalur Undangan (BJU) UBSI 2024 — Jalur Prestasi Akademik & Non-Akademik.
+
+PELATIHAN, WEBINAR & PENGEMBANGAN DIRI
+
+•  Webinar "Membangun & Mengelola Website Profesional dengan Domain & Webhosting" — UBSI Solo (26 Juni 2026).
+
+•  Webinar IndoCEISS Jateng "Speak with Confidence, Influence with Impact" — IndoCEISS (22 Mei 2026).
+
+•  Seminar Karir "Personal Branding & Portofolio Menuju Dunia Profesional" — HIMSI UBSI Yogyakarta (18 Nov 2025).
+
+•  Pemasaran Digital dengan AI & Chat Apps untuk Wirausaha — Digital Entrepreneurship Academy (DTS Kominfo 2025).
+
+•  Seminar Entrepreneurship "Wiramuda Bangkit, Merubah Peluang Menjadi Uang" — BEC UBSI (29 Okt 2024).
+
+•  Seminar Acceleration of Information Technology for IT Career (2024).

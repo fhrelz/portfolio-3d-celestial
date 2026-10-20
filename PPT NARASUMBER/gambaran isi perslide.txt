@@ -1,0 +1,123 @@
+
+
+## BAGIAN 1 — PEMBUKAAN (± 5 menit)
+
+**Slide 1 – Judul**
+- "Menjadi Mahasiswa Berprestasi: Bukan Soal Pintar, Tapi Soal Konsisten"
+- Nama, jurusan, semester, foto kamu (pakai foto dari CV/poster)
+
+**Slide 2 – Perkenalan Diri**
+- M. Fahrel Yuliyanto, Sistem Informasi UBSI semester 5
+- Highlight singkat 1 kalimat: "Mahasiswa jalur beasiswa yang kuliah, organisasi, kerja sampingan, dan bikin project sosial — semua jalan bareng"
+- Foto kegiatan organisasi/proyek sebagai kolase kecil (jangan sertifikat dulu, simpan momentum)
+
+**Slide 3 – Yang Akan Kita Bahas (Roadmap)**
+- Titik awal & motivasi
+- Akademik + organisasi
+- Karya nyata & dampak sosial
+- Kerja sampingan & magang
+- Formula & tips praktis buat kalian
+
+---
+
+## BAGIAN 2 — TITIK AWAL (± 7 menit)
+
+**Slide 4 – Dari Mana Aku Mulai**
+- Cerita masuk lewat jalur beasiswa undangan (BJU) — bukan "anak berprestasi" sejak awal
+- Latar SMK Multimedia → alasan pilih Sistem Informasi
+- Talking point: "Aku nggak start dari nol yang biasa, tapi juga bukan start dari privilege — aku start dari kesempatan yang aku kejar"
+
+**Slide 5 – Kenapa Aku Milih Jalan yang 'Ribet'**
+- Kuliah + organisasi + kerja + lomba di waktu bersamaan — kenapa?
+- Mindset: skill nggak cukup dari kelas, harus dipraktikkan di dunia nyata
+- (Ini slide "alasan", bukan pencapaian — bikin audiens paham motif kamu)
+
+---
+
+## BAGIAN 3 — AKADEMIK & ORGANISASI (± 8 menit)
+
+**Slide 6 – Organisasi Periode 1: Belajar dari Bawah**
+- Ketua Divisi Komunikasi HIMSI
+- Cerita: apa tantangan awal masuk organisasi, skill apa yang kebentuk (public speaking, koordinasi, komunikasi)
+- Framing: "Ini fase belajar, bukan fase pamer jabatan"
+
+**Slide 7 – Organisasi Periode 2: Naik Level Jadi Ketua Umum**
+- Ketua Umum HIMSI UBSI Solo
+- Cerita tanggung jawab yang berubah, tekanan yang dihadapi, keputusan sulit yang pernah diambil
+- 1 pelajaran konkret yang bisa dibawa pulang audiens
+
+**Slide 8 – Kompetisi: Bukan Selalu Menang di Percobaan Pertama**
+- Juara 1 LKS Desain Grafis, Juara 2 SobiFest, Medali Silver Pekan Inovasi Nasional Vol.3 (Univ. Mercu Buana)
+- Cerita proses ikut lomba: berapa kali gagal/ikut lomba lain dulu sebelum ini?
+- Talking point: "Prestasi itu hasil dari nyoba berkali-kali, bukan bakat instan"
+
+---
+
+## BAGIAN 4 — KARYA NYATA & DAMPAK (± 20 menit — bagian paling kuat, kasih porsi besar)
+
+**Slide 9 – Proyek 1: Website Resmi Desa Baran, Klaten**
+- Program BSI Explore 2026 (lolos dari >2.000 peserta)
+- Dikerjakan sendiri dalam 1 minggu — ceritakan prosesnya, bukan cuma hasilnya
+- Dampak: transparansi info publik desa, pelayanan digital warga
+- Bonus: dapat HKI resmi Kemenkumham — jelaskan simpel apa artinya buat mahasiswa awam
+- Tampilkan screenshot web (desabaranklaten.site.je)
+
+**Slide 10 – Proyek 2: Smart Waste Management AI — Kota Bersih Surakarta**
+- Platform berbasis AI Assistant (Gemini/AI Studio) untuk pengelolaan sampah kota
+- Kerja bareng BRIDA Surakarta & UBSI Innovation Hub
+- Dampak: transparansi pelayanan publik, diliput media (UBSI Solo News)
+- Screenshot web (kotabersihsurakarta.uwaze.com)
+
+**Slide 11 – Proyek 3: Platform MBG SPPG (Makan Bergizi Gratis)**
+- Digitalisasi program pemerintah: GIS, monitoring gizi, transparansi anggaran
+- Meraih Medali Silver di Pekan Inovasi Nasional
+- Talking point: gimana rasanya proyek kampus bisa nyentuh isu nasional
+
+**Slide 12 – Proyek Mandiri: ZeloDrive & Rumah IT**
+- ZeloDrive: aplikasi gamifikasi + AI untuk belajar SNBT/ujian mandiri
+- Rumah IT: Game-Based Learning untuk belajar coding pemula, sudah dipresentasikan ke SMP
+- Pesan: "Ini proyek yang aku bikin bukan karena ditugaskan, tapi karena aku pengin"
+
+---
+
+## BAGIAN 5 — KERJA & MAGANG (± 10 menit)
+
+**Slide 13 – Nyambi Kerja: Digital Marketing & Content Creator**
+- Volution Apparel — strategi konten Instagram/TikTok, Meta Ads
+- Cerita: gimana bagi waktu antara kuliah, organisasi, dan kerja ini
+- Skill yang kepake sampai sekarang
+
+**Slide 14 – Titik Balik: Magang di PT KAI DAOP 6**
+- Diterima lewat seleksi InternHub KAI, Unit Sistem Informasi
+- Cerita proses seleksi — apa yang bikin kamu keterima? (bukan cuma nasib baik, tapi persiapan apa)
+- Ini bisa jadi klimaks cerita — "Semua proses sebelumnya yang bawa aku ke sini"
+
+---
+
+## BAGIAN 6 — FORMULA & TIPS PRAKTIS (± 12 menit — bagian paling dinanti audiens)
+
+**Slide 15 – "Formula" yang Aku Pelajari**
+Bukan rumus ajaib, tapi 3–4 prinsip yang kamu pegang, misalnya:
+1. Mulai dari kesempatan kecil yang ada di depan mata (organisasi kampus, lomba internal)
+2. Skill dibangun sambil jalan, bukan nunggu "siap"
+3. Konsisten kelola waktu > jago di satu hal doang
+4. AI (Gemini, ChatGPT, Claude) sebagai alat bantu produktivitas, bukan pengganti usaha
+
+**Slide 16 – Tools Digital yang Bisa Kalian Coba Sekarang**
+- AI: ChatGPT, Claude, Gemini/AI Studio — buat riset, ide konten, belajar coding
+- Desain/konten: Canva, CapCut, Adobe Illustrator
+- Cara mulai: 1 skill kecil per bulan, bukan semua sekaligus
+
+---
+
+## BAGIAN 7 — PENUTUP (± 5 menit + Q&A)
+
+**Slide 17 – Bukan Soal Siapa yang Paling Banyak Pencapaian**
+- Pesan penutup: prestasi itu efek samping dari konsistensi, bukan tujuan utama
+- "Aku sharing ini bukan buat pamer, tapi biar kalian lihat prosesnya bisa ditiru — dan powernya ada di kalian juga"
+
+**Slide 18 – Terima Kasih & Kontak**
+- LinkedIn, portofolio (bit.ly/portofolio-fahrel), Instagram
+- Ajakan: "Kalau ada yang mau diskusi soal organisasi/proyek/AI tools, mampir DM"
+- Slot Q&A
+

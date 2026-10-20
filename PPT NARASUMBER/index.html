@@ -1,0 +1,3340 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop Digital Kreatif - M. Fahrel Yuliyanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600;1,700;1,800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg-dark: #080808;
+        --bg-card: rgba(18, 18, 20, 0.85);
+        --bg-card-hover: rgba(28, 28, 32, 0.95);
+        --red-primary: #dc2626;
+        --red-bright: #ef4444;
+        --red-dark: #881337;
+        --red-glow: rgba(220, 38, 38, 0.45);
+        --text-main: #f8fafc;
+        --text-muted: #a1a1aa;
+        --text-dim: #64748b;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --border-active: rgba(220, 38, 38, 0.5);
+        --font-serif-display: "Italiana", "Playfair Display", serif;
+        --font-serif: "Playfair Display", Georgia, serif;
+        --font-sans: "Plus Jakarta Sans", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-fluid: cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        user-select: none;
+      }
+
+      body {
+        background-color: #040405;
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Presentation Canvas Frame & Layout System */
+      .presentation-wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .slide-stage {
+        width: 100%;
+        max-width: 1366px;
+        height: 100%;
+        max-height: 768px;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: rgba(10, 10, 14, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.95),
+          0 0 60px rgba(220, 38, 38, 0.15);
+        backdrop-filter: blur(20px);
+        transition: all 0.3s ease;
+      }
+
+      .slide-stage.faux-fullscreen {
+        max-width: 100% !important;
+        max-height: 100% !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+        border: none !important;
+      }
+
+      .slide-header {
+        height: 52px;
+        min-height: 52px;
+        padding: 0 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: rgba(14, 14, 18, 0.9);
+        backdrop-filter: blur(16px);
+        z-index: 30;
+        flex-shrink: 0;
+        font-size: 13px;
+      }
+
+      .brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.3px;
+        color: var(--text-main);
+      }
+
+      .brand-logo .dot {
+        width: 8px;
+        height: 8px;
+        background: var(--red-bright);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--red-bright);
+      }
+
+      .slide-counter-badge {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--red-bright);
+        background: rgba(220, 38, 38, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.35);
+        padding: 4px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+      }
+
+      .slide-viewport {
+        flex: 1;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+      }
+
+      /* Ultra-smooth continuous keyframes */
+      @keyframes floatSlow {
+        0% {
+          transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1);
+        }
+        33% {
+          transform: translate3d(-15px, -25px, 0px) rotate(3deg) scale(1.02);
+        }
+        66% {
+          transform: translate3d(20px, 15px, 0px) rotate(-2deg) scale(0.98);
+        }
+        100% {
+          transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1);
+        }
+      }
+
+      @keyframes floatReverse {
+        0% {
+          transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1);
+        }
+        33% {
+          transform: translate3d(25px, 20px, 0px) rotate(-4deg) scale(0.97);
+        }
+        66% {
+          transform: translate3d(-15px, -20px, 0px) rotate(2deg) scale(1.03);
+        }
+        100% {
+          transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1);
+        }
+      }
+
+      @keyframes pulseOrb {
+        0% {
+          transform: scale(1) translate3d(0, 0, 0);
+          opacity: 0.15;
+          filter: blur(80px);
+        }
+        50% {
+          transform: scale(1.3) translate3d(30px, -30px, 0);
+          opacity: 0.35;
+          filter: blur(100px);
+        }
+        100% {
+          transform: scale(1) translate3d(0, 0, 0);
+          opacity: 0.15;
+          filter: blur(80px);
+        }
+      }
+
+      @keyframes spinSparkle {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.15);
+        }
+        to {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+
+      @keyframes shimmerGlow {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      @keyframes panOverlay {
+        0% {
+          background-position: 0px 0px;
+        }
+        100% {
+          background-position: 100px 100px;
+        }
+      }
+
+      .bg-watermark {
+        position: absolute;
+        font-size: 13vw;
+        font-family: var(--font-serif-display);
+        color: rgba(255, 255, 255, 0.02);
+        z-index: 0;
+        white-space: nowrap;
+        pointer-events: none;
+        font-weight: 800;
+        user-select: none;
+        letter-spacing: -4px;
+      }
+
+      /* Interactive Ambient Canvas & Cursor Glow Overlay */
+      #bgCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .cursor-glow {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(239, 68, 68, 0.18) 0%,
+          rgba(220, 38, 38, 0.04) 45%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        transition:
+          width 0.4s ease,
+          height 0.4s ease;
+        will-change: transform;
+      }
+
+      .ambient-orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+        will-change: transform, opacity;
+        animation: pulseOrb 12s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+      }
+      .ambient-orb.orb-1 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          #ef4444 0%,
+          #881337 70%,
+          transparent 100%
+        );
+        top: -150px;
+        right: -100px;
+        animation-duration: 15s;
+      }
+      .ambient-orb.orb-2 {
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(
+          circle,
+          #991b1b 0%,
+          #450a0a 70%,
+          transparent 100%
+        );
+        bottom: -100px;
+        left: -100px;
+        animation-delay: -5s;
+        animation-duration: 18s;
+      }
+      .ambient-orb.orb-3 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          #f97316 0%,
+          #dc2626 70%,
+          transparent 100%
+        );
+        top: 20%;
+        right: 20%;
+        opacity: 0.15;
+        animation-delay: -8s;
+        animation-duration: 20s;
+      }
+
+      .slide-overlay-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(rgba(255, 255, 255, 0.07) 1.2px, transparent 1.2px),
+          linear-gradient(
+            to right,
+            rgba(220, 38, 38, 0.03) 1px,
+            transparent 1px
+          );
+        background-size:
+          28px 28px,
+          120px 100%;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.55;
+        animation: panOverlay 30s linear infinite;
+      }
+
+      .floating-shape {
+        position: absolute;
+        pointer-events: none;
+        z-index: 4;
+        color: rgba(239, 68, 68, 0.45);
+        font-family: var(--font-mono);
+        font-weight: 700;
+        will-change: transform;
+      }
+      .floating-shape.sparkle {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 32px;
+        animation:
+          spinSparkle 20s linear infinite,
+          floatSlow 10s ease-in-out infinite alternate;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      }
+      .floating-shape.code-tag {
+        background: rgba(220, 38, 38, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.35);
+        color: #fca5a5;
+        padding: 5px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 8px 24px rgba(0, 0, 0, 0.5),
+          0 0 15px rgba(220, 38, 38, 0.2);
+        animation: floatSlow 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      .floating-badge {
+        position: absolute;
+        background: rgba(18, 18, 22, 0.9);
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        backdrop-filter: blur(16px);
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow:
+          0 12px 30px rgba(0, 0, 0, 0.7),
+          0 0 20px rgba(220, 38, 38, 0.2);
+        pointer-events: none;
+        z-index: 12;
+        will-change: transform;
+        animation: floatReverse 14s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      .floating-badge i {
+        color: var(--red-bright);
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        padding: 24px 40px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(20px) scale(0.98);
+        filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+        z-index: 10;
+        transition-delay: 0s;
+      }
+
+      /* Dynamic Stagger Entrance Animations - Smoothened with CSS Transitions */
+      .slide-title-group {
+        opacity: 0;
+        transform: translateY(-15px);
+        filter: blur(6px);
+        transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        margin-bottom: 14px;
+        z-index: 10;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .content-area {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+        transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 10;
+        width: 100%;
+        position: relative;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .slide.active .slide-title-group {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+        transition-delay: 0.12s;
+      }
+
+      .slide.active .content-area {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+        transition-delay: 0.22s;
+      }
+
+      @keyframes spinSlow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.4));
+          transform: scale(1);
+        }
+        50% {
+          filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.85));
+          transform: scale(1.04);
+        }
+      }
+
+      .star-accent {
+        position: absolute;
+        font-family: var(--font-serif-display);
+        color: rgba(255, 255, 255, 0.06);
+        font-size: 100px;
+        line-height: 1;
+        pointer-events: none;
+        z-index: 1;
+        transition: transform 0.2s ease-out;
+      }
+      .star-accent.top-right {
+        top: 10px;
+        right: 25px;
+        animation:
+          spinSlow 40s linear infinite,
+          floatSlow 12s ease-in-out infinite;
+      }
+      .star-accent.bottom-left {
+        bottom: 10px;
+        left: 20px;
+        animation:
+          spinSlow 40s linear infinite reverse,
+          floatReverse 14s ease-in-out infinite;
+      }
+
+      .slide-subtitle {
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        color: var(--red-bright);
+        font-weight: 800;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+      }
+
+      .slide-title {
+        font-family: var(--font-serif);
+        font-size: 44px;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .slide-title span.red-italic {
+        font-family: var(--font-serif-display);
+        font-style: italic;
+        color: var(--red-bright);
+        font-weight: 400;
+        text-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+        padding-right: 4px;
+      }
+
+      /* SUPPORTING IMAGE THUMBNAILS WITH ELEGANT GLOW */
+      .slide-img-thumb {
+        width: 100%;
+        height: 180px !important;
+        object-fit: contain !important;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 10px;
+        transition: all 0.4s var(--ease-out-expo);
+        background-color: transparent !important;
+        display: block;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .slide-img-thumb:hover {
+        border-color: var(--red-primary);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 14px 30px rgba(220, 38, 38, 0.3);
+      }
+
+      .slide-img-thumb-sm {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .slide-img-thumb-sm:hover {
+        border-color: var(--red-primary);
+        transform: scale(1.1);
+        box-shadow: 0 0 12px var(--red-glow);
+      }
+
+      .cover-layout {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 25px;
+        height: 100%;
+        align-items: center;
+        position: relative;
+        z-index: 20;
+      }
+
+      .cover-title-main {
+        font-family: var(--font-serif-display);
+        font-size: 72px;
+        line-height: 1.05;
+        color: var(--red-bright);
+        font-style: italic;
+        margin-bottom: 16px;
+        position: relative;
+        text-shadow: 0 0 35px rgba(220, 38, 38, 0.4);
+      }
+
+      .cover-title-main span.white-text {
+        color: var(--text-main);
+        font-style: normal;
+        font-family: var(--font-sans);
+        font-weight: 800;
+        font-size: 48px;
+        display: block;
+        margin-top: 8px;
+        letter-spacing: -1px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .cover-desc {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 600px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .presenter-badge {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: rgba(22, 22, 26, 0.9);
+        backdrop-filter: blur(12px);
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 1px solid var(--border-color);
+        width: fit-content;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .presenter-badge:hover {
+        border-color: var(--red-primary);
+        box-shadow: 0 10px 30px var(--red-glow);
+        transform: translateY(-2px);
+      }
+
+      .presenter-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: contain;
+        background-color: transparent;
+        border: 2px solid var(--red-primary);
+        box-shadow: 0 0 12px var(--red-glow);
+      }
+
+      .presenter-info h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+
+      .presenter-info p {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .photo-stack {
+        position: relative;
+        width: 320px;
+        height: 400px;
+        margin: 0 auto;
+      }
+
+      .photo-stack-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--red-dark);
+        border-radius: 14px;
+        transform: rotate(-6deg);
+        opacity: 0.75;
+        border: 1px solid var(--red-primary);
+        animation: floatAnim 7s ease-in-out infinite alternate;
+      }
+
+      .photo-stack-main {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #18181b;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow:
+          0 25px 50px rgba(0, 0, 0, 0.9),
+          0 0 30px rgba(220, 38, 38, 0.2);
+        transform: rotate(2deg);
+        transition: transform 0.4s var(--ease-out-expo);
+      }
+
+      .photo-stack-main:hover {
+        transform: rotate(0deg) scale(1.04);
+      }
+
+      .photo-stack-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background-color: transparent;
+      }
+
+      .versus-container {
+        display: grid;
+        grid-template-columns: 1fr 50px 1fr;
+        gap: 16px;
+        align-items: stretch;
+        height: 100%;
+      }
+
+      .versus-card {
+        background: rgba(18, 18, 20, 0.9);
+        border-radius: 16px;
+        padding: 16px 20px;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.35s var(--ease-out-expo),
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .versus-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .versus-card.myth {
+        border: 1px solid rgba(239, 68, 68, 0.35);
+        background: linear-gradient(
+          150deg,
+          rgba(239, 68, 68, 0.08) 0%,
+          rgba(18, 18, 20, 0.95) 100%
+        );
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(239, 68, 68, 0.1);
+      }
+
+      .versus-card.reality {
+        border: 1px solid rgba(34, 197, 94, 0.35);
+        background: linear-gradient(
+          150deg,
+          rgba(34, 197, 94, 0.08) 0%,
+          rgba(18, 18, 20, 0.95) 100%
+        );
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(34, 197, 94, 0.1);
+      }
+
+      .versus-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .vs-badge {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--red-primary),
+          var(--red-dark)
+        );
+        color: white;
+        font-family: var(--font-serif-display);
+        font-weight: 800;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 30px var(--red-glow);
+        animation: pulseGlow 3s infinite ease-in-out;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .versus-tag {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 6px;
+        width: fit-content;
+        margin-bottom: 12px;
+      }
+
+      .versus-card.myth .versus-tag {
+        background: rgba(239, 68, 68, 0.2);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .versus-card.reality .versus-tag {
+        background: rgba(34, 197, 94, 0.2);
+        color: #4ade80;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+      }
+
+      .versus-card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .versus-card p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+
+      .versus-impact {
+        margin-top: 15px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .timeline-flex {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        height: 100%;
+        align-items: stretch;
+        position: relative;
+      }
+
+      .timeline-node-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 16px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        transition: all 0.35s var(--ease-out-expo);
+        backdrop-filter: blur(8px);
+      }
+
+      .timeline-node-card:hover {
+        border-color: var(--red-primary);
+        transform: translateY(-4px);
+        background: var(--bg-card-hover);
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.7),
+          0 0 20px var(--red-glow);
+      }
+
+      .node-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .node-number {
+        font-family: var(--font-mono);
+        font-size: 34px;
+        font-weight: 800;
+        color: var(--red-bright);
+        text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+      }
+
+      .node-period {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 4px 10px;
+        border-radius: 4px;
+        color: var(--text-dim);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .timeline-node-card h4 {
+        font-size: 20px;
+        color: var(--text-main);
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .timeline-node-card p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .node-badge {
+        margin-top: 15px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #f87171;
+        background: rgba(220, 38, 38, 0.15);
+        padding: 6px 14px;
+        border-radius: 6px;
+        width: fit-content;
+        border: 1px solid rgba(220, 38, 38, 0.3);
+      }
+
+      .triangle-layout {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        height: 100%;
+      }
+
+      .pillar-card {
+        background: linear-gradient(
+          180deg,
+          rgba(25, 25, 30, 0.95) 0%,
+          rgba(12, 12, 14, 0.98) 100%
+        );
+        border: 1px solid var(--border-color);
+        border-top: 4px solid var(--red-primary);
+        border-radius: 16px;
+        padding: 26px 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.35s var(--ease-out-expo);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .pillar-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(220, 38, 38, 0.5);
+        box-shadow:
+          0 18px 40px rgba(0, 0, 0, 0.7),
+          0 0 20px var(--red-glow);
+      }
+
+      .pillar-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .pillar-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(220, 38, 38, 0.18);
+        color: var(--red-bright);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        border: 1px solid rgba(220, 38, 38, 0.35);
+        box-shadow: 0 0 12px rgba(220, 38, 38, 0.2);
+      }
+
+      .pillar-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+
+      .pillar-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .pillar-list li {
+        font-size: 14px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        line-height: 1.5;
+      }
+
+      .pillar-list li i {
+        color: var(--red-bright);
+        font-size: 10px;
+        margin-top: 4px;
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .tech-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 22px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s var(--ease-out-expo);
+      }
+
+      .tech-box:hover {
+        border-color: var(--red-primary);
+        transform: translateY(-5px);
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.6),
+          0 0 18px var(--red-glow);
+      }
+
+      .tech-box-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .tech-box-title i {
+        color: var(--red-bright);
+      }
+
+      .tech-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .chip {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-main);
+        padding: 6px 12px;
+        border-radius: 6px;
+      }
+
+      .chip.highlight {
+        background: rgba(220, 38, 38, 0.18);
+        border-color: var(--red-primary);
+        color: #f87171;
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.2);
+      }
+
+      .hki-showcase-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .hki-metric-banner {
+        background: linear-gradient(
+          145deg,
+          rgba(220, 38, 38, 0.25),
+          rgba(18, 18, 20, 0.95)
+        );
+        border: 2px solid var(--red-primary);
+        border-radius: 18px;
+        padding: 30px 22px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(220, 38, 38, 0.2);
+        position: relative;
+      }
+
+      .hki-big-num {
+        font-family: var(--font-serif-display);
+        font-size: 96px;
+        font-weight: 800;
+        color: var(--red-bright);
+        line-height: 1;
+        text-shadow: 0 0 25px rgba(220, 38, 38, 0.5);
+      }
+
+      .hki-cards-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hki-item-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-left: 4px solid var(--red-primary);
+        border-radius: 12px;
+        padding: 16px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition:
+          transform 0.3s var(--ease-out-expo),
+          border-color 0.3s ease;
+      }
+
+      .hki-item-card:hover {
+        transform: translateX(8px);
+        border-color: var(--red-primary);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .hki-item-info h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+
+      .hki-item-info p {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .hki-reg-tag {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: #f87171;
+        background: rgba(220, 38, 38, 0.15);
+        padding: 6px 12px;
+        border-radius: 6px;
+        white-space: nowrap;
+        border: 1px solid rgba(220, 38, 38, 0.3);
+      }
+
+      .case-study-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .url-box-featured {
+        background: #121214;
+        border: 1px dashed var(--red-primary);
+        border-radius: 14px;
+        padding: 16px;
+        text-align: center;
+        margin-top: 15px;
+        box-shadow: 0 0 15px rgba(220, 38, 38, 0.15);
+      }
+
+      .url-text {
+        font-family: var(--font-mono);
+        font-size: 24px;
+        color: var(--red-bright);
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+      }
+
+      .trophy-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .trophy-card {
+        background: linear-gradient(
+          150deg,
+          rgba(30, 30, 35, 0.95),
+          rgba(15, 15, 18, 0.95)
+        );
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.35s var(--ease-out-expo);
+      }
+
+      .trophy-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .trophy-card.silver {
+        border-color: #94a3b8;
+        box-shadow: 0 12px 30px rgba(148, 163, 184, 0.12);
+      }
+
+      .trophy-card.silver::before {
+        content: "SILVER MEDAL";
+        position: absolute;
+        top: 15px;
+        right: -30px;
+        background: #94a3b8;
+        color: #000;
+        font-size: 9px;
+        font-weight: 800;
+        padding: 4px 35px;
+        transform: rotate(45deg);
+      }
+
+      .trophy-card.winner-2 {
+        border-color: var(--red-primary);
+        box-shadow: 0 12px 30px rgba(220, 38, 38, 0.15);
+      }
+
+      .industrial-card {
+        background: #111113;
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 28px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .strategy-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .step-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 25px 20px;
+        position: relative;
+        transition:
+          border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .step-card:hover {
+        border-color: var(--red-primary);
+        transform: translateY(-5px);
+      }
+
+      .step-card::before {
+        content: attr(data-step);
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        width: 32px;
+        height: 32px;
+        background: var(--red-primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 14px;
+        box-shadow: 0 0 15px var(--red-glow);
+      }
+
+      .step-card h3 {
+        font-size: 22px;
+        margin-top: 14px;
+        margin-bottom: 12px;
+      }
+
+      .roadmap-matrix {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--bg-card);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+      }
+
+      .roadmap-matrix th {
+        background: #1a1a1d;
+        color: var(--red-bright);
+        padding: 18px 24px;
+        text-align: left;
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .roadmap-matrix td {
+        padding: 18px 24px;
+        font-size: 16px;
+        color: var(--text-muted);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .roadmap-matrix tr:last-child td {
+        border-bottom: none;
+      }
+
+      .editorial-quote-box {
+        text-align: center;
+        max-width: 880px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .editorial-quote-box blockquote {
+        font-family: var(--font-serif-display);
+        font-style: italic;
+        font-size: 42px;
+        color: var(--text-main);
+        line-height: 1.45;
+        margin-bottom: 30px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .editorial-quote-box cite {
+        font-style: normal;
+        font-size: 18px;
+        letter-spacing: 2px;
+        color: var(--red-bright);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .social-contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        max-width: 920px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .social-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 28px 20px;
+        text-align: center;
+        transition: all 0.35s var(--ease-out-expo);
+      }
+
+      .social-card:hover {
+        border-color: var(--red-primary);
+        transform: translateY(-6px);
+        background: var(--bg-card-hover);
+        box-shadow:
+          0 15px 35px rgba(0, 0, 0, 0.6),
+          0 0 20px var(--red-glow);
+      }
+
+      .social-card i {
+        font-size: 32px;
+        color: var(--red-bright);
+        margin-bottom: 12px;
+      }
+
+      .social-card h4 {
+        font-size: 22px;
+        color: var(--text-main);
+        margin-bottom: 6px;
+      }
+
+      .social-card p {
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: var(--text-muted);
+      }
+
+      .slide-footer {
+        height: 50px;
+        padding: 0 45px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        background-color: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(12px);
+        z-index: 20;
+      }
+
+      .progress-bar-container {
+        width: 260px;
+        height: 4px;
+        background-color: var(--border-color);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background-color: var(--red-bright);
+        transition: width 0.3s ease;
+        box-shadow: 0 0 10px var(--red-bright);
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .btn-ctrl {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 13px;
+      }
+
+      .btn-ctrl:hover {
+        background: var(--red-primary);
+        border-color: var(--red-primary);
+        color: #ffffff;
+        box-shadow: 0 0 15px var(--red-glow);
+      }
+
+      /* Slide Drawer / Grid Picker Modal */
+      .slide-grid-drawer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(8, 8, 8, 0.96);
+        backdrop-filter: blur(18px);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        padding: 35px 45px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s var(--ease-out-expo);
+      }
+
+      .slide-grid-drawer.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .drawer-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .drawer-title {
+        font-family: var(--font-serif-display);
+        font-size: 24px;
+        color: var(--red-bright);
+      }
+
+      .grid-picker {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        overflow-y: auto;
+        padding-right: 8px;
+      }
+
+      .grid-picker-item {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 14px 16px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .grid-picker-item:hover,
+      .grid-picker-item.active {
+        border-color: var(--red-primary);
+        background: var(--bg-card-hover);
+        box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+      }
+
+      .grid-picker-item span {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--red-bright);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .grid-picker-item h5 {
+        font-size: 12px;
+        color: var(--text-main);
+        font-weight: 600;
+      }
+
+      .faux-fullscreen {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+        z-index: 9999 !important;
+        margin: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="bgCanvas"></canvas>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="presentation-wrapper">
+      <div class="slide-stage" id="slideStage">
+        <div class="slide-header">
+          <div class="brand-logo">
+            <div class="dot"></div>
+            <span>M. Fahrel Yuliyanto</span>
+          </div>
+          <div>Workshop Digital Kreatif 2026</div>
+          <div class="slide-counter-badge" id="slideCounter">SLIDE 1 / 13</div>
+        </div>
+
+        <div class="slide-viewport">
+          <div class="star-accent top-right float-elem" data-parallax="0.05">
+            ✱
+          </div>
+          <div class="star-accent bottom-left float-elem" data-parallax="-0.04">
+            ✱
+          </div>
+
+          <div class="slide active" id="slide-1">
+            <div
+              class="bg-watermark"
+              style="
+                top: 20%;
+                left: -2%;
+                animation: floatSlow 18s ease-in-out infinite;
+              "
+            >
+              PORTFOLIO
+            </div>
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div
+              class="floating-shape code-tag float-elem"
+              style="top: 12px; left: 15px"
+            >
+              &lt;MahasiswaBerprestasi /&gt;
+            </div>
+            <div
+              class="floating-shape code-tag float-elem"
+              style="
+                bottom: 15px;
+                right: 20px;
+                border-color: rgba(255, 255, 255, 0.2);
+                color: #cbd5e1;
+              "
+            >
+              <i class="fa-solid fa-award"></i> Penerima Beasiswa BJU
+            </div>
+            <div
+              class="floating-badge float-elem"
+              style="top: 12px; right: 20px"
+            >
+              <i class="fa-solid fa-fire"></i> Live Presentation
+            </div>
+            <div class="cover-layout">
+              <div>
+                <div class="slide-subtitle">
+                  <i class="fa-solid fa-graduation-cap"></i> Menjadi Mahasiswa
+                  Berprestasi
+                </div>
+                <div class="cover-title-main">
+                  Digital <br />
+                  <span class="white-text">Kreatif &amp; Impact</span>
+                </div>
+                <p class="cover-desc">
+                  Memanfaatkan Keterampilan Digital untuk Mencetak Prestasi
+                  Akademik, Kepemimpinan Organisasi, Inovasi HKI, dan Pengabdian
+                  Nyata.
+                </p>
+                <div class="presenter-badge">
+                  <img
+                    src="ss-projek/foto_profile.png"
+                    alt="M. Fahrel"
+                    class="presenter-avatar"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/100x100/dc2626/ffffff?text=MF'
+                    "
+                  />
+                  <div class="presenter-info">
+                    <h4>Muhammad Fahrel Yuliyanto</h4>
+                    <p>Ketua Umum HIMSI UBSI Solo | Intern PT KAI DAOP 6</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cover-image-frame">
+                <div class="photo-stack" data-parallax="0.03">
+                  <div class="photo-stack-bg"></div>
+                  <div class="photo-stack-main">
+                    <img
+                      src="ss-projek/foto_profile.png"
+                      alt="M. Fahrel Yuliyanto"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/400x500/18181b/ffffff?text=Fahrel'
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-2">
+            <div
+              class="bg-watermark"
+              style="
+                bottom: 5%;
+                right: -5%;
+                animation: floatReverse 22s ease-in-out infinite;
+              "
+            >
+              MINDSET
+            </div>
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="0.06"
+              style="top: 12px; left: 200px"
+            >
+              #MindsetShift2026
+            </div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="-0.04"
+              style="bottom: 20px; right: 30px"
+            >
+              ✦
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="top: 12px; right: 20px"
+            >
+              <i class="fa-solid fa-lightbulb"></i> Mindset Shift
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-compass"></i> Perspective Shift
+              </div>
+              <h2 class="slide-title">
+                Mitos vs Realita <span class="red-italic">Super Student</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="versus-container">
+                <div class="versus-card myth">
+                  <div>
+                    <div class="versus-tag">Mitos Salah</div>
+                    <!-- SUPPORTING IMAGE 2A -->
+                    <img
+                      src="ss-projek/gayabebas.JPG"
+                      alt="Mitos Burnout"
+                      class="slide-img-thumb"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/400x180/1c1917/ef4444?text=Foto+Mitos'
+                      "
+                    />
+                    <h3>"Harus Ikut Semua Hal"</h3>
+                    <p>
+                      Menganggap berprestasi berarti harus menguasai semua
+                      bidang, masuk ke banyak panitia sekaligus, dan belajar
+                      tanpa fokus hingga habis waktu.
+                    </p>
+                  </div>
+                  <div class="versus-impact" style="color: #ef4444">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Resiko:
+                    Burnout, hasil setengah-setengah &amp; tidak ada portofolio
+                    unggulan.
+                  </div>
+                </div>
+
+                <div class="versus-divider">
+                  <div class="vs-badge float-elem" data-parallax="0.08">VS</div>
+                </div>
+
+                <div class="versus-card reality">
+                  <div>
+                    <div class="versus-tag">Realita Strategis</div>
+                    <!-- SUPPORTING IMAGE 2B -->
+                    <img
+                      src="ss-projek/workshop.png"
+                      alt="Realita Strategis"
+                      class="slide-img-thumb"
+                      style="height: 180px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/400x180/1c1917/22c55e?text=Foto+Realita'
+                      "
+                    />
+                    <h3>"Leverage Digital &amp; Focus"</h3>
+                    <p>
+                      Berprestasi dibangun lewat prioritas terarah, memanfaatkan
+                      alur kerja AI &amp; otomatisasi, serta mengasah 1-2
+                      keahlian inti sampai menghasilkan produk nyata.
+                    </p>
+                  </div>
+                  <div class="versus-impact" style="color: #22c55e">
+                    <i class="fa-solid fa-circle-check"></i> Hasil: Karya
+                    berdampak, HKI resmi, &amp; personal branding yang solid.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-3">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="0.05"
+              style="top: 18px; left: 310px"
+            >
+              <i class="fa-solid fa-timeline"></i> 2024 - 2026 Growth
+            </div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="-0.05"
+              style="bottom: 25px; right: 40px"
+            >
+              ✦
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="top: 15px; right: 250px"
+            >
+              <i class="fa-solid fa-clock-rotate-left"></i> 2-Year Progression
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-route"></i> Growth Journey
+              </div>
+              <h2 class="slide-title">
+                Peta Perjalanan
+                <span class="red-italic">2 Tahun Perkuliahan</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="timeline-flex">
+                <div class="timeline-node-card">
+                  <div>
+                    <div class="node-top">
+                      <span class="node-number">01</span>
+                      <span class="node-period">Sem 1 - 2</span>
+                    </div>
+                    <img
+                      src="ss-projek/seminar1.png"
+                      alt="Sem 1-2"
+                      class="slide-img-thumb"
+                      style="height: 165px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x165/141414/dc2626?text=Foto+Sem+1-2'
+                      "
+                    />
+                    <h4>Fondasi &amp; Organisasi</h4>
+                    <p>
+                      Penerima Beasiswa BJU, Kadiv Kominfo HIMSI, mengasah skill
+                      Web Dev dasar &amp; Digital Marketing.
+                    </p>
+                  </div>
+                  <div class="node-badge">Adaptasi &amp; Skill Up</div>
+                </div>
+
+                <div class="timeline-node-card">
+                  <div>
+                    <div class="node-top">
+                      <span class="node-number">02</span>
+                      <span class="node-period">Sem 3</span>
+                    </div>
+                    <img
+                      src="ss-projek/kompetisi-riset.png"
+                      alt="Sem 3"
+                      class="slide-img-thumb"
+                      style="height: 165px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x165/141414/dc2626?text=Foto+Sem+3'
+                      "
+                    />
+                    <h4>Eksplorasi &amp; Inovasi</h4>
+                    <p>
+                      Mengikuti lomba nasional, riset Smart Waste AI BRIDA
+                      Surakarta, &amp; pendaftaran HKI pertama.
+                    </p>
+                  </div>
+                  <div class="node-badge">Pendaftaran HKI</div>
+                </div>
+
+                <div class="timeline-node-card">
+                  <div>
+                    <div class="node-top">
+                      <span class="node-number">03</span>
+                      <span class="node-period">Sem 4</span>
+                    </div>
+                    <img
+                      src="ss-projek/bsiexplore.JPG"
+                      alt="Sem 4"
+                      class="slide-img-thumb"
+                      style="height: 165px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x165/141414/dc2626?text=Foto+Sem+4'
+                      "
+                    />
+                    <h4>Pengabdian &amp; Lead</h4>
+                    <p>
+                      Ketua Umum HIMSI, BSI Explore (Web Desa Baran Klaten),
+                      &amp; Silver Medal Pekan Inovasi UMB.
+                    </p>
+                  </div>
+                  <div class="node-badge">Silver Medal PIN</div>
+                </div>
+
+                <div class="timeline-node-card">
+                  <div>
+                    <div class="node-top">
+                      <span class="node-number">04</span>
+                      <span class="node-period">Sem 5</span>
+                    </div>
+                    <img
+                      src="ss-projek/zelodrive.png"
+                      alt="Sem 5"
+                      class="slide-img-thumb"
+                      style="height: 165px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x165/141414/dc2626?text=Foto+Sem+5'
+                      "
+                    />
+                    <h4>Dunia Profesional</h4>
+                    <p>
+                      Magang Sistem Informasi PT KAI DAOP 6 Yogyakarta, aktif
+                      narasumber workshop AI &amp; Beasiswa.
+                    </p>
+                  </div>
+                  <div class="node-badge">Intern PT KAI</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-4">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.04"
+              style="bottom: 20px; left: 30px"
+            >
+              <i class="fa-solid fa-chart-pie"></i> 35% Academic | 35% Lead |
+              30% Industry
+            </div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="0.06"
+              style="top: 25px; left: 380px"
+            >
+              ✨
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="top: 15px; right: 220px"
+            >
+              <i class="fa-solid fa-list-check"></i> Priority Matrix
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-scale-balanced"></i> Time Management
+              </div>
+              <h2 class="slide-title">
+                Segitiga <span class="red-italic">Keseimbangan Aktivitas</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="triangle-layout">
+                <div class="pillar-card">
+                  <div>
+                    <img
+                      src="ss-projek/pkm.jpeg"
+                      alt="Akademik"
+                      class="slide-img-thumb"
+                      style="height: 140px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x140/141414/dc2626?text=Foto+Akademik'
+                      "
+                    />
+                    <div class="pillar-header">
+                      <div class="pillar-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                      </div>
+                      <h3>1. Akademik BJU</h3>
+                    </div>
+                    <p style="font-size: 14px; color: var(--text-muted)">
+                      Menjaga amanah Beasiswa Jalur Undangan dengan kedisiplinan
+                      tinggi.
+                    </p>
+                    <ul class="pillar-list">
+                      <li>
+                        <i class="fa-solid fa-check"></i> Tugas selesai sebelum
+                        deadline
+                      </li>
+                      <li>
+                        <i class="fa-solid fa-check"></i> Sertifikasi BNSP
+                        Database Admin
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 10px;
+                      color: var(--red-bright);
+                      margin-top: 8px;
+                    "
+                  >
+                    PRIORITAS AKADEMIK
+                  </div>
+                </div>
+
+                <div class="pillar-card">
+                  <div>
+                    <img
+                      src="ss-projek/himsi.JPG"
+                      alt="Kepemimpinan"
+                      class="slide-img-thumb"
+                      style="height: 140px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x140/141414/dc2626?text=Foto+Organisasi'
+                      "
+                    />
+                    <div class="pillar-header">
+                      <div class="pillar-icon">
+                        <i class="fa-solid fa-sitemap"></i>
+                      </div>
+                      <h3>2. Kepemimpinan</h3>
+                    </div>
+                    <p style="font-size: 14px; color: var(--text-muted)">
+                      Tumbuh dari Kadiv Kominfo menjadi Ketua Umum HIMSI UBSI
+                      Solo.
+                    </p>
+                    <ul class="pillar-list">
+                      <li>
+                        <i class="fa-solid fa-check"></i> Delegasi tugas
+                        terstruktur
+                      </li>
+                      <li>
+                        <i class="fa-solid fa-check"></i> Kolaborasi mitra &amp;
+                        pimpinan
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 10px;
+                      color: var(--red-bright);
+                      margin-top: 8px;
+                    "
+                  >
+                    ORGANISASI &amp; NETWORK
+                  </div>
+                </div>
+
+                <div class="pillar-card">
+                  <div>
+                    <img
+                      src="ss-projek/openhouse.png"
+                      alt="Side Job"
+                      class="slide-img-thumb"
+                      style="height: 140px"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/300x140/141414/dc2626?text=Foto+Side+Job'
+                      "
+                    />
+                    <div class="pillar-header">
+                      <div class="pillar-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                      </div>
+                      <h3>3. Side Job &amp; Industry</h3>
+                    </div>
+                    <p style="font-size: 14px; color: var(--text-muted)">
+                      Digital Marketing Specialist di Volution Apparel &amp;
+                      Mataram Laundry.
+                    </p>
+                    <ul class="pillar-list">
+                      <li>
+                        <i class="fa-solid fa-check"></i> Uji teori ke pasar
+                        nyata
+                      </li>
+                      <li>
+                        <i class="fa-solid fa-check"></i> Pengelolaan Meta Ads
+                        &amp; Copywriting
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    style="
+                      font-family: var(--font-mono);
+                      font-size: 10px;
+                      color: var(--red-bright);
+                      margin-top: 8px;
+                    "
+                  >
+                    SKILL NYATA INDUSTRI
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-5">
+            <div
+              class="bg-watermark"
+              style="
+                top: 25%;
+                left: -5%;
+                animation: floatSlow 20s ease-in-out infinite;
+              "
+            >
+              SKILLS
+            </div>
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="0.06"
+              style="top: 20px; left: 290px"
+            >
+              { API &amp; Fullstack Ecosystem }
+            </div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.04"
+              style="bottom: 18px; right: 30px"
+            >
+              Gemini.generate() &amp; Meta.Ads
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.03"
+              style="top: 15px; right: 200px"
+            >
+              <i class="fa-solid fa-terminal"></i> Modern Stack
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-laptop-code"></i> Tech Stack
+              </div>
+              <h2 class="slide-title">
+                3 Pilar <span class="red-italic">Keterampilan Digital</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="tech-grid">
+                <div class="tech-box">
+                  <img
+                    src="ss-projek/aplikasizelodrive.png"
+                    alt="Fullstack Dev"
+                    class="slide-img-thumb"
+                    style="height: 135px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x135/141414/dc2626?text=Koding+Laravel'
+                    "
+                  />
+                  <div class="tech-box-title">
+                    <i class="fa-solid fa-code"></i> Fullstack &amp; Mobile
+                  </div>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.4;
+                    "
+                  >
+                    Membangun sistem informasi utuh dari perancangan UI hingga
+                    siap di-publish.
+                  </p>
+                  <div class="tech-chips">
+                    <span class="chip highlight">Laravel</span>
+                    <span class="chip highlight">Flutter</span>
+                    <span class="chip">Dart</span>
+                    <span class="chip">PHP</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">MySQL</span>
+                  </div>
+                </div>
+
+                <div class="tech-box">
+                  <img
+                    src="ss-projek/bootcamp.png"
+                    alt="AI Mastery"
+                    class="slide-img-thumb"
+                    style="height: 135px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x135/141414/dc2626?text=Gemini+AI'
+                    "
+                  />
+                  <div class="tech-box-title">
+                    <i class="fa-solid fa-brain"></i> Generative AI Mastery
+                  </div>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.4;
+                    "
+                  >
+                    Akselerator riset, debugging koding cepat, dan penyusunan
+                    materi edukasi.
+                  </p>
+                  <div class="tech-chips">
+                    <span class="chip highlight">Google Gemini</span>
+                    <span class="chip highlight">AI Studio</span>
+                    <span class="chip">Claude</span>
+                    <span class="chip">ChatGPT</span>
+                    <span class="chip">Prompt Eng</span>
+                  </div>
+                </div>
+
+                <div class="tech-box">
+                  <img
+                    src="ss-projek/openhouse.png"
+                    alt="Digital Marketing"
+                    class="slide-img-thumb"
+                    style="height: 135px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x135/141414/dc2626?text=Meta+Ads'
+                    "
+                  />
+                  <div class="tech-box-title">
+                    <i class="fa-solid fa-bullhorn"></i> Digital Marketing
+                  </div>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.4;
+                    "
+                  >
+                    Strategi distribusi karya, riset pasar, dan pengelolaan
+                    campaign iklan digital.
+                  </p>
+                  <div class="tech-chips">
+                    <span class="chip highlight">Meta Ads</span>
+                    <span class="chip">Copywriting</span>
+                    <span class="chip">CapCut AI</span>
+                    <span class="chip">UI/UX Figma</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-6">
+            <div
+              class="bg-watermark"
+              style="
+                bottom: 10%;
+                right: -10%;
+                animation: floatReverse 15s ease-in-out infinite;
+              "
+            >
+              INNOVATION
+            </div>
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="
+                bottom: 22px;
+                left: 30px;
+                border-color: rgba(220, 38, 38, 0.5);
+              "
+            >
+              <i class="fa-solid fa-stamp"></i> Kemenkumham RI Verified
+            </div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="-0.04"
+              style="bottom: 30px; right: 50px"
+            >
+              ✦
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.03"
+              style="top: 15px; right: 220px"
+            >
+              <i class="fa-solid fa-shield-halved"></i> Registered IP
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-certificate"></i> Intellectual Property
+              </div>
+              <h2 class="slide-title">
+                Hasil Konkrit:
+                <span class="red-italic">3 Hak Cipta HKI Official</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="hki-showcase-grid">
+                <div class="hki-metric-banner">
+                  <div
+                    class="floating-badge"
+                    style="top: -12px; left: 50%; transform: translateX(-50%)"
+                  >
+                    <i class="fa-solid fa-stamp"></i> Kemenkumham RI
+                  </div>
+                  <img
+                    src="ss-projek/hki.jpeg"
+                    alt="Sertifikat HKI"
+                    class="slide-img-thumb"
+                    style="height: 135px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x135/141414/dc2626?text=Foto+Sertifikat+HKI'
+                    "
+                  />
+                  <div class="hki-big-num">3</div>
+                  <div
+                    style="
+                      font-size: 16px;
+                      font-weight: 700;
+                      color: white;
+                      margin-top: 2px;
+                    "
+                  >
+                    Sertifikat HKI Resmi
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: var(--text-muted);
+                      margin-top: 2px;
+                    "
+                  >
+                    Kemenkumham Republik Indonesia
+                  </div>
+                </div>
+
+                <div class="hki-cards-list">
+                  <div class="hki-item-card">
+                    <img
+                      src="ss-projek/ss-webdesabaran.png"
+                      alt="Web Desa Baran"
+                      class="slide-img-thumb-sm"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/80x80/141414/dc2626?text=HKI+1'
+                      "
+                    />
+                    <div
+                      class="hki-item-info"
+                      style="flex: 1; margin-left: 12px"
+                    >
+                      <h4>Web Official Desa Baran Cawas Klaten</h4>
+                      <p>Sistem Informasi Layanan Publik Desa (Agustus 2026)</p>
+                    </div>
+                    <div class="hki-reg-tag">EC002026153831</div>
+                  </div>
+
+                  <div class="hki-item-card">
+                    <img
+                      src="ss-projek/web-mbg.png"
+                      alt="MBG SPPG"
+                      class="slide-img-thumb-sm"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/80x80/141414/dc2626?text=HKI+2'
+                      "
+                    />
+                    <div
+                      class="hki-item-info"
+                      style="flex: 1; margin-left: 12px"
+                    >
+                      <h4>Web System Program MBG SPPG</h4>
+                      <p>
+                        Platform Makan Bergizi Gratis GIS Nusukan (Juni 2026)
+                      </p>
+                    </div>
+                    <div class="hki-reg-tag">EC002026096415</div>
+                  </div>
+
+                  <div class="hki-item-card">
+                    <img
+                      src="ss-projek/kompetisi-riset.png"
+                      alt="Smart Waste"
+                      class="slide-img-thumb-sm"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/80x80/141414/dc2626?text=HKI+3'
+                      "
+                    />
+                    <div
+                      class="hki-item-info"
+                      style="flex: 1; margin-left: 12px"
+                    >
+                      <h4>Smart Waste Management AI Surakarta</h4>
+                      <p>Riset Perguruan Tinggi BRIDA Surakarta (April 2026)</p>
+                    </div>
+                    <div class="hki-reg-tag">EC002026053217</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-7">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="bottom: 20px; left: 30px"
+            >
+              <i class="fa-solid fa-location-dot"></i> Desa Baran, Cawas, Klaten
+            </div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.03"
+              style="top: 20px; left: 380px"
+            >
+              21 Hari Pengabdian Nyata
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.03"
+              style="top: 15px; right: 200px"
+            >
+              <i class="fa-solid fa-hands-holding-child"></i> Community Service
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-hand-holding-heart"></i> Pengabdian
+                Masyarakat
+              </div>
+              <h2 class="slide-title">
+                BSI Explore:
+                <span class="red-italic">Digitalisasi Desa Baran</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="case-study-grid">
+                <div>
+                  <p
+                    style="
+                      font-size: 17px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                      margin-bottom: 15px;
+                    "
+                  >
+                    Lolos seleksi ketat nasional (&gt;2.000 pendaftar). Mengabdi
+                    21 hari di 9 Dukuh Desa Baran &amp; SDN 2 Baran, Cawas,
+                    Klaten.
+                  </p>
+                  <ul
+                    style="
+                      list-style: none;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 10px;
+                    "
+                  >
+                    <li
+                      style="
+                        display: flex;
+                        gap: 12px;
+                        font-size: 16px;
+                        color: var(--text-main);
+                      "
+                    >
+                      <i
+                        class="fa-solid fa-check"
+                        style="color: var(--red-bright); margin-top: 3px"
+                      ></i>
+                      <span
+                        ><strong>Single Developer Web Desa:</strong> Membangun
+                        Web Official Desa Baran Klaten secara mandiri dalam 1
+                        minggu.</span
+                      >
+                    </li>
+                    <li
+                      style="
+                        display: flex;
+                        gap: 12px;
+                        font-size: 16px;
+                        color: var(--text-main);
+                      "
+                    >
+                      <i
+                        class="fa-solid fa-check"
+                        style="color: var(--red-bright); margin-top: 3px"
+                      ></i>
+                      <span
+                        ><strong>Digitalisasi UMKM Warga:</strong> Desain
+                        banner, QRIS payment, &amp; titik Google Maps lokasi
+                        usaha.</span
+                      >
+                    </li>
+                    <li
+                      style="
+                        display: flex;
+                        gap: 12px;
+                        font-size: 16px;
+                        color: var(--text-main);
+                      "
+                    >
+                      <i
+                        class="fa-solid fa-check"
+                        style="color: var(--red-bright); margin-top: 3px"
+                      ></i>
+                      <span
+                        ><strong>Game-Based Learning:</strong> Edukasi sekolah
+                        interaktif dengan Smart TV di SDN 2 Baran.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <img
+                    src="ss-projek/ss-webdesabaran.png"
+                    alt="Web Desa Baran"
+                    class="slide-img-thumb"
+                    style="height: 180px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/400x155/141414/dc2626?text=Screenshot+Web+Desa+Baran'
+                    "
+                  />
+                  <div class="url-box-featured">
+                    <div
+                      style="
+                        font-size: 13px;
+                        text-transform: uppercase;
+                        color: var(--text-dim);
+                        margin-bottom: 4px;
+                      "
+                    >
+                      Domain Official Desa
+                    </div>
+                    <div class="url-text">desabaranklaten.site.je</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-8">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="0.06"
+              style="top: 20px; left: 340px"
+            >
+              ✨
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="-0.04"
+              style="bottom: 20px; right: 30px"
+            >
+              <i class="fa-solid fa-trophy"></i> National Innovation Competition
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.03"
+              style="top: 15px; right: 220px"
+            >
+              <i class="fa-solid fa-medal"></i> National Awards
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-trophy"></i> National Competitions
+              </div>
+              <h2 class="slide-title">
+                Prestasi Inovasi
+                <span class="red-italic">Tingkat Nasional</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="trophy-grid">
+                <div class="trophy-card silver">
+                  <img
+                    src="ss-projek/silvermedal.png"
+                    alt="Medal Silver PIN UMB"
+                    class="slide-img-thumb"
+                    style="height: 140px"
+                  />
+                  <h3>Silver Medal (Juara Perak)</h3>
+                  <p
+                    style="
+                      font-size: 14px;
+                      color: var(--red-bright);
+                      font-weight: 700;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Pekan Inovasi Nasional Vol.3 2026 - Universitas Mercu Buana
+                  </p>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                    "
+                  >
+                    Web Platform Terintegrasi Program Makan Bergizi Gratis (MBG)
+                    SPPG Nusukan berbasis GIS, monitoring AKG gizi, &amp;
+                    transparansi anggaran.
+                  </p>
+                </div>
+
+                <div class="trophy-card winner-2">
+                  <img
+                    src="ss-projek/indonesiacerdasfest.png"
+                    alt="Juara 2 SobiFest"
+                    class="slide-img-thumb"
+                    style="height: 140px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x140/141414/dc2626?text=Foto+Piala+SobiFest'
+                    "
+                  />
+                  <h3>Juara 2 Nasional SobiFest</h3>
+                  <p
+                    style="
+                      font-size: 14px;
+                      color: var(--red-bright);
+                      font-weight: 700;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Lomba Video Reels Edukasi Kreatif UBSI
+                  </p>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                    "
+                  >
+                    Konten edukasi AI &amp; personal branding Gen-Z yang
+                    mengkombinasikan storytelling sinematik dengan visual
+                    marketing menarik.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-9">
+            <div
+              class="bg-watermark"
+              style="
+                top: 15%;
+                left: 5%;
+                animation: floatSlow 19s ease-in-out infinite;
+              "
+            >
+              EXPERIENCE
+            </div>
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="bottom: 20px; right: 30px"
+            >
+              <i class="fa-solid fa-train"></i> InternHub KAI DAOP 6
+            </div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.03"
+              style="top: 20px; left: 350px"
+            >
+              PostgreSQL &amp; Laravel Backend
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.03"
+              style="top: 15px; right: 220px"
+            >
+              <i class="fa-solid fa-train-subway"></i> BUMN Experience
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-train"></i> Industry Experience
+              </div>
+              <h2 class="slide-title">
+                Magang <span class="red-italic">PT KAI DAOP 6 Yogyakarta</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="industrial-card">
+                <div>
+                  <span
+                    class="chip highlight"
+                    style="margin-bottom: 12px; display: inline-block"
+                    >Unit Sistem Informasi</span
+                  >
+                  <h3 style="font-size: 20px; margin-bottom: 10px">
+                    Kontribusi Sistem Operasional KAI
+                  </h3>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                      margin-bottom: 12px;
+                    "
+                  >
+                    Diterima via InternHub KAI. Mengembangkan modul aplikasi
+                    web/mobile operasional kereta api, basis data PostgreSQL,
+                    dan pengujian SQA testing.
+                  </p>
+                  <div class="tech-chips">
+                    <span class="chip">Laravel</span>
+                    <span class="chip">Flutter</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">SQA Testing</span>
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: var(--bg-card-hover);
+                    border: 1px solid var(--border-color);
+                    padding: 20px;
+                    border-radius: 12px;
+                  "
+                >
+                  <img
+                    src="ss-projek/kai.png"
+                    alt="Magang KAI DAOP 6"
+                    class="slide-img-thumb"
+                    style="height: 160px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x140/141414/dc2626?text=Foto+Magang+KAI'
+                    "
+                  />
+                  <h4
+                    style="
+                      font-size: 15px;
+                      color: var(--red-bright);
+                      margin-bottom: 8px;
+                    "
+                  >
+                    <i class="fa-solid fa-key"></i> Mengapa Portofolio Penting?
+                  </h4>
+                  <p
+                    style="
+                      font-size: 14px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                    "
+                  >
+                    Rekrutmen industri melihat karya nyata yang pernah kamu
+                    bangun, bukan hanya nilai akademis di atas kertas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-10">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="bottom: 20px; left: 30px"
+            >
+              <i class="fa-solid fa-arrow-right"></i> Document ➔ Build ➔ Publish
+            </div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.03"
+              style="top: 20px; left: 320px"
+            >
+              bit.ly/portofolio-fahrel
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.03"
+              style="top: 15px; right: 220px"
+            >
+              <i class="fa-solid fa-bullseye"></i> Actionable Steps
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-compass-drafting"></i> Portfolio Strategy
+              </div>
+              <h2 class="slide-title">
+                3 Langkah <span class="red-italic">Mengemas Portofolio</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="strategy-steps">
+                <div class="step-card" data-step="1">
+                  <img
+                    src="ss-projek/seminarnasional2026.JPG"
+                    alt="Dokumentasi GitHub"
+                    class="slide-img-thumb"
+                    style="height: 140px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x130/141414/dc2626?text=Foto+GitHub'
+                    "
+                  />
+                  <h3>Document Everything</h3>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                    "
+                  >
+                    Dokumentasikan setiap tugas kuliah, proyek organisasi, dan
+                    proses koding (screenshot, video, repository GitHub).
+                  </p>
+                </div>
+
+                <div class="step-card" data-step="2">
+                  <img
+                    src="ss-projek/ss-webkotabersihsurakarta.png"
+                    alt="Tangible Output"
+                    class="slide-img-thumb"
+                    style="height: 140px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x130/141414/dc2626?text=Foto+Produk+Nyata'
+                    "
+                  />
+                  <h3>Tangible Output</h3>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                    "
+                  >
+                    Ubah ide menjadi produk konkrit: website aktif, sertifikat
+                    Hak Cipta HKI, atau riset yang dipublikasikan.
+                  </p>
+                </div>
+
+                <div class="step-card" data-step="3">
+                  <img
+                    src="ss-projek/workshop.png"
+                    alt="Public Visibility"
+                    class="slide-img-thumb"
+                    style="height: 140px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/300x130/141414/dc2626?text=Foto+LinkedIn'
+                    "
+                  />
+                  <h3>Public Visibility</h3>
+                  <p
+                    style="
+                      font-size: 15px;
+                      color: var(--text-muted);
+                      line-height: 1.5;
+                    "
+                  >
+                    Publikasikan secara konsisten di LinkedIn, GitHub, dan
+                    website portofolio pribadi (<code
+                      style="color: var(--red-bright)"
+                      >bit.ly/portofolio-fahrel</code
+                    >).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-11">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-3"></div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.03"
+              style="bottom: 18px; right: 30px"
+            >
+              Master Blueprint 2024 - 2028
+            </div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="top: 15px; right: 200px"
+            >
+              <i class="fa-solid fa-map-location-dot"></i> Master Plan
+            </div>
+            <div class="slide-title-group">
+              <div class="slide-subtitle">
+                <i class="fa-solid fa-map"></i> Action Plan
+              </div>
+              <h2 class="slide-title">
+                Roadmap <span class="red-italic">Mahasiswa Berprestasi</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <table class="roadmap-matrix">
+                <thead>
+                  <tr>
+                    <th>Tahapan</th>
+                    <th>Fokus Utama</th>
+                    <th>Target Output Nyata</th>
+                    <th>Tools &amp; Skill Wajib</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tahun 1 (Sem 1-2)</strong></td>
+                    <td>Fondasi &amp; Adaptasi Kampus</td>
+                    <td>IPK Stabil, Pengurus Organisasi</td>
+                    <td>
+                      <span class="chip">Git</span>
+                      <span class="chip">HTML/CSS</span>
+                      <span class="chip">Figma</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tahun 2 (Sem 3-4)</strong></td>
+                    <td>Karya, Lomba &amp; Pengabdian</td>
+                    <td>Juara Lomba, HKI, Web Desa</td>
+                    <td>
+                      <span class="chip highlight">Laravel</span>
+                      <span class="chip highlight">Flutter</span>
+                      <span class="chip">Gemini AI</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tahun 3 (Sem 5-6)</strong></td>
+                    <td>Penerapan Industri &amp; Karir</td>
+                    <td>Magang BUMN, Sertifikasi BNSP</td>
+                    <td>
+                      <span class="chip">PostgreSQL</span>
+                      <span class="chip">SQA Testing</span>
+                      <span class="chip">REST API</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-12">
+            <div class="slide-overlay-grid"></div>
+            <div
+              class="ambient-orb orb-1"
+              style="
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0.35;
+              "
+            ></div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="0.08"
+              style="
+                top: 25px;
+                left: 80px;
+                font-size: 70px;
+                color: rgba(239, 68, 68, 0.35);
+              "
+            >
+              “
+            </div>
+            <div
+              class="floating-shape sparkle float-elem"
+              data-parallax="-0.08"
+              style="
+                bottom: 25px;
+                right: 80px;
+                font-size: 70px;
+                color: rgba(239, 68, 68, 0.35);
+              "
+            >
+              ”
+            </div>
+            <div class="content-area">
+              <div class="editorial-quote-box">
+                <img
+                  src="ss-projek/foto_profile.png"
+                  alt="M. Fahrel Yuliyanto"
+                  style="
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: contain;
+                    background-color: transparent;
+                    border: 2px solid var(--red-primary);
+                    margin: 0 auto 15px auto;
+                    display: block;
+                    box-shadow: 0 0 25px var(--red-glow);
+                  "
+                  onerror="
+                    this.src =
+                      'https://placehold.co/100x100/dc2626/ffffff?text=MF'
+                  "
+                />
+                <blockquote>
+                  "Prestasi sejati bukan tentang memamerkan pencapaian,
+                  melainkan seberapa tangguh kita berproses dan seberapa luas
+                  manfaat karya kita bagi sesama."
+                </blockquote>
+                <cite>— Muhammad Fahrel Yuliyanto</cite>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" id="slide-13">
+            <div class="slide-overlay-grid"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div class="ambient-orb orb-1"></div>
+            <div
+              class="floating-badge float-elem"
+              data-parallax="0.04"
+              style="top: 18px; left: 40px"
+            >
+              <i class="fa-solid fa-comments"></i> Q&amp;A Ready
+            </div>
+            <div
+              class="floating-shape code-tag float-elem"
+              data-parallax="-0.03"
+              style="bottom: 20px; right: 40px"
+            >
+              Let's Connect &amp; Collaborate!
+            </div>
+            <div class="slide-title-group" style="text-align: center">
+              <div class="slide-subtitle" style="justify-content: center">
+                <i class="fa-solid fa-comments"></i> Discussion Session
+              </div>
+              <h2 class="slide-title">
+                Mari Berdiskusi &amp;
+                <span class="red-italic">Berkolaborasi</span>
+              </h2>
+            </div>
+            <div class="content-area">
+              <div class="social-contact-grid">
+                <div class="social-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=200&auto=format&fit=crop"
+                    alt="LinkedIn"
+                    class="slide-img-thumb"
+                    style="height: 80px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/200x80/141414/dc2626?text=LinkedIn+QR'
+                    "
+                  />
+                  <i class="fa-brands fa-linkedin"></i>
+                  <h4>LinkedIn</h4>
+                  <p>muhammad-fahrel</p>
+                </div>
+
+                <div class="social-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=200&auto=format&fit=crop"
+                    alt="Instagram"
+                    class="slide-img-thumb"
+                    style="height: 80px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/200x80/141414/dc2626?text=Instagram+QR'
+                    "
+                  />
+                  <i class="fa-brands fa-instagram"></i>
+                  <h4>Instagram</h4>
+                  <p>@ryouko.chii</p>
+                </div>
+
+                <div class="social-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=200&auto=format&fit=crop"
+                    alt="Portofolio Web"
+                    class="slide-img-thumb"
+                    style="height: 80px"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/200x80/141414/dc2626?text=Portofolio+QR'
+                    "
+                  />
+                  <i class="fa-solid fa-globe"></i>
+                  <h4>Portofolio</h4>
+                  <p>bit.ly/portofolio-fahrel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBar"></div>
+          </div>
+          <div class="controls">
+            <button
+              class="btn-ctrl"
+              id="btnDrawer"
+              title="Pilih Slide Grid (M)"
+            >
+              <i class="fa-solid fa-border-all"></i>
+            </button>
+            <button
+              class="btn-ctrl"
+              id="btnPrev"
+              title="Slide Sebelumnya (Panah Kiri)"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button
+              class="btn-ctrl"
+              id="btnNext"
+              title="Slide Selanjutnya (Panah Kanan)"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="btn-ctrl" id="btnFullscreen" title="Layar Penuh (F)">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slide Drawer Modal -->
+        <div class="slide-grid-drawer" id="slideDrawer">
+          <div class="drawer-header">
+            <div class="drawer-title">Daftar Slide Presentasi</div>
+            <button class="btn-ctrl" id="btnCloseDrawer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="grid-picker" id="gridPicker"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        let currentSlideIndex = 0;
+
+        const cursorGlow = document.getElementById("cursorGlow");
+
+        // Ultra-smooth Mouse Parallax tracking with Linear Interpolation (Lerp)
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let targetX = mouseX;
+        let targetY = mouseY;
+
+        document.addEventListener("mousemove", (e) => {
+          targetX = e.clientX;
+          targetY = e.clientY;
+        });
+
+        function updateParallax() {
+          // Lerp formula for smooth physics interpolation (Lowered friction for extreme smoothness)
+          mouseX += (targetX - mouseX) * 0.035;
+          mouseY += (targetY - mouseY) * 0.035;
+
+          if (cursorGlow) {
+            cursorGlow.style.left = `${mouseX}px`;
+            cursorGlow.style.top = `${mouseY}px`;
+          }
+
+          const activeSlide = document.querySelector(".slide.active");
+          if (activeSlide) {
+            const parallaxElements =
+              activeSlide.querySelectorAll("[data-parallax]");
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            // Meredam pergerakan agar lebih soft
+            const deltaX = (mouseX - centerX) / centerX;
+            const deltaY = (mouseY - centerY) / centerY;
+
+            parallaxElements.forEach((elem) => {
+              const depth =
+                parseFloat(elem.getAttribute("data-parallax")) || 0.04;
+              const moveX = deltaX * depth * 70;
+              const moveY = deltaY * depth * 70;
+              // Menggunakan Translate3d untuk GPU Acceleration
+              elem.style.transform = `translate3d(${moveX}px, ${moveY}px, 0px)`;
+            });
+          }
+          requestAnimationFrame(updateParallax);
+        }
+        updateParallax();
+
+        const progressBar = document.getElementById("progressBar");
+        const btnPrev = document.getElementById("btnPrev");
+        const btnNext = document.getElementById("btnNext");
+        const btnFullscreen = document.getElementById("btnFullscreen");
+        const btnDrawer = document.getElementById("btnDrawer");
+        const btnCloseDrawer = document.getElementById("btnCloseDrawer");
+        const slideDrawer = document.getElementById("slideDrawer");
+        const gridPicker = document.getElementById("gridPicker");
+        const slideStage = document.getElementById("slideStage");
+
+        // Slide Titles for Grid Picker
+        const slideTitles = [
+          "Cover Utama",
+          "Mitos vs Realita",
+          "Growth Journey 2 Tahun",
+          "Segitiga Keseimbangan",
+          "3 Pilar Skill Digital",
+          "Hasil Konkrit & 3 HKI",
+          "BSI Explore Desa Baran",
+          "Prestasi Lomba Nasional",
+          "Magang PT KAI DAOP 6",
+          "Strategi Portofolio",
+          "Roadmap Action Plan",
+          "Quotes Penutup",
+          "Sesi Diskusi & Kontak",
+        ];
+
+        // Build Grid Picker Items
+        slideTitles.forEach((title, idx) => {
+          const item = document.createElement("div");
+          item.className = `grid-picker-item ${idx === 0 ? "active" : ""}`;
+          item.innerHTML = `<span>SLIDE ${idx + 1}</span><h5>${title}</h5>`;
+          item.addEventListener("click", () => {
+            goToSlide(idx);
+            toggleDrawer(false);
+          });
+          gridPicker.appendChild(item);
+        });
+
+        function updateSlideView() {
+          slides.forEach((slide, idx) => {
+            if (idx === currentSlideIndex) {
+              slide.classList.add("active");
+            } else {
+              slide.classList.remove("active");
+            }
+          });
+
+          slideCounter.textContent = `SLIDE ${currentSlideIndex + 1} / ${totalSlides}`;
+          const progressPct = ((currentSlideIndex + 1) / totalSlides) * 100;
+          progressBar.style.width = `${progressPct}%`;
+
+          const pickerItems = gridPicker.querySelectorAll(".grid-picker-item");
+          pickerItems.forEach((item, idx) => {
+            if (idx === currentSlideIndex) {
+              item.classList.add("active");
+            } else {
+              item.classList.remove("active");
+            }
+          });
+        }
+
+        function goToSlide(index) {
+          if (index >= 0 && index < totalSlides) {
+            currentSlideIndex = index;
+            updateSlideView();
+          }
+        }
+
+        function nextSlide() {
+          if (currentSlideIndex < totalSlides - 1) {
+            currentSlideIndex++;
+            updateSlideView();
+          }
+        }
+
+        function prevSlide() {
+          if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateSlideView();
+          }
+        }
+
+        function toggleDrawer(open) {
+          if (open !== undefined) {
+            slideDrawer.classList.toggle("open", open);
+          } else {
+            slideDrawer.classList.toggle("open");
+          }
+        }
+
+        function toggleFullscreen() {
+          const isFauxFullscreen =
+            slideStage.classList.contains("faux-fullscreen");
+
+          if (!document.fullscreenElement && !isFauxFullscreen) {
+            // Coba jalankan native fullscreen
+            if (slideStage.requestFullscreen) {
+              slideStage.requestFullscreen().catch((err) => {
+                // Jika diblokir (Permissions Policy), gunakan CSS Fullscreen
+                slideStage.classList.add("faux-fullscreen");
+              });
+            } else {
+              slideStage.classList.add("faux-fullscreen");
+            }
+          } else {
+            // Keluar dari fullscreen (baik native maupun CSS)
+            if (document.fullscreenElement && document.exitFullscreen) {
+              document.exitFullscreen().catch((err) => {});
+            }
+            slideStage.classList.remove("faux-fullscreen");
+          }
+        }
+
+        // Event Listeners for Navigation
+        btnNext.addEventListener("click", nextSlide);
+        btnPrev.addEventListener("click", prevSlide);
+        btnFullscreen.addEventListener("click", toggleFullscreen);
+        btnDrawer.addEventListener("click", () => toggleDrawer(true));
+        btnCloseDrawer.addEventListener("click", () => toggleDrawer(false));
+
+        // Keyboard Shortcuts
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight" || e.key === "Space") {
+            nextSlide();
+          } else if (e.key === "ArrowLeft") {
+            prevSlide();
+          } else if (e.key === "f" || e.key === "F") {
+            toggleFullscreen();
+          } else if (e.key === "m" || e.key === "M") {
+            toggleDrawer();
+          } else if (e.key === "Escape") {
+            toggleDrawer(false);
+            slideStage.classList.remove("faux-fullscreen");
+          }
+        });
+
+        // Interactive Canvas Particles Engine
+        const canvas = document.getElementById("bgCanvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+          constructor() {
+            this.reset();
+          }
+          reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.4;
+            this.opacity = Math.random() * 0.4 + 0.1;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (
+              this.x < 0 ||
+              this.x > canvas.width ||
+              this.y < 0 ||
+              this.y > canvas.height
+            ) {
+              this.reset();
+            }
+          }
+          draw() {
+            ctx.fillStyle = `rgba(220, 38, 38, ${this.opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        for (let i = 0; i < 45; i++) {
+          particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach((p) => {
+            p.update();
+            p.draw();
+          });
+          requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // Initialize slide view
+        updateSlideView();
+      });
+    </script>
+  </body>
+</html>

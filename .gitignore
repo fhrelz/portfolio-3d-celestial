@@ -1,0 +1,17 @@
+# Dependencies & Environment
+node_modules/
+.env
+.env.local
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.qodo/
+
+# Temporary & Python Cache
+__pycache__/
+*.py[cod]
+~$*.docx
+*.tmp
