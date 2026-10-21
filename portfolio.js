@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageEngine();
   initCosmicAudio();
   initProjectFilters();
+  initPressFilters();
   initModalViewer();
   initNavbarScroll();
   initContactActions();
@@ -1849,7 +1850,7 @@ function initCosmicAudio() {
   }
 
   // Interactive Elements Hover SFX (Starlight harmonic ping)
-  const interactiveSelector = 'button, a, .project-card, .avatar-card, .highlight-item, .contact-pill, .tab-btn, .skill-pill, .badge-cosmic, .moon-ctrl-btn, .timeline-card, .nav-link, .float-tag, .cert-card, .nav-brand, .icon-btn, .btn';
+  const interactiveSelector = 'button, a, .project-card, .press-card, .avatar-card, .highlight-item, .contact-pill, .tab-btn, .press-tab-btn, .press-detail-btn, .press-source-link, .skill-pill, .badge-cosmic, .moon-ctrl-btn, .timeline-card, .nav-link, .float-tag, .cert-card, .nav-brand, .icon-btn, .btn';
   
   document.addEventListener('mouseover', (e) => {
     const target = e.target.closest(interactiveSelector);
@@ -1883,6 +1884,7 @@ const translations = {
     nav_organisasi: "Organisasi",
     nav_narasumber: "Narasumber",
     nav_prestasi: "Prestasi & HKI",
+    nav_media: "Media & Berita",
     nav_sertifikasi: "Sertifikasi",
     nav_skill: "Skill",
     nav_kontak: "Kontak",
@@ -1892,7 +1894,10 @@ const translations = {
     stat_hki: "3 HKI Resmi Kemenkumham",
     stat_silver: "Medali Silver Inovasi Nasional",
     stat_kai: "Magang SI PT KAI Daop 6",
-    stat_himsi: "Ketua Umum HIMSI Solo"
+    stat_himsi: "Ketua Umum HIMSI Solo",
+    press_tag: "LIPUTAN MEDIA & REKAM JEJAK DIGITAL",
+    press_title: "Publikasi Berita, Media Massa & Jejak Publik Terverifikasi",
+    press_desc: "Hasil penelusuran digital komprehensif: seluruh artikel berita media pers nasional & regional, jurnal pengabdian masyarakat terakreditasi, rilis pers resmi universitas, serta catatan Hak Cipta resmi di Pangkalan Data Kekayaan Intelektual (PDKI) Kemenkumham RI atas nama Muhammad Fahrel Yuliyanto."
   },
   en: {
     nav_profil: "About",
@@ -1901,6 +1906,7 @@ const translations = {
     nav_organisasi: "Leadership",
     nav_narasumber: "Speaker & Events",
     nav_prestasi: "Awards & Patents",
+    nav_media: "Press & Media",
     nav_sertifikasi: "Certifications",
     nav_skill: "Skills & Stack",
     nav_kontak: "Contact",
@@ -1910,7 +1916,10 @@ const translations = {
     stat_hki: "3 Official Copyrights (HKI)",
     stat_silver: "National Silver Medalist",
     stat_kai: "PT KAI Daop 6 IT Intern",
-    stat_himsi: "President of HIMSI UBSI"
+    stat_himsi: "President of HIMSI UBSI",
+    press_tag: "MEDIA COVERAGE & DIGITAL FOOTPRINT",
+    press_title: "Verified News, Media Coverage & Public Records",
+    press_desc: "Comprehensive digital footprint verification: national & regional press articles, peer-reviewed community service journals, official university press releases, and legal Copyright registrations at the Directorate General of Intellectual Property (PDKI) under the name Muhammad Fahrel Yuliyanto."
   }
 };
 
@@ -1970,6 +1979,42 @@ function initProjectFilters() {
           setTimeout(() => {
             card.style.display = 'none';
           }, 300);
+        }
+      });
+    });
+  });
+}
+
+/* ===================================================================
+   5.1 PRESS & MEDIA COVERAGE FILTER ENGINE
+   =================================================================== */
+function initPressFilters() {
+  const filterBtns = document.querySelectorAll('.press-tab-btn');
+  const pressCards = document.querySelectorAll('.press-card');
+
+  if (!filterBtns.length || !pressCards.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterVal = btn.getAttribute('data-press-filter');
+
+      pressCards.forEach((card) => {
+        const category = card.getAttribute('data-press-category') || '';
+        if (filterVal === 'all' || category === filterVal) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 30);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(16px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 250);
         }
       });
     });
