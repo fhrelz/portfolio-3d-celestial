@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Surat Lamaran Kerja — Muhammad Fahrel Yuliyanto</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Portal Pribadi Pembuatan dan Arsip Surat Lamaran Pekerjaan Otomatis — Muhammad Fahrel Yuliyanto" />
+  
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Times+New+Roman&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="surat-lamaran.css" />
+
+  <!-- Tesseract.js for Client-Side Flyer OCR -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       SECURITY PIN LOCK SCREEN OVERLAY (PIN: 227070)
+       =================================================================== -->
+  <div class="pin-lock-overlay" id="pinLockOverlay">
+    <div class="pin-lock-card" id="pinCard">
+      <div class="pin-icon-wrap">
+        <i class="fa-solid fa-user-shield"></i>
+      </div>
+      <h2 class="pin-lock-title">Area Sensitif & Rahasia</h2>
+      <p class="pin-lock-desc">
+        Pembuatan dan arsip surat lamaran pekerjaan ini bersifat pribadi milik <strong>Muhammad Fahrel Yuliyanto</strong>. Masukkan PIN keamanan untuk melanjutkan.
+      </p>
+      
+      <div class="pin-input-group">
+        <input
+          type="password"
+          id="pinInput"
+          class="pin-input"
+          maxlength="6"
+          placeholder="••••••"
+          autocomplete="off"
+          inputmode="numeric"
+          autofocus
+        />
+        <div class="pin-error-msg" id="pinErrorMsg">
+          <i class="fa-solid fa-circle-exclamation"></i> PIN Salah! Akses ditolak.
+        </div>
+      </div>
+
+      <div class="pin-actions">
+        <button id="btnUnlockPin" class="btn btn-primary" style="width: 100%; padding: 12px;">
+          <i class="fa-solid fa-key"></i> Buka Akses Dokumen
+        </button>
+        <a href="cv-ats.html" class="btn btn-outline" style="width: 100%; text-decoration: none;">
+          <i class="fa-solid fa-arrow-left"></i> Kembali ke CV ATS
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       PORTAL HEADER & NAVIGATION
+       =================================================================== -->
+  <header class="portal-header">
+    <div class="portal-header-content">
+      <div class="portal-brand">
+        <div class="portal-brand-logo">
+          <i class="fa-solid fa-file-signature"></i>
+        </div>
+        <div>
+          <h1>Generator & Arsip Surat Lamaran Kerja</h1>
+          <p>Otomatisasi Dokumen Formal Berbasis OCR Loker & Rekam Jejak Portofolio</p>
+        </div>
+      </div>
+
+      <div class="portal-controls">
+        <a href="cv-ats.html" class="btn btn-outline" title="Kembali ke Halaman CV ATS">
+          <i class="fa-solid fa-file-lines"></i> <span>Lihat CV ATS</span>
+        </a>
+        <a href="index.html" class="btn btn-outline" title="Kembali ke Portofolio 3D">
+          <i class="fa-solid fa-globe"></i> <span>Portofolio 3D</span>
+        </a>
+        <button id="btnLockPortal" class="btn btn-outline" style="border-color: #f87171; color: #fca5a5;" title="Kunci Kembali Portal">
+          <i class="fa-solid fa-lock"></i> <span>Kunci Portal</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       MAIN WORKSPACE CONTAINER
+       =================================================================== -->
+  <main class="portal-main">
+    
+    <!-- Navigation Tabs -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="tab-generator">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Buat Surat dari Flyer / Loker Baru
+      </button>
+      <button class="tab-btn" data-tab="tab-archive">
+        <i class="fa-solid fa-folder-open"></i> Arsip Surat Lamaran Sebelumnya (<span id="archiveCountBadge">3</span>)
+      </button>
+    </nav>
+
+    <!-- TAB 1: GENERATOR & A4 EDITOR -->
+    <div class="tab-content active" id="tab-generator">
+      <div class="workspace-grid">
+        
+        <!-- LEFT PANEL: FLYER UPLOAD & PARAMETERS -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <i class="fa-solid fa-cloud-arrow-up"></i> Lampirkan Gambar Flyer Loker
+            </h2>
+            <span style="font-size: 0.75rem; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 99px; font-weight: 700;">AI OCR Powered</span>
+          </div>
+
+          <!-- Dropzone -->
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="flyerFileInput" accept="image/*" />
+            <div class="dropzone-icon">
+              <i class="fa-solid fa-file-image"></i>
+            </div>
+            <p class="dropzone-text">Klik atau Tarik Foto Flyer / Poster Loker ke Sini</p>
+            <p class="dropzone-sub">Mendukung format PNG, JPG, JPEG, WEBP</p>
+          </div>
+
+          <!-- Flyer Preview Box -->
+          <div class="flyer-preview-box" id="flyerPreviewBox">
+            <img id="flyerImgPreview" src="" alt="Preview Flyer Loker" />
+            <button class="remove-btn" id="btnRemoveFlyer" title="Hapus Gambar">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- OCR Progress Bar -->
+          <div class="ocr-progress-box" id="ocrProgressBox">
+            <div class="ocr-progress-bar-wrap">
+              <div class="ocr-progress-bar" id="ocrProgressBar"></div>
+            </div>
+            <div class="ocr-status-text">
+              <span id="ocrStatusMsg"><i class="fa-solid fa-spinner fa-spin"></i> Membaca teks pada poster loker...</span>
+              <span id="ocrPercentVal">0%</span>
+            </div>
+          </div>
+
+          <!-- Role Presets -->
+          <div class="preset-roles-wrap">
+            <div class="preset-title">Atau Pilih Preset Posisi Cepat:</div>
+            <div class="preset-pills">
+              <button class="preset-pill" data-preset="web-dev">💻 Fullstack Web Dev</button>
+              <button class="preset-pill" data-preset="mobile-dev">📱 Flutter Mobile Dev</button>
+              <button class="preset-pill" data-preset="sqa">🛡️ Software QA (SQA)</button>
+              <button class="preset-pill" data-preset="dba">🗄️ Database Admin (BNSP)</button>
+              <button class="preset-pill" data-preset="ai-spec">🤖 AI Specialist & Integrator</button>
+              <button class="preset-pill" data-preset="digimar">📈 Digital Marketing & Ads</button>
+            </div>
+          </div>
+
+          <!-- Extracted / Custom Parameters Form -->
+          <div class="extracted-form">
+            <div class="form-group">
+              <label class="form-label" for="inpPosition">Posisi yang Dilamar / Perihal</label>
+              <input type="text" id="inpPosition" class="form-input" placeholder="Contoh: Junior Web Developer" value="Junior Web Developer" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inpCompany">Nama Perusahaan / Instansi</label>
+              <input type="text" id="inpCompany" class="form-input" placeholder="Contoh: PT Kereta Api Indonesia (Persero)" value="PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inpLocation">Kota / Alamat Perusahaan</label>
+              <input type="text" id="inpLocation" class="form-input" placeholder="Contoh: Yogyakarta" value="Yogyakarta" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inpRecipient">Ditujukan Kepada (Yth.)</label>
+              <input type="text" id="inpRecipient" class="form-input" placeholder="Contoh: Yth. Manager SDM & Umum" value="Yth. Kepala Unit Sistem Informasi / HRD Manager" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inpSource">Sumber Informasi Lowongan</label>
+              <input type="text" id="inpSource" class="form-input" placeholder="Contoh: Pengumuman Resmi Kemitraan Kampus UBSI" value="Poster Informasi Rekrutmen & Magang Kemitraan Kampus UBSI" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inpDate">Tanggal Pembuatan Surat</label>
+              <input type="date" id="inpDate" class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="inpKeyHighlights">Sorotan Kualifikasi Khusus (Opsional)</label>
+              <textarea id="inpKeyHighlights" class="form-textarea" placeholder="Tuliskan skill atau kualifikasi tambahan dari gambar loker..."></textarea>
+            </div>
+
+            <button id="btnGenerateLetter" class="btn btn-primary" style="margin-top: 8px; width: 100%; padding: 10px;">
+              <i class="fa-solid fa-arrows-rotate"></i> Sintesis & Terapkan ke Lembar Surat
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL: A4 SHEET PREVIEW & ACTIONS -->
+        <div class="preview-container">
+          
+          <!-- Toolbar -->
+          <div class="preview-toolbar">
+            <div style="font-size: 0.92rem; font-weight: 700; color: #1e293b;">
+              <i class="fa-solid fa-file-lines" style="color: #0284c7;"></i> Lembar Surat A4 (Editable Langsung)
+            </div>
+
+            <div class="preview-toolbar-actions">
+              <button id="btnCopyLetter" class="btn btn-outline-dark" title="Salin Seluruh Teks Surat">
+                <i class="fa-solid fa-copy"></i> Salin Teks
+              </button>
+              <button id="btnDownloadDoc" class="btn btn-outline-dark" title="Unduh File Microsoft Word (.doc)">
+                <i class="fa-solid fa-file-word" style="color: #2563eb;"></i> Unduh Word (.doc)
+              </button>
+              <button id="btnSaveArchive" class="btn btn-success" title="Simpan Dokumen ini ke Arsip Lokal">
+                <i class="fa-solid fa-floppy-disk"></i> Simpan ke Arsip
+              </button>
+              <button id="btnPrintLetter" class="btn btn-primary" title="Cetak atau Simpan ke PDF Resmi">
+                <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+              </button>
+            </div>
+          </div>
+
+          <!-- Printable A4 Paper Document Canvas -->
+          <div class="a4-sheet" id="a4Sheet" contenteditable="true" spellcheck="false">
+            <!-- Content will be injected dynamically by JavaScript -->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: ARSIP SURAT LAMARAN SEBELUMNYA -->
+    <div class="tab-content" id="tab-archive">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">Koleksi Arsip Surat Lamaran Terdahulu</h2>
+          <p style="font-size: 0.85rem; color: #64748b;">Surat-surat lamaran resmi yang pernah diajukan oleh Muhammad Fahrel Yuliyanto.</p>
+        </div>
+        <button id="btnNewFromArchive" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> Buat Surat Lamaran Baru
+        </button>
+      </div>
+
+      <div class="archive-grid" id="archiveGrid">
+        <!-- Archive cards populated dynamically by JavaScript -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification Message -->
+  <div class="toast-msg" id="toastMsg">
+    <i class="fa-solid fa-circle-check" style="color: #38bdf8;"></i>
+    <span id="toastText">Pesan pemberitahuan</span>
+  </div>
+
+  <!-- App Script -->
+  <script src="surat-lamaran.js"></script>
+</body>
+</html>
