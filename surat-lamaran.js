@@ -858,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <tr>
           <td class="letter-bio-label">Tempat, Tanggal Lahir</td>
           <td class="letter-bio-sep">:</td>
-          <td>Karanganyar, 22 Juli 2004</td>
+          <td>Sragen, 22 Juli 2007</td>
         </tr>
         <tr>
           <td class="letter-bio-label">Pendidikan Terakhir</td>

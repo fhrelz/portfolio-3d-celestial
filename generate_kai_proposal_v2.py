@@ -462,7 +462,7 @@ def generate_ubsi_kai_proposal_v2():
     bio_fields = [
         ("NIM", ": 19240513"),
         ("Nama Lengkap", ": MUHAMMAD FAHREL YULIYANTO"),
-        ("Tempat & Tanggal Lahir", ": Karanganyar, 26 Juli 2006"),
+        ("Tempat & Tanggal Lahir", ": Sragen, 22 Juli 2007"),
         ("Jenis Kelamin", ": Laki-laki"),
         ("Program Studi", ": S1 Sistem Informasi (Semester 5)"),
         ("Fakultas", ": Teknik dan Informatika"),
