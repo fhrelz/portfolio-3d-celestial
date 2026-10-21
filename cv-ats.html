@@ -50,50 +50,19 @@
           <button id="btnPrint" class="btn btn-primary">
             <i class="fa-solid fa-print"></i> <span data-i18n="btn_print">Cetak / Save PDF</span>
           </button>
-          <button
+          <a
+            href="surat-lamaran.html"
             id="btnOpenCoverLetterModal"
             class="btn btn-primary"
-            style="background: linear-gradient(135deg, #4f46e5, #7c3aed); border-color: #a78bfa; font-weight: 700; box-shadow: 0 3px 12px rgba(124, 58, 237, 0.3);"
-            title="Portal Pembuatan & Arsip Surat Lamaran Pekerjaan (Sensitif - Butuh PIN)"
+            style="background: linear-gradient(135deg, #4f46e5, #7c3aed); border-color: #a78bfa; font-weight: 700; box-shadow: 0 3px 12px rgba(124, 58, 237, 0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;"
+            title="Buka Portal Buat Surat Lamaran Pekerjaan (Sensitif - Butuh PIN 227070)"
           >
             <i class="fa-solid fa-lock"></i> <span>Buat Surat Lamaran Pekerjaan</span>
-          </button>
+          </a>
         </div>
       </div>
     </header>
 
-    <!-- PIN Verification Modal for Cover Letter Access (PIN: 227070) -->
-    <div id="cvPinModal" class="cv-pin-modal-overlay" style="display: none;">
-      <div class="cv-pin-modal-card" id="cvPinCard">
-        <button id="btnClosePinModal" class="cv-pin-close-btn" aria-label="Tutup Modal">&times;</button>
-        <div class="cv-pin-icon-wrap">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
-        <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 8px;">Akses Pribadi &amp; Sensitif</h3>
-        <p style="font-size: 0.86rem; color: #94a3b8; margin-bottom: 20px; line-height: 1.5;">
-          Fitur pembuatan dan arsip surat lamaran pekerjaan ini hanya diperuntukkan bagi <strong>Muhammad Fahrel Yuliyanto</strong>. Masukkan PIN keamanan pribadi untuk melanjutkan:
-        </p>
-        <div style="margin-bottom: 16px;">
-          <input
-            type="password"
-            id="cvPinInput"
-            maxlength="6"
-            placeholder="••••••"
-            autocomplete="off"
-            inputmode="numeric"
-            style="width: 100%; max-width: 220px; padding: 10px 14px; font-size: 1.5rem; letter-spacing: 8px; text-align: center; background: #030712; border: 2px solid #38bdf8; border-radius: 8px; color: #ffffff; outline: none;"
-          />
-          <div id="cvPinError" style="color: #f87171; font-size: 0.82rem; font-weight: 600; margin-top: 8px; display: none;">
-            <i class="fa-solid fa-circle-exclamation"></i> PIN Salah! Akses ditolak.
-          </div>
-        </div>
-        <div style="display: flex; gap: 10px; justify-content: center;">
-          <button id="btnSubmitCvPin" class="btn btn-primary" style="background: linear-gradient(135deg, #0284c7, #0369a1); padding: 10px 20px; font-weight: 700;">
-            <i class="fa-solid fa-unlock"></i> Buka Surat Lamaran
-          </button>
-        </div>
-      </div>
-    </div>
 
 
     <!-- Main Printable A4 CV Document Container -->
@@ -1018,7 +987,7 @@
       </footer>
     </div>
 
-    <script src="translations.js"></script>
-    <script src="app.js"></script>
+    <script src="translations.js?v=20261021"></script>
+    <script src="app.js?v=20261021"></script>
   </body>
 </html>
