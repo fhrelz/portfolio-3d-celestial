@@ -1784,12 +1784,17 @@ function initThemeEngine() {
   const themeToggle = document.getElementById('theme-toggle');
   if (!themeToggle) return;
 
-  const savedTheme = localStorage.getItem('celestial-theme') || 'dark';
+  // The website aesthetic is pure obsidian cosmic space; ensure default is dark
+  let savedTheme = localStorage.getItem('celestial-theme');
+  if (!savedTheme || savedTheme === 'light') {
+    savedTheme = 'dark';
+    localStorage.setItem('celestial-theme', 'dark');
+  }
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
 
   themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('celestial-theme', next);
