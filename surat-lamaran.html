@@ -197,6 +197,28 @@
               <textarea id="inpKeyHighlights" class="form-textarea" placeholder="Tuliskan skill atau kualifikasi tambahan dari gambar loker..."></textarea>
             </div>
 
+            <!-- Kontak Rekrutmen Terdeteksi dari Flyer -->
+            <div style="border-top: 1px dashed #cbd5e1; padding-top: 14px; margin-top: 6px;">
+              <div style="font-size: 0.84rem; font-weight: 800; color: #0284c7; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-address-card"></i> Kontak Rekrutmen dari Flyer (Tujuan Kirim)
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inpContactEmail">Email Rekrutmen / HRD</label>
+                <input type="email" id="inpContactEmail" class="form-input" placeholder="Contoh: karir@perusahaan.com atau recruitment@..." value="recruitment@kai.id" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inpContactPhone">No. WhatsApp / Telepon HRD</label>
+                <input type="text" id="inpContactPhone" class="form-input" placeholder="Contoh: 08123456789 atau +628..." value="0811255666" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="inpContactLink">Tautan Formulir / Portal Karir (Opsional)</label>
+                <input type="url" id="inpContactLink" class="form-input" placeholder="Contoh: https://karir.perusahaan.com atau bit.ly/..." value="https://recruitment.kai.id" />
+              </div>
+            </div>
+
             <button id="btnGenerateLetter" class="btn btn-primary" style="margin-top: 8px; width: 100%; padding: 10px;">
               <i class="fa-solid fa-arrows-rotate"></i> Sintesis & Terapkan ke Lembar Surat
             </button>
@@ -225,8 +247,12 @@
               <button id="btnPrintLetter" class="btn btn-primary" title="Cetak atau Simpan ke PDF Resmi">
                 <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
               </button>
+              <button id="btnOpenSendModal" class="btn btn-primary" style="background: linear-gradient(135deg, #059669, #047857); border-color: #34d399; font-weight: 700; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);" title="Buka Opsi Kirim Lamaran (Email, WhatsApp, Portal Karir)">
+                <i class="fa-solid fa-paper-plane"></i> <span>Kirim Lamaran</span>
+              </button>
             </div>
           </div>
+
 
           <!-- Printable A4 Paper Document Canvas -->
           <div class="a4-sheet" id="a4Sheet" contenteditable="true" spellcheck="false">
@@ -256,6 +282,146 @@
     </div>
 
   </main>
+
+
+  <!-- ===================================================================
+       SEND APPLICATION DISPATCH HUB MODAL
+       =================================================================== -->
+  <div class="send-modal-overlay" id="sendModalOverlay">
+
+    <div class="send-modal-card">
+      <div class="send-modal-header">
+        <h3 class="send-modal-title">
+          <i class="fa-solid fa-paper-plane"></i> Kirim Lamaran Pekerjaan
+        </h3>
+        <button class="send-modal-close" id="btnCloseSendModal" aria-label="Tutup Modal">&times;</button>
+      </div>
+
+      <p style="font-size: 0.88rem; color: #94a3b8; margin-bottom: 20px;">
+        Pilih kanal pengiriman resmi sesuai informasi kontak yang tertera pada gambar flyer loker. Sistem telah menyusun template pesan pengantar formal secara otomatis.
+      </p>
+
+      <div class="send-channels-grid">
+        
+        <!-- CHANNEL 1: EMAIL -->
+        <div class="send-channel-card">
+          <div class="channel-card-header">
+            <div class="channel-card-title">
+              <i class="fa-solid fa-envelope" style="color: #60a5fa;"></i>
+              <span>Kirim via Email Resmi Rekrutmen</span>
+            </div>
+            <span class="channel-badge badge-email">Email Dispatch</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px;">
+            <div>
+              <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">Email Tujuan:</label>
+              <input type="email" id="modalEmailTarget" class="form-input" style="background: #030712; color: #fff; border-color: #334155; margin-top: 3px;" />
+            </div>
+            <div>
+              <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">Subjek Email:</label>
+              <input type="text" id="modalEmailSubject" class="form-input" style="background: #030712; color: #fff; border-color: #334155; margin-top: 3px;" />
+            </div>
+          </div>
+
+          <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">Pratinjau Body / Isi Email Pengantar:</label>
+          <div class="channel-preview-box" id="emailBodyPreview"></div>
+
+          <div class="channel-actions">
+            <a id="btnSendGmailWeb" href="#" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #dc2626, #b91c1c); border-color: #f87171;">
+              <i class="fa-brands fa-google"></i> Buka di Gmail Web
+            </a>
+            <a id="btnSendMailto" href="#" class="btn btn-primary" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); border-color: #60a5fa;">
+              <i class="fa-solid fa-paper-plane"></i> Buka Default Email Client
+            </a>
+            <button id="btnCopyEmailBody" class="btn btn-outline">
+              <i class="fa-solid fa-copy"></i> Salin Teks Email
+            </button>
+          </div>
+        </div>
+
+        <!-- CHANNEL 2: WHATSAPP -->
+        <div class="send-channel-card">
+          <div class="channel-card-header">
+            <div class="channel-card-title">
+              <i class="fa-brands fa-whatsapp" style="color: #4ade80;"></i>
+              <span>Kirim via WhatsApp HRD / Contact Person</span>
+            </div>
+            <span class="channel-badge badge-wa">WhatsApp Chat</span>
+          </div>
+
+          <div style="margin-bottom: 8px;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">Nomor WhatsApp HRD:</label>
+            <input type="text" id="modalWaTarget" class="form-input" style="background: #030712; color: #fff; border-color: #334155; margin-top: 3px; max-width: 320px;" />
+          </div>
+
+          <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">Pratinjau Pesan WhatsApp:</label>
+          <div class="channel-preview-box" id="waMessagePreview"></div>
+
+          <div class="channel-actions">
+            <a id="btnSendWhatsapp" href="#" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #16a34a, #15803d); border-color: #4ade80;">
+              <i class="fa-brands fa-whatsapp"></i> Buka WhatsApp Chat Sekarang
+            </a>
+            <button id="btnCopyWaMsg" class="btn btn-outline">
+              <i class="fa-solid fa-copy"></i> Salin Pesan WA
+            </button>
+          </div>
+        </div>
+
+        <!-- CHANNEL 3: PORTAL / FORM LINK -->
+        <div class="send-channel-card" id="channelCardPortal">
+          <div class="channel-card-header">
+            <div class="channel-card-title">
+              <i class="fa-solid fa-globe" style="color: #c084fc;"></i>
+              <span>Formulir Pendaftaran / Portal Karir Web</span>
+            </div>
+            <span class="channel-badge badge-web">Portal Karir</span>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: #94a3b8;">Tautan Pendaftaran Web:</label>
+            <input type="url" id="modalPortalLink" class="form-input" style="background: #030712; color: #fff; border-color: #334155; margin-top: 3px;" />
+          </div>
+
+          <div class="channel-actions">
+            <a id="btnOpenCareerPortal" href="#" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #9333ea, #7e22ce); border-color: #c084fc;">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Formulir Pendaftaran Karir
+            </a>
+          </div>
+        </div>
+
+        <!-- CHECKLIST REMINDER -->
+        <div class="attachments-checklist-box">
+          <div class="checklist-title">
+            <i class="fa-solid fa-circle-check"></i> Checklist Berkas yang Perlu Dilampirkan:
+          </div>
+          <ul class="checklist-items">
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Surat Lamaran Pekerjaan (Unduh format <strong>.doc</strong> atau cetak <strong>PDF</strong> dari lembar kerja di samping).</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Curriculum Vitae (CV ATS) Muhammad Fahrel Yuliyanto (<a href="cv-ats.html" target="_blank" style="color: #38bdf8; text-decoration: underline;">Buka Halaman CV ATS</a>).</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Tautan Portofolio 3D Online: <code>https://fhrelz.github.io/portfolio-3d-celestial/</code></span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator) &amp; SQA PT Tanjung Mulia Informatika.</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-check"></i>
+              <span>Salinan Surat Pencatatan Ciptaan (HKI Kemenkumham RI No. EC002026096415 &amp; EC002026053217).</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification Message -->
   <div class="toast-msg" id="toastMsg">

@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const inpSource = document.getElementById('inpSource');
   const inpDate = document.getElementById('inpDate');
   const inpKeyHighlights = document.getElementById('inpKeyHighlights');
+  const inpContactEmail = document.getElementById('inpContactEmail');
+  const inpContactPhone = document.getElementById('inpContactPhone');
+  const inpContactLink = document.getElementById('inpContactLink');
   const btnGenerateLetter = document.getElementById('btnGenerateLetter');
   const presetPills = document.querySelectorAll('.preset-pill');
 
@@ -55,10 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnDownloadDoc = document.getElementById('btnDownloadDoc');
   const btnSaveArchive = document.getElementById('btnSaveArchive');
   const btnPrintLetter = document.getElementById('btnPrintLetter');
+  const btnOpenSendModal = document.getElementById('btnOpenSendModal');
   const btnNewFromArchive = document.getElementById('btnNewFromArchive');
   const archiveGrid = document.getElementById('archiveGrid');
   const toastMsg = document.getElementById('toastMsg');
   const toastText = document.getElementById('toastText');
+
+  // DOM Elements - Send Application Modal
+  const sendModalOverlay = document.getElementById('sendModalOverlay');
+  const btnCloseSendModal = document.getElementById('btnCloseSendModal');
+  const modalEmailTarget = document.getElementById('modalEmailTarget');
+  const modalEmailSubject = document.getElementById('modalEmailSubject');
+  const emailBodyPreview = document.getElementById('emailBodyPreview');
+  const btnSendGmailWeb = document.getElementById('btnSendGmailWeb');
+  const btnSendMailto = document.getElementById('btnSendMailto');
+  const btnCopyEmailBody = document.getElementById('btnCopyEmailBody');
+  const modalWaTarget = document.getElementById('modalWaTarget');
+  const waMessagePreview = document.getElementById('waMessagePreview');
+  const btnSendWhatsapp = document.getElementById('btnSendWhatsapp');
+  const btnCopyWaMsg = document.getElementById('btnCopyWaMsg');
+  const modalPortalLink = document.getElementById('modalPortalLink');
+  const btnOpenCareerPortal = document.getElementById('btnOpenCareerPortal');
+
 
   // Set default date to today in YYYY-MM-DD
   const today = new Date();
@@ -319,7 +340,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 4. Update Form Values
+    // 4. Detect Contact Info (Email, Phone/WA, Links) from the flyer
+    // Email
+    const emailMatches = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi);
+    if (emailMatches && emailMatches.length > 0) {
+      inpContactEmail.value = emailMatches[0].trim();
+    }
+
+    // Phone / WhatsApp
+    const phoneMatches = text.match(/(?:\+?62|0)8[0-9\-\s]{8,15}/g);
+    if (phoneMatches && phoneMatches.length > 0) {
+      let cleanPhone = phoneMatches[0].replace(/[^0-9+]/g, '');
+      inpContactPhone.value = cleanPhone;
+    }
+
+    // Career / Form Links
+    const linkMatches = text.match(/(?:https?:\/\/|bit\.ly\/|forms\.gle\/|t\.me\/)[^\s\)\"\']+/gi);
+    if (linkMatches && linkMatches.length > 0) {
+      let cleanLink = linkMatches[0].trim();
+      if (!cleanLink.startsWith('http')) cleanLink = 'https://' + cleanLink;
+      inpContactLink.value = cleanLink;
+    }
+
+    // 5. Update Form Values
     if (detectedPosition) inpPosition.value = detectedPosition;
     if (detectedCompany) inpCompany.value = detectedCompany;
     if (detectedLocation) inpLocation.value = detectedLocation;
@@ -341,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Automatically synthesize and render letter
     generateLetter();
-    showToast('Surat lamaran berhasil disintesis otomatis dari flyer loker!');
+    showToast('Surat lamaran dan kontak tujuan berhasil diekstrak otomatis!');
   }
 
   // ===================================================================
@@ -354,7 +397,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Yogyakarta',
       recipient: 'Yth. Kepala Unit Sistem Informasi / HRD Manager',
       source: 'Pengumuman Resmi Rekrutmen & Magang Kemitraan Kampus UBSI',
-      highlights: 'Pengembangan web Laravel & REST API, PostgreSQL, Pemegang Hak Cipta Kemenkumham RI MBG SPPG Nusukan, Silver Medalist Pekan Inovasi Nasional Mercu Buana.'
+      highlights: 'Pengembangan web Laravel & REST API, PostgreSQL, Pemegang Hak Cipta Kemenkumham RI MBG SPPG Nusukan, Silver Medalist Pekan Inovasi Nasional Mercu Buana.',
+      contactEmail: 'recruitment@kai.id',
+      contactPhone: '0811255666',
+      contactLink: 'https://recruitment.kai.id'
     },
     'mobile-dev': {
       position: 'Flutter / Mobile Application Developer',
@@ -362,7 +408,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Surakarta',
       recipient: 'Yth. HRD & Technical Lead PT Kreasi Edukasi Digital Nusantara',
       source: 'Poster Lowongan Kerja di Portal Karir IT Nasional',
-      highlights: 'Pengembangan aplikasi mobile berbasis Flutter & Dart, Integrasi API, Perancang ZeloDrive (Gamifikasi & AI Learning), Pemakalah Seminar INOVATIF 2026.'
+      highlights: 'Pengembangan aplikasi mobile berbasis Flutter & Dart, Integrasi API, Perancang ZeloDrive (Gamifikasi & AI Learning), Pemakalah Seminar INOVATIF 2026.',
+      contactEmail: 'karir@kreasiedukasi.id',
+      contactPhone: '081298765432',
+      contactLink: 'https://kreasiedukasi.id/career'
     },
     'sqa': {
       position: 'Software Quality Assurance (SQA) Engineer',
@@ -370,7 +419,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Jakarta Selatan',
       recipient: 'Yth. Quality Assurance & Engineering Division',
       source: 'Informasi Penempatan Kerja & Uji Kompetensi Kampus UBSI',
-      highlights: 'Tersertifikasi Kompetensi SQA PT Tanjung Mulia Informatika (Predikat Baik), Manual Testing, Perancangan Test Cases & Scenario, Bug Tracking, Pengujian Sistem Informasi Berbasis Web & Mobile.'
+      highlights: 'Tersertifikasi Kompetensi SQA PT Tanjung Mulia Informatika (Predikat Baik), Manual Testing, Perancangan Test Cases & Scenario, Bug Tracking, Pengujian Sistem Informasi Berbasis Web & Mobile.',
+      contactEmail: 'hrd@tanjungmulia.co.id',
+      contactPhone: '081388776655',
+      contactLink: 'https://tanjungmulia.co.id'
     },
     'dba': {
       position: 'Database Administrator (DBA)',
@@ -378,7 +430,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Semarang',
       recipient: 'Yth. Manager Teknologi Informasi & Basis Data',
       source: 'Poster Rekrutmen Bursa Kerja Komputer & Sistem Informasi',
-      highlights: 'Pemegang Sertifikasi Profesi BNSP Database Administrator (No. Reg: DMS.1241.00995 2026), Desain Skema ERD, Optimasi Query SQL, Manajemen Relasional PostgreSQL & MySQL, Pemeliharaan Keamanan & Replikasi Data.'
+      highlights: 'Pemegang Sertifikasi Profesi BNSP Database Administrator (No. Reg: DMS.1241.00995 2026), Desain Skema ERD, Optimasi Query SQL, Manajemen Relasional PostgreSQL & MySQL, Pemeliharaan Keamanan & Replikasi Data.',
+      contactEmail: 'rekrutmen@solusidata.com',
+      contactPhone: '085712345678',
+      contactLink: ''
     },
     'ai-spec': {
       position: 'Artificial Intelligence Specialist & Integrator',
@@ -386,7 +441,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Surakarta',
       recipient: 'Yth. Kepala Badan Riset dan Inovasi Daerah Kota Surakarta',
       source: 'Pengumuman Kemitraan Riset & Pengembangan Sistem Cerdas',
-      highlights: 'Integrasi LLM Generative AI (Gemini, Google AI Studio), Rancang Bangun Platform Smart Waste Management AI Kota Bersih Surakarta (HKI Kemenkumham RI), Pemateri Workshop "AI Video Creation".'
+      highlights: 'Integrasi LLM Generative AI (Gemini, Google AI Studio), Rancang Bangun Platform Smart Waste Management AI Kota Bersih Surakarta (HKI Kemenkumham RI), Pemateri Workshop "AI Video Creation".',
+      contactEmail: 'brida@surakarta.go.id',
+      contactPhone: '081322707000',
+      contactLink: 'https://brida.surakarta.go.id'
     },
     'digimar': {
       position: 'Digital Marketing & Content Strategist',
@@ -394,7 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
       location: 'Karanganyar',
       recipient: 'Yth. Pimpinan & Creative Director Volution Apparel',
       source: 'Poster Loker Akun Media Sosial Karir Resmi',
-      highlights: 'Pengalaman 8+ bulan mengelola Meta Ads Manager terintegrasi, Copywriting, Editing Video Promosi CapCut & Adobe Illustrator, Juara 2 Nasional Video Kreatif SobiFest, Juara 1 LKS Desain Grafis.'
+      highlights: 'Pengalaman 8+ bulan mengelola Meta Ads Manager terintegrasi, Copywriting, Editing Video Promosi CapCut & Adobe Illustrator, Juara 2 Nasional Video Kreatif SobiFest, Juara 1 LKS Desain Grafis.',
+      contactEmail: 'career@volutionapparel.com',
+      contactPhone: '088985266525',
+      contactLink: 'https://instagram.com/volutionapparel'
     }
   };
 
@@ -415,10 +476,14 @@ document.addEventListener('DOMContentLoaded', () => {
     inpRecipient.value = data.recipient;
     inpSource.value = data.source;
     inpKeyHighlights.value = data.highlights;
+    if (inpContactEmail) inpContactEmail.value = data.contactEmail || '';
+    if (inpContactPhone) inpContactPhone.value = data.contactPhone || '';
+    if (inpContactLink) inpContactLink.value = data.contactLink || '';
 
     generateLetter();
-    showToast(`Preset "${data.position}" diterapkan ke lembar surat.`);
+    showToast(`Preset "${data.position}" diterapkan.`);
   }
+
 
   // ===================================================================
   // 6. TAILORED COVER LETTER SYNTHESIS ENGINE
@@ -712,7 +777,10 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Diterima / Terverifikasi',
       badgeClass: 'badge-active',
       desc: 'Surat permohonan magang riset operasional dan arsitektur web platform sistem informasi perkeretaapian DAOP 6 Yogyakarta, mengintegrasikan PostgreSQL dan arsitektur enterprise.',
-      highlights: 'Pengembangan web Laravel & REST API, PostgreSQL, Pemegang Hak Cipta Kemenkumham RI MBG SPPG Nusukan, Silver Medalist Pekan Inovasi Nasional Mercu Buana.'
+      highlights: 'Pengembangan web Laravel & REST API, PostgreSQL, Pemegang Hak Cipta Kemenkumham RI MBG SPPG Nusukan, Silver Medalist Pekan Inovasi Nasional Mercu Buana.',
+      contactEmail: 'recruitment@kai.id',
+      contactPhone: '0811255666',
+      contactLink: 'https://recruitment.kai.id'
     },
     {
       id: 'tanjung-mulia-sqa',
@@ -726,7 +794,10 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Tersertifikasi Kompetensi',
       badgeClass: 'badge-archive',
       desc: 'Aplikasi permohonan uji kompetensi dan lamaran pengujian perangkat lunak sistem informasi. Berhasil meraih sertifikasi resmi SQA dengan predikat Baik.',
-      highlights: 'Tersertifikasi Kompetensi SQA PT Tanjung Mulia Informatika (Predikat Baik), Manual Testing, Perancangan Test Cases & Scenario, Bug Tracking, Pengujian Sistem Informasi Berbasis Web & Mobile.'
+      highlights: 'Tersertifikasi Kompetensi SQA PT Tanjung Mulia Informatika (Predikat Baik), Manual Testing, Perancangan Test Cases & Scenario, Bug Tracking, Pengujian Sistem Informasi Berbasis Web & Mobile.',
+      contactEmail: 'hrd@tanjungmulia.co.id',
+      contactPhone: '081388776655',
+      contactLink: 'https://tanjungmulia.co.id'
     },
     {
       id: 'brida-surakarta',
@@ -740,7 +811,10 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Penghargaan Riset BRIDA',
       badgeClass: 'badge-archive',
       desc: 'Pengajuan inovasi sistem Kota Bersih Surakarta berbasis AI Assistant dan GIS. Memperoleh Sertifikat Penghargaan Riset No. B/500.10.30.6/778.14 serta Hak Cipta Resmi Kemenkumham RI.',
-      highlights: 'Integrasi LLM Generative AI (Gemini, Google AI Studio), Rancang Bangun Platform Smart Waste Management AI Kota Bersih Surakarta (HKI Kemenkumham RI), Pemateri Workshop "AI Video Creation".'
+      highlights: 'Integrasi LLM Generative AI (Gemini, Google AI Studio), Rancang Bangun Platform Smart Waste Management AI Kota Bersih Surakarta (HKI Kemenkumham RI), Pemateri Workshop "AI Video Creation".',
+      contactEmail: 'brida@surakarta.go.id',
+      contactPhone: '081322707000',
+      contactLink: 'https://brida.surakarta.go.id'
     }
   ];
 
@@ -838,6 +912,9 @@ document.addEventListener('DOMContentLoaded', () => {
     inpSource.value = item.source || '';
     inpDate.value = item.date || today.toISOString().split('T')[0];
     inpKeyHighlights.value = item.highlights || '';
+    if (inpContactEmail) inpContactEmail.value = item.contactEmail || '';
+    if (inpContactPhone) inpContactPhone.value = item.contactPhone || '';
+    if (inpContactLink) inpContactLink.value = item.contactLink || '';
 
     generateLetter();
 
@@ -857,6 +934,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const source = inpSource.value.trim();
     const date = inpDate.value || today.toISOString().split('T')[0];
     const highlights = inpKeyHighlights.value.trim();
+    const contactEmail = inpContactEmail ? inpContactEmail.value.trim() : '';
+    const contactPhone = inpContactPhone ? inpContactPhone.value.trim() : '';
+    const contactLink = inpContactLink ? inpContactLink.value.trim() : '';
 
     const newArchiveItem = {
       id: 'cust-' + Date.now(),
@@ -870,7 +950,10 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Disimpan Manual',
       badgeClass: 'badge-custom',
       desc: `Surat lamaran pekerjaan untuk posisi ${position} di ${company}. Disesuaikan otomatis dengan rekam jejak portofolio dan CV Fahrel.`,
-      highlights
+      highlights,
+      contactEmail,
+      contactPhone,
+      contactLink
     };
 
     const currentArchives = getStoredArchives();
@@ -885,4 +968,142 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialUserArchives = getStoredArchives();
   archiveCountBadge.textContent = DEFAULT_ARCHIVES.length + initialUserArchives.length;
 
+  // ===================================================================
+  // 9. SEND APPLICATION DISPATCH HUB (EMAIL, WHATSAPP, PORTAL KARIR)
+  // ===================================================================
+  function buildCoverEmailText(position, company) {
+    return `Yth. Tim Rekrutmen / HRD ${company},
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa semester 5 S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Melalui email ini, saya bermaksud mengajukan lamaran pekerjaan untuk posisi ${position} di ${company} sebagaimana informasi lowongan pekerjaan yang saya peroleh.
+
+Berbekal kompetensi rekayasa perangkat lunak, administrasi basis data bersertifikasi BNSP (LSP UBSI / BNSP No. Reg: DMS.1241.00995 2026), Sertifikat Kompetensi Software Quality Assurance (SQA) PT Tanjung Mulia Informatika, kepemilikan 3 Hak Kekayaan Intelektual (HKI) resmi Kemenkumham RI, serta pengalaman magang di Unit Sistem Informasi PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta, saya yakin dapat memberikan kontribusi nyata dan profesional bagi ${company}.
+
+Bersama ini saya turut melampirkan berkas kelengkapan administrasi sebagai bahan pertimbangan Bapak/Ibu:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV ATS Standar Industri)
+3. Salinan Transkrip Nilai Akademik Terkini
+4. Salinan Sertifikat Kompetensi BNSP & SQA
+5. Salinan Surat Pencatatan Ciptaan (HKI Kemenkumham RI)
+6. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan menghadiri tahapan wawancara guna mendiskusikan kualifikasi saya secara lebih komprehensif. Atas perhatian, waktu, dan kesempatan berharga yang Bapak/Ibu berikan, saya sampaikan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah`;
+  }
+
+  function buildWhatsAppText(position, company) {
+    return `Selamat Pagi/Siang Bapak/Ibu HRD ${company},
+
+Perkenalkan saya *Muhammad Fahrel Yuliyanto*, mahasiswa S1 Sistem Informasi UBSI Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Saya bermaksud mengirimkan berkas lamaran pekerjaan untuk posisi *${position}* di *${company}* berdasarkan informasi lowongan kerja yang tertera pada poster/flyer loker.
+
+Sebagai bahan pertimbangan Bapak/Ibu, berkas resmi Surat Lamaran Pekerjaan dan CV Format ATS telah saya siapkan. Portofolio interaktif proyek, sertifikasi BNSP, dan pengakuan HKI Kemenkumham saya dapat diakses langsung melalui tautan:
+🔗 https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk dapat diberikan kesempatan mengikuti tahapan seleksi selanjutnya. Terima kasih banyak atas perhatian dan waktu berharga yang Bapak/Ibu berikan.
+
+Hormat saya,
+*Muhammad Fahrel Yuliyanto*
+Telepon / WhatsApp: +62 889-8526-6525
+Email: muhmmadfahrel@gmail.com`;
+  }
+
+  function updateSendModalLinks() {
+    const position = inpPosition.value.trim() || 'Posisi';
+    const company = inpCompany.value.trim() || 'Perusahaan';
+    const emailTarget = modalEmailTarget.value.trim();
+    const emailSubject = modalEmailSubject.value.trim() || `Lamaran Pekerjaan – ${position} – Muhammad Fahrel Yuliyanto`;
+    const emailBody = emailBodyPreview.textContent;
+    const waTarget = modalWaTarget.value.trim();
+    const waBody = waMessagePreview.textContent;
+    const portalLink = modalPortalLink.value.trim();
+
+    // Gmail Web URL
+    btnSendGmailWeb.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailTarget)}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    // Default Mailto URL
+    btnSendMailto.href = `mailto:${encodeURIComponent(emailTarget)}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    // WhatsApp URL
+    let cleanWa = waTarget.replace(/[^0-9]/g, '');
+    if (cleanWa.startsWith('0')) cleanWa = '62' + cleanWa.slice(1);
+    if (cleanWa && !cleanWa.startsWith('62')) cleanWa = '62' + cleanWa;
+    btnSendWhatsapp.href = cleanWa ? `https://wa.me/${cleanWa}?text=${encodeURIComponent(waBody)}` : `https://wa.me/?text=${encodeURIComponent(waBody)}`;
+
+    // Career Portal URL
+    if (portalLink) {
+      btnOpenCareerPortal.href = portalLink;
+      btnOpenCareerPortal.style.display = 'inline-flex';
+    } else {
+      btnOpenCareerPortal.style.display = 'none';
+    }
+  }
+
+  if (btnOpenSendModal) {
+    btnOpenSendModal.addEventListener('click', () => {
+      const position = inpPosition.value.trim() || 'Junior Web Developer';
+      const company = inpCompany.value.trim() || 'Perusahaan';
+      const email = inpContactEmail ? inpContactEmail.value.trim() : '';
+      const phone = inpContactPhone ? inpContactPhone.value.trim() : '';
+      const link = inpContactLink ? inpContactLink.value.trim() : '';
+
+      modalEmailTarget.value = email;
+      modalEmailSubject.value = `Lamaran Pekerjaan – ${position} – Muhammad Fahrel Yuliyanto`;
+      emailBodyPreview.textContent = buildCoverEmailText(position, company);
+
+      modalWaTarget.value = phone;
+      waMessagePreview.textContent = buildWhatsAppText(position, company);
+
+      modalPortalLink.value = link;
+
+      updateSendModalLinks();
+      sendModalOverlay.classList.add('active');
+    });
+  }
+
+  if (btnCloseSendModal) {
+    btnCloseSendModal.addEventListener('click', () => {
+      sendModalOverlay.classList.remove('active');
+    });
+  }
+
+  if (sendModalOverlay) {
+    sendModalOverlay.addEventListener('click', (e) => {
+      if (e.target === sendModalOverlay) {
+        sendModalOverlay.classList.remove('active');
+      }
+    });
+  }
+
+  // Live input changes in send modal
+  if (modalEmailTarget) modalEmailTarget.addEventListener('input', updateSendModalLinks);
+  if (modalEmailSubject) modalEmailSubject.addEventListener('input', updateSendModalLinks);
+  if (modalWaTarget) modalWaTarget.addEventListener('input', updateSendModalLinks);
+  if (modalPortalLink) modalPortalLink.addEventListener('input', updateSendModalLinks);
+
+  // Copy Buttons
+  if (btnCopyEmailBody) {
+    btnCopyEmailBody.addEventListener('click', () => {
+      navigator.clipboard.writeText(emailBodyPreview.textContent).then(() => {
+        showToast('Template body email berhasil disalin!');
+      });
+    });
+  }
+
+  if (btnCopyWaMsg) {
+    btnCopyWaMsg.addEventListener('click', () => {
+      navigator.clipboard.writeText(waMessagePreview.textContent).then(() => {
+        showToast('Pesan WhatsApp lamaran berhasil disalin!');
+      });
+    });
+  }
+
 });
+
