@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCosmicAudio();
   initProjectFilters();
   initPressFilters();
+  initLiveWebFilter();
+  initLiveWebModal();
   initModalViewer();
   initNavbarScroll();
   initContactActions();
@@ -1885,6 +1887,7 @@ const translations = {
   id: {
     nav_profil: "Profil",
     nav_projek: "Proyek & Riset",
+    nav_web_aktif: "Website Aktif",
     nav_karir: "Magang & Karir",
     nav_organisasi: "Organisasi",
     nav_narasumber: "Narasumber",
@@ -1902,11 +1905,13 @@ const translations = {
     stat_himsi: "Ketua Umum HIMSI Solo",
     press_tag: "LIPUTAN MEDIA & REKAM JEJAK DIGITAL",
     press_title: "Publikasi Berita, Media Massa & Jejak Publik Terverifikasi",
-    press_desc: "Hasil penelusuran digital komprehensif: seluruh artikel berita media pers nasional & regional, jurnal pengabdian masyarakat terakreditasi, rilis pers resmi universitas, serta catatan Hak Cipta resmi di Pangkalan Data Kekayaan Intelektual (PDKI) Kemenkumham RI atas nama Muhammad Fahrel Yuliyanto."
+    press_desc: "Hasil penelusuran digital komprehensif: seluruh artikel berita media pers nasional & regional, jurnal pengabdian masyarakat terakreditasi, rilis pers resmi universitas, serta catatan Hak Cipta resmi di Pangkalan Data Kekayaan Intelektual (PDKI) Kemenkumham RI atas nama Muhammad Fahrel Yuliyanto.",
+    tag_live_websites: "LIVE WEBSITE PORTFOLIO & INTERVIEW SHOWCASE"
   },
   en: {
     nav_profil: "About",
     nav_projek: "Projects & Research",
+    nav_web_aktif: "Live Websites",
     nav_karir: "Career & Internships",
     nav_organisasi: "Leadership",
     nav_narasumber: "Speaker & Events",
@@ -1924,7 +1929,8 @@ const translations = {
     stat_himsi: "President of HIMSI UBSI",
     press_tag: "MEDIA COVERAGE & DIGITAL FOOTPRINT",
     press_title: "Verified News, Media Coverage & Public Records",
-    press_desc: "Comprehensive digital footprint verification: national & regional press articles, peer-reviewed community service journals, official university press releases, and legal Copyright registrations at the Directorate General of Intellectual Property (PDKI) under the name Muhammad Fahrel Yuliyanto."
+    press_desc: "Comprehensive digital footprint verification: national & regional press articles, peer-reviewed community service journals, official university press releases, and legal Copyright registrations at the Directorate General of Intellectual Property (PDKI) under the name Muhammad Fahrel Yuliyanto.",
+    tag_live_websites: "LIVE WEB PORTFOLIO & INTERVIEW PROOF"
   }
 };
 
@@ -2161,3 +2167,165 @@ function initContactActions() {
     });
   });
 }
+
+/* ===================================================================
+   7. LIVE WEBSITES FILTER & INTERACTIVE BROWSER MODAL ENGINE
+   =================================================================== */
+function initLiveWebFilter() {
+  const filterBtns = document.querySelectorAll('.live-filter-btn');
+  const cards = document.querySelectorAll('.live-web-card');
+
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-live-filter');
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-live-category') || '';
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 40);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(15px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 250);
+        }
+      });
+    });
+  });
+}
+
+function initLiveWebModal() {
+  const modal = document.getElementById('live-web-modal');
+  if (!modal) return;
+
+  const closeBtn1 = document.getElementById('btnCloseLiveWeb');
+  const closeBtn2 = document.getElementById('btnCloseLiveWebBtn');
+  const urlText = document.getElementById('liveModalUrlText');
+  const copyBtn = document.getElementById('btnCopyModalUrl');
+  const externalBtn = document.getElementById('btnLiveModalExternal');
+  const viewportFrame = document.getElementById('liveModalViewport');
+  const iframe = document.getElementById('liveWebIframe');
+  const fallbackOverlay = document.getElementById('liveIframeFallback');
+  const fallbackImg = document.getElementById('liveFallbackImg');
+  const fallbackTitle = document.getElementById('fallbackTitle');
+  const fallbackExternal = document.getElementById('btnFallbackExternal');
+  const dismissFallback = document.getElementById('btnDismissFallback');
+  const talkingPointsContainer = document.getElementById('liveModalTalkingPoints');
+  const deviceBtns = document.querySelectorAll('.device-btn');
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    // Reset iframe to stop any background video or audio
+    setTimeout(() => {
+      if (iframe) iframe.src = 'about:blank';
+      if (fallbackOverlay) fallbackOverlay.classList.remove('show');
+    }, 300);
+  }
+
+  if (closeBtn1) closeBtn1.addEventListener('click', closeModal);
+  if (closeBtn2) closeBtn2.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Device viewport switcher
+  deviceBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      deviceBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const vp = btn.getAttribute('data-viewport');
+      if (viewportFrame) {
+        viewportFrame.classList.remove('desktop-view', 'tablet-view', 'mobile-view');
+        viewportFrame.classList.add(`${vp}-view`);
+      }
+    });
+  });
+
+  if (dismissFallback) {
+    dismissFallback.addEventListener('click', () => {
+      if (fallbackOverlay) fallbackOverlay.classList.remove('show');
+    });
+  }
+
+  // Open Preview Modal
+  document.querySelectorAll('.btn-open-live-preview').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = btn.getAttribute('data-url') || '#';
+      const title = btn.getAttribute('data-title') || 'Website Showcase';
+      const img = btn.getAttribute('data-img') || '';
+      const talkingPoints = btn.getAttribute('data-talking-points') || '';
+
+      if (urlText) urlText.textContent = url;
+      if (externalBtn) externalBtn.href = url;
+      if (fallbackExternal) fallbackExternal.href = url;
+      if (fallbackTitle) fallbackTitle.textContent = title;
+      if (fallbackImg) fallbackImg.src = img;
+
+      // Populate Interview Talking Points
+      if (talkingPointsContainer) {
+        talkingPointsContainer.innerHTML = '';
+        if (talkingPoints) {
+          const points = talkingPoints.split('|');
+          points.forEach(pt => {
+            const chip = document.createElement('span');
+            chip.className = 'interview-point-chip';
+            chip.innerHTML = `<i class="fa-solid fa-check" style="color: #38bdf8; margin-right: 4px;"></i> ${pt.trim()}`;
+            talkingPointsContainer.appendChild(chip);
+          });
+        }
+      }
+
+      // Handle iframe loading & security fallback
+      if (iframe) {
+        // Show fallback initially or on error
+        if (fallbackOverlay) fallbackOverlay.classList.remove('show');
+
+        // Check if external domain often blocks iframes
+        const isExternalBlocked = url.includes('volutionapparelcatalog.com') || url.includes('wuaze.com') || url.includes('page.gd');
+        
+        if (isExternalBlocked) {
+          // For known domains with restrictive CSP, show the high-res interactive snapshot overlay with one-click launch
+          if (fallbackOverlay) fallbackOverlay.classList.add('show');
+          iframe.src = url;
+        } else {
+          iframe.src = url;
+        }
+      }
+
+      // Copy url button
+      if (copyBtn) {
+        copyBtn.onclick = () => {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(url).then(() => {
+              if (window.showToast) window.showToast(`URL berhasil disalin: ${url}`);
+            });
+          }
+        };
+      }
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      // Play celestial sound effect if available
+      if (typeof CosmicAudio !== 'undefined' && CosmicAudio.playChime) {
+        CosmicAudio.playChime();
+      }
+    });
+  });
+}
+
