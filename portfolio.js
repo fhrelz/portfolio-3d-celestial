@@ -1548,8 +1548,9 @@ function initRealisticMoon() {
 
   const targetRotation = { x: 0.1, y: 0.5 };
 
-  // Pointer drag events on canvas and stage
+  // Pointer drag events on canvas and stage (Desktop only: > 1024px)
   function onPointerDown(e) {
+    if (window.innerWidth <= 1024) return; // Fixed non-interactive backdrop on mobile/tablets
     isDragging = true;
     prevPointerX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
     prevPointerY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
@@ -1558,6 +1559,7 @@ function initRealisticMoon() {
   }
 
   function onPointerMove(e) {
+    if (window.innerWidth <= 1024) return;
     const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
     const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
 
@@ -1594,8 +1596,9 @@ function initRealisticMoon() {
   window.addEventListener('touchmove', onPointerMove, { passive: true });
   window.addEventListener('touchend', onPointerUp, { passive: true });
 
-  // Mouse Wheel Interactive Zoom
+  // Mouse Wheel Interactive Zoom (Desktop only: > 1024px)
   moonCanvas.addEventListener('wheel', (e) => {
+    if (window.innerWidth <= 1024) return;
     e.preventDefault();
     targetCameraZ += e.deltaY * 0.4;
     targetCameraZ = Math.max(minZoomInZ, Math.min(maxZoomOutZ, targetCameraZ));
@@ -1629,6 +1632,10 @@ function initRealisticMoon() {
   const tooltipDesc = document.getElementById('tooltip-desc');
 
   function checkHotspotIntersection(clientX, clientY) {
+    if (window.innerWidth <= 1024) {
+      if (tooltip) tooltip.classList.remove('show');
+      return;
+    }
     const rect = moonCanvas.getBoundingClientRect();
     if (
       clientX < rect.left ||
