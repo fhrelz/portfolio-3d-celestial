@@ -590,6 +590,22 @@ body {
   color: #0369a1;
 }
 
+.preset-pill.preset-featured {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1.5px solid #0284c7;
+  color: #0369a1;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
+}
+
+.preset-pill.preset-featured:hover {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+}
+
 /* Extracted Form Inputs */
 .extracted-form {
   margin-top: 18px;

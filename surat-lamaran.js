@@ -613,6 +613,61 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. PRESET ROLES
   // ===================================================================
   const ROLE_PRESETS = {
+    'wijaya-marketing': {
+      position: 'Marketing Komersil',
+      company: 'Wijaya Kreativ Group',
+      location: 'Solo Raya',
+      recipient: 'Yth. Tim HRD & Manajemen Rekrutmen Wijaya Kreativ Group',
+      source: 'Poster Resmi Rekrutmen Terbuka (Open Recruitment Join Our Team)',
+      highlights: 'Pendidikan S1 Sistem Informasi (Semester 5, IPK Unggul)\nPengalaman 8+ bulan digital marketing & promosi komersil di Solo Raya\nKeahlian komunikasi, presentasi & negosiasi persuasif\nMenguasai media sosial untuk promosi (Instagram, TikTok, Facebook Ads)\nMemiliki kendaraan pribadi & SIM C aktif, berdomisili Solo Raya\nBerorientasi target, jujur, disiplin, dan mau belajar',
+      contactEmail: 'hrd@wijayakreativ.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'beauthinc-sosmed': {
+      position: 'Sosial Media Spesialis',
+      company: 'beauthinc',
+      location: 'Surakarta / Solo Raya',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen beauthinc',
+      source: 'Poster Pengumuman Lowongan Kerja Resmi (We Are Hiring)',
+      highlights: 'Pria, usia 19 tahun, kreatif, komunikatif & up to date tren digital\nBerpengalaman mengelola akun media sosial Instagram & TikTok (Volution Apparel & brand lokal)\nMemahami content planning, copywriting persuasif & tren kecantikan/skincare\nKeahlian analisis insight, jangkauan (reach), dan engagement audiens\nJuara 2 Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis',
+      contactEmail: '',
+      contactPhone: '082195667706',
+      contactLink: ''
+    },
+    'seventh-tentor': {
+      position: 'Tentor Tetap Saintek (SMP & SMA)',
+      company: 'Seventh Education',
+      location: 'Cabang Teras, Soloraya',
+      recipient: 'Yth. Tim HRD & Manajemen Seventh Education (Cabang Teras, Soloraya)',
+      source: 'Poster Resmi Rekrutmen Tentor (We Are Hiring Tentor Tetap Saintek Soloraya)',
+      highlights: 'Pendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa BJU)\nKompetensi kuat dalam Matematika, Logika, IPA, dan Penalaran SNBT-UTBK\nPengalaman sebagai pemateri workshop teknologi & Ketua Umum HIMSI UBSI Solo\nKarakter edukatif, komunikatif, sabar, dan berperilaku baik\nBerdomisili di Soloraya (siap penempatan Cabang Teras)',
+      contactEmail: '',
+      contactPhone: '085641804150',
+      contactLink: 'https://linkr.bio/seventheducation'
+    },
+    'googlasses-creator': {
+      position: 'Content Creator (Full Time)',
+      company: 'googlasses Surakarta',
+      location: 'Jl. Melon Raya No.51, Karangasem, Laweyan, Surakarta',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen googlasses Surakarta',
+      source: 'Pengumuman Lowongan Kerja Resmi (Requirements Content Creator Full Time)',
+      highlights: 'Kreatif & sangat update terhadap tren media sosial & konten viral\nTerampil memproduksi foto & video produk eyewear/fashion kekinian\nMenguasai editing foto & video (CapCut, Photoshop, Canva, Lightroom)\nMemahami visual storytelling & estetika brand modern\nSiap bekerja secara mandiri maupun berkolaborasi tim di Surakarta\nMelampirkan CV ATS, Portofolio Kreatif, Foto Non Formal, KTP & Transkrip Akademik',
+      contactEmail: 'googlassessoc@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'cilily-creator': {
+      position: 'Content Creator',
+      company: 'Cilily Collection',
+      location: 'Solo / Surakarta',
+      recipient: 'Yth. Tim HRD & Manajemen Cilily Collection',
+      source: 'Poster Rekrutmen Resmi (We\'re Hiring Content Creator)',
+      highlights: 'Paham mendalam tren TikTok, IG Reels, & konten fashion viral\nMampu memproduksi konten foto & video harian (OOTD, try on, mix & match)\nMahir editing video mobile berbasis CapCut dengan ritme dinamis\nPunya sense fashion, visual storytelling, rapi, dan konsisten on-time upload\nPengalaman mengelola konten fashion & apparel (Volution Apparel)',
+      contactEmail: 'adm.cililycollection@gmail.com',
+      contactPhone: '085179979027',
+      contactLink: ''
+    },
     'markom': {
       position: 'Staff Marketing Komunikasi (MARKOM)',
       company: 'Sekolah Al Irsyad Surakarta',
@@ -754,7 +809,62 @@ document.addEventListener('DOMContentLoaded', () => {
       'Portofolio Proyek Interaktif & Piagam Penghargaan Nasional (Silver Medalist Universitas Mercu Buana)'
     ];
 
-    if (pos.includes('markom') || pos.includes('marketing komunikasi') || pos.includes('marcom') || (pos.includes('marketing') && !pos.includes('digital')) || comp.includes('irsyad') || hl.includes('canva') || hl.includes('capcut')) {
+    if (pos.includes('tentor') || comp.includes('seventh') || pos.includes('saintek') || pos.includes('mengajar')) {
+      specificParagraph = `Sebagai mahasiswa semester 5 Program Studi S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo sekaligus penerima <strong>Beasiswa Prestasi Jalur Undangan (BJU) dengan Indeks Prestasi Kumulatif (IPK) Unggul</strong>, saya memiliki fondasi keilmuan yang kokoh dalam bidang Matematika, logika algoritma, statistika, serta sains analitis. Pengalaman saya memimpin organisasi sebagai <strong>Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo</strong> serta kerap dipercaya menjadi pemateri workshop teknologi membentuk karakter kepemimpinan, kesabaran dalam membimbing, dan keterampilan komunikasi edukatif yang persuasif. Saya terbiasa menyederhanakan materi penalaran kuantitatif dan konsep sains yang kompleks menjadi metode pemecahan masalah yang sistematis, menyenangkan, dan mudah dipahami oleh siswa SMP maupun SMA untuk persiapan ujian sekolah dan seleksi SNBT-UTBK.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul & Penerima Beasiswa BJU)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator)',
+        'Salinan Sertifikat Pemateri & Narasumber Workshop Teknologi Edukatif',
+        'Salinan Surat Pencatatan Ciptaan (HKI Kemenkumham RI) & Portofolio Riset',
+        'Salinan Kartu Tanda Penduduk (KTP) & Dokumen Kualifikasi Pendukung'
+      ];
+    } else if (comp.includes('wijaya') || (pos.includes('marketing') && pos.includes('komersil'))) {
+      specificParagraph = `Latar belakang saya sebagai mahasiswa S1 Sistem Informasi UBSI Solo didukung oleh pengalaman profesional selama lebih dari 8 bulan di bidang Digital Marketing dan promosi komersil di wilayah Solo Raya. Saya terbiasa mengelola strategi periklanan berbasis data (<strong>Meta Ads Manager, Instagram, TikTok, dan Facebook</strong>) guna meningkatkan jangkauan pasar dan konversi penjualan produk komersial/properti. Didukung kemampuan negosiasi, presentasi produk, kepemilikan <strong>kendaraan pribadi dan SIM C aktif</strong>, serta domisili di Solo Raya, saya memiliki kesiapan mobilitas tinggi dan orientasi target yang kuat untuk berkontribusi aktif memajukan penjualan di Wijaya Kreativ Group.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul)',
+        'Portofolio Digital Marketing: Kampanye Iklan Berbayar (Meta Ads) & Analisis Pasar',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP & Surat Pencatatan Ciptaan HKI'
+      ];
+    } else if (comp.includes('googlasses') || (pos.includes('content') && pos.includes('creator') && comp.includes('googlasses'))) {
+      specificParagraph = `Di samping rekam jejak teknologi informasi, saya memiliki passion dan keahlian mendalam dalam produksi konten kreatif visual, khususnya fotografi dan videografi produk fesyen dan aksesoris/eyewear kekinian. Saya mahir mengoperasikan perangkat kamera serta menguasai perangkat lunak editing standar industri seperti <strong>CapCut, Adobe Photoshop, Canva, dan Lightroom</strong> untuk menghasilkan visual produk yang tajam, estetik, dan bercerita (visual storytelling). Didukung prestasi sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif SobiFest</strong> dan <strong>Juara 1 LKS Graphic Design Technology</strong>, saya siap bekerja secara penuh waktu (full-time) baik secara mandiri maupun berkolaborasi dengan tim kreatif di googlasses Surakarta.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Kreatif Fotografi & Videografi Produk (Eyewear / Fesyen)',
+        'Foto Diri Non-Formal Terbaru (Sesuai Persyaratan Flyer)',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Piagam Penghargaan Nasional Video Kreatif (Juara 2 SobiFest & Juara 1 LKS Desain)'
+      ];
+    } else if (comp.includes('cilily') || (pos.includes('content') && pos.includes('creator') && (hl.includes('ootd') || comp.includes('cilily')))) {
+      specificParagraph = `Saya memiliki pemahaman mendalam mengenai dinamika tren busana wanita terkini di TikTok dan Instagram Reels, didukung pengalaman nyata dalam mengelola konten visual dan promosi busana (Volution Apparel). Saya terampil merancang konsep shooting harian, memproduksi video <em>Outfit of the Day (OOTD)</em>, <em>try-on</em>, serta <em>mix and match</em> dengan estetika visual yang anggun dan ritme editing dinamis menggunakan <strong>CapCut</strong>. Dengan ketelitian, konsistensi jadwal unggah harian (on-time upload), dan orientasi pada pertumbuhan engagement audiens, saya yakin dapat memperkuat citra dan penjualan brand Cilily Collection.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Video Kreatif: Konten Fesyen, OOTD, Try-On & Editing CapCut',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Salinan Sertifikat Kompetensi Profesi BNSP & Portofolio Digital'
+      ];
+    } else if (comp.includes('beauthinc') || pos.includes('sosial media spesialis') || pos.includes('social media specialist')) {
+      specificParagraph = `Sebagai profesional muda yang adaptif dan kreatif, saya memiliki pengalaman mengelola akun media sosial (Instagram dan TikTok) dengan pendekatan berbasis data dan estetika modern. Saya memahami alur kerja penyusunan kalender konten (content planning), riset tren kecantikan dan gaya hidup yang sedang viral, perancangan copywriting persuasif, serta analisis insight berkala (reach, impressions, dan engagement rate) untuk meningkatkan interaksi audiens. Prestasi saya sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif SobiFest</strong> dan <strong>Juara 1 LKS Graphic Design Technology</strong> menjadi bukti nyata dedikasi dan kepekaan visual yang saya miliki untuk memajukan kanal media sosial beauthinc.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Pengelolaan Sosial Media (Instagram & TikTok), Content Planning & Copywriting',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Salinan Sertifikat Kompetensi Profesi BNSP & Dokumen Pendukung'
+      ];
+    } else if (pos.includes('markom') || pos.includes('marketing komunikasi') || pos.includes('marcom') || (pos.includes('marketing') && !pos.includes('digital')) || comp.includes('irsyad') || hl.includes('canva') || hl.includes('capcut')) {
       specificParagraph = `Sebagai mahasiswa semester 5 Program Studi S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo sekaligus peraih Beasiswa Prestasi BJU (IPK Unggul), saya memiliki rekam jejak nyata di bidang komunikasi pemasaran, kreasi konten digital, dan multimedia. Saya memiliki pengalaman profesional selama lebih dari 8 bulan sebagai Digital Marketing Specialist & Creative Content Creator di berbagai unit usaha, dengan keahlian teruji dalam perancangan materi promosi visual menggunakan <strong>Canva, Adobe Illustrator, Photoshop</strong>, serta produksi video promosi interaktif berbasis <strong>CapCut</strong>. Prestasi saya sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif SobiFest</strong> dan <strong>Juara 1 LKS Graphic Design Technology</strong> membuktikan dedikasi saya dalam memadukan estetika visual dengan narasi publikasi yang memikat, beretika, dan berdampak nyata bagi penguatan citra institusi.`;
 
       documentListItems = [
@@ -782,7 +892,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Additional note if key highlights or specific company entered
     let highlightSnippet = '';
-    if (comp.includes('irsyad') || pos.includes('markom')) {
+    if (comp.includes('seventh') || pos.includes('tentor')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi khusus yang dipersyaratkan oleh <strong>${company}</strong>, yakni kemampuan pengajaran Saintek (Matematika/IPA/IPS/SNBT-UTBK), batas usia maksimal 32 tahun, pengalaman mengajar, dan kesiapan penempatan di <strong>Cabang Teras (Soloraya)</strong>, saya menyatakan kesiapan penuh dan komitmen tinggi untuk mendedikasikan waktu, integritas moral, serta keilmuan saya demi kemajuan dan prestasi siswa-siswi Seventh Education.</p>`;
+    } else if (comp.includes('wijaya') || (pos.includes('marketing') && pos.includes('komersil'))) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan persyaratan yang tercantum pada poster rekrutmen <strong>${company}</strong>, yakni kemampuan negosiasi, penguasaan promosi media sosial, kepemilikan kendaraan pribadi & SIM C aktif, domisili di Solo Raya, serta sikap berorientasi target dan jujur, saya siap langsung terjun ke lapangan untuk menjalankan strategi pemasaran terpadu.</p>`;
+    } else if (comp.includes('googlasses')) {
+      highlightSnippet = `<p class="letter-p">Sesuai dengan lampiran wajib yang dipersyaratkan oleh <strong>${company}</strong> di Jl. Melon Raya No. 51 Laweyan Surakarta, bersama surat ini telah saya sertakan kelengkapan berkas yang mencakup CV ATS & Portofolio Kreatif, Foto Diri Non Formal, KTP, serta Transkrip Nilai Akademik terakhir sebagai bukti komitmen dan kesiapan kerja penuh waktu saya.</p>`;
+    } else if (comp.includes('cilily')) {
+      highlightSnippet = `<p class="letter-p">Menanggapi kebutuhan <strong>${company}</strong> akan Content Creator yang memahami tren viral TikTok/Reels, produksi video OOTD, dan disiplin waktu upload, saya siap mendedikasikan kreativitas visual dan konsistensi kerja saya demi menghadirkan konten harian yang segar, menarik, dan meningkatkan konversi penjualan produk fesyen Cilily Collection.</p>`;
+    } else if (comp.includes('beauthinc')) {
+      highlightSnippet = `<p class="letter-p">Menjawab kualifikasi <strong>${company}</strong> untuk posisi Sosial Media Spesialis, saya siap berkolaborasi erat dengan tim desain, konten, dan pemasaran guna mengeksekusi kalender konten yang konsisten serta memproduksi narasi visual yang relevan dengan tren kecantikan saat ini.</p>`;
+    } else if (comp.includes('irsyad') || pos.includes('markom')) {
       highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi khusus yang dipersyaratkan oleh <strong>${company}</strong>, yakni integritas kepribadian muslim, kemampuan komunikasi aktif, penguasaan content writing (Canva & CapCut), pengelolaan kanal media sosial (Instagram, TikTok, YouTube), serta domisili di wilayah Solo/Surakarta, saya meyakini bahwa kompetensi multimedia saya yang dipadukan dengan pengalaman kepemimpinan sebagai Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo akan mampu memberikan akselerasi syiar dan publikasi yang unggul bagi ${company}.</p>`;
     } else if (highlights && highlights.trim().length > 0) {
       highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi khusus yang dipersyaratkan pada informasi lowongan kerja, yakni mengenai <em>${highlights.trim().replace(/\n/g, ', ')}</em>, saya meyakini bahwa latar belakang teknis serta pengalaman kepemimpinan saya sebagai Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo akan memberikan kontribusi positif yang cepat dan terukur bagi tim kerja di ${company}.</p>`;
@@ -1054,6 +1174,91 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===================================================================
   const DEFAULT_ARCHIVES = [
     {
+      id: 'wijaya-kreativ-marketing',
+      title: 'Lamaran Marketing Komersil & Promosi Digital',
+      company: 'Wijaya Kreativ Group',
+      position: 'Marketing Komersil',
+      location: 'Solo Raya',
+      recipient: 'Yth. Tim HRD & Manajemen Rekrutmen Wijaya Kreativ Group',
+      source: 'Poster Resmi Rekrutmen Terbuka (Open Recruitment Join Our Team)',
+      date: '2026-10-26',
+      badge: 'Siap Dikirim / Tersinkronisasi',
+      badgeClass: 'badge-active',
+      desc: 'Pengajuan lamaran posisi Marketing Komersil berbasis kompetensi sales & promosi digital media sosial (Meta Ads & TikTok), kepemilikan SIM C & kendaraan pribadi, dan domisili Solo Raya.',
+      highlights: 'Pendidikan S1 Sistem Informasi (Semester 5, IPK Unggul), Pengalaman 8+ bulan digital marketing & promosi komersil di Solo Raya, keahlian komunikasi & negosiasi persuasif, menguasai media sosial (Instagram, TikTok, Facebook Ads), memiliki kendaraan pribadi & SIM C aktif, berdomisili Solo Raya, berorientasi target.',
+      contactEmail: 'hrd@wijayakreativ.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'beauthinc-sosial-media',
+      title: 'Lamaran Sosial Media Spesialis & Content Strategy',
+      company: 'beauthinc',
+      position: 'Sosial Media Spesialis',
+      location: 'Surakarta / Solo Raya',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen beauthinc',
+      source: 'Poster Pengumuman Lowongan Kerja Resmi (We Are Hiring)',
+      date: '2026-10-26',
+      badge: 'Siap Dikirim / Tersinkronisasi',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Sosial Media Spesialis berfokus pada content planning, copywriting tren kecantikan & skincare, editing video promosi (CapCut), serta analisis metrik engagement audiens.',
+      highlights: 'Pria, usia 19 tahun, kreatif & up to date tren digital, berpengalaman mengelola media sosial Instagram & TikTok, memahami content planning, copywriting persuasif & tren kecantikan/skincare, keahlian analisis insight & engagement, Juara 2 Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis.',
+      contactEmail: '',
+      contactPhone: '082195667706',
+      contactLink: ''
+    },
+    {
+      id: 'seventh-education-saintek',
+      title: 'Lamaran Tentor Tetap Saintek (SMP & SMA)',
+      company: 'Seventh Education',
+      position: 'Tentor Tetap Saintek (SMP & SMA)',
+      location: 'Cabang Teras, Soloraya',
+      recipient: 'Yth. Tim HRD & Manajemen Seventh Education (Cabang Teras, Soloraya)',
+      source: 'Poster Resmi Rekrutmen Tentor (We Are Hiring Tentor Tetap Saintek Soloraya)',
+      date: '2026-10-26',
+      badge: 'Batas Pendaftaran: 26 Okt 2026',
+      badgeClass: 'badge-active',
+      desc: 'Pengajuan posisi Tentor Tetap Saintek (Matematika, IPA & SNBT-UTBK) dengan keunggulan penalaran logika, integritas akademis IPK unggul, dan rekam jejak kepemimpinan mahasiswa.',
+      highlights: 'Pendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa BJU), kompetensi kuat Matematika, Logika, IPA, dan Penalaran SNBT-UTBK, pengalaman narasumber workshop teknologi & Ketua Umum HIMSI UBSI Solo, komunikatif, sabar, berjiwa pendidik, siap penempatan Cabang Teras.',
+      contactEmail: '',
+      contactPhone: '085641804150',
+      contactLink: 'https://linkr.bio/seventheducation'
+    },
+    {
+      id: 'googlasses-content-creator',
+      title: 'Lamaran Content Creator Full Time (Eyewear Brand)',
+      company: 'googlasses Surakarta',
+      position: 'Content Creator (Full Time)',
+      location: 'Jl. Melon Raya No.51, Karangasem, Laweyan, Surakarta',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen googlasses Surakarta',
+      source: 'Pengumuman Lowongan Kerja Resmi (Requirements Content Creator Full Time)',
+      date: '2026-10-26',
+      badge: 'Siap Dikirim / Tersinkronisasi',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Content Creator full-time untuk produksi foto/video produk kacamata, storytelling visual, editing CapCut & Photoshop, serta kolaborasi tim di Laweyan Surakarta.',
+      highlights: 'Kreatif & update tren medsos, terampil produksi foto & video produk eyewear/fashion, menguasai editing CapCut, Photoshop, Canva, memahami visual storytelling, siap kerja full-time mandiri/tim, berkas lengkap (CV ATS, Portofolio, Foto Non Formal, KTP, Transkrip Akademik).',
+      contactEmail: 'googlassessoc@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'cilily-collection-creator',
+      title: 'Lamaran Content Creator Fashion & OOTD',
+      company: 'Cilily Collection',
+      position: 'Content Creator',
+      location: 'Solo / Surakarta',
+      recipient: 'Yth. Tim HRD & Manajemen Cilily Collection',
+      source: 'Poster Rekrutmen Resmi (We\'re Hiring Content Creator)',
+      date: '2026-10-26',
+      badge: 'Siap Dikirim / Tersinkronisasi',
+      badgeClass: 'badge-active',
+      desc: 'Aplikasi Content Creator busana wanita berfokus pada konten harian OOTD, try-on, mix & match, daily video shooting & CapCut editing, dan manajemen viral reels/TikTok.',
+      highlights: 'Paham tren TikTok & IG Reels viral, produksi foto/video OOTD harian, shooting & editing CapCut dinamis, sense fashion & storytelling kuat, rapi, konsisten on-time upload, pengalaman fashion branding (Volution Apparel).',
+      contactEmail: 'adm.cililycollection@gmail.com',
+      contactPhone: '085179979027',
+      contactLink: ''
+    },
+    {
       id: 'kai-daop-6',
       title: 'Surat Permohonan Magang & Rekrutmen IT Systems',
       company: 'PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta',
@@ -1260,6 +1465,105 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. SEND APPLICATION DISPATCH HUB (EMAIL, WHATSAPP, PORTAL KARIR)
   // ===================================================================
   function buildCoverEmailText(position, company) {
+    const pos = position.toLowerCase();
+    const comp = company.toLowerCase();
+
+    if (comp.includes('googlasses')) {
+      return `Yth. Tim Rekrutmen & Manajemen googlasses Surakarta,
+Jl. Melon Raya No. 51, Karangasem, Laweyan, Surakarta
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, pelamar posisi Content Creator (Full Time) di googlasses Surakarta.
+
+Menindaklanjuti pengumuman lowongan kerja resmi (Requirements Content Creator Full Time), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Content Creator (Full Time). Saya memiliki keahlian mendalam dalam fotografi dan videografi produk, storytelling visual, serta penguasaan perangkat lunak editing CapCut, Adobe Photoshop, Lightroom, dan Canva. Saya juga merupakan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) dan siap bekerja secara penuh waktu baik secara mandiri maupun berkolaborasi tim di Surakarta.
+
+Sesuai dengan ketentuan lampiran berkas yang dipersyaratkan pada poster, bersama email ini saya lampirkan:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV Format ATS Standar Industri)
+3. Portofolio Kreatif (Fotografi & Videografi Produk Eyewear)
+4. Foto Diri Non Formal Terbaru
+5. Salinan Kartu Tanda Penduduk (KTP)
+6. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)
+7. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan menghadiri sesi wawancara guna memaparkan portofolio serta ide kreasi konten yang dapat saya sumbangkan demi pertumbuhan brand googlasses. Atas perhatian dan kesempatan yang diberikan, saya sampaikan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah`;
+    }
+
+    if (comp.includes('cilily')) {
+      return `Yth. Tim HRD & Manajemen Cilily Collection,
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, pelamar untuk posisi Content Creator di Cilily Collection.
+
+Berdasarkan informasi rekrutmen resmi (We're Hiring Content Creator) yang saya dapatkan, saya bermaksud mengajukan diri untuk bergabung sebagai Content Creator busana wanita di Cilily Collection. Saya memiliki pemahaman kuat tentang tren video TikTok dan Instagram Reels yang sedang viral, terampil memproduksi konten Outfit of the Day (OOTD), try-on, serta mix and match dengan editing CapCut yang dinamis, konsisten, dan berorientasi pada peningkatan engagement audiens.
+
+Bersama email ini saya turut melampirkan berkas kelengkapan administrasi:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV Format Standar ATS)
+3. Portofolio Video Kreatif Fesyen & Editing CapCut
+4. Salinan Transkrip Nilai Akademik Terkini
+5. Piagam Penghargaan Juara 2 Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain
+6. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan mengikuti tahapan seleksi berikutnya. Atas perhatian Bapak/Ibu, saya mengucapkan terima kasih.
+
+Hormat saya,
+MUHAMMAD FAHREL YULIYANTO
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('wijaya') || (pos.includes('marketing') && pos.includes('komersil'))) {
+      return `Yth. Tim HRD & Manajemen Rekrutmen Wijaya Kreativ Group,
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa BJU).
+
+Melalui email ini, saya mengajukan lamaran pekerjaan untuk posisi Marketing Komersil di Wijaya Kreativ Group sesuai informasi lowongan kerja resmi (Open Recruitment Marketing Komersil Solo Raya). Berbekal pengalaman lebih dari 8 bulan di bidang digital marketing dan promosi berbayar (Meta Ads - Facebook & Instagram), kemampuan komunikasi dan negosiasi persuasif, kepemilikan kendaraan pribadi dan SIM C aktif, domisili di Solo Raya, serta sikap berorientasi target dan jujur, saya siap berkontribusi aktif dalam akselerasi penjualan di Wijaya Kreativ Group.
+
+Sebagai bahan pertimbangan Bapak/Ibu, saya lampirkan:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV Format ATS Standar Industri)
+3. Portofolio Digital Marketing & Promosi Media Sosial
+4. Salinan Surat Izin Mengemudi (SIM C Aktif)
+5. Salinan Transkrip Nilai Akademik (IPK Unggul)
+6. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan mengikuti sesi wawancara. Terima kasih banyak atas waktu dan perhatian Bapak/Ibu.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('seventh') || pos.includes('tentor')) {
+      return `Yth. Tim HRD & Manajemen Seventh Education,
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Melalui email ini, saya bermaksud mengajukan lamaran pekerjaan untuk posisi Tentor Tetap Saintek (SMP & SMA) di Seventh Education penempatan Cabang Teras, Soloraya. Didukung penguasaan kuat dalam bidang Matematika, logika analitis, dan sains untuk pembekalan ujian sekolah serta persiapan SNBT-UTBK, serta pengalaman memimpin organisasi sebagai Ketua Umum HIMSI UBSI Solo, saya memiliki dedikasi, kesabaran mengajar, dan keterampilan komunikasi edukatif yang ramah bagi siswa.
+
+Bersama ini saya lampirkan berkas pendukung resmi:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV ATS Standar Akademik & Industri)
+3. Salinan Transkrip Nilai Akademik (IPK Unggul & Penerima Beasiswa BJU)
+4. Salinan Sertifikat Kompetensi Profesi BNSP
+5. Salinan KTP & Dokumen Kualifikasi Pendukung
+6. Tautan Portofolio Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan mengikuti tahapan seleksi dan wawancara di Seventh Education. Terima kasih atas perhatian dan kesempatan berharga Bapak/Ibu.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com`;
+    }
+
+    // Default Email text
     return `Yth. Tim Rekrutmen / HRD ${company},
 
 Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa semester 5 S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
@@ -1286,6 +1590,74 @@ Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah`;
   }
 
   function buildWhatsAppText(position, company) {
+    const pos = position.toLowerCase();
+    const comp = company.toLowerCase();
+
+    if (comp.includes('beauthinc') || pos.includes('sosial media spesialis')) {
+      return `*Muhammad Fahrel Yuliyanto_Sosial Media Spesialis*
+
+Selamat Pagi/Siang Tim HRD & Rekrutmen beauthinc,
+
+Perkenalkan saya *Muhammad Fahrel Yuliyanto*, mahasiswa S1 Sistem Informasi UBSI Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Sesuai informasi rekrutmen resmi (We Are Hiring Sosial Media Spesialis), melalui pesan WhatsApp ini saya bermaksud mengirimkan berkas lamaran pekerjaan untuk posisi *Sosial Media Spesialis* di *beauthinc*.
+
+Saya memiliki pengalaman nyata dalam content planning, copywriting persuasif tren kecantikan/skincare, editing video promosi (CapCut & Canva), serta analisis insight dan engagement audiens di Instagram dan TikTok.
+
+Sebagai bahan pertimbangan Bapak/Ibu, berkas Curriculum Vitae (CV ATS) dan Portofolio Kreatif telah saya siapkan. Portofolio interaktif proyek dan karya saya dapat diakses langsung melalui:
+🔗 https://fhrelz.github.io/portfolio-3d-celestial/
+📄 CV Online ATS: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+
+Besar harapan saya untuk dapat berdiskusi lebih lanjut pada tahapan seleksi berikutnya. Terima kasih banyak atas perhatian dan waktu berharga yang Bapak/Ibu berikan.
+
+Hormat saya,
+*Muhammad Fahrel Yuliyanto*
+Telepon / WhatsApp: +62 889-8526-6525
+Email: muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('cilily')) {
+      return `*MUHAMMAD FAHREL YULIYANTO_CONTENT CREATOR*
+
+Selamat Pagi/Siang Tim HRD Cilily Collection,
+
+Perkenalkan saya *Muhammad Fahrel Yuliyanto*, pelamar posisi Content Creator di Cilily Collection.
+
+Melalui pesan ini, saya bermaksud mengirimkan berkas lamaran pekerjaan untuk posisi *Content Creator* sesuai poster rekrutmen resmi Cilily Collection. Saya memiliki pemahaman tren TikTok & IG Reels viral, terampil memproduksi video fashion OOTD, try-on, mix & match harian, mahir editing video CapCut dinamis, rapi, serta konsisten on-time upload.
+
+Sebagai bahan pertimbangan, berkas CV ATS dan Portofolio Kreatif saya dapat diakses langsung pada:
+🔗 https://fhrelz.github.io/portfolio-3d-celestial/
+📄 Format CV ATS: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+
+Besar harapan saya untuk diberikan kesempatan wawancara. Terima kasih banyak atas perhatian Bapak/Ibu.
+
+Hormat saya,
+*MUHAMMAD FAHREL YULIYANTO*
+Telepon / WA: +62 889-8526-6525
+Email: muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('seventh') || pos.includes('tentor')) {
+      return `Selamat Pagi/Siang Kak Indi / Kak Vidi & Tim HRD Seventh Education,
+
+Perkenalkan saya *Muhammad Fahrel Yuliyanto*, mahasiswa S1 Sistem Informasi UBSI Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Sehubungan dengan dibukanya lowongan *Tentor Tetap Saintek (SMP & SMA)* penempatan Soloraya (Cabang Teras) dengan batas akhir 26 Oktober 2026, melalui pesan ini saya bermaksud mengonfirmasi pengajuan lamaran pekerjaan dan pengisian data diri saya.
+
+Saya memiliki kompetensi kuat dalam bidang Matematika, logika, dan sains analitis untuk pembekalan ujian serta persiapan SNBT-UTBK siswa SMP & SMA. Pengalaman kepemimpinan saya sebagai Ketua Umum HIMSI UBSI Solo dan pemateri workshop melatih kesabaran, integritas moral, serta komunikasi edukatif yang mudah dipahami siswa.
+
+Tautan portofolio dan profil lengkap saya dapat diakses melalui:
+🔗 https://fhrelz.github.io/portfolio-3d-celestial/
+📄 CV Format ATS: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+
+Besar harapan saya untuk dapat bergabung dan berkontribusi sebagai Tentor Tetap Saintek di Seventh Education Cabang Teras. Terima kasih atas perhatian dan kesempatan berharga yang diberikan.
+
+Hormat saya,
+*Muhammad Fahrel Yuliyanto*
+Telepon / WhatsApp: +62 889-8526-6525
+Email: muhmmadfahrel@gmail.com`;
+    }
+
     return `Selamat Pagi/Siang Bapak/Ibu HRD ${company},
 
 Perkenalkan saya *Muhammad Fahrel Yuliyanto*, mahasiswa S1 Sistem Informasi UBSI Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
@@ -1294,6 +1666,7 @@ Saya bermaksud mengirimkan berkas lamaran pekerjaan untuk posisi *${position}* d
 
 Sebagai bahan pertimbangan Bapak/Ibu, berkas resmi Surat Lamaran Pekerjaan dan CV Format ATS telah saya siapkan. Portofolio interaktif proyek, sertifikasi BNSP, dan pengakuan HKI Kemenkumham saya dapat diakses langsung melalui tautan:
 🔗 https://fhrelz.github.io/portfolio-3d-celestial/
+📄 Format CV ATS: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
 
 Besar harapan saya untuk dapat diberikan kesempatan mengikuti tahapan seleksi selanjutnya. Terima kasih banyak atas perhatian dan waktu berharga yang Bapak/Ibu berikan.
 
