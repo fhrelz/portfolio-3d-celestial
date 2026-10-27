@@ -381,15 +381,28 @@ document.addEventListener('DOMContentLoaded', () => {
     ocrStatusMsg.innerHTML = `<i class="fa-solid fa-check"></i> Selesai (${note})`;
     
     const lowerName = fileName.toLowerCase();
-    if (lowerName.includes('irsyad') || lowerName.includes('markom') || lowerName.includes('marketing') || lowerName.includes('screenshot')) {
-      inpPosition.value = 'Staff Marketing Komunikasi (MARKOM)';
-      inpCompany.value = 'Sekolah Al Irsyad Surakarta';
-      inpLocation.value = 'Surakarta';
-      inpRecipient.value = 'Yth. Panitia Rekrutmen & Pimpinan Sekolah Al Irsyad Surakarta';
-      inpSource.value = `Poster Lowongan Kerja Resmi Sekolah Al Irsyad Surakarta`;
-      inpContactLink.value = 'https://s.id/lokeralirsyadsolo';
-      inpKeyHighlights.value = 'Pria Muslim, usia max 30 tahun\nKreatif, komunikatif & percaya diri\nMenguasai content writing & Canva\nMampu edit video CapCut\nMenguasai sosial media Instagram, TikTok, YouTube\nDiutamakan berdomisili di Solo / Surakarta';
-      generateLetter();
+    if (lowerName.includes('honda') || lowerName.includes('ramayana') || lowerName.includes('rmy')) {
+      applyPresetRole('honda-marketing');
+    } else if (lowerName.includes('analis') || lowerName.includes('consula') || lowerName.includes('talent')) {
+      applyPresetRole('analis-talent');
+    } else if (lowerName.includes('kertabhumi') || lowerName.includes('kerta') || lowerName.includes('bwi')) {
+      applyPresetRole('kerta-webdev');
+    } else if (lowerName.includes('optimal') || lowerName.includes('sragen') || lowerName.includes('divisi')) {
+      applyPresetRole('optimal-komputer');
+    } else if (lowerName.includes('dewi') || lowerName.includes('sri') || lowerName.includes('colomadu')) {
+      applyPresetRole('dewisri-creator');
+    } else if (lowerName.includes('irsyad') || lowerName.includes('markom') || lowerName.includes('screenshot')) {
+      applyPresetRole('markom');
+    } else if (lowerName.includes('wijaya')) {
+      applyPresetRole('wijaya-marketing');
+    } else if (lowerName.includes('beauthinc')) {
+      applyPresetRole('beauthinc-sosmed');
+    } else if (lowerName.includes('seventh')) {
+      applyPresetRole('seventh-tentor');
+    } else if (lowerName.includes('googlasses')) {
+      applyPresetRole('googlasses-creator');
+    } else if (lowerName.includes('cilily')) {
+      applyPresetRole('cilily-creator');
     } else if (lowerName.includes('flutter') || lowerName.includes('mobile')) {
       applyPresetRole('mobile-dev');
     } else if (lowerName.includes('qa') || lowerName.includes('tester') || lowerName.includes('testing')) {
@@ -408,6 +421,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div><strong>📌 Posisi:</strong> ${inpPosition.value}</div>
         <div><strong>🏢 Instansi:</strong> ${inpCompany.value}</div>
         <div><strong>📍 Lokasi:</strong> ${inpLocation.value}</div>
+        ${inpContactEmail.value ? `<div><strong>✉️ Email:</strong> ${inpContactEmail.value}</div>` : ''}
+        ${inpContactPhone.value ? `<div><strong>📱 WA:</strong> ${inpContactPhone.value}</div>` : ''}
         ${inpContactLink.value ? `<div><strong>🔗 Tautan:</strong> <a href="${inpContactLink.value}" target="_blank" style="color: #0369a1; text-decoration: underline;">${inpContactLink.value}</a></div>` : ''}
       `;
     }
@@ -433,7 +448,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let detectedCompany = '';
     let detectedRecipient = '';
 
-    if (/al[\s\-_]*irsyad|irsyad|al\s*ir/i.test(text) || /al[\s\-_]*irsyad|irsyad/i.test(fileName)) {
+    if (/honda|ramayana|mojosongo|rmygrup/i.test(text) || /honda|ramayana/i.test(fileName)) {
+      detectedCompany = 'Dealer Honda Ramayana Mojosongo';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo';
+    } else if (/analis\s*teknologi|consula/i.test(text) || /analis|consula/i.test(fileName)) {
+      detectedCompany = 'PT. Analis Teknologi Consula';
+      detectedRecipient = 'Yth. HR & Talent Acquisition Management PT. Analis Teknologi Consula';
+    } else if (/kertabhumi|kerta\s*bhumi/i.test(text) || /kertabhumi/i.test(fileName)) {
+      detectedCompany = 'PT. Kertabhumi';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Engineering PT. Kertabhumi';
+    } else if (/optimal|optimalcopier|sukowati/i.test(text) || /optimal/i.test(fileName)) {
+      detectedCompany = 'OPTIMAL Sragen';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen OPTIMAL Sragen';
+    } else if (/dewi\s*sri|tohudan|colomadu/i.test(text) || /dewi\s*sri/i.test(fileName)) {
+      detectedCompany = 'Dewi Sri Solo';
+      detectedRecipient = 'Yth. Pimpinan & Tim Manajemen Dewi Sri Solo';
+    } else if (/wijaya\s*kreativ/i.test(text) || /wijaya/i.test(fileName)) {
+      detectedCompany = 'Wijaya Kreativ Group';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen Rekrutmen Wijaya Kreativ Group';
+    } else if (/beauthinc/i.test(text) || /beauthinc/i.test(fileName)) {
+      detectedCompany = 'beauthinc';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen beauthinc';
+    } else if (/seventh\s*education|seventh/i.test(text) || /seventh/i.test(fileName)) {
+      detectedCompany = 'Seventh Education';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen Seventh Education';
+    } else if (/googlasses/i.test(text) || /googlasses/i.test(fileName)) {
+      detectedCompany = 'googlasses Surakarta';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen googlasses Surakarta';
+    } else if (/cilily/i.test(text) || /cilily/i.test(fileName)) {
+      detectedCompany = 'Cilily Collection';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen Cilily Collection';
+    } else if (/al[\s\-_]*irsyad|irsyad|al\s*ir/i.test(text) || /al[\s\-_]*irsyad|irsyad/i.test(fileName)) {
       detectedCompany = 'Sekolah Al Irsyad Surakarta';
       detectedRecipient = 'Yth. Panitia Rekrutmen & Pimpinan Sekolah Al Irsyad Surakarta';
     } else if (/muhammadiyah/i.test(text)) {
@@ -475,11 +520,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Detect Position (Comprehensive Catalog)
     let detectedPosition = '';
 
-    if (/markom|marketing\s+komunikasi|marketing\s+komunikas[!i1l]|marcom|marketing\s+communication/i.test(text)) {
+    if (/honda|ramayana|mojosongo|rmygrup/i.test(text) || /honda|ramayana/i.test(fileName)) {
+      // User explicit note: di HONDA melamar dibagian MARKETING EXECUTIVE
+      detectedPosition = 'Marketing Eksekutif';
+    } else if (/talent\s*acquisiti?on|recruitment\s*data|talent\s*scouting/i.test(text) || /talent/i.test(fileName)) {
+      detectedPosition = 'Talent Acquisition';
+    } else if (/divisi\s*komputer|basic\s*komputer/i.test(text) || /divisi\s*komputer/i.test(fileName)) {
+      detectedPosition = 'Divisi Komputer';
+    } else if (/konten\s*kreator/i.test(text) || (/kreator/i.test(text) && /dewi/i.test(text))) {
+      detectedPosition = 'Konten Kreator';
+    } else if (/kertabhumi/i.test(text) || (/web\s*developer/i.test(text) && /react|laravel/i.test(text))) {
+      detectedPosition = 'Web Developer';
+    } else if (/markom|marketing\s+komunikasi|marketing\s+komunikas[!i1l]|marcom|marketing\s+communication/i.test(text)) {
       detectedPosition = 'Staff Marketing Komunikasi (MARKOM)';
     } else if (/digital\s+marketing|marketing\s+specialist|pemasaran/i.test(text)) {
       detectedPosition = 'Digital Marketing Specialist';
-    } else if (/content\s+creator|kreator\s+konten|konten\s+kreator/i.test(text)) {
+    } else if (/content\s+creator|kreator\s+konten/i.test(text)) {
       detectedPosition = 'Content Creator & Creative Specialist';
     } else if (/social\s+media|sosmed|admin\s+sosmed/i.test(text)) {
       detectedPosition = 'Social Media Specialist';
@@ -536,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
       detectedLocation = 'Surakarta';
     }
 
-    // 4. Detect Links (s.id, bit.ly, forms.gle, etc. including single slash https:/s.id OCR artifact)
+    // 4. Detect Links (s.id, bit.ly, forms.gle, etc.)
     const linkMatches = text.match(/(?:https?:?\/?\/?)?(?:s\.id|bit\.ly|forms\.gle|linktr\.ee|cutt\.ly|tinyurl\.com|instagram\.com\/[a-zA-Z0-9_\-\.]+)\/[a-zA-Z0-9_\-\.\/]+/gi);
     let detectedLink = '';
     if (linkMatches && linkMatches.length > 0) {
@@ -566,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let highlights = [];
     const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 3);
     lines.forEach(line => {
-      if (/kualifikasi|syarat|usia|pria|muslim|kreatif|komunikat|canva|capcut|video|desain|multimedia|sosial\s+media|instagram|tiktok|youtube|solo|surakarta|pengalaman/i.test(line)) {
+      if (/kualifikasi|syarat|usia|pria|muslim|kreatif|komunikat|canva|capcut|video|desain|multimedia|sosial\s+media|instagram|tiktok|youtube|solo|surakarta|pengalaman|react|laravel/i.test(line)) {
         const cleanedLine = line.replace(/^[•\+\-\*\‘\’\d\.\)\s]+/, '').trim();
         if (cleanedLine.length > 5 && !highlights.includes(cleanedLine) && !/kualifikasi|open recruitment/i.test(cleanedLine)) {
           highlights.push(cleanedLine);
@@ -576,6 +632,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (highlights.length > 0) {
       inpKeyHighlights.value = highlights.slice(0, 6).join('\n');
+    }
+
+    // 8. Specialized Overrides for Specific Employers
+    if (detectedCompany.includes('Honda') || detectedCompany.includes('Ramayana')) {
+      detectedPosition = 'Marketing Eksekutif';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo';
+      detectedLocation = 'Mojosongo Jebres Solo / Gatot Subroto Jayengan Solo';
+      inpContactEmail.value = 'hrd.rmygrup@gmail.com';
+      inpKeyHighlights.value = 'Pria usia 19 tahun, berpenampilan rapi, sopan, komunikatif & persuasif\nMemiliki sepeda motor pribadi & SIM C aktif\nPengalaman 8+ bulan pemasaran & promosi digital di Solo Raya (Meta Ads, Instagram, TikTok)\nBerorientasi target penjualan, jujur, gigih, dan disiplin tinggi\nSiap penempatan Dealer Honda Ramayana Mojosongo / Gatot Subroto Solo';
+    } else if (detectedCompany.includes('Analis Teknologi')) {
+      detectedPosition = 'Talent Acquisition';
+      detectedRecipient = 'Yth. HR & Talent Acquisition Management PT. Analis Teknologi Consula';
+      detectedLocation = 'Jl. Raya Grogol No.2, Dusun II, Grogol, Sukoharjo, Jawa Tengah';
+      inpContactEmail.value = 'hr@analisteknologiconsula.com';
+      inpKeyHighlights.value = 'Pendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa BJU)\nRekam jejak kepemimpinan Ketua Umum HIMSI UBSI Solo (pengalaman talent scouting, screening CV & wawancara kandidat organisasi)\nKemampuan problem solving, multitasking, analytical thinking & komunikasi persuasif\nMahir administrasi & pengelolaan data kandidat menggunakan Google Suites & MS Office\nMemahami ekosistem industri teknologi & konsultan IT';
+    } else if (detectedCompany.includes('Kertabhumi')) {
+      detectedPosition = 'Web Developer';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Engineering PT. Kertabhumi';
+      detectedLocation = 'Solo Raya';
+      inpContactEmail.value = 'karir.bwi@gmail.com';
+      inpKeyHighlights.value = 'Pendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nPengembangan frontend modern & pemahaman arsitektur React, HTML, CSS, JavaScript responsif\nPengembangan backend framework Laravel & CodeIgniter terintegrasi RESTful API\nKemampuan database administration (MySQL & PostgreSQL) bersertifikasi BNSP\nSilver Medalist Pekan Inovasi Nasional Mercu Buana & Pemegang Hak Cipta Kemenkumham RI\nDomisili Solo Raya, jujur, problem solver, dan siap kerja mandiri maupun tim';
+    } else if (detectedCompany.includes('OPTIMAL')) {
+      detectedPosition = 'Divisi Komputer';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen OPTIMAL Sragen';
+      detectedLocation = 'Jl. Sukowati No. 171 Sragen Kulon, Sragen';
+      inpContactEmail.value = 'Optimalcopierdigital@gmail.com';
+      inpContactPhone.value = '085183124382';
+      inpKeyHighlights.value = 'Putra Asli Daerah (Tempat & Tanggal Lahir: Sragen, 22 Juli 2007)\nPria Muslim taat (sholat 5 waktu), single, amanah, dan disiplin tinggi\nMahir operasional komputer & Microsoft Office lengkap (MS Word, Excel, PowerPoint)\nKeahlian desain grafis, editing dokumen, penjilidan & digital printing\nSiap bekerja cepat, teliti, dan memberikan pelayanan prima di Sragen Kulon';
+    } else if (detectedCompany.includes('Dewi Sri')) {
+      detectedPosition = 'Konten Kreator';
+      detectedRecipient = 'Yth. Pimpinan & Tim Manajemen Dewi Sri Solo';
+      detectedLocation = 'Tohudan, Colomadu, Karanganyar';
+      inpContactPhone.value = '081333555997';
+      inpKeyHighlights.value = 'Domisili dekat (Krendowahono, Gondangrejo, Karanganyar - siap mobilitas ke Tohudan, Colomadu)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nPengalaman 8+ bulan produksi video promosi, ide konten kreatif, dan pengelolaan media sosial\nMahir editing video mobile (CapCut) & alat desain visual (Canva & Adobe Illustrator)\nMemahami algoritma platform medsos (TikTok, IG Reels) untuk optimasi engagement & konversi';
     } else if (/irsyad|markom/i.test(text) || /irsyad|markom/i.test(fileName)) {
       inpKeyHighlights.value = 'Pria Muslim, usia max 30 tahun\nKreatif, komunikatif & percaya diri\nMenguasai content writing & Canva\nMampu edit video CapCut\nMenguasai sosial media Instagram, TikTok, YouTube\nDiutamakan berdomisili di Solo / Surakarta';
     }
@@ -596,7 +686,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div><strong>📌 Posisi:</strong> ${inpPosition.value}</div>
         <div><strong>🏢 Instansi:</strong> ${inpCompany.value}</div>
         <div><strong>📍 Lokasi:</strong> ${inpLocation.value}</div>
-        ${detectedLink ? `<div><strong>🔗 Tautan Pendaftaran:</strong> <a href="${detectedLink}" target="_blank" style="color: #0369a1; text-decoration: underline; font-weight: 700;">${detectedLink}</a></div>` : ''}
+        ${inpContactEmail.value ? `<div><strong>✉️ Email:</strong> ${inpContactEmail.value}</div>` : ''}
+        ${inpContactPhone.value ? `<div><strong>📱 WA:</strong> ${inpContactPhone.value}</div>` : ''}
+        ${detectedLink ? `<div><strong>🔗 Tautan:</strong> <a href="${detectedLink}" target="_blank" style="color: #0369a1; text-decoration: underline; font-weight: 700;">${detectedLink}</a></div>` : ''}
       `;
     }
 
@@ -613,6 +705,61 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. PRESET ROLES
   // ===================================================================
   const ROLE_PRESETS = {
+    'honda-marketing': {
+      position: 'Marketing Eksekutif',
+      company: 'Dealer Honda Ramayana Mojosongo',
+      location: 'Mojosongo Jebres Solo / Gatot Subroto Jayengan Solo',
+      recipient: 'Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo',
+      source: 'Poster Rekrutmen Resmi Dealer Honda Ramayana Mojosongo (One HEART)',
+      highlights: 'Pria usia 19 tahun, berpenampilan rapi, sopan, komunikatif & persuasif\nMemiliki sepeda motor pribadi & SIM C aktif\nPengalaman 8+ bulan pemasaran & promosi digital di Solo Raya (Meta Ads, Instagram, TikTok)\nBerorientasi target penjualan, jujur, gigih, dan disiplin tinggi\nSiap penempatan Dealer Honda Ramayana Mojosongo / Gatot Subroto Solo',
+      contactEmail: 'hrd.rmygrup@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'analis-talent': {
+      position: 'Talent Acquisition',
+      company: 'PT. Analis Teknologi Consula',
+      location: 'Jl. Raya Grogol No.2, Dusun II, Grogol, Sukoharjo, Jawa Tengah',
+      recipient: 'Yth. HR & Talent Acquisition Management PT. Analis Teknologi Consula',
+      source: 'Poster Resmi We\'re Hiring Talent Acquisition PT. Analis Teknologi Consula',
+      highlights: 'Pendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa BJU)\nRekam jejak kepemimpinan Ketua Umum HIMSI UBSI Solo (pengalaman talent scouting, screening CV & wawancara kandidat organisasi)\nKemampuan problem solving, multitasking, analytical thinking & komunikasi persuasif\nMahir administrasi & pengelolaan data kandidat menggunakan Google Suites & MS Office\nMemahami ekosistem industri teknologi & konsultan IT',
+      contactEmail: 'hr@analisteknologiconsula.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'kerta-webdev': {
+      position: 'Web Developer',
+      company: 'PT. Kertabhumi',
+      location: 'Solo Raya',
+      recipient: 'Yth. Tim Rekrutmen & Engineering PT. Kertabhumi',
+      source: 'Poster Resmi Lowongan Kerja Web Developer PT. Kertabhumi (Batas: 31 Okt 2026)',
+      highlights: 'Pendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nPengembangan frontend modern & pemahaman arsitektur React, HTML, CSS, JavaScript responsif\nPengembangan backend framework Laravel & CodeIgniter terintegrasi RESTful API\nKemampuan database administration (MySQL & PostgreSQL) bersertifikasi BNSP\nSilver Medalist Pekan Inovasi Nasional Mercu Buana & Pemegang Hak Cipta Kemenkumham RI\nDomisili Solo Raya, jujur, problem solver, dan siap kerja mandiri maupun tim',
+      contactEmail: 'karir.bwi@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'optimal-komputer': {
+      position: 'Divisi Komputer',
+      company: 'OPTIMAL Sragen',
+      location: 'Jl. Sukowati No. 171 Sragen Kulon, Sragen',
+      recipient: 'Yth. Pimpinan & Manajemen OPTIMAL Sragen',
+      source: 'Poster Resmi We Are Hiring Divisi Komputer OPTIMAL Sragen',
+      highlights: 'Putra Asli Daerah (Tempat & Tanggal Lahir: Sragen, 22 Juli 2007)\nPria Muslim taat (sholat 5 waktu), single, amanah, dan disiplin tinggi\nMahir operasional komputer & Microsoft Office lengkap (MS Word, Excel, PowerPoint)\nKeahlian desain grafis, editing dokumen, penjilidan & digital printing\nSiap bekerja cepat, teliti, dan memberikan pelayanan prima di Sragen Kulon',
+      contactEmail: 'Optimalcopierdigital@gmail.com',
+      contactPhone: '085183124382',
+      contactLink: ''
+    },
+    'dewisri-creator': {
+      position: 'Konten Kreator',
+      company: 'Dewi Sri Solo',
+      location: 'Tohudan, Colomadu, Karanganyar',
+      recipient: 'Yth. Pimpinan & Tim Manajemen Dewi Sri Solo',
+      source: 'Poster Lowongan Kerja Resmi Konten Kreator Dewi Sri Solo',
+      highlights: 'Domisili dekat (Krendowahono, Gondangrejo, Karanganyar - siap mobilitas ke Tohudan, Colomadu)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nPengalaman 8+ bulan produksi video promosi, ide konten kreatif, dan pengelolaan media sosial\nMahir editing video mobile (CapCut) & alat desain visual (Canva & Adobe Illustrator)\nMemahami algoritma platform medsos (TikTok, IG Reels) untuk optimasi engagement & konversi',
+      contactEmail: '',
+      contactPhone: '081333555997',
+      contactLink: ''
+    },
     'wijaya-marketing': {
       position: 'Marketing Komersil',
       company: 'Wijaya Kreativ Group',
@@ -809,7 +956,62 @@ document.addEventListener('DOMContentLoaded', () => {
       'Portofolio Proyek Interaktif & Piagam Penghargaan Nasional (Silver Medalist Universitas Mercu Buana)'
     ];
 
-    if (pos.includes('tentor') || comp.includes('seventh') || pos.includes('saintek') || pos.includes('mengajar')) {
+    if (comp.includes('honda') || comp.includes('ramayana') || pos.includes('marketing eksekutif') || pos.includes('marketing executive')) {
+      specificParagraph = `Sebagai profesional muda berusia 19 tahun yang berpenampilan rapi, sopan, dan memiliki keterampilan komunikasi interpersonal yang aktif dan persuasif, saya memiliki komitmen tinggi untuk berkarir di bidang pemasaran otomotif. Latar belakang saya sebagai mahasiswa S1 Sistem Informasi UBSI Solo diperkaya dengan pengalaman lebih dari 8 bulan di bidang promosi komersil dan Digital Marketing (<strong>Meta Ads Manager, Instagram, dan TikTok</strong>) di wilayah Solo Raya. Didukung kepemilikan <strong>sepeda motor pribadi serta SIM C aktif</strong>, saya memiliki kesiapan mobilitas harian yang prima untuk melakukan canvassing, pendekatan calon konsumen, presentasi keunggulan unit sepeda motor Honda, serta membangun relasi jangka panjang dengan konsumen. Dengan etos kerja disiplin, orientasi target penjualan yang kuat, dan integritas tinggi, saya siap berkontribusi aktif memajukan penjualan di Dealer Honda Ramayana Mojosongo.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif)',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Portofolio Digital Marketing & Promosi Penjualan di Solo Raya',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)'
+      ];
+    } else if (comp.includes('analis') || pos.includes('talent acquisition') || pos.includes('talent')) {
+      specificParagraph = `Sebagai mahasiswa S1 Sistem Informasi di UBSI Kampus Solo yang memiliki pemahaman mendalam tentang lanskap teknologi informasi, saya membawa keunggulan unik dalam proses rekrutmen tenaga kerja bidang IT dan industri modern. Pengalaman saya memimpin organisasi sebagai <strong>Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo</strong> telah melatih kemampuan saya dalam melakukan talent scouting, skrining berkas kurikulum vitae, wawancara kandidat panitia dan pengurus, serta analisis kecocokan profil individu terhadap kebutuhan tugas organisasi. Didukung penguasaan piranti administrasi berbasis data (<strong>Google Suites, Microsoft Excel terstruktur, dan Google Forms</strong>), keterampilan analytical thinking, serta kemampuan negosiasi dan komunikasi persuasif, saya siap berkoordinasi secara efektif dengan user dan manajer guna memenuhi kebutuhan kandidat berkualitas di PT. Analis Teknologi Consula.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul & Beasiswa Prestasi BJU)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator)',
+        'Salinan Surat Keputusan & Sertifikat Ketua Umum HIMSI UBSI Solo',
+        'Portofolio Kepemimpinan, Manajemen Organisasi & Rekrutmen',
+        'Salinan Surat Pencatatan Ciptaan (HKI Kemenkumham RI) & Dokumen Pendukung'
+      ];
+    } else if (comp.includes('kertabhumi') || (pos.includes('web developer') && comp.includes('kerta'))) {
+      specificParagraph = `Sebagai mahasiswa semester 5 Program Studi S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo dengan predikat Beasiswa Prestasi BJU (IPK Unggul), saya memiliki rekam jejak teruji dalam rekayasa perangkat lunak web modern. Saya memiliki kompetensi dalam pengembangan antarmuka (frontend) menggunakan <strong>HTML, CSS, JavaScript, dan React</strong> dengan penerapan prinsip responsive design dan cross-browser compatibility, serta pengembangan backend menggunakan framework <strong>Laravel dan CodeIgniter</strong> yang terintegrasi <strong>RESTful API</strong>. Di samping itu, keahlian saya dalam mengelola basis data MySQL dan PostgreSQL didukung oleh <strong>Sertifikasi Profesi BNSP Database Administrator (No. Reg: DMS.1241.00995 2026)</strong>. Karya platform web yang saya pimpin juga telah meraih <strong>Medali Perak (Silver Medal) pada Pekan Inovasi Nasional Mercu Buana</strong> serta tercatat resmi memiliki <strong>Hak Cipta Kemenkumham RI (No. EC002026096415)</strong>. Berdomisili di Solo Raya, saya memiliki kesiapan untuk berkolaborasi secara mandiri maupun tim.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul & Beasiswa BJU)',
+        'Salinan Sertifikat Profesi BNSP Database Administrator',
+        'Salinan Surat Pencatatan Ciptaan Web Platform (HKI Kemenkumham RI)',
+        'Piagam Penghargaan Silver Medalist Pekan Inovasi Nasional (Mercu Buana)',
+        'Tautan Portofolio Proyek Web Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/'
+      ];
+    } else if (comp.includes('optimal') || pos.includes('divisi komputer')) {
+      specificParagraph = `Sebagai putra daerah asli Sragen yang lahir pada <strong>22 Juli 2007</strong> dan seorang muslim yang taat menjalankan sholat 5 waktu, saya memegang teguh nilai kejujuran, amanah, dan kedisiplinan kerja. Saya memiliki keahlian mendalam dalam pengoperasian komputer dan seluruh paket <strong>Microsoft Office (Word, Excel, PowerPoint)</strong>, pengolahan dokumen, administrasi data, pengetikan cepat, penjilidan, serta desain grafis dan digital printing. Karakter saya yang teliti, cekatan, dan ramah memudahkan saya memberikan pelayanan terbaik dan memuaskan bagi setiap pelanggan yang datang ke OPTIMAL Sragen di Jl. Sukowati No. 171 Sragen Kulon.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Ijazah Pendidikan Formal & Transkrip Nilai Akademik Terkini',
+        'Salinan Kartu Tanda Penduduk (KTP Domisili Asli Sragen)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP Bidang Komputer & Basis Data',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology & Juara 2 Nasional Video Reels',
+        'Pas Foto Formal Terbaru'
+      ];
+    } else if (comp.includes('dewi sri') || (pos.includes('kreator') && comp.includes('dewi'))) {
+      specificParagraph = `Dengan domisili tempat tinggal saya di Krendowahono, Gondangrejo, Karanganyar yang berjarak sangat dekat dan mudah menjangkau lokasi Dewi Sri Solo di Tohudan, Colomadu, saya memiliki mobilitas yang sangat fleksibel untuk memproduksi konten langsung di lokasi. Saya memiliki rekam jejak nyata selama lebih dari 8 bulan dalam produksi konten promosi media sosial, didukung prestasi prestisius sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif SobiFest</strong> dan <strong>Juara 1 LKS Graphic Design Technology</strong>. Saya terbiasa menyusun ide konten, menulis caption dan script video yang memikat, memproduksi serta mengedit video harian menggunakan <strong>CapCut</strong>, mendesain materi visual dengan <strong>Canva dan Illustrator</strong>, serta menganalisis algoritma dan insight engagement audiens di Instagram dan TikTok guna menjaga konsistensi brand Dewi Sri Solo.`;
+
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Video Kreatif, Desain Visual & Pengelolaan Media Sosial',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Salinan Sertifikat Kompetensi Profesi BNSP & Tautan Portofolio Interaktif'
+      ];
+    } else if (pos.includes('tentor') || comp.includes('seventh') || pos.includes('saintek') || pos.includes('mengajar')) {
       specificParagraph = `Sebagai mahasiswa semester 5 Program Studi S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo sekaligus penerima <strong>Beasiswa Prestasi Jalur Undangan (BJU) dengan Indeks Prestasi Kumulatif (IPK) Unggul</strong>, saya memiliki fondasi keilmuan yang kokoh dalam bidang Matematika, logika algoritma, statistika, serta sains analitis. Pengalaman saya memimpin organisasi sebagai <strong>Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo</strong> serta kerap dipercaya menjadi pemateri workshop teknologi membentuk karakter kepemimpinan, kesabaran dalam membimbing, dan keterampilan komunikasi edukatif yang persuasif. Saya terbiasa menyederhanakan materi penalaran kuantitatif dan konsep sains yang kompleks menjadi metode pemecahan masalah yang sistematis, menyenangkan, dan mudah dipahami oleh siswa SMP maupun SMA untuk persiapan ujian sekolah dan seleksi SNBT-UTBK.`;
 
       documentListItems = [
@@ -892,7 +1094,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Additional note if key highlights or specific company entered
     let highlightSnippet = '';
-    if (comp.includes('seventh') || pos.includes('tentor')) {
+    if (comp.includes('honda') || comp.includes('ramayana')) {
+      highlightSnippet = `<p class="letter-p">Menjawab kualifikasi pada poster rekrutmen <strong>${company}</strong> untuk posisi Marketing Eksekutif, yakni usia minimal 18 tahun, berpenampilan rapi dan komunikatif, kepemilikan sepeda motor dan SIM C aktif, serta kesiapan bekerja berorientasi target penjualan, saya menyatakan kesiapan penuh untuk langsung bertugas dan berdedikasi memajukan Dealer Honda Ramayana.</p>`;
+    } else if (comp.includes('analis') || pos.includes('talent acquisition')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi pada poster rekrutmen <strong>${company}</strong>, yakni kemampuan problem solving, analytical thinking, komunikasi prima, negosiasi, manajemen waktu, serta pengelolaan data candidate dengan MS Office & Google Suites, saya siap mendedikasikan ketelitian dan kemampuan koordinasi saya demi kelancaran proses hiring hingga onboarding kandidat.</p>`;
+    } else if (comp.includes('kertabhumi')) {
+      highlightSnippet = `<p class="letter-p">Menanggapi kualifikasi lowongan <strong>${company}</strong> dengan batas akhir 31 Oktober 2026, yang mempersyaratkan penguasaan React, Laravel, REST API, pengelolaan database MySQL, responsive design, pemecahan masalah (problem-solving), dan domisili Solo Raya, saya menyatakan kesiapan penuh untuk segera bergabung dan berkontribusi.</p>`;
+    } else if (comp.includes('optimal') || pos.includes('divisi komputer')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan persyaratan yang tercantum pada poster rekrutmen <strong>${company}</strong>, yakni muslim (sholat 5 waktu), berstatus single, minimal SLTA/sederajat, berkarakter amanah dan disiplin, serta terampil dalam pengoperasian aplikasi dasar komputer (Word, Excel, PPT), saya menyatakan kesiapan dan kesungguhan penuh untuk mendedikasikan tenaga dan kemampuan saya di OPTIMAL Sragen.</p>`;
+    } else if (comp.includes('dewi sri')) {
+      highlightSnippet = `<p class="letter-p">Menjawab kualifikasi <strong>${company}</strong> di Tohudan, Colomadu, Karanganyar untuk posisi Konten Kreator, yakni keahlian mengembangkan ide konten menarik, penulisan skrip & caption, editing video, alat desain sederhana, pemahaman algoritma media sosial, dan kemampuan bekerja tepat waktu di bawah tenggat waktu (deadline), saya siap memberikan hasil karya terbaik dan terukur.</p>`;
+    } else if (comp.includes('seventh') || pos.includes('tentor')) {
       highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi khusus yang dipersyaratkan oleh <strong>${company}</strong>, yakni kemampuan pengajaran Saintek (Matematika/IPA/IPS/SNBT-UTBK), batas usia maksimal 32 tahun, pengalaman mengajar, dan kesiapan penempatan di <strong>Cabang Teras (Soloraya)</strong>, saya menyatakan kesiapan penuh dan komitmen tinggi untuk mendedikasikan waktu, integritas moral, serta keilmuan saya demi kemajuan dan prestasi siswa-siswi Seventh Education.</p>`;
     } else if (comp.includes('wijaya') || (pos.includes('marketing') && pos.includes('komersil'))) {
       highlightSnippet = `<p class="letter-p">Berdasarkan persyaratan yang tercantum pada poster rekrutmen <strong>${company}</strong>, yakni kemampuan negosiasi, penguasaan promosi media sosial, kepemilikan kendaraan pribadi & SIM C aktif, domisili di Solo Raya, serta sikap berorientasi target dan jujur, saya siap langsung terjun ke lapangan untuk menjalankan strategi pemasaran terpadu.</p>`;
@@ -1174,6 +1386,91 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===================================================================
   const DEFAULT_ARCHIVES = [
     {
+      id: 'honda-ramayana-marketing',
+      title: 'Lamaran Marketing Eksekutif Dealer Honda',
+      company: 'Dealer Honda Ramayana Mojosongo',
+      position: 'Marketing Eksekutif',
+      location: 'Mojosongo Jebres Solo / Gatot Subroto Jayengan Solo',
+      recipient: 'Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo',
+      source: 'Poster Rekrutmen Resmi Dealer Honda Ramayana Mojosongo (One HEART)',
+      date: '2026-10-27',
+      badge: 'Brosur Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Pengajuan lamaran posisi Marketing Eksekutif mengoptimalkan keahlian negosiasi, kepemilikan motor & SIM C aktif, serta strategi digital marketing (Meta Ads, IG, TikTok) untuk akselerasi penjualan unit Honda.',
+      highlights: 'Pria usia 19 tahun, berpenampilan rapi, sopan, komunikatif & persuasif\nMemiliki sepeda motor pribadi & SIM C aktif\nPengalaman 8+ bulan pemasaran & promosi digital di Solo Raya (Meta Ads, Instagram, TikTok)\nBerorientasi target penjualan, jujur, gigih, dan disiplin tinggi\nSiap penempatan Dealer Honda Ramayana Mojosongo / Gatot Subroto Solo',
+      contactEmail: 'hrd.rmygrup@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'analis-teknologi-talent',
+      title: 'Lamaran Talent Acquisition & IT Recruitment',
+      company: 'PT. Analis Teknologi Consula',
+      position: 'Talent Acquisition',
+      location: 'Jl. Raya Grogol No.2, Dusun II, Grogol, Sukoharjo, Jawa Tengah',
+      recipient: 'Yth. HR & Talent Acquisition Management PT. Analis Teknologi Consula',
+      source: 'Poster Resmi We\'re Hiring Talent Acquisition PT. Analis Teknologi Consula',
+      date: '2026-10-27',
+      badge: 'Brosur Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Aplikasi Talent Acquisition memadukan pemahaman teknologi informasi (S1 Sistem Informasi UBSI), rekam jejak rekrutmen organisasi (Ketua Umum HIMSI Solo), kemampuan interview, analisis data kandidat, dan Google Suites/MS Office.',
+      highlights: 'Pendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa BJU)\nRekam jejak kepemimpinan Ketua Umum HIMSI UBSI Solo (pengalaman talent scouting, screening CV & wawancara kandidat organisasi)\nKemampuan problem solving, multitasking, analytical thinking & komunikasi persuasif\nMahir administrasi & pengelolaan data kandidat menggunakan Google Suites & MS Office\nMemahami ekosistem industri teknologi & konsultan IT',
+      contactEmail: 'hr@analisteknologiconsula.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'kertabhumi-web-developer',
+      title: 'Lamaran Web Developer (React, Laravel & REST API)',
+      company: 'PT. Kertabhumi',
+      position: 'Web Developer',
+      location: 'Solo Raya',
+      recipient: 'Yth. Tim Rekrutmen & Engineering PT. Kertabhumi',
+      source: 'Poster Resmi Lowongan Kerja Web Developer PT. Kertabhumi (Batas: 31 Okt 2026)',
+      date: '2026-10-27',
+      badge: 'Batas: 31 Okt 2026',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Web Developer berbasis rekam jejak fullstack: Laravel, React, REST API, MySQL/PostgreSQL, Hak Cipta Kemenkumham RI MBG SPPG Nusukan, Silver Medalist Pekan Inovasi Nasional Mercu Buana, dan Sertifikasi Profesi BNSP Database Administrator.',
+      highlights: 'Pendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nPengembangan frontend modern & pemahaman arsitektur React, HTML, CSS, JavaScript responsif\nPengembangan backend framework Laravel & CodeIgniter terintegrasi RESTful API\nKemampuan database administration (MySQL & PostgreSQL) bersertifikasi BNSP\nSilver Medalist Pekan Inovasi Nasional Mercu Buana & Pemegang Hak Cipta Kemenkumham RI\nDomisili Solo Raya, jujur, problem solver, dan siap kerja mandiri maupun tim',
+      contactEmail: 'karir.bwi@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'optimal-sragen-komputer',
+      title: 'Lamaran Divisi Komputer & Pelayanan Digital',
+      company: 'OPTIMAL Sragen',
+      position: 'Divisi Komputer',
+      location: 'Jl. Sukowati No. 171 Sragen Kulon, Sragen',
+      recipient: 'Yth. Pimpinan & Manajemen OPTIMAL Sragen',
+      source: 'Poster Resmi We Are Hiring Divisi Komputer OPTIMAL Sragen',
+      date: '2026-10-27',
+      badge: 'Brosur Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Divisi Komputer dari putra daerah asli Sragen (lahir Sragen, 22 Juli 2007), pria muslim yang taat (sholat 5 waktu), amanah, disiplin, menguasai operasional MS Office (Word, Excel, PowerPoint) dan digital printing.',
+      highlights: 'Putra Asli Daerah (Tempat & Tanggal Lahir: Sragen, 22 Juli 2007)\nPria Muslim taat (sholat 5 waktu), single, amanah, dan disiplin tinggi\nMahir operasional komputer & Microsoft Office lengkap (MS Word, Excel, PowerPoint)\nKeahlian desain grafis, editing dokumen, penjilidan & digital printing\nSiap bekerja cepat, teliti, dan memberikan pelayanan prima di Sragen Kulon',
+      contactEmail: 'Optimalcopierdigital@gmail.com',
+      contactPhone: '085183124382',
+      contactLink: ''
+    },
+    {
+      id: 'dewisri-konten-kreator',
+      title: 'Lamaran Konten Kreator & Social Media Growth',
+      company: 'Dewi Sri Solo',
+      position: 'Konten Kreator',
+      location: 'Tohudan, Colomadu, Karanganyar',
+      recipient: 'Yth. Pimpinan & Tim Manajemen Dewi Sri Solo',
+      source: 'Poster Lowongan Kerja Resmi Konten Kreator Dewi Sri Solo',
+      date: '2026-10-27',
+      badge: 'Brosur Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Konten Kreator berdomisili sangat dekat (Karanganyar), Juara 2 Nasional Video Reels SobiFest, Juara 1 LKS Desain Grafis, penguasaan CapCut, Canva, penulisan script, serta strategi algoritma media sosial.',
+      highlights: 'Domisili dekat (Krendowahono, Gondangrejo, Karanganyar - siap mobilitas ke Tohudan, Colomadu)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nPengalaman 8+ bulan produksi video promosi, ide konten kreatif, dan pengelolaan media sosial\nMahir editing video mobile (CapCut) & alat desain visual (Canva & Adobe Illustrator)\nMemahami algoritma platform medsos (TikTok, IG Reels) untuk optimasi engagement & konversi',
+      contactEmail: '',
+      contactPhone: '081333555997',
+      contactLink: ''
+    },
+    {
       id: 'wijaya-kreativ-marketing',
       title: 'Lamaran Marketing Komersil & Promosi Digital',
       company: 'Wijaya Kreativ Group',
@@ -1311,6 +1608,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  // Archive Applied Status Management (localStorage)
+  const APPLIED_STORAGE_KEY = 'fahrel_applied_archive_ids_v1';
+  let currentArchiveFilter = 'all';
+
+  // Default applied items: all previous 8 applications are marked as applied
+  const DEFAULT_APPLIED_IDS = [
+    'wijaya-kreativ-marketing',
+    'beauthinc-sosial-media',
+    'seventh-education-saintek',
+    'googlasses-content-creator',
+    'cilily-collection-creator',
+    'kai-daop-6',
+    'tanjung-mulia-sqa',
+    'brida-surakarta'
+  ];
+
+  function getAppliedArchiveIds() {
+    try {
+      const saved = localStorage.getItem(APPLIED_STORAGE_KEY);
+      if (saved !== null) {
+        return JSON.parse(saved);
+      }
+      // First run: save default applied IDs
+      localStorage.setItem(APPLIED_STORAGE_KEY, JSON.stringify(DEFAULT_APPLIED_IDS));
+      return [...DEFAULT_APPLIED_IDS];
+    } catch (e) {
+      console.warn('Failed reading applied archive IDs:', e);
+      return [...DEFAULT_APPLIED_IDS];
+    }
+  }
+
+  function setAppliedArchiveIds(ids) {
+    try {
+      localStorage.setItem(APPLIED_STORAGE_KEY, JSON.stringify(ids));
+    } catch (e) {
+      console.warn('Failed saving applied archive IDs:', e);
+    }
+  }
+
+  function toggleAppliedStatus(archiveId) {
+    const appliedIds = getAppliedArchiveIds();
+    const index = appliedIds.indexOf(archiveId);
+    let isNowApplied = false;
+
+    if (index > -1) {
+      appliedIds.splice(index, 1);
+      isNowApplied = false;
+    } else {
+      appliedIds.push(archiveId);
+      isNowApplied = true;
+    }
+
+    setAppliedArchiveIds(appliedIds);
+    renderArchive();
+    showToast(isNowApplied ? 'Status diubah: Sudah Dilamar! (Tersimpan)' : 'Status diubah: Belum Dilamar (Draft)');
+  }
+
   function getStoredArchives() {
     try {
       const stored = localStorage.getItem(ARCHIVE_STORAGE_KEY);
@@ -1332,19 +1686,58 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderArchive() {
     const userArchives = getStoredArchives();
     const allArchives = [...DEFAULT_ARCHIVES, ...userArchives];
-    archiveCountBadge.textContent = allArchives.length;
+    const appliedIds = getAppliedArchiveIds();
+
+    const pendingCount = allArchives.filter(a => !appliedIds.includes(a.id)).length;
+    const appliedCount = allArchives.filter(a => appliedIds.includes(a.id)).length;
+
+    // Update badge counters
+    if (archiveCountBadge) archiveCountBadge.textContent = allArchives.length;
+    const countAllEl = document.getElementById('countAll');
+    const countPendingEl = document.getElementById('countPending');
+    const countAppliedEl = document.getElementById('countApplied');
+    if (countAllEl) countAllEl.textContent = allArchives.length;
+    if (countPendingEl) countPendingEl.textContent = pendingCount;
+    if (countAppliedEl) countAppliedEl.textContent = appliedCount;
+
+    // Filter cards based on currentArchiveFilter
+    const filteredArchives = allArchives.filter(item => {
+      const isApplied = appliedIds.includes(item.id);
+      if (currentArchiveFilter === 'pending') return !isApplied;
+      if (currentArchiveFilter === 'applied') return isApplied;
+      return true; // 'all'
+    });
 
     archiveGrid.innerHTML = '';
 
-    allArchives.forEach((item, index) => {
-      const card = document.createElement('div');
-      card.className = 'archive-card';
-      
+    if (filteredArchives.length === 0) {
+      archiveGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #fff; border-radius: 12px; border: 1px dashed #cbd5e1;">
+          <i class="fa-solid fa-inbox" style="font-size: 2.5rem; color: #94a3b8; margin-bottom: 12px;"></i>
+          <h3 style="color: #475569; font-size: 1.1rem; font-weight: 700;">Tidak ada lamaran pada kategori ini</h3>
+          <p style="color: #64748b; font-size: 0.85rem;">Gunakan filter lain atau buat lamaran baru.</p>
+        </div>
+      `;
+      return;
+    }
+
+    filteredArchives.forEach((item) => {
+      const isApplied = appliedIds.includes(item.id);
       const isCustom = !DEFAULT_ARCHIVES.some(d => d.id === item.id);
+
+      const card = document.createElement('div');
+      card.className = `archive-card ${isApplied ? 'card-applied' : 'card-pending'}`;
+      card.setAttribute('data-id', item.id);
 
       card.innerHTML = `
         <div class="archive-header">
-          <span class="archive-badge ${item.badgeClass || (isCustom ? 'badge-custom' : 'badge-archive')}">${item.badge || 'Tersimpan'}</span>
+          <div class="archive-status-toggle" data-id="${item.id}" title="Klik untuk mengubah status: Sudah Dilamar / Belum Dilamar">
+            <input type="checkbox" class="archive-checkbox" id="chk-${item.id}" ${isApplied ? 'checked' : ''} />
+            <label for="chk-${item.id}" class="archive-status-label ${isApplied ? 'status-applied' : 'status-pending'}">
+              <i class="fa-solid ${isApplied ? 'fa-circle-check' : 'fa-hourglass-half'}"></i>
+              <span>${isApplied ? 'Sudah Dilamar' : 'Belum Dilamar'}</span>
+            </label>
+          </div>
           <span class="archive-date"><i class="fa-regular fa-calendar"></i> ${formatIndonesianDate(item.date)}</span>
         </div>
         <h3 class="archive-title">${item.title || item.position}</h3>
@@ -1357,8 +1750,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <i class="fa-solid fa-location-dot"></i> ${item.location || 'Surakarta'}
           </span>
           <div class="archive-actions">
-            <button class="btn btn-outline-dark btn-load-archive" data-id="${item.id}" title="Muat ke Editor A4">
-              <i class="fa-solid fa-folder-open"></i> Muat ke Editor
+            <button class="btn btn-outline-dark btn-load-archive" data-id="${item.id}" title="Muat ke Editor A4 & Kirim">
+              <i class="fa-solid fa-folder-open"></i> Buka Surat
             </button>
             ${isCustom ? `
               <button class="btn btn-outline-dark btn-delete-archive" data-id="${item.id}" style="color: #ef4444; border-color: #fca5a5;" title="Hapus dari Arsip">
@@ -1370,6 +1763,15 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       archiveGrid.appendChild(card);
+    });
+
+    // Attach checklist status toggle handlers
+    document.querySelectorAll('.archive-status-toggle').forEach(toggleEl => {
+      toggleEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = toggleEl.getAttribute('data-id');
+        toggleAppliedStatus(id);
+      });
     });
 
     // Attach load handlers
@@ -1396,6 +1798,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Filter Buttons Binding
+  const archiveFilterBtns = document.querySelectorAll('.archive-filter-btn');
+  archiveFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      archiveFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentArchiveFilter = btn.getAttribute('data-filter') || 'all';
+      renderArchive();
+    });
+  });
 
   function loadArchiveIntoEditor(item) {
     inpPosition.value = item.position || '';
@@ -1453,13 +1866,12 @@ document.addEventListener('DOMContentLoaded', () => {
     currentArchives.unshift(newArchiveItem);
     saveStoredArchives(currentArchives);
 
-    archiveCountBadge.textContent = DEFAULT_ARCHIVES.length + currentArchives.length;
+    renderArchive();
     showToast('Surat lamaran berhasil disimpan ke Arsip Pribadi!');
   });
 
-  // Initial archive badge count
-  const initialUserArchives = getStoredArchives();
-  archiveCountBadge.textContent = DEFAULT_ARCHIVES.length + initialUserArchives.length;
+  // Initial archive render & badge count
+  renderArchive();
 
   // ===================================================================
   // 9. SEND APPLICATION DISPATCH HUB (EMAIL, WHATSAPP, PORTAL KARIR)
@@ -1467,6 +1879,102 @@ document.addEventListener('DOMContentLoaded', () => {
   function buildCoverEmailText(position, company) {
     const pos = position.toLowerCase();
     const comp = company.toLowerCase();
+
+    if (comp.includes('honda') || comp.includes('ramayana')) {
+      return `Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo,
+Jl. Mayor Achmadi No. 8, Mojosongo, Jebres, Surakarta
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, pelamar untuk posisi Marketing Eksekutif di Dealer Honda Ramayana Mojosongo.
+
+Sesuai informasi lowongan kerja resmi Dealer Honda Ramayana Mojosongo (One HEART), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Marketing Eksekutif. Saya adalah profesional muda berusia 19 tahun, berpenampilan rapi, sopan, serta memiliki kemampuan komunikasi interpersonal yang persuasif. Saya memiliki pengalaman lebih dari 8 bulan dalam promosi komersial dan digital marketing di Solo Raya (Meta Ads, Instagram, TikTok), serta memiliki kendaraan pribadi dan SIM C aktif untuk mendukung mobilitas tinggi dalam menjangkau calon konsumen dan mencapai target penjualan unit Honda.
+
+Sebagai bahan pertimbangan Bapak/Ibu, bersama email ini saya lampirkan:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV ATS Standar Industri)
+3. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)
+4. Salinan Surat Izin Mengemudi (SIM C Aktif) & KTP
+5. Portofolio Digital Marketing & Promosi Komersial di Solo Raya
+6. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan menghadiri sesi wawancara langsung guna mendiskusikan rencana kontribusi penjualan yang dapat saya berikan demi memajukan Dealer Honda Ramayana. Atas perhatian dan kesempatan yang diberikan, saya mengucapkan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah`;
+    }
+
+    if (comp.includes('analis') || pos.includes('talent acquisition')) {
+      return `Yth. HR & Talent Acquisition Management PT. Analis Teknologi Consula,
+Jl. Raya Grogol No.2, Dusun II, Grogol, Sukoharjo, Jawa Tengah
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Menindaklanjuti informasi lowongan pekerjaan resmi (We're Hiring Talent Acquisition), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Talent Acquisition di PT. Analis Teknologi Consula. Memiliki pemahaman teknis dalam dunia IT serta pengalaman kepemimpinan sebagai Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo dalam mengoordinasikan talent scouting, skrining profil, serta wawancara kandidat, saya memiliki keunggulan kompetitif dalam merekrut talenta teknologi berkualitas. Saya juga mahir dalam administrasi pengelolaan data kandidat menggunakan Google Suites dan MS Office secara rapi dan terstruktur.
+
+Bersama email ini saya lampirkan kelengkapan berkas resmi:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV Format ATS Standar Industri)
+3. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul & Beasiswa BJU)
+4. Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator)
+5. Salinan SK & Sertifikat Kepengurusan Ketua Umum HIMSI Solo
+6. Tautan Portofolio Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan mengikuti tahapan seleksi dan wawancara di PT. Analis Teknologi Consula. Terima kasih atas perhatian dan kesempatan berharga yang Bapak/Ibu berikan.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('kertabhumi')) {
+      return `Yth. Tim Rekrutmen & Engineering PT. Kertabhumi,
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa semester 5 S1 Sistem Informasi UBSI Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Berdasarkan pengumuman lowongan kerja resmi (Web Developer PT. Kertabhumi dengan batas akhir 31 Oktober 2026), melalui email ini saya mengajukan diri untuk posisi Web Developer. Saya memiliki kompetensi dalam pengembangan frontend modern menggunakan React, HTML, CSS, JavaScript, pengembangan backend dengan framework Laravel dan CodeIgniter terintegrasi RESTful API, serta administrasi basis data MySQL bersertifikasi BNSP (No. Reg: DMS.1241.00995 2026). Platform web yang saya rancang telah meraih Medali Perak pada Pekan Inovasi Nasional Mercu Buana dan tercatat memiliki Hak Cipta resmi Kemenkumham RI. Berdomisili di Solo Raya, saya siap bekerja secara mandiri maupun berkolaborasi tim.
+
+Bersama email ini saya lampirkan dokumen pendukung resmi:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV ATS Standar Rekayasa Web)
+3. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul)
+4. Salinan Sertifikasi Profesi BNSP Database Administrator
+5. Salinan Surat Pencatatan Hak Cipta Platform Web (HKI Kemenkumham RI)
+6. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+
+Besar harapan saya untuk diberikan kesempatan menghadiri tahapan wawancara teknis. Terima kasih atas waktu dan perhatian Bapak/Ibu.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('optimal') || pos.includes('divisi komputer')) {
+      return `Yth. Pimpinan & Manajemen OPTIMAL Sragen,
+Jl. Sukowati No. 171 Sragen Kulon, Sragen
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, putra daerah asli Sragen (lahir Sragen, 22 Juli 2007), pria muslim yang taat menjalankan sholat 5 waktu, amanah, dan berdisiplin tinggi.
+
+Melalui email ini, saya bermaksud mengajukan lamaran pekerjaan untuk posisi Divisi Komputer di OPTIMAL Sragen sesuai pengumuman lowongan kerja resmi. Saya memiliki penguasaan mahir dalam pengoperasian komputer dan paket Microsoft Office (Word, Excel, PowerPoint), aplikasi desain grafis, pengetikan dokumen cepat, penjilidan, serta operasional digital printing dan fotokopi. Karakter saya yang teliti, cekatan, dan ramah memastikan pelayanan optimal dan prima bagi pelanggan di Sragen Kulon.
+
+Sebagai bahan pertimbangan, bersama ini saya lampirkan:
+1. Surat Lamaran Pekerjaan Resmi
+2. Curriculum Vitae (CV Format ATS Standar)
+3. Salinan Ijazah Formal & Transkrip Akademik Terkini
+4. Salinan Kartu Tanda Penduduk (KTP Asli Domisili Sragen)
+5. Salinan Sertifikat Kompetensi Profesi BNSP Komputer & Basis Data
+6. Pas Foto Formal Terbaru
+
+Besar harapan saya untuk diberikan kesempatan wawancara dan bergabung di OPTIMAL Sragen. Terima kasih atas perhatian Bapak/Ibu.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com`;
+    }
 
     if (comp.includes('googlasses')) {
       return `Yth. Tim Rekrutmen & Manajemen googlasses Surakarta,
@@ -1593,6 +2101,48 @@ Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah`;
     const pos = position.toLowerCase();
     const comp = company.toLowerCase();
 
+    if (comp.includes('dewi sri') || (pos.includes('kreator') && comp.includes('dewi'))) {
+      return `*Muhammad Fahrel Yuliyanto_Konten Kreator*
+
+Selamat Pagi/Siang Pimpinan & Tim HRD Dewi Sri Solo,
+
+Perkenalkan saya *Muhammad Fahrel Yuliyanto*, pelamar posisi Konten Kreator di Dewi Sri Solo (penempatan Tohudan, Colomadu, Karanganyar).
+
+Menindaklanjuti poster lowongan kerja resmi Konten Kreator Dewi Sri Solo, melalui WhatsApp ini saya bermaksud mengajukan lamaran pekerjaan. Bertempat tinggal dekat di Karanganyar, saya memiliki rekam jejak aktif dalam produksi konten video kreatif promosi (CapCut & Canva), didukung prestasi sebagai *Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)* dan *Juara 1 LKS Desain Grafis*. Saya terbiasa menyusun ide konten, copywriting, produksi video harian, serta memahami algoritma engagement media sosial (Instagram & TikTok).
+
+Sebagai bahan pertimbangan, berkas CV ATS dan Portofolio interaktif saya dapat diakses langsung pada:
+🔗 Portofolio: https://fhrelz.github.io/portfolio-3d-celestial/
+📄 CV Format ATS: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+
+Besar harapan saya untuk diberikan kesempatan wawancara dan berdiskusi lebih lanjut. Terima kasih atas perhatian dan waktu Bapak/Ibu.
+
+Hormat saya,
+*Muhammad Fahrel Yuliyanto*
+Telepon / WA: +62 889-8526-6525
+Email: muhmmadfahrel@gmail.com`;
+    }
+
+    if (comp.includes('optimal') || pos.includes('divisi komputer')) {
+      return `*Muhammad Fahrel Yuliyanto_Divisi Komputer*
+
+Selamat Pagi/Siang Pimpinan & Tim Manajemen OPTIMAL Sragen,
+
+Perkenalkan saya *Muhammad Fahrel Yuliyanto*, putra daerah asli Sragen (lahir di Sragen, 22 Juli 2007), pria muslim (sholat 5 waktu), amanah, dan berdisiplin tinggi.
+
+Menanggapi informasi lowongan kerja resmi (We Are Hiring Divisi Komputer) di OPTIMAL Sragen Jl. Sukowati No. 171 Sragen Kulon, melalui WhatsApp ini saya bermaksud mengirimkan berkas lamaran pekerjaan. Saya memiliki kemahiran dalam operasional komputer, Microsoft Office (Word, Excel, PowerPoint), pengetikan cepat, desain dokumen, serta layanan digital printing dan fotokopi.
+
+Tautan portofolio dan profil lengkap saya dapat diakses melalui:
+🔗 Portofolio: https://fhrelz.github.io/portfolio-3d-celestial/
+📄 CV Format ATS: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+
+Besar harapan saya untuk dapat bergabung dan melayani pelanggan di OPTIMAL Sragen. Terima kasih banyak atas waktu dan perhatian Bapak/Ibu.
+
+Hormat saya,
+*Muhammad Fahrel Yuliyanto*
+Telepon / WA: +62 889-8526-6525
+Email: muhmmadfahrel@gmail.com`;
+    }
+
     if (comp.includes('beauthinc') || pos.includes('sosial media spesialis')) {
       return `*Muhammad Fahrel Yuliyanto_Sosial Media Spesialis*
 
@@ -1711,12 +2261,26 @@ Email: muhmmadfahrel@gmail.com`;
     btnOpenSendModal.addEventListener('click', () => {
       const position = inpPosition.value.trim() || 'Junior Web Developer';
       const company = inpCompany.value.trim() || 'Perusahaan';
+      const comp = company.toLowerCase();
+      const pos = position.toLowerCase();
       const email = inpContactEmail ? inpContactEmail.value.trim() : '';
       const phone = inpContactPhone ? inpContactPhone.value.trim() : '';
       const link = inpContactLink ? inpContactLink.value.trim() : '';
 
       modalEmailTarget.value = email;
-      modalEmailSubject.value = `Lamaran Pekerjaan – ${position} – Muhammad Fahrel Yuliyanto`;
+
+      // Subject rules per employer requirements
+      if (comp.includes('honda') || comp.includes('ramayana')) {
+        modalEmailSubject.value = 'Marketing Eksekutif-Muhammad Fahrel Yuliyanto';
+      } else if (comp.includes('analis') || comp.includes('consula')) {
+        modalEmailSubject.value = 'Muhammad Fahrel Yuliyanto_Talent Acquisition';
+      } else if (comp.includes('kertabhumi')) {
+        modalEmailSubject.value = 'Lamaran Web Developer – Muhammad Fahrel Yuliyanto';
+      } else if (comp.includes('optimal') || pos.includes('divisi komputer')) {
+        modalEmailSubject.value = 'Lamaran Pekerjaan – Divisi Komputer – Muhammad Fahrel Yuliyanto';
+      } else {
+        modalEmailSubject.value = `Lamaran Pekerjaan – ${position} – Muhammad Fahrel Yuliyanto`;
+      }
       emailBodyPreview.textContent = buildCoverEmailText(position, company);
 
       modalWaTarget.value = phone;

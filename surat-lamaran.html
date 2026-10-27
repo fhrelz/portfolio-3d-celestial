@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- App Stylesheet -->
-  <link rel="stylesheet" href="surat-lamaran.css" />
+  <link rel="stylesheet" href="surat-lamaran.css?v=20261027_01" />
 
   <!-- Tesseract.js for Client-Side Flyer OCR -->
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
@@ -166,15 +166,26 @@
 
           <!-- Role Presets -->
           <div class="preset-roles-wrap">
-            <div class="preset-title" style="color: #0284c7; font-weight: 800; display: flex; align-items: center; gap: 6px;">
-              <i class="fa-solid fa-sparkles"></i> 5 Lowongan Brosur Terbaru (Siap Kirim):
+            <div class="preset-title" style="color: #059669; font-weight: 800; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-fire"></i> 5 Loker Brosur Terbaru Hari Ini (Siap Lamar):
             </div>
             <div class="preset-pills" style="margin-bottom: 12px;">
-              <button class="preset-pill preset-featured" data-preset="wijaya-marketing" title="Wijaya Kreativ Group - Marketing Komersil">🏢 Marketing Komersil (Wijaya Kreativ)</button>
-              <button class="preset-pill preset-featured" data-preset="beauthinc-sosmed" title="beauthinc - Sosial Media Spesialis">💄 Sosial Media Spesialis (beauthinc)</button>
-              <button class="preset-pill preset-featured" data-preset="seventh-tentor" title="Seventh Education - Tentor Saintek SMP/SMA">🎓 Tentor Saintek (Seventh Education)</button>
-              <button class="preset-pill preset-featured" data-preset="googlasses-creator" title="googlasses Surakarta - Content Creator Full Time">🕶️ Content Creator (googlasses)</button>
-              <button class="preset-pill preset-featured" data-preset="cilily-creator" title="Cilily Collection - Content Creator Fashion">👗 Content Creator (Cilily Collection)</button>
+              <button class="preset-pill preset-featured" data-preset="honda-marketing" style="background: #fee2e2; border-color: #ef4444; color: #b91c1c; font-weight: 800;" title="Dealer Honda Ramayana Mojosongo - MARKETING EKSEKUTIF">🏍️ Marketing Eksekutif (Honda Ramayana)</button>
+              <button class="preset-pill preset-featured" data-preset="analis-talent" title="PT Analis Teknologi Consula - Talent Acquisition">👔 Talent Acquisition (Analis Teknologi)</button>
+              <button class="preset-pill preset-featured" data-preset="kerta-webdev" title="PT Kertabhumi - Web Developer (Solo Raya)">💻 Web Developer (PT Kertabhumi)</button>
+              <button class="preset-pill preset-featured" data-preset="optimal-komputer" title="OPTIMAL Sragen - Divisi Komputer">🖥️ Divisi Komputer (OPTIMAL Sragen)</button>
+              <button class="preset-pill preset-featured" data-preset="dewisri-creator" title="Dewi Sri Solo - Konten Kreator (Colomadu)">📸 Konten Kreator (Dewi Sri Solo)</button>
+            </div>
+
+            <div class="preset-title" style="color: #0284c7; font-weight: 800; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-circle-check" style="color: #10b981;"></i> 5 Loker Kemarin (Sudah Dilamar):
+            </div>
+            <div class="preset-pills" style="margin-bottom: 12px;">
+              <button class="preset-pill" data-preset="wijaya-marketing" title="Wijaya Kreativ Group - Marketing Komersil">🏢 Marketing Komersil (Wijaya Kreativ)</button>
+              <button class="preset-pill" data-preset="beauthinc-sosmed" title="beauthinc - Sosial Media Spesialis">💄 Sosial Media Spesialis (beauthinc)</button>
+              <button class="preset-pill" data-preset="seventh-tentor" title="Seventh Education - Tentor Saintek SMP/SMA">🎓 Tentor Saintek (Seventh Education)</button>
+              <button class="preset-pill" data-preset="googlasses-creator" title="googlasses Surakarta - Content Creator Full Time">🕶️ Content Creator (googlasses)</button>
+              <button class="preset-pill" data-preset="cilily-creator" title="Cilily Collection - Content Creator Fashion">👗 Content Creator (Cilily Collection)</button>
             </div>
 
             <div class="preset-title">Preset Karir & IT Lainnya:</div>
@@ -303,6 +314,24 @@
         <button id="btnNewFromArchive" class="btn btn-primary">
           <i class="fa-solid fa-plus"></i> Buat Surat Lamaran Baru
         </button>
+      </div>
+
+      <!-- Archive Status Filter Bar -->
+      <div class="archive-filter-bar">
+        <div class="archive-filter-group" id="archiveFilterGroup">
+          <button class="archive-filter-btn active" data-filter="all">
+            <i class="fa-solid fa-list-check"></i> Semua Lamaran <span class="filter-count" id="countAll">0</span>
+          </button>
+          <button class="archive-filter-btn" data-filter="pending">
+            <i class="fa-solid fa-hourglass-half" style="color: #f59e0b;"></i> Belum Dilamar <span class="filter-count count-pending" id="countPending">0</span>
+          </button>
+          <button class="archive-filter-btn" data-filter="applied">
+            <i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Sudah Dilamar <span class="filter-count count-applied" id="countApplied">0</span>
+          </button>
+        </div>
+        <div class="archive-filter-hint">
+          <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Checklist pada kartu untuk menandai lamaran sudah selesai / belum dikirim.
+        </div>
       </div>
 
       <div class="archive-grid" id="archiveGrid">
@@ -459,6 +488,6 @@
   </div>
 
   <!-- App Script -->
-  <script src="surat-lamaran.js"></script>
+  <script src="surat-lamaran.js?v=20261027_01"></script>
 </body>
 </html>

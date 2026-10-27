@@ -28,6 +28,114 @@ ATTACHMENT_FILE = r'CV ATS Muhammad Fahrel Yuliyanto_2Mb.pdf'
 
 APPLICATIONS = [
     {
+        'company': 'Dealer Honda Ramayana Mojosongo',
+        'position': 'Marketing Eksekutif',
+        'recipient_email': 'hrd.rmygrup@gmail.com',
+        'subject': 'Marketing Eksekutif-Muhammad Fahrel Yuliyanto',
+        'body': """Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo,
+Jl. Mayor Achmadi No. 8, Mojosongo, Jebres, Surakarta
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, pelamar untuk posisi Marketing Eksekutif di Dealer Honda Ramayana Mojosongo.
+
+Sesuai informasi lowongan kerja resmi Dealer Honda Ramayana Mojosongo (One HEART), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Marketing Eksekutif. Saya adalah profesional muda berusia 19 tahun, berpenampilan rapi, sopan, serta memiliki kemampuan komunikasi interpersonal yang persuasif. Saya memiliki pengalaman lebih dari 8 bulan dalam promosi komersial dan digital marketing di Solo Raya (Meta Ads, Instagram, TikTok), serta memiliki kendaraan pribadi dan SIM C aktif untuk mendukung mobilitas tinggi dalam menjangkau calon konsumen dan mencapai target penjualan unit Honda.
+
+Sebagai bahan pertimbangan Bapak/Ibu, bersama email ini saya lampirkan:
+1. Curriculum Vitae (CV ATS Standar Industri) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)
+5. Salinan Surat Izin Mengemudi (SIM C Aktif) & KTP
+6. Portofolio Digital Marketing & Promosi Komersial di Solo Raya
+
+Besar harapan saya untuk diberikan kesempatan menghadiri sesi wawancara langsung guna mendiskusikan rencana kontribusi penjualan yang dapat saya berikan demi memajukan Dealer Honda Ramayana. Atas perhatian dan kesempatan yang diberikan, saya mengucapkan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah"""
+    },
+    {
+        'company': 'PT. Analis Teknologi Consula',
+        'position': 'Talent Acquisition',
+        'recipient_email': 'hr@analisteknologiconsula.com',
+        'subject': 'Muhammad Fahrel Yuliyanto_Talent Acquisition',
+        'body': """Yth. HR & Talent Acquisition Management PT. Analis Teknologi Consula,
+Jl. Raya Grogol No.2, Dusun II, Grogol, Sukoharjo, Jawa Tengah
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Menindaklanjuti informasi lowongan pekerjaan resmi (We're Hiring Talent Acquisition), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Talent Acquisition di PT. Analis Teknologi Consula. Memiliki pemahaman teknis dalam dunia IT serta pengalaman kepemimpinan sebagai Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo dalam mengoordinasikan talent scouting, skrining profil, serta wawancara kandidat, saya memiliki keunggulan kompetitif dalam merekrut talenta teknologi berkualitas. Saya juga mahir dalam administrasi pengelolaan data kandidat menggunakan Google Suites dan MS Office secara rapi dan terstruktur.
+
+Bersama email ini saya lampirkan kelengkapan berkas resmi:
+1. Curriculum Vitae (CV ATS Standar Industri) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul & Beasiswa BJU)
+5. Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator)
+6. Salinan SK & Sertifikat Kepengurusan Ketua Umum HIMSI Solo
+
+Besar harapan saya untuk diberikan kesempatan mengikuti tahapan seleksi dan wawancara di PT. Analis Teknologi Consula. Terima kasih atas perhatian dan kesempatan berharga yang Bapak/Ibu berikan.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com"""
+    },
+    {
+        'company': 'PT. Kertabhumi',
+        'position': 'Web Developer',
+        'recipient_email': 'karir.bwi@gmail.com',
+        'subject': 'Lamaran Web Developer – Muhammad Fahrel Yuliyanto',
+        'body': """Yth. Tim Rekrutmen & Engineering PT. Kertabhumi,
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa semester 5 S1 Sistem Informasi UBSI Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Berdasarkan pengumuman lowongan kerja resmi (Web Developer PT. Kertabhumi dengan batas akhir 31 Oktober 2026), melalui email ini saya mengajukan diri untuk posisi Web Developer. Saya memiliki kompetensi dalam pengembangan frontend modern menggunakan React, HTML, CSS, JavaScript, pengembangan backend dengan framework Laravel dan CodeIgniter terintegrasi RESTful API, serta administrasi basis data MySQL bersertifikasi BNSP (No. Reg: DMS.1241.00995 2026). Platform web yang saya rancang telah meraih Medali Perak pada Pekan Inovasi Nasional Mercu Buana dan tercatat memiliki Hak Cipta resmi Kemenkumham RI. Berdomisili di Solo Raya, saya siap bekerja secara mandiri maupun berkolaborasi tim.
+
+Bersama email ini saya lampirkan dokumen pendukung resmi:
+1. Curriculum Vitae (CV ATS Standar Rekayasa Web) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul)
+5. Salinan Sertifikasi Profesi BNSP Database Administrator
+6. Salinan Surat Pencatatan Hak Cipta Platform Web (HKI Kemenkumham RI)
+
+Besar harapan saya untuk diberikan kesempatan menghadiri tahapan wawancara teknis. Terima kasih atas waktu dan perhatian Bapak/Ibu.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com"""
+    },
+    {
+        'company': 'OPTIMAL Sragen',
+        'position': 'Divisi Komputer',
+        'recipient_email': 'Optimalcopierdigital@gmail.com',
+        'subject': 'Lamaran Pekerjaan – Divisi Komputer – Muhammad Fahrel Yuliyanto',
+        'body': """Yth. Pimpinan & Manajemen OPTIMAL Sragen,
+Jl. Sukowati No. 171 Sragen Kulon, Sragen
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, putra daerah asli Sragen (lahir Sragen, 22 Juli 2007), pria muslim yang taat menjalankan sholat 5 waktu, amanah, dan berdisiplin tinggi.
+
+Melalui email ini, saya bermaksud mengajukan lamaran pekerjaan untuk posisi Divisi Komputer di OPTIMAL Sragen sesuai pengumuman lowongan kerja resmi. Saya memiliki penguasaan mahir dalam pengoperasian komputer dan paket Microsoft Office (Word, Excel, PowerPoint), aplikasi desain grafis, pengetikan dokumen cepat, penjilidan, serta operasional digital printing dan fotokopi. Karakter saya yang teliti, cekatan, dan ramah memastikan pelayanan optimal dan prima bagi pelanggan di Sragen Kulon.
+
+Sebagai bahan pertimbangan, bersama ini saya lampirkan:
+1. Curriculum Vitae (CV Format ATS Standar) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Salinan Ijazah Formal & Transkrip Akademik Terkini
+5. Salinan Kartu Tanda Penduduk (KTP Asli Domisili Sragen)
+6. Salinan Sertifikat Kompetensi Profesi BNSP Komputer & Basis Data
+
+Besar harapan saya untuk diberikan kesempatan wawancara dan bergabung di OPTIMAL Sragen. Terima kasih atas perhatian Bapak/Ibu.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com"""
+    },
+    {
         'company': 'Wijaya Kreativ Group',
         'position': 'Marketing Komersil',
         'recipient_email': 'hrd@wijayakreativ.com',

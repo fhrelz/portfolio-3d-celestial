@@ -898,6 +898,154 @@ body {
   gap: 8px;
 }
 
+/* Archive Filter Bar */
+.archive-filter-bar {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.archive-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.archive-filter-btn {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.archive-filter-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+
+.archive-filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+}
+
+.archive-filter-btn .filter-count {
+  font-size: 0.76rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.08);
+  color: inherit;
+  font-weight: 800;
+}
+
+.archive-filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.filter-count.count-pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+.archive-filter-btn.active .filter-count.count-pending {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.filter-count.count-applied {
+  background: #dcfce7;
+  color: #15803d;
+}
+.archive-filter-btn.active .filter-count.count-applied {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.archive-filter-hint {
+  font-size: 0.82rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Status Checklist Toggle & Card Variations */
+.archive-card.card-applied {
+  border-left: 4px solid #10b981;
+}
+
+.archive-card.card-pending {
+  border-left: 4px solid #f59e0b;
+}
+
+.archive-status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.archive-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+.archive-status-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.archive-status-label.status-applied {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.archive-status-label.status-applied:hover {
+  background: #bbf7d0;
+}
+
+.archive-status-label.status-pending {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.archive-status-label.status-pending:hover {
+  background: #fde68a;
+}
+
+
 /* ===================================================================
    TOAST NOTIFICATION
    =================================================================== */
