@@ -1,0 +1,8 @@
+# robots.txt for https://fhrelz.github.io/portfolio-3d-celestial/
+# Official Portfolio of Muhammad Fahrel Yuliyanto (ryouko / otosaka ryouko / fahrel ubsi)
+
+User-agent: *
+Allow: /
+
+# Direct Googlebot and search crawlers to the XML sitemap
+Sitemap: https://fhrelz.github.io/portfolio-3d-celestial/sitemap.xml
