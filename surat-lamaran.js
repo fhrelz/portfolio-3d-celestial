@@ -89,9 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnOpenCareerPortal = document.getElementById('btnOpenCareerPortal');
 
 
-  // Set default date to today in YYYY-MM-DD
+  // Set default date to today in YYYY-MM-DD (Local Timezone safe)
   const today = new Date();
-  inpDate.value = today.toISOString().split('T')[0];
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  inpDate.value = `${yyyy}-${mm}-${dd}`;
 
   // ===================================================================
   // 1. PIN SECURITY ACCESS GATE (227070)
@@ -494,13 +497,20 @@ document.addEventListener('DOMContentLoaded', () => {
       detectedCompany = 'Badan Riset dan Inovasi Daerah (BRIDA) Kota Surakarta';
       detectedRecipient = 'Yth. Kepala Badan Riset dan Inovasi Daerah Kota Surakarta';
     } else {
-      // General institution regex (Sekolah, Yayasan, LPP, PT, CV, Dinas, dll)
-      const instansiMatch = text.match(/(?:Sekolah|Yayasan|LPP|Pesantren|Madrasah|Pondok|Perguruan|Universitas|Institut|Akademi|Politeknik|Klinik|Rumah Sakit|RS|Dinas|Badan|PT|CV|UD|Bank|BPR|BUMDes|Studio|Agency|Company|Group|Corp)\s+([A-Za-z0-9\s\.\,\(\)\-]+)/i);
+      // General institution regex (Sekolah, Yayasan, LPP, PT, CV, UD, Toko, Resto, dll)
+      const instansiMatch = text.match(/(?:Sekolah|Yayasan|LPP|Pesantren|Madrasah|Pondok|Perguruan|Universitas|Institut|Akademi|Politeknik|Klinik|Rumah Sakit|RS\.?|Dinas|Badan|PT\.?|CV\.?|UD\.?|Bank|BPR|BUMDes|Studio|Agency|Company|Group|Corp|Dealer|Bengkel|Koperasi|Resto|Restoran|Cafe|Kafe|Hotel|Optik|Toko|Apotek|Bimbel|Lembaga)(?:\.|\s+)\s*([A-Za-z0-9\s\.\,\(\)\-]+)/i);
+      const openAtMatch = text.match(/(?:Open\s+Recruitment|We\s+Are\s+Hiring|Lowongan\s+Kerja|Join\s+(?:Our\s+Team\s+)?(?:at|di))\s*[:\-–—]?\s*([A-Za-z0-9\s\.\-]{3,45})/i);
+
       if (instansiMatch) {
-        let comp = instansiMatch[0].split('\n')[0].replace(/kualifikasi|syarat|open|we are/i, '').trim();
+        let comp = instansiMatch[0].split('\n')[0].replace(/kualifikasi|syarat|persyaratan|open|we are/i, '').trim();
         if (comp.length > 55) comp = comp.substring(0, 55);
         detectedCompany = comp;
         detectedRecipient = `Yth. Tim Rekrutmen / Pimpinan ${comp}`;
+      } else if (openAtMatch && openAtMatch[1]) {
+        let comp = openAtMatch[1].split('\n')[0].replace(/kualifikasi|syarat|persyaratan/i, '').trim();
+        if (comp.length > 55) comp = comp.substring(0, 55);
+        detectedCompany = comp;
+        detectedRecipient = `Yth. Pimpinan & Tim Manajemen ${comp}`;
       } else {
         // Fallback: examine first lines
         const firstLines = text.split('\n').map(l => l.trim()).filter(l => l.length > 3 && !/open|recruitment|lowongan|hiring/i.test(l));
@@ -543,6 +553,20 @@ document.addEventListener('DOMContentLoaded', () => {
       detectedPosition = 'Graphic Designer & Creative Multimedia';
     } else if (/video\s+editor|editor\s+video|videographer|videografer/i.test(text)) {
       detectedPosition = 'Video Editor & Multimedia Specialist';
+    } else if (/customer\s*service|cust\s*service|\bcs\b/i.test(text)) {
+      detectedPosition = 'Customer Service Specialist';
+    } else if (/ui\/ux|ui\s*ux|product\s*design/i.test(text)) {
+      detectedPosition = 'UI/UX & Product Designer';
+    } else if (/copywriter|copywriting|penulis\s*konten/i.test(text)) {
+      detectedPosition = 'Creative Copywriter';
+    } else if (/gudang|logistik|warehouse/i.test(text)) {
+      detectedPosition = 'Staff Administrasi & Operasional Gudang';
+    } else if (/kasir|cashier/i.test(text)) {
+      detectedPosition = 'Staff Kasir & Pelayanan Konsumen';
+    } else if (/barista/i.test(text)) {
+      detectedPosition = 'Barista & F&B Service Crew';
+    } else if (/sales|account\s*executive|marketing\s*representative/i.test(text)) {
+      detectedPosition = 'Sales & Marketing Representative';
     } else if (/guru\s+tik|guru\s+komputer|guru\s+multimedia|guru/i.test(text)) {
       detectedPosition = 'Tenaga Pendidik / Guru Komputer & Multimedia';
     } else if (/staff\s+it|it\s+support|teknisi\s+it/i.test(text)) {
@@ -567,6 +591,20 @@ document.addEventListener('DOMContentLoaded', () => {
       detectedPosition = 'Staff Administrasi & Tata Usaha';
     } else if (/humas|public\s+relations/i.test(text)) {
       detectedPosition = 'Staff Hubungan Masyarakat (Humas)';
+    }
+
+    // Dynamic Generic Position Extractor (Matches: Posisi : X or We Are Hiring : X or Dibutuhkan : X)
+    if (!detectedPosition) {
+      let posMatch = text.match(/(?:posisi|position|jabatan)\s*[:\-–—]\s*([^\n\r]+)/i);
+      if (!posMatch) {
+        posMatch = text.match(/(?:we(?:'re|\s+are)\s+hiring|open\s+recruitment|dibutuhkan|dicari)\s*[:\-–—]\s*([^\n\r]+)/i);
+      }
+      if (posMatch && posMatch[1]) {
+        let candidatePos = posMatch[1].replace(/kualifikasi|syarat|persyaratan|job|deskripsi|open/i, '').trim();
+        if (candidatePos.length >= 3 && candidatePos.length <= 40) {
+          detectedPosition = candidatePos;
+        }
+      }
     }
 
     // Fallback if still empty but mentions Canva/CapCut/Multimedia
@@ -605,14 +643,16 @@ document.addEventListener('DOMContentLoaded', () => {
       inpContactLink.value = detectedLink;
     }
 
-    // 5. Detect Email
-    const emailMatches = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi);
+    // 5. Detect Email (with OCR space normalization)
+    const normalizedEmailText = text.replace(/([a-zA-Z0-9._%+-]+)\s*@\s*([a-zA-Z0-9.-]+)\s*\.\s*([a-zA-Z]{2,})/g, '$1@$2.$3');
+    const emailMatches = normalizedEmailText.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/gi);
     if (emailMatches && emailMatches.length > 0) {
       inpContactEmail.value = emailMatches[0].trim();
     }
 
-    // 6. Detect Phone / WA
-    const phoneMatches = text.match(/(?:\+?62|0)8[0-9\-\s]{8,15}/g);
+    // 6. Detect Phone / WA (normalize OCR 'O8' -> '08')
+    const normalizedPhoneText = text.replace(/\b[oO]8([0-9\-\s]{8,15})/g, '08$1');
+    const phoneMatches = normalizedPhoneText.match(/(?:\+?62|0)8[0-9\-\s]{8,15}/g);
     if (phoneMatches && phoneMatches.length > 0) {
       let cleanPhone = phoneMatches[0].replace(/[^0-9+]/g, '');
       inpContactPhone.value = cleanPhone;
@@ -1087,6 +1127,67 @@ document.addEventListener('DOMContentLoaded', () => {
       specificParagraph = `Di samping kemampuan rekayasa teknologi informasi, saya memiliki pengalaman profesional selama lebih dari 8 bulan sebagai Digital Marketing Specialist & Content Creator di berbagai unit usaha seperti Volution Apparel dan Mataram Laundry. Saya terbiasa mengelola kampanye <strong>Meta Ads Manager</strong> berbasis data untuk meningkatkan rasio konversi penjualan, merancang materi promosi visual menggunakan Adobe Illustrator dan Canva, serta menyusun copywriting yang persuasif. Prestasi saya sebagai Juara 2 Tingkat Nasional Video Reels SobiFest dan Juara 1 LKS Graphic Design Technology membuktikan dedikasi saya dalam memadukan kreativitas visual dengan strategi pemasaran digital yang berdampak nyata.`;
     } else if (pos.includes('ai') || pos.includes('intelligent') || pos.includes('integrat')) {
       specificParagraph = `Fokus riset dan keahlian saya berpusat pada integrasi teknologi cerdas, khususnya <strong>Generative AI (Gemini, Google AI Studio, LLM)</strong> dan Sistem Informasi Geografis (GIS). Inovasi yang saya pimpin bersama tim mencakup platform <em>Kota Bersih Surakarta (Smart Waste Management AI)</em> yang telah dianugerahi Piagam Penghargaan Riset oleh BRIDA Kota Surakarta dan tercatat resmi sebagai <strong>Hak Kekayaan Intelektual (HKI) Kemenkumham RI No. EC002026053217</strong>. Saya juga dipercaya menjadi pemateri workshop teknologi tentang pemanfaatan AI dalam kreasi konten digital, yang mencerminkan pemahaman konseptual maupun implementatif saya di bidang kecerdasan buatan.`;
+    } else if (pos.includes('admin') || pos.includes('tata usaha') || pos.includes('sekretaris') || pos.includes('gudang') || pos.includes('logistik')) {
+      specificParagraph = `Sebagai mahasiswa S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Solo sekaligus penerima Beasiswa Prestasi BJU, saya memiliki ketelitian tinggi, integritas, dan penguasaan mendalam dalam pengelolaan administrasi data. Saya mahir mengoperasikan perangkat <strong>Microsoft Office (Word, Excel tingkat lanjut dengan formula & pivot table, PowerPoint)</strong> serta <strong>Google Workspace (Sheets, Docs, Forms, Drive)</strong> untuk rekapitulasi data, pengarsipan berkas terstruktur, dan pelaporan operasional yang akurat. Rekam jejak saya sebagai <strong>Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo</strong> telah melatih kemampuan saya dalam manajemen waktu, koordinasi lintas divisi, ketelitian administrasi persuratan dan logistik, serta penyelesaian tugas dengan cepat dan disiplin.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Salinan Sertifikat Kepemimpinan Ketua Umum HIMSI UBSI Solo',
+        'Dokumen Portofolio & Kelengkapan Administrasi Pendukung'
+      ];
+    } else if (pos.includes('customer service') || pos.includes('cs') || pos.includes('pelayanan') || pos.includes('front office') || pos.includes('kasir') || pos.includes('barista')) {
+      specificParagraph = `Sebagai individu yang komunikatif, ramah, dan berpenampilan rapi, saya memiliki komitmen tinggi untuk menghadirkan pelayanan konsumen (customer experience) yang unggul dan memuaskan. Didukung latar belakang pendidikan S1 Sistem Informasi serta pengalaman kepemimpinan sebagai <strong>Ketua Umum HIMSI UBSI Solo</strong>, saya terbiasa berkomunikasi aktif, mendengarkan kebutuhan audiens secara empatik, serta memberikan solusi yang cepat dan tepat dalam menangani pertanyaan maupun kendala pelanggan. Saya juga mahir mengoperasikan perangkat komputer kasir, sistem POS, pencatatan transaksi terstruktur, dan komunikasi pelayanan melalui WhatsApp Business maupun platform digital secara profesional dan santun.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP',
+        'Piagam Penghargaan Prestasi Nasional & Portofolio Pelayanan',
+        'Pas Foto Formal Terbaru'
+      ];
+    } else if (pos.includes('ui') || pos.includes('ux') || pos.includes('product design') || (pos.includes('desain') && !pos.includes('grafis'))) {
+      specificParagraph = `Sebagai mahasiswa S1 Sistem Informasi UBSI Solo dengan ketertarikan mendalam pada pengalaman pengguna (User Experience) dan estetika visual antarmuka digital, saya memadukan pemahaman teknis logika sistem dengan kepekaan desain modern. Saya terbiasa menyusun wireframe, user flow, prototyping interaktif, serta desain antarmuka yang bersih dan responsif menggunakan alat desain visual. Prestasi saya sebagai <strong>Juara 1 LKS Graphic Design Technology</strong> dan <strong>Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)</strong> mencerminkan dedikasi saya dalam menciptakan produk digital yang tidak hanya estetik namun juga intuitif dan nyaman digunakan oleh pengguna.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Tautan Portofolio Desain Interaktif & UI/UX Showcase',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Salinan Sertifikat Profesi BNSP & HKI Kemenkumham RI'
+      ];
+    } else if (pos.includes('copywriter') || pos.includes('penulis') || pos.includes('content writer')) {
+      specificParagraph = `Di samping pemahaman teknologi informasi, saya memiliki keterampilan kuat dalam penulisan kreatif (copywriting & content writing) yang persuasif dan memikat audiens. Didukung pengalaman lebih dari 8 bulan dalam pengelolaan media sosial dan promosi komersil di Solo Raya, saya terbiasa melakukan riset tren, merancang narasi brand (brand storytelling), menyusun caption media sosial dengan formula AIDA, serta menghasilkan artikel promosi yang komunikatif. Prestasi saya sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)</strong> membuktikan kemampuan saya dalam menyampaikan pesan yang padat, menarik, dan berdaya pikat tinggi.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Copywriting, Artikel & Narasi Kreatif Media Sosial',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Salinan Sertifikat Kompetensi Profesi BNSP'
+      ];
+    } else if (pos.includes('sales') || pos.includes('account executive') || (pos.includes('pemasaran') && !pos.includes('digital'))) {
+      specificParagraph = `Sebagai profesional muda berusia 19 tahun yang berpenampilan rapi, komunikatif, dan berorientasi pada target penjualan, saya memiliki motivasi tinggi untuk berkontribusi di bidang sales dan pengembangan pasar. Pengalaman saya selama lebih dari 8 bulan dalam promosi digital di wilayah Solo Raya membekali saya dengan pemahaman psikologi konsumen, keterampilan negosiasi, presentasi produk yang persuasif, serta pemanfaatan media digital untuk memperluas jaringan prospek. Didukung kepemilikan <strong>kendaraan pribadi dan SIM C aktif</strong>, saya memiliki kesiapan mobilitas yang prima untuk membangun relasi jangka panjang dengan klien dan mencapai target penjualan perusahaan.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif)',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Portofolio Penjualan & Promosi Komersil',
+        'Piagam Penghargaan Nasional Video Kreatif (Juara 2 SobiFest)'
+      ];
+    } else if (!pos.includes('developer') && !pos.includes('programmer') && !pos.includes('software') && !pos.includes('web') && !pos.includes('it') && !pos.includes('engineer')) {
+      // General non-IT role
+      specificParagraph = `Sebagai mahasiswa semester 5 S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo sekaligus penerima Beasiswa Prestasi BJU (IPK Unggul), saya memiliki dedikasi tinggi, kemampuan analytical thinking, serta etos kerja yang disiplin. Pengalaman saya memimpin organisasi sebagai <strong>Ketua Umum Himpunan Mahasiswa Sistem Informasi (HIMSI) UBSI Solo</strong> telah melatih kemampuan saya dalam koordinasi tim, problem-solving, komunikasi interpersonal persuasif, serta manajemen operasional berbasis data (Microsoft Office & Google Workspace). Didukung karakter adaptif, cepat belajar, dan integritas moral yang kokoh, saya memiliki komitmen kuat untuk segera mendedikasikan kemampuan terbaik saya demi mendukung kemajuan <strong>${company}</strong>.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Salinan Sertifikat Kepemimpinan & Pengalaman Organisasi',
+        'Portofolio Prestasi Akademik & Piagam Penghargaan Nasional'
+      ];
     } else {
       // Default: Fullstack Web / Software Developer
       specificParagraph = `Sebagai mahasiswa semester 5 S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo dengan predikat Beasiswa Prestasi BJU, saya memiliki rekam jejak teruji dalam rekayasa perangkat lunak berbasis web (Laravel, PHP, PostgreSQL, Tailwind CSS, JavaScript, REST API). Saya berhasil memimpin perancangan dan implementasi platform digitalisasi <em>Program Makan Bergizi Gratis (MBG) SPPG Nusukan Surakarta</em> yang meraih <strong>Medali Perak (Silver Medal) pada Pekan Inovasi Nasional Vol. 3 Universitas Mercu Buana (2026)</strong> serta tercatat resmi memiliki <strong>Hak Cipta Kemenkumham RI (No. EC002026096415)</strong>. Pengalaman magang saya di <strong>Unit Sistem Informasi PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta</strong> semakin mematangkan kemampuan saya dalam berkolaborasi pada lingkungan kerja enterprise dan memecahkan tantangan operasional sistem secara profesional.`;
