@@ -28,6 +28,34 @@ ATTACHMENT_FILE = r'CV ATS Muhammad Fahrel Yuliyanto_2Mb.pdf'
 
 APPLICATIONS = [
     {
+        'company': 'PT Talenta Pelopor Garuda (Pelopor Book)',
+        'position': 'Konten Kreator',
+        'recipient_email': 'adminpeloporbook@gmail.com',
+        'subject': 'Lamaran Pekerjaan – Konten Kreator – Muhammad Fahrel Yuliyanto',
+        'body': """Yth. Tim Rekrutmen & Manajemen PT Talenta Pelopor Garuda (Pelopor Book),
+Banyuanyar, Banjarsari, Surakarta
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Menindaklanjuti informasi lowongan pekerjaan resmi (We're Hiring! Konten Kreator), melalui email ini saya bermaksud mengajukan diri untuk bergabung sebagai Konten Kreator di PT Talenta Pelopor Garuda. Sebagai seorang pria muslim yang taat, amanah, dan berdisiplin tinggi, saya memiliki pengalaman lebih dari 8 bulan dalam produksi konten kreatif, desain grafis, ilustrasi, serta editing video berkualitas menggunakan CapCut, Canva, dan Adobe Illustrator. Saya memiliki rasa percaya diri yang matang untuk tampil di depan kamera mempresentasikan konten edukatif dan promosi buku, serta terbiasa bekerja secara mandiri maupun berkolaborasi dengan tim di Banyuanyar Surakarta.
+
+Sebagai bahan pertimbangan Bapak/Ibu, bersama email ini saya lampirkan:
+1. Curriculum Vitae (CV ATS Standar Industri) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Portofolio Video Kreatif & Desain Grafis (Juara 2 Nasional Video Reels SobiFest & Juara 1 LKS Desain)
+5. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)
+6. Salinan Sertifikat Kompetensi Profesi BNSP Komputer & Basis Data
+
+Besar harapan saya untuk diberikan kesempatan menghadiri sesi wawancara guna mendiskusikan kontribusi ide dan karya kreatif yang dapat saya hadirkan untuk kemajuan Pelopor Book. Atas perhatian dan kesempatan yang diberikan, saya mengucapkan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah"""
+    },
+    {
         'company': 'Dealer Honda Ramayana Mojosongo',
         'position': 'Marketing Eksekutif',
         'recipient_email': 'hrd.rmygrup@gmail.com',

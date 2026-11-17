@@ -451,7 +451,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let detectedCompany = '';
     let detectedRecipient = '';
 
-    if (/honda|ramayana|mojosongo|rmygrup/i.test(text) || /honda|ramayana/i.test(fileName)) {
+    if (/adiba|adiba\s*residence/i.test(text) || /adiba/i.test(fileName)) {
+      detectedCompany = 'Adiba Residence Karanganyar';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar';
+    } else if (/pelopor\s*book|talenta\s*pelopor/i.test(text) || /pelopor/i.test(fileName)) {
+      detectedCompany = 'PT Talenta Pelopor Garuda (Pelopor Book)';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen PT Talenta Pelopor Garuda';
+    } else if (/passtore|passolo/i.test(text) || /passtore/i.test(fileName)) {
+      detectedCompany = 'Passtore Solo';
+      detectedRecipient = 'Yth. Pimpinan & Tim Rekrutmen Passtore Solo';
+    } else if (/ada\s*cellular|adacellular/i.test(text) || /adacellular|ada\s*cell/i.test(fileName)) {
+      detectedCompany = 'Ada Cellular Store';
+      detectedRecipient = 'Yth. Pimpinan & Tim Rekrutmen Ada Cellular Store';
+    } else if (/honda|ramayana|mojosongo|rmygrup/i.test(text) || /honda|ramayana/i.test(fileName)) {
       detectedCompany = 'Dealer Honda Ramayana Mojosongo';
       detectedRecipient = 'Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo';
     } else if (/analis\s*teknologi|consula/i.test(text) || /analis|consula/i.test(fileName)) {
@@ -530,7 +542,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Detect Position (Comprehensive Catalog)
     let detectedPosition = '';
 
-    if (/honda|ramayana|mojosongo|rmygrup/i.test(text) || /honda|ramayana/i.test(fileName)) {
+    if (/adiba|adiba\s*residence/i.test(text) || /adiba/i.test(fileName)) {
+      detectedPosition = 'Admin Sosial Media & Content Creator';
+    } else if (/pelopor\s*book|talenta\s*pelopor/i.test(text) || /pelopor/i.test(fileName)) {
+      detectedPosition = 'Konten Kreator';
+    } else if (/passtore|passolo|iphone\s*store/i.test(text) || /passtore/i.test(fileName)) {
+      detectedPosition = 'Staff iPhone Store';
+    } else if (/ada\s*cellular|adacellular/i.test(text) || /adacellular|ada\s*cell/i.test(fileName)) {
+      detectedPosition = 'Social Media Staff';
+    } else if (/honda|ramayana|mojosongo|rmygrup/i.test(text) || /honda|ramayana/i.test(fileName)) {
       // User explicit note: di HONDA melamar dibagian MARKETING EXECUTIVE
       detectedPosition = 'Marketing Eksekutif';
     } else if (/talent\s*acquisiti?on|recruitment\s*data|talent\s*scouting/i.test(text) || /talent/i.test(fileName)) {
@@ -675,7 +695,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 8. Specialized Overrides for Specific Employers
-    if (detectedCompany.includes('Honda') || detectedCompany.includes('Ramayana')) {
+    if (detectedCompany.includes('Adiba')) {
+      detectedPosition = 'Admin Sosial Media & Content Creator';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar';
+      detectedLocation = 'Karanganyar';
+      inpContactPhone.value = '081232347112';
+      inpKeyHighlights.value = 'Domisili Karanganyar (Krendowahono, Gondangrejo) & memiliki kendaraan pribadi serta SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nMahir aplikasi CapCut, VN, Canva\nPercaya diri tampil di depan kamera & Voice Over promosi properti\nMampu copywriting persuasif & ramah membalas DM/komentar\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis';
+    } else if (detectedCompany.includes('Talenta Pelopor') || detectedCompany.includes('Pelopor')) {
+      detectedPosition = 'Konten Kreator';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen PT Talenta Pelopor Garuda';
+      detectedLocation = 'Banyuanyar, Banjarsari, Surakarta';
+      inpContactEmail.value = 'adminpeloporbook@gmail.com';
+      inpContactPhone.value = '085181662310';
+      inpContactLink.value = 'https://talentapeloporgaruda.id';
+      inpKeyHighlights.value = 'Pria Muslim taat berakhlak mulia (sholat 5 waktu & amanah)\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nSkill desain, ilustrasi, dan editing video berkualitas (CapCut, Canva, Illustrator)\nMelampirkan hasil karya terbaik & portofolio interaktif 3D\nPercaya diri tampil di depan kamera\nMampu bekerja secara individu dan team di Banyuanyar Surakarta';
+    } else if (detectedCompany.includes('Passtore')) {
+      detectedPosition = 'Staff iPhone Store';
+      detectedRecipient = 'Yth. Pimpinan & Tim Rekrutmen Passtore Solo';
+      detectedLocation = 'Solo / Surakarta';
+      inpContactLink.value = 'https://tinyurl.com/PASSOLO-NOV';
+      inpKeyHighlights.value = 'Pria usia 19 tahun, ramah, berpenampilan rapi, sopan, dan komunikatif\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi smartphone, gadget & ekosistem Apple iOS)\nJujur, teliti dalam pencatatan transaksi & stock opname, serta bertanggung jawab penuh\nBersedia dan terbiasa bekerja dalam tim (Ketua Umum HIMSI UBSI Solo)\nBerorientasi target penjualan, pelayanan prima (customer service), serta disiplin tinggi';
+    } else if (detectedCompany.includes('Ada Cellular')) {
+      detectedPosition = 'Social Media Staff';
+      detectedRecipient = 'Yth. Pimpinan & Tim Rekrutmen Ada Cellular Store';
+      detectedLocation = 'Solo / Surakarta';
+      inpContactPhone.value = '081230084193';
+      inpContactLink.value = 'https://instagram.com/adacellular.official';
+      inpKeyHighlights.value = 'Pria usia 19 tahun, aktif dan selalu update tren media sosial (TikTok, Instagram, Facebook)\nKreatif, komunikatif, dan percaya diri di depan kamera untuk review gadget & promosi toko\nMahir memproduksi konten foto & video menarik menggunakan CapCut & Canva\nMengerti tren dan algoritma media sosial\nDisiplin, bertanggung jawab, dan terbiasa bekerja sama dengan tim toko';
+    } else if (detectedCompany.includes('Honda') || detectedCompany.includes('Ramayana')) {
       detectedPosition = 'Marketing Eksekutif';
       detectedRecipient = 'Yth. Tim HRD & Manajemen Dealer Honda Ramayana Mojosongo';
       detectedLocation = 'Mojosongo Jebres Solo / Gatot Subroto Jayengan Solo';
@@ -745,6 +792,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. PRESET ROLES
   // ===================================================================
   const ROLE_PRESETS = {
+    'adiba-residence': {
+      position: 'Admin Sosial Media & Content Creator',
+      company: 'Adiba Residence Karanganyar',
+      location: 'Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar',
+      source: 'Poster Rekrutmen Resmi Adiba Residence Karanganyar',
+      highlights: 'Domisili Karanganyar (Krendowahono, Gondangrejo) & memiliki kendaraan pribadi serta SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nMahir aplikasi CapCut, VN, Canva\nPercaya diri tampil di depan kamera & Voice Over promosi properti\nMampu copywriting persuasif & ramah membalas DM/komentar\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis',
+      contactEmail: '',
+      contactPhone: '081232347112',
+      contactLink: ''
+    },
+    'pelopor-book': {
+      position: 'Konten Kreator',
+      company: 'PT Talenta Pelopor Garuda (Pelopor Book)',
+      location: 'Banyuanyar, Banjarsari, Surakarta',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen PT Talenta Pelopor Garuda',
+      source: 'Poster Resmi We\'re Hiring Konten Kreator PT Talenta Pelopor Garuda',
+      highlights: 'Pria Muslim taat berakhlak mulia (sholat 5 waktu & amanah)\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nSkill desain, ilustrasi, dan editing video berkualitas (CapCut, Canva, Illustrator)\nMelampirkan hasil karya terbaik & portofolio interaktif 3D\nPercaya diri tampil di depan kamera\nMampu bekerja secara individu dan team di Banyuanyar Surakarta',
+      contactEmail: 'adminpeloporbook@gmail.com',
+      contactPhone: '085181662310',
+      contactLink: 'https://talentapeloporgaruda.id'
+    },
+    'passtore-solo': {
+      position: 'Staff iPhone Store',
+      company: 'Passtore Solo',
+      location: 'Solo / Surakarta',
+      recipient: 'Yth. Pimpinan & Tim Rekrutmen Passtore Solo',
+      source: 'Poster Resmi We Are Hiring Staff iPhone Store (Passtore Solo)',
+      highlights: 'Pria usia 19 tahun, ramah, berpenampilan rapi, sopan, dan komunikatif\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi smartphone, gadget & ekosistem Apple iOS)\nJujur, teliti dalam pencatatan transaksi & stock opname, serta bertanggung jawab penuh\nBersedia dan terbiasa bekerja dalam tim (Ketua Umum HIMSI UBSI Solo)\nBerorientasi target penjualan, pelayanan prima (customer service), serta disiplin tinggi',
+      contactEmail: '',
+      contactPhone: '',
+      contactLink: 'https://tinyurl.com/PASSOLO-NOV'
+    },
+    'ada-cellular': {
+      position: 'Social Media Staff',
+      company: 'Ada Cellular Store',
+      location: 'Solo / Surakarta',
+      recipient: 'Yth. Pimpinan & Tim Rekrutmen Ada Cellular Store',
+      source: 'Poster Lowongan Kerja Resmi Social Media Staff Ada Cellular Store',
+      highlights: 'Pria usia 19 tahun, aktif dan selalu update tren media sosial (TikTok, Instagram, Facebook)\nKreatif, komunikatif, dan percaya diri tampil di depan kamera untuk review gadget & promosi toko\nMahir memproduksi konten foto & video menarik menggunakan CapCut & Canva\nMengerti tren dan algoritma media sosial\nDisiplin, bertanggung jawab, dan terbiasa bekerja sama dengan tim toko',
+      contactEmail: '',
+      contactPhone: '081230084193',
+      contactLink: 'https://instagram.com/adacellular.official'
+    },
     'honda-marketing': {
       position: 'Marketing Eksekutif',
       company: 'Dealer Honda Ramayana Mojosongo',
@@ -996,7 +1087,47 @@ document.addEventListener('DOMContentLoaded', () => {
       'Portofolio Proyek Interaktif & Piagam Penghargaan Nasional (Silver Medalist Universitas Mercu Buana)'
     ];
 
-    if (comp.includes('honda') || comp.includes('ramayana') || pos.includes('marketing eksekutif') || pos.includes('marketing executive')) {
+    if (comp.includes('adiba') || (comp.includes('residence') && pos.includes('sosial media'))) {
+      specificParagraph = `Sebagai pemuda berdomisili asli di Karanganyar (Krendowahono, Gondangrejo) dengan kepemilikan <strong>kendaraan pribadi dan SIM C aktif</strong>, saya memiliki kesiapan mobilitas yang sangat fleksibel untuk memproduksi konten properti langsung di perumahan Adiba Residence Karanganyar. Saya memiliki pengalaman lebih dari 8 bulan dalam pengelolaan media sosial dan promosi komersil, dengan keahlian teruji dalam pengoperasian aplikasi editing video (<strong>CapCut & VN</strong>) serta desain grafis (<strong>Canva & Illustrator</strong>). Saya memiliki rasa percaya diri tinggi untuk tampil di depan kamera, melakukan voice over informatif bernada hangat, menyusun copywriting promosi perumahan yang memikat, serta berkomunikasi secara ramah, santun, dan responsif dalam melayani calon konsumen melalui Direct Message (DM) maupun kolom komentar guna mendorong konversi closing unit Adiba Residence.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Kreatif: Video Promosi (CapCut & VN), Desain Visual & Pengelolaan Media Sosial',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Kartu Tanda Penduduk (KTP Domisili Karanganyar)',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)'
+      ];
+    } else if (comp.includes('pelopor') || comp.includes('talenta pelopor')) {
+      specificParagraph = `Sebagai seorang pria muslim taat yang memegang teguh amanah, etika, dan nilai-nilai Islami, saya memiliki komitmen tinggi untuk mendedikasikan kreativitas saya di PT Talenta Pelopor Garuda (Pelopor Book). Latar belakang saya sebagai mahasiswa S1 Sistem Informasi UBSI Solo diperkaya dengan pengalaman nyata selama lebih dari 8 bulan dalam produksi konten kreatif dan desain multimedia. Saya mahir dalam perancangan materi visual, ilustrasi, serta editing video berkualitas menggunakan <strong>CapCut, Adobe Illustrator, dan Canva</strong>. Didukung prestasi sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)</strong> dan <strong>Juara 1 LKS Graphic Design Technology</strong>, saya memiliki kepercayaan diri yang matang untuk tampil di depan kamera mempresentasikan literasi buku, menyusun narasi edukatif, serta bekerja secara mandiri maupun berkolaborasi erat dengan tim di Banyuanyar, Surakarta.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Karya Video Reels Edukatif, Desain Grafis & Konten Kreatif',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul & Beasiswa Prestasi BJU)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Salinan Sertifikat Kompetensi Profesi BNSP Komputer & Basis Data'
+      ];
+    } else if (comp.includes('passtore') || (comp.includes('store') && pos.includes('iphone'))) {
+      specificParagraph = `Sebagai profesional muda berusia 19 tahun yang berpenampilan rapi, sopan, jujur, teliti, dan bertanggung jawab penuh, saya memiliki antusiasme dan komitmen tinggi untuk berkarir sebagai Staff iPhone Store di Passtore Solo. Sebagai mahasiswa S1 Sistem Informasi di UBSI Solo, saya memiliki pemahaman teknis yang mendalam mengenai spesifikasi smartphone, ekosistem Apple iOS, serta tren teknologi gadget terkini. Pengalaman kepemimpinan saya sebagai <strong>Ketua Umum HIMSI UBSI Solo</strong> telah melatih kemampuan saya dalam komunikasi interpersonal persuasif, kerja sama tim yang solid, serta pelayanan konsumen yang ramah dan solutif. Saya siap bekerja dengan teliti dalam inventarisasi barang/stok unit, memberikan penjelasan produk yang transparan, melayani transaksi penjualan dengan prima, dan berorientasi pada pencapaian target toko di Passtore Solo.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Kartu Tanda Penduduk (KTP)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP',
+        'Salinan Sertifikat Kepemimpinan Ketua Umum HIMSI UBSI Solo',
+        'Pas Foto Formal Terbaru'
+      ];
+    } else if (comp.includes('ada cellular') || comp.includes('adacellular')) {
+      specificParagraph = `Sebagai generasi muda yang aktif dan selalu mengikuti perkembangan tren terkini di media sosial (<strong>TikTok, Instagram, dan Facebook</strong>), saya memiliki passion besar untuk memajukan brand awareness dan interaksi konsumen di Ada Cellular Store. Saya memiliki keterampilan lengkap dalam pembuatan konten foto dan video produk smartphone/aksesoris yang tajam, estetik, dan interaktif menggunakan <strong>CapCut dan Canva</strong>. Saya terbiasa menyusun konsep video review gadget kekinian, percaya diri tampil di depan kamera sebagai host atau pembawa materi konten, memahami pola algoritma media sosial untuk meningkatkan jangkauan organik dan engagement, serta memiliki kedisiplinan dan tanggung jawab tinggi untuk berkolaborasi dengan tim toko di Solo.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Video Konten Kreatif Gadget / Smartphone, Reels & TikTok',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology',
+        'Salinan Kartu Tanda Penduduk (KTP)'
+      ];
+    } else if (comp.includes('honda') || comp.includes('ramayana') || pos.includes('marketing eksekutif') || pos.includes('marketing executive')) {
       specificParagraph = `Sebagai profesional muda berusia 19 tahun yang berpenampilan rapi, sopan, dan memiliki keterampilan komunikasi interpersonal yang aktif dan persuasif, saya memiliki komitmen tinggi untuk berkarir di bidang pemasaran otomotif. Latar belakang saya sebagai mahasiswa S1 Sistem Informasi UBSI Solo diperkaya dengan pengalaman lebih dari 8 bulan di bidang promosi komersil dan Digital Marketing (<strong>Meta Ads Manager, Instagram, dan TikTok</strong>) di wilayah Solo Raya. Didukung kepemilikan <strong>sepeda motor pribadi serta SIM C aktif</strong>, saya memiliki kesiapan mobilitas harian yang prima untuk melakukan canvassing, pendekatan calon konsumen, presentasi keunggulan unit sepeda motor Honda, serta membangun relasi jangka panjang dengan konsumen. Dengan etos kerja disiplin, orientasi target penjualan yang kuat, dan integritas tinggi, saya siap berkontribusi aktif memajukan penjualan di Dealer Honda Ramayana Mojosongo.`;
 
       documentListItems = [
@@ -1195,7 +1326,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Additional note if key highlights or specific company entered
     let highlightSnippet = '';
-    if (comp.includes('honda') || comp.includes('ramayana')) {
+    if (comp.includes('adiba') || (comp.includes('residence') && pos.includes('sosial media'))) {
+      highlightSnippet = `<p class="letter-p">Menjawab kualifikasi lowongan <strong>${company}</strong> untuk posisi Admin Sosial Media & Content Creator, yakni domisili Karanganyar dengan kepemilikan kendaraan pribadi & SIM C aktif, penguasaan aplikasi CapCut/VN/Canva, kemampuan voice over & tampil percaya diri di depan kamera, serta pelayanan ramah membalas pesan dan komentar calon pembeli, saya menyatakan kesiapan penuh untuk segera bergabung dan mendedikasikan kemampuan terbaik saya.</p>`;
+    } else if (comp.includes('pelopor') || comp.includes('talenta pelopor')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi pada poster rekrutmen <strong>${company}</strong> di Banyuanyar Surakarta, yakni pria muslim, memiliki keterampilan desain dan editing video berkualitas (CapCut, Canva, Illustrator), melampirkan portofolio karya terbaik, percaya diri di depan kamera, serta mampu bekerja secara mandiri maupun tim, saya menyatakan kesiapan penuh untuk segera berkontribusi dalam memajukan literasi dan konten Pelopor Book.</p>`;
+    } else if (comp.includes('passtore') || (comp.includes('store') && pos.includes('iphone'))) {
+      highlightSnippet = `<p class="letter-p">Menanggapi kualifikasi lowongan <strong>${company}</strong> di Solo, yakni usia maksimal 30 tahun, mampu bekerja sama dalam tim, bersikap jujur, teliti dalam pencatatan stok dan transaksi, serta bertanggung jawab penuh dalam melayani pelanggan smartphone, saya menyatakan kesiapan penuh untuk langsung bertugas dan mendedikasikan tenaga demi kepuasan pelanggan Passtore Solo.</p>`;
+    } else if (comp.includes('ada cellular') || comp.includes('adacellular')) {
+      highlightSnippet = `<p class="letter-p">Menjawab persyaratan dari <strong>${company}</strong>, yakni aktif dan memahami tren media sosial (TikTok, Instagram, Facebook), komunikatif dan percaya diri di depan kamera, mampu memproduksi konten foto/video menarik, serta berdisiplin dan bertanggung jawab dalam tim toko, saya siap memberikan ide-ide segar dan eksekusi konten terbaik untuk meningkatkan engagement dan brand awareness toko.</p>`;
+    } else if (comp.includes('honda') || comp.includes('ramayana')) {
       highlightSnippet = `<p class="letter-p">Menjawab kualifikasi pada poster rekrutmen <strong>${company}</strong> untuk posisi Marketing Eksekutif, yakni usia minimal 18 tahun, berpenampilan rapi dan komunikatif, kepemilikan sepeda motor dan SIM C aktif, serta kesiapan bekerja berorientasi target penjualan, saya menyatakan kesiapan penuh untuk langsung bertugas dan berdedikasi memajukan Dealer Honda Ramayana.</p>`;
     } else if (comp.includes('analis') || pos.includes('talent acquisition')) {
       highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi pada poster rekrutmen <strong>${company}</strong>, yakni kemampuan problem solving, analytical thinking, komunikasi prima, negosiasi, manajemen waktu, serta pengelolaan data candidate dengan MS Office & Google Suites, saya siap mendedikasikan ketelitian dan kemampuan koordinasi saya demi kelancaran proses hiring hingga onboarding kandidat.</p>`;
@@ -1487,6 +1626,74 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===================================================================
   const DEFAULT_ARCHIVES = [
     {
+      id: 'adiba-residence-sosmed',
+      title: 'Lamaran Admin Sosmed & Content Creator Adiba Residence',
+      company: 'Adiba Residence Karanganyar',
+      position: 'Admin Sosial Media & Content Creator',
+      location: 'Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar',
+      source: 'Poster Rekrutmen Resmi Adiba Residence Karanganyar',
+      date: '2026-11-18',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Admin Sosial Media & Content Creator dari putra daerah Karanganyar, memiliki motor & SIM C, mahir CapCut, VN & Canva, percaya diri di depan kamera & voice over, serta ramah membalas DM/komentar.',
+      highlights: 'Domisili Karanganyar (Krendowahono, Gondangrejo) & memiliki kendaraan pribadi serta SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nMahir aplikasi CapCut, VN, Canva\nPercaya diri tampil di depan kamera & Voice Over promosi properti\nMampu copywriting persuasif & ramah membalas DM/komentar\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis',
+      contactEmail: '',
+      contactPhone: '081232347112',
+      contactLink: ''
+    },
+    {
+      id: 'pelopor-book-creator',
+      title: 'Lamaran Konten Kreator Pelopor Book',
+      company: 'PT Talenta Pelopor Garuda (Pelopor Book)',
+      position: 'Konten Kreator',
+      location: 'Banyuanyar, Banjarsari, Surakarta',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen PT Talenta Pelopor Garuda',
+      source: 'Poster Resmi We\'re Hiring Konten Kreator PT Talenta Pelopor Garuda',
+      date: '2026-11-18',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Konten Kreator dari pria muslim taat, berpengalaman 8+ bulan produksi video promosi, desain ilustrasi, editing CapCut/Canva, percaya diri di depan kamera, siap penempatan Banyuanyar Surakarta.',
+      highlights: 'Pria Muslim taat berakhlak mulia (sholat 5 waktu & amanah)\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nSkill desain, ilustrasi, dan editing video berkualitas (CapCut, Canva, Illustrator)\nMelampirkan hasil karya terbaik & portofolio interaktif 3D\nPercaya diri tampil di depan kamera\nMampu bekerja secara individu dan team di Banyuanyar Surakarta',
+      contactEmail: 'adminpeloporbook@gmail.com',
+      contactPhone: '085181662310',
+      contactLink: 'https://talentapeloporgaruda.id'
+    },
+    {
+      id: 'passtore-solo-iphone',
+      title: 'Lamaran Staff iPhone Store Passtore Solo',
+      company: 'Passtore Solo',
+      position: 'Staff iPhone Store',
+      location: 'Solo / Surakarta',
+      recipient: 'Yth. Pimpinan & Tim Rekrutmen Passtore Solo',
+      source: 'Poster Resmi We Are Hiring Staff iPhone Store (Passtore Solo)',
+      date: '2026-11-18',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Staff iPhone Store Passtore Solo berbekal pemahaman teknologi gadget & ekosistem iOS, komunikasi ramah dan persuasif, kejujuran, ketelitian stok/transaksi, dan etos kerja sama tim.',
+      highlights: 'Pria usia 19 tahun, ramah, berpenampilan rapi, sopan, dan komunikatif\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi smartphone, gadget & ekosistem Apple iOS)\nJujur, teliti dalam pencatatan transaksi & stock opname, serta bertanggung jawab penuh\nBersedia dan terbiasa bekerja dalam tim (Ketua Umum HIMSI UBSI Solo)\nBerorientasi target penjualan, pelayanan prima (customer service), serta disiplin tinggi',
+      contactEmail: '',
+      contactPhone: '',
+      contactLink: 'https://tinyurl.com/PASSOLO-NOV'
+    },
+    {
+      id: 'ada-cellular-sosmed',
+      title: 'Lamaran Social Media Staff Ada Cellular Store',
+      company: 'Ada Cellular Store',
+      position: 'Social Media Staff',
+      location: 'Solo / Surakarta',
+      recipient: 'Yth. Pimpinan & Tim Rekrutmen Ada Cellular Store',
+      source: 'Poster Lowongan Kerja Resmi Social Media Staff Ada Cellular Store',
+      date: '2026-11-18',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Social Media Staff berfokus pada kreasi konten foto/video gadget terkini (CapCut), live/on-camera review, pemahaman tren viral TikTok/IG, dan peningkatan engagement Ada Cellular Store.',
+      highlights: 'Pria usia 19 tahun, aktif dan selalu update tren media sosial (TikTok, Instagram, Facebook)\nKreatif, komunikatif, dan percaya diri di depan kamera untuk review gadget & promosi toko\nMahir memproduksi konten foto & video menarik menggunakan CapCut & Canva\nMengerti tren dan algoritma media sosial\nDisiplin, bertanggung jawab, dan terbiasa bekerja sama dengan tim toko',
+      contactEmail: '',
+      contactPhone: '081230084193',
+      contactLink: 'https://instagram.com/adacellular.official'
+    },
+    {
       id: 'honda-ramayana-marketing',
       title: 'Lamaran Marketing Eksekutif Dealer Honda',
       company: 'Dealer Honda Ramayana Mojosongo',
@@ -1710,11 +1917,16 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // Archive Applied Status Management (localStorage)
-  const APPLIED_STORAGE_KEY = 'fahrel_applied_archive_ids_v1';
+  const APPLIED_STORAGE_KEY = 'fahrel_applied_archive_ids_v2';
   let currentArchiveFilter = 'all';
 
-  // Default applied items: all previous 8 applications are marked as applied
+  // Default applied items: all previous 13 applications are marked as applied
   const DEFAULT_APPLIED_IDS = [
+    'honda-ramayana-marketing',
+    'analis-teknologi-talent',
+    'kertabhumi-web-developer',
+    'optimal-sragen-komputer',
+    'dewisri-konten-kreator',
     'wijaya-kreativ-marketing',
     'beauthinc-sosial-media',
     'seventh-education-saintek',
