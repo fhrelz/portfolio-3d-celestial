@@ -28,6 +28,91 @@ ATTACHMENT_FILE = r'CV ATS Muhammad Fahrel Yuliyanto_2Mb.pdf'
 
 APPLICATIONS = [
     {
+        'company': 'Jawa Dwipa Heritage Resort & Convention',
+        'position': 'Digital Creator',
+        'recipient_email': 'jawadwiparesortmanagement@gmail.com',
+        'subject': 'Lamaran DIGI - Muhammad Fahrel Yuliyanto',
+        'body': """Yth. HRD & General Manager Jawa Dwipa Heritage Resort & Convention,
+Jl. Raya Solo - Tawangmangu No.KM 34, Karangpandan, Karanganyar, Jawa Tengah
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, pemuda berdomisili di Kabupaten Karanganyar dengan latar belakang kejuruan SMK Multimedia dan saat ini menempuh pendidikan S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Solo (IPK Unggul & Beasiswa Prestasi BJU).
+
+Menanggapi informasi lowongan kerja resmi (We Are Hiring Digital Creator - Subject: Lamaran DIGI), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Digital Creator di Jawa Dwipa Heritage Resort & Convention. Saya memiliki pengalaman lebih dari 8 bulan dalam produksi konten promosi media sosial (Instagram, TikTok, dan Website), terampil dalam pengambilan sudut footage video estetis bernuansa heritage pariwisata, fotografi hotel/resort, editing video berkualitas (CapCut, Premiere, Canva), serta perancangan copywriting yang memikat. Didukung prestasi sebagai Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) dan Juara 1 LKS Desain Grafis, serta kesiapan mobilitas kendaraan pribadi di Karanganyar, saya siap bekerja secara tim maupun sistem shift di Karangpandan.
+
+Sebagai bahan pertimbangan Bapak/Ibu, bersama email ini saya lampirkan kelengkapan berkas:
+1. Curriculum Vitae (CV Format ATS Standar Industri) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Portofolio Digital Creator: Footage Video Resort, Fotografi & Desain Grafis
+5. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo) & Ijazah SMK Multimedia
+6. Salinan Kartu Tanda Penduduk (KTP Domisili Karanganyar) & Sertifikat BNSP
+
+Besar harapan saya untuk diberikan kesempatan menghadiri sesi wawancara langsung di Jawa Dwipa Heritage Resort. Atas perhatian dan kesempatan yang diberikan, saya mengucapkan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah"""
+    },
+    {
+        'company': 'PT Astra International Tbk - Daihatsu Sales Operation (DSO)',
+        'position': 'Sales Counter & Sales Force',
+        'recipient_email': 'mukhammad.ariefrakhman@dso.astra.co.id',
+        'subject': 'Sales_Muhammad Fahrel Yuliyanto_Daihatsu Solo Adi Sucipto',
+        'body': """Yth. Tim HRD & Branch Manager PT Astra International Tbk - Daihatsu Sales Operation (DSO),
+Penempatan: Daihatsu Solo Adi Sucipto / Klaten
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, pelamar posisi Sales Counter & Sales Force di PT Astra International Tbk - DSO.
+
+Menindaklanjuti informasi lowongan kerja resmi Daihatsu Sahabatku (Astra DSO Solo / Klaten), melalui email ini saya bermaksud mengajukan lamaran pekerjaan untuk posisi Sales Counter & Sales Force dengan penempatan di Daihatsu Solo Adi Sucipto. Saya adalah profesional muda berusia 19 tahun, berpenampilan rapi, sopan, percaya diri tinggi, dan gigih dalam pencapaian target. Sebagai mahasiswa S1 Sistem Informasi UBSI Solo, saya memiliki pemahaman teknis otomotif yang baik, didukung pengalaman lebih dari 8 bulan dalam promosi komersil serta pemanfaatan media digital di Solo Raya. Memiliki sepeda motor pribadi dan SIM C aktif, saya siap berjuang maksimal memperluas penetrasi pasar Daihatsu dan memberikan pelayanan terbaik berstandar Astra Group.
+
+Sesuai ketentuan persyaratan pada poster resmi, bersama email ini saya lampirkan dokumen format PDF:
+1. Curriculum Vitae (CV ATS Standar Industri) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo) & Ijazah Formal
+5. Salinan Kartu Tanda Penduduk (KTP) & Surat Izin Mengemudi (SIM C Aktif)
+6. Portofolio Pemasaran & Promosi Komersial di Solo Raya
+
+Besar harapan saya untuk diberikan kesempatan mengikuti tahapan seleksi dan wawancara di PT Astra International Tbk - DSO. Atas perhatian dan kesempatan berharga yang diberikan, saya mengucapkan terima kasih.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah"""
+    },
+    {
+        'company': 'PT Cakrawala Mitra Akshaya',
+        'position': 'Marketing Property (Residential Sales)',
+        'recipient_email': 'cakrawalamitraakshaya@gmail.com',
+        'subject': 'Lamaran Marketing Property – Muhammad Fahrel Yuliyanto',
+        'body': """Yth. Tim Rekrutmen & Manajemen PT Cakrawala Mitra Akshaya,
+Soloraya dan Jogja
+
+Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa S1 Sistem Informasi Universitas Bina Sarana Informatika (UBSI) Solo (Penerima Beasiswa Prestasi BJU, IPK Unggul).
+
+Melalui email ini, saya bermaksud mengajukan lamaran pekerjaan untuk posisi Marketing Property (Residential Sales) di PT Cakrawala Mitra Akshaya. Saya adalah profesional muda berusia 19 tahun, berpenampilan rapi, komunikatif, dan memiliki keterampilan negosiasi yang persuasif. Saya memiliki pengalaman lebih dari 8 bulan dalam pemasaran digital dan kampanye berbayar (Meta Ads - Instagram & Facebook) di wilayah Soloraya, memiliki akun media sosial yang aktif, serta kepemilikan kendaraan pribadi dan SIM C aktif untuk mendukung mobilitas tinggi di lapangan dalam mendampingi survei calon konsumen hingga closing unit residensial.
+
+Sebagai bahan pertimbangan Bapak/Ibu, bersama email ini saya lampirkan:
+1. Curriculum Vitae (CV ATS Standar Industri) - Terlampir dalam file PDF
+2. Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+3. Format CV ATS Online: https://fhrelz.github.io/portfolio-3d-celestial/cv-ats.html
+4. Portofolio Pemasaran Properti & Promosi Digital di Soloraya
+5. Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)
+6. Salinan Kartu Tanda Penduduk (KTP) & Surat Izin Mengemudi (SIM C Aktif)
+
+Besar harapan saya untuk diberikan kesempatan menghadiri sesi wawancara langsung guna mendiskusikan rencana kontribusi penjualan yang dapat saya berikan demi memajukan PT Cakrawala Mitra Akshaya. Terima kasih atas perhatian dan kesempatan yang diberikan.
+
+Hormat saya,
+Muhammad Fahrel Yuliyanto
+Telepon / WhatsApp: +62 889-8526-6525
+Surel (Email): muhmmadfahrel@gmail.com
+Alamat: Krendowahono RT 02 / RW 01, Gondangrejo, Karanganyar, Jawa Tengah"""
+    },
+
+    {
         'company': 'PT Talenta Pelopor Garuda (Pelopor Book)',
         'position': 'Konten Kreator',
         'recipient_email': 'adminpeloporbook@gmail.com',

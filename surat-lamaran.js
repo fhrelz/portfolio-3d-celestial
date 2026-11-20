@@ -451,7 +451,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let detectedCompany = '';
     let detectedRecipient = '';
 
-    if (/adiba|adiba\s*residence/i.test(text) || /adiba/i.test(fileName)) {
+    if (/jumbo|jumbo\s*supercenter/i.test(text) || /jumbo/i.test(fileName)) {
+      detectedCompany = 'Jumbo Supercenter';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen IT Jumbo Supercenter';
+    } else if (/montreal|montreal\s*jaya|pinoz/i.test(text) || /montreal|pinoz/i.test(fileName)) {
+      detectedCompany = 'PT. Montreal Jaya Indo (Pinoz)';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen PT. Montreal Jaya Indo';
+    } else if (/alas\s*roso|selokaton/i.test(text) || /alas\s*roso/i.test(fileName)) {
+      detectedCompany = 'Alas Roso Selokaton';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen Alas Roso Selokaton';
+    } else if (/juragan\s*villa|tawangmangu/i.test(text) || /juragan\s*villa/i.test(fileName)) {
+      detectedCompany = 'Juragan Villa Tawangmangu';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen Juragan Villa Tawangmangu';
+    } else if (/jawa\s*dwipa|jawadwipa/i.test(text) || /jawa\s*dwipa/i.test(fileName)) {
+      detectedCompany = 'Jawa Dwipa Heritage Resort & Convention';
+      detectedRecipient = 'Yth. HRD & General Manager Jawa Dwipa Heritage Resort & Convention';
+    } else if (/cakrawala|cakrawala\s*mitra|akshaya/i.test(text) || /cakrawala/i.test(fileName)) {
+      detectedCompany = 'PT Cakrawala Mitra Akshaya';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen PT Cakrawala Mitra Akshaya';
+    } else if (/daihatsu|astra\s*dso|mukhammad\.ariefrakhman/i.test(text) || /daihatsu/i.test(fileName)) {
+      detectedCompany = 'PT Astra International Tbk - Daihatsu Sales Operation (DSO)';
+      detectedRecipient = 'Yth. Tim HRD & Branch Manager PT Astra International Tbk - DSO';
+    } else if (/adiba|adiba\s*residence/i.test(text) || /adiba/i.test(fileName)) {
       detectedCompany = 'Adiba Residence Karanganyar';
       detectedRecipient = 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar';
     } else if (/pelopor\s*book|talenta\s*pelopor/i.test(text) || /pelopor/i.test(fileName)) {
@@ -542,7 +563,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Detect Position (Comprehensive Catalog)
     let detectedPosition = '';
 
-    if (/adiba|adiba\s*residence/i.test(text) || /adiba/i.test(fileName)) {
+    if (/jumbo|it\s*support\s*junior/i.test(text) || /jumbo/i.test(fileName)) {
+      detectedPosition = 'IT Support Junior Officer';
+    } else if (/montreal|pinoz/i.test(text) || /montreal|pinoz/i.test(fileName)) {
+      detectedPosition = 'Marketing Executive Karanganyar';
+    } else if (/alas\s*roso|selokaton/i.test(text) || /alas\s*roso/i.test(fileName)) {
+      detectedPosition = 'Marketing';
+    } else if (/juragan\s*villa/i.test(text) || /juragan\s*villa/i.test(fileName)) {
+      detectedPosition = 'Konten Kreator';
+    } else if (/jawa\s*dwipa|jawadwipa/i.test(text) || /jawa\s*dwipa/i.test(fileName)) {
+      detectedPosition = 'Digital Creator';
+    } else if (/cakrawala|mitra\s*akshaya|marketing\s*property/i.test(text) || /cakrawala/i.test(fileName)) {
+      detectedPosition = 'Marketing Property (Residential Sales)';
+    } else if (/daihatsu|sales\s*counter/i.test(text) || /daihatsu/i.test(fileName)) {
+      detectedPosition = 'Sales Counter & Sales Force';
+    } else if (/adiba|adiba\s*residence/i.test(text) || /adiba/i.test(fileName)) {
       detectedPosition = 'Admin Sosial Media & Content Creator';
     } else if (/pelopor\s*book|talenta\s*pelopor/i.test(text) || /pelopor/i.test(fileName)) {
       detectedPosition = 'Konten Kreator';
@@ -695,7 +730,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 8. Specialized Overrides for Specific Employers
-    if (detectedCompany.includes('Adiba')) {
+    if (detectedCompany.includes('Jumbo')) {
+      detectedPosition = 'IT Support Junior Officer';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen IT Jumbo Supercenter';
+      detectedLocation = 'Surakarta / Solo Raya';
+      inpKeyHighlights.value = 'Laki-laki, usia 19 tahun, sehat jasmani dan rohani\nPendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa Prestasi BJU)\nPengalaman pemeliharaan aset IT (PC, printer industri, barcode scanner, CCTV)\nMahir troubleshooting jaringan kabel (LAN) maupun nirkabel (WLAN) area luas\nKomunikatif, sigap menangani komplain cabang, dan siap koordinasi dengan IT Senior\nMemegang Sertifikasi Profesi BNSP Database Administrator & Software QA';
+    } else if (detectedCompany.includes('Montreal') || detectedCompany.includes('Pinoz')) {
+      detectedPosition = 'Marketing Executive Karanganyar';
+      detectedRecipient = 'Yth. Tim HRD & Manajemen PT. Montreal Jaya Indo';
+      detectedLocation = 'Kabupaten Karanganyar';
+      inpContactPhone.value = '081353477553';
+      inpKeyHighlights.value = 'Domisili asli Karanganyar (Krendowahono, Gondangrejo) & siap mobilitas penuh\nMemiliki HP Android, sepeda motor pribadi & SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo (komunikatif, tangguh & pantang menyerah)\nPengalaman 8+ bulan pemasaran & promosi komersil di Solo Raya\nSiap direct selling ke lapangan dan siap mengikuti training 3 hari di Karanganyar\nBerorientasi target penjualan harian/bulanan dengan integritas tinggi';
+    } else if (detectedCompany.includes('Alas Roso')) {
+      detectedPosition = 'Marketing';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen Alas Roso Selokaton';
+      detectedLocation = 'Selokaton, Gondangrejo, Karanganyar';
+      inpKeyHighlights.value = 'Domisili tetangga sangat dekat (Krendowahono, Gondangrejo, Karanganyar)\nMemiliki kendaraan bermotor & SIM C aktif (siap dinas luar kota)\nMahir memproduksi konten video promosi sosial media (CapCut, Reels, TikTok)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nMahir mengoperasikan komputer (Microsoft Word, Excel, PowerPoint terstruktur)\nKomunikatif, ramah, dan berorientasi pada peningkatan kunjungan resto';
+    } else if (detectedCompany.includes('Juragan Villa')) {
+      detectedPosition = 'Konten Kreator';
+      detectedRecipient = 'Yth. Pimpinan & Manajemen Juragan Villa Tawangmangu';
+      detectedLocation = 'Tawangmangu, Karanganyar';
+      inpContactPhone.value = '0895340890860';
+      inpContactLink.value = 'https://instagram.com/Juraganvillatawangmangu';
+      inpKeyHighlights.value = 'Pria muslim taat rajin beribadah (sholat 5 waktu & amanah)\nTepat berusia 19 tahun, energik, jujur, dan berdisiplin tinggi\nMahir dan terbiasa editing video kreatif menggunakan CapCut\nSelalu update dan memahami tren algoritma media sosial (TikTok & IG Reels)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nDomisili Karanganyar dengan kendaraan pribadi (siap mobilitas ke Tawangmangu)';
+    } else if (detectedCompany.includes('Jawa Dwipa')) {
+      detectedPosition = 'Digital Creator';
+      detectedRecipient = 'Yth. HRD & General Manager Jawa Dwipa Heritage Resort & Convention';
+      detectedLocation = 'Karangpandan, Karanganyar';
+      inpContactEmail.value = 'jawadwiparesortmanagement@gmail.com';
+      inpKeyHighlights.value = 'Domisili asli Karanganyar (Gondangrejo) dengan kendaraan pribadi & SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo & lulusan SMK Multimedia\nPengalaman 8+ bulan kreasi konten sosmed (IG, TikTok, Website) industri pariwisata\nMahir mengambil & editing footage video berestetika tinggi (CapCut, Premiere, VN)\nMahir fotografi & desain grafis promosi (Adobe Photoshop, Illustrator, Canva)\nCopywriting memikat, ramah, dan siap bekerja tim/shift di Karangpandan';
+    } else if (detectedCompany.includes('Cakrawala') || detectedCompany.includes('Akshaya')) {
+      detectedPosition = 'Marketing Property (Residential Sales)';
+      detectedRecipient = 'Yth. Tim Rekrutmen & Manajemen PT Cakrawala Mitra Akshaya';
+      detectedLocation = 'Soloraya dan Jogja';
+      inpContactPhone.value = '085196213830';
+      inpContactEmail.value = 'cakrawalamitraakshaya@gmail.com';
+      inpKeyHighlights.value = 'Pria usia 19 tahun, berpenampilan rapi, komunikatif, dan persuasif\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nMemiliki akun media sosial aktif (TikTok, Instagram, Facebook) untuk promosi properti\nPengalaman 8+ bulan pemasaran komersil & kampanye Meta Ads di Solo Raya\nMemiliki kendaraan pribadi & SIM C aktif (mobilitas tinggi di Soloraya)\nBerorientasi target penjualan unit hunian dan gigih dalam negosiasi klien';
+    } else if (detectedCompany.includes('Daihatsu')) {
+      detectedPosition = 'Sales Counter & Sales Force';
+      detectedRecipient = 'Yth. Tim HRD & Branch Manager PT Astra International Tbk - DSO';
+      detectedLocation = 'Solo Adi Sucipto / Klaten';
+      inpContactEmail.value = 'mukhammad.ariefrakhman@dso.astra.co.id';
+      inpContactPhone.value = '082134558787';
+      inpKeyHighlights.value = 'Pria usia 19 tahun, berpenampilan rapi, sopan, percaya diri tinggi & gigih\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi teknis otomotif)\nMemiliki kemampuan komunikasi interpersonal & negosiasi penjualan yang persuasif\nMemiliki sepeda motor pribadi & SIM C aktif untuk canvassing di Solo Raya\nBerorientasi target penjualan, disiplin kerja Astra Group, dan siap berkembang cepat\nPengalaman digital marketing & promosi komersil teruji di wilayah Solo Raya';
+    } else if (detectedCompany.includes('Adiba')) {
       detectedPosition = 'Admin Sosial Media & Content Creator';
       detectedRecipient = 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar';
       detectedLocation = 'Karanganyar';
@@ -792,6 +870,83 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. PRESET ROLES
   // ===================================================================
   const ROLE_PRESETS = {
+    'jumbo-itsupport': {
+      position: 'IT Support Junior Officer',
+      company: 'Jumbo Supercenter',
+      location: 'Surakarta / Solo Raya',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen IT Jumbo Supercenter',
+      source: 'Poster Rekrutmen Resmi IT Support Junior Officer Jumbo Supercenter',
+      highlights: 'Laki-laki, usia 19 tahun, sehat jasmani dan rohani\nPendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa Prestasi BJU)\nPengalaman pemeliharaan aset IT (PC, printer industri, barcode scanner, CCTV)\nMahir troubleshooting jaringan kabel (LAN) maupun nirkabel (WLAN) area luas\nKomunikatif, sigap menangani komplain cabang, dan siap koordinasi dengan IT Senior\nMemegang Sertifikasi Profesi BNSP Database Administrator & Software QA',
+      contactEmail: '',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'montreal-marketing': {
+      position: 'Marketing Executive Karanganyar',
+      company: 'PT. Montreal Jaya Indo (Pinoz)',
+      location: 'Kabupaten Karanganyar',
+      recipient: 'Yth. Tim HRD & Manajemen PT. Montreal Jaya Indo',
+      source: 'Poster Rekrutmen Resmi Marketing Executive Karanganyar PT. Montreal Jaya Indo',
+      highlights: 'Domisili asli Karanganyar (Krendowahono, Gondangrejo) & siap mobilitas penuh\nMemiliki HP Android, sepeda motor pribadi & SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo (komunikatif, tangguh & pantang menyerah)\nPengalaman 8+ bulan pemasaran & promosi komersil di Solo Raya\nSiap direct selling ke lapangan dan siap mengikuti training 3 hari di Karanganyar\nBerorientasi target penjualan harian/bulanan dengan integritas tinggi',
+      contactEmail: '',
+      contactPhone: '081353477553',
+      contactLink: ''
+    },
+    'alasroso-marketing': {
+      position: 'Marketing',
+      company: 'Alas Roso Selokaton',
+      location: 'Selokaton, Gondangrejo, Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Alas Roso Selokaton',
+      source: 'Poster Lowongan Kerja Resmi Marketing Alas Roso Selokaton',
+      highlights: 'Domisili tetangga sangat dekat (Krendowahono, Gondangrejo, Karanganyar)\nMemiliki kendaraan bermotor & SIM C aktif (siap dinas luar kota)\nMahir memproduksi konten video promosi sosial media (CapCut, Reels, TikTok)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nMahir mengoperasikan komputer (Microsoft Word, Excel, PowerPoint terstruktur)\nKomunikatif, ramah, dan berorientasi pada peningkatan kunjungan resto',
+      contactEmail: '',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'juraganvilla-creator': {
+      position: 'Konten Kreator',
+      company: 'Juragan Villa Tawangmangu',
+      location: 'Tawangmangu, Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Juragan Villa Tawangmangu',
+      source: 'Poster Rekrutmen Resmi Konten Kreator Juragan Villa Tawangmangu',
+      highlights: 'Pria muslim taat rajin beribadah (sholat 5 waktu & amanah)\nTepat berusia 19 tahun, energik, jujur, dan berdisiplin tinggi\nMahir dan terbiasa editing video kreatif menggunakan CapCut\nSelalu update dan memahami tren algoritma media sosial (TikTok & IG Reels)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nDomisili Karanganyar dengan kendaraan pribadi (siap mobilitas ke Tawangmangu)',
+      contactEmail: '',
+      contactPhone: '0895340890860',
+      contactLink: 'https://instagram.com/Juraganvillatawangmangu'
+    },
+    'jawadwipa-digital': {
+      position: 'Digital Creator',
+      company: 'Jawa Dwipa Heritage Resort & Convention',
+      location: 'Karangpandan, Karanganyar',
+      recipient: 'Yth. HRD & General Manager Jawa Dwipa Heritage Resort & Convention',
+      source: 'Poster Lowongan Kerja Resmi Digital Creator Jawa Dwipa Heritage Resort',
+      highlights: 'Domisili asli Karanganyar (Gondangrejo) dengan kendaraan pribadi & SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo & lulusan SMK Multimedia\nPengalaman 8+ bulan kreasi konten sosmed (IG, TikTok, Website) industri pariwisata\nMahir mengambil & editing footage video berestetika tinggi (CapCut, Premiere, VN)\nMahir fotografi & desain grafis promosi (Adobe Photoshop, Illustrator, Canva)\nCopywriting memikat, ramah, dan siap bekerja tim/shift di Karangpandan',
+      contactEmail: 'jawadwiparesortmanagement@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    'cakrawala-property': {
+      position: 'Marketing Property (Residential Sales)',
+      company: 'PT Cakrawala Mitra Akshaya',
+      location: 'Soloraya dan Jogja',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen PT Cakrawala Mitra Akshaya',
+      source: 'Poster Rekrutmen Resmi Marketing Property PT Cakrawala Mitra Akshaya',
+      highlights: 'Pria usia 19 tahun, berpenampilan rapi, komunikatif, dan persuasif\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nMemiliki akun media sosial aktif (TikTok, Instagram, Facebook) untuk promosi properti\nPengalaman 8+ bulan pemasaran komersil & kampanye Meta Ads di Solo Raya\nMemiliki kendaraan pribadi & SIM C aktif (mobilitas tinggi di Soloraya)\nBerorientasi target penjualan unit hunian dan gigih dalam negosiasi klien',
+      contactEmail: 'cakrawalamitraakshaya@gmail.com',
+      contactPhone: '085196213830',
+      contactLink: ''
+    },
+    'daihatsu-sales': {
+      position: 'Sales Counter & Sales Force',
+      company: 'PT Astra International Tbk - Daihatsu Sales Operation (DSO)',
+      location: 'Daihatsu Solo Adi Sucipto / Klaten',
+      recipient: 'Yth. Tim HRD & Branch Manager PT Astra International Tbk - DSO',
+      source: 'Poster Rekrutmen Resmi Daihatsu Sahabatku (Astra DSO Solo / Klaten)',
+      highlights: 'Pria usia 19 tahun, berpenampilan rapi, sopan, percaya diri tinggi & gigih\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi teknis otomotif)\nMemiliki kemampuan komunikasi interpersonal & negosiasi penjualan yang persuasif\nMemiliki sepeda motor pribadi & SIM C aktif untuk canvassing di Solo Raya\nBerorientasi target penjualan, disiplin kerja Astra Group, dan siap berkembang cepat\nPengalaman digital marketing & promosi komersil teruji di wilayah Solo Raya',
+      contactEmail: 'mukhammad.ariefrakhman@dso.astra.co.id',
+      contactPhone: '082134558787',
+      contactLink: ''
+    },
     'adiba-residence': {
       position: 'Admin Sosial Media & Content Creator',
       company: 'Adiba Residence Karanganyar',
@@ -1087,7 +1242,78 @@ document.addEventListener('DOMContentLoaded', () => {
       'Portofolio Proyek Interaktif & Piagam Penghargaan Nasional (Silver Medalist Universitas Mercu Buana)'
     ];
 
-    if (comp.includes('adiba') || (comp.includes('residence') && pos.includes('sosial media'))) {
+    if (comp.includes('jumbo') || pos.includes('it support junior officer')) {
+      specificParagraph = `Sebagai mahasiswa semester 5 Program Studi S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo sekaligus peraih Beasiswa Prestasi BJU (IPK Unggul) dengan latar belakang kejuruan SMK Multimedia, saya memiliki fondasi kuat dalam rekayasa sistem komputer dan infrastruktur jaringan. Saya memiliki keterampilan teknis dalam perakitan, instalasi, konfigurasi sistem operasi dan aplikasi, pemeliharaan berkala, serta perbaikan perangkat kerja IT (PC desktop, printer industri/label, barcode scanner, dan sistem CCTV). Selain itu, saya terbiasa menangani troubleshooting jaringan kabel (LAN) maupun nirkabel (WLAN), konfigurasi router/switch, pemeliharaan ruang server untuk meminimalkan waktu henti (downtime), serta koordinasi penanganan komplain operasional cabang secara cepat, komunikatif, dan terdokumentasi rapi. Didukung Sertifikasi Profesi BNSP Database Administrator dan Sertifikat Software Quality Assurance (PT Tanjung Mulia Informatika), saya siap berkoordinasi dengan IT Support Senior Officer untuk menjaga keandalan operasional IT Jumbo Supercenter.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Pekerjaan: Pemeliharaan Perangkat IT, Jaringan Komputer & CCTV',
+        'Salinan Ijazah Formal & Transkrip Nilai Akademik Terkini (IPK Unggul)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator No. Reg: DMS.1241.00995 2026)',
+        'Salinan Sertifikat Kompetensi Software Quality Assurance (PT Tanjung Mulia Informatika)',
+        'Salinan Surat Referensi Kerja & Pengalaman Kepemimpinan Organisasi',
+        'Salinan Kartu Tanda Penduduk (KTP) & Pas Foto Formal Ukuran Bebas'
+      ];
+    } else if (comp.includes('montreal') || comp.includes('pinoz') || (pos.includes('marketing') && comp.includes('montreal'))) {
+      specificParagraph = `Sebagai putra daerah yang berdomisili asli di Kabupaten Karanganyar (Krendowahono, Gondangrejo) dengan kepemilikan <strong>smartphone Android, sepeda motor pribadi, dan SIM C aktif</strong>, saya memiliki kesiapan mobilitas harian yang optimal untuk menjalankan aktivitas direct selling produk pertanian PINOZ ke seluruh pelosok area Karanganyar. Sebagai mahasiswa S1 Sistem Informasi UBSI Solo dengan pengalaman kepemimpinan sebagai Ketua Umum HIMSI, saya memiliki karakter yang tangguh, komunikatif, disiplin tinggi, dan terbiasa bekerja di bawah tekanan target penjualan. Saya memiliki pengalaman lebih dari 8 bulan dalam promosi komersil dan pemasaran langsung di Solo Raya, terbiasa melakukan pendekatan persuasif kepada calon konsumen, serta siap mengikuti seluruh rangkaian training intensif selama 3 hari di Kabupaten Karanganyar guna memahami keunggulan produk dan strategi penjualan lapangan.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini Lengkap',
+        'Salinan Kartu Tanda Penduduk (KTP Asli Domisili Kabupaten Karanganyar)',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif)',
+        'Salinan Ijazah Formal & Transkrip Nilai Akademik Terkini (IPK Unggul)',
+        'Portofolio Penjualan Komersil & Promosi Lapangan di Solo Raya',
+        'Piagam Penghargaan Nasional & Dokumen Kualifikasi Pendukung'
+      ];
+    } else if (comp.includes('alas roso') || (comp.includes('selokaton') && pos.includes('marketing'))) {
+      specificParagraph = `Sebagai warga yang bertempat tinggal sangat dekat di Krendowahono, Gondangrejo, Karanganyar, saya memiliki akses dan mobilitas yang sangat cepat menuju lokasi Alas Roso Selokaton di Gondangrejo. Didukung kepemilikan <strong>kendaraan bermotor pribadi dan SIM C aktif</strong>, saya memiliki kesiapan penuh untuk menjalankan tugas pemasaran lokal maupun perjalanan dinas ke luar kota. Saya memadukan keahlian administrasi komputer (mahir mengoperasikan <strong>Microsoft Word, Excel, dan PowerPoint</strong> untuk laporan dan rekapitulasi data) dengan keahlian kreasi konten video kuliner yang memikat. Didukung prestasi sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)</strong> dan <strong>Juara 1 LKS Desain Grafis</strong>, saya mahir memproduksi video promosi resto berbasis <strong>CapCut</strong>, merancang narasi visual menu makanan dan suasana resto, serta mengelola promosi media sosial guna mendongkrak trafik pengunjung dan reservasi di Alas Roso Selokaton.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Video Kreatif: Konten Promosi Resto, Reels Kuliner & Editing CapCut',
+        'Salinan Ijazah Formal & Transkrip Nilai Akademik Terkini',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif) & KTP Domisili Gondangrejo',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP Bidang Komputer & Dokumen Pendukung'
+      ];
+    } else if (comp.includes('juragan villa') || (pos.includes('kreator') && comp.includes('villa'))) {
+      specificParagraph = `Sebagai seorang pemuda muslim berusia 19 tahun yang taat beribadah, amanah, dan berdisiplin tinggi, saya memiliki antusiasme dan komitmen besar untuk bergabung sebagai Konten Kreator di Juragan Villa Tawangmangu. Latar belakang saya sebagai mahasiswa S1 Sistem Informasi UBSI Solo diperkaya dengan keahlian mendalam dalam produksi konten video interaktif berbasis <strong>CapCut</strong> serta pemahaman tajam terhadap tren audio dan format video viral di <strong>TikTok dan Instagram Reels</strong>. Prestasi saya sebagai <strong>Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)</strong> dan <strong>Juara 1 LKS Graphic Design Technology</strong> membuktikan kepekaan estetika saya dalam menangkap keindahan visual arsitektur villa, suasana sejuk pegunungan Tawangmangu, dan fasilitas relaksasi menjadi materi video yang sinematik dan memikat calon tamu. Didukung kendaraan pribadi dan domisili di Karanganyar, saya siap berproduksi langsung di lokasi villa di Tawangmangu.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Video Sinematik Villa / Hospitality & Editing CapCut',
+        'Salinan Kartu Tanda Penduduk (KTP Domisili Karanganyar)',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology'
+      ];
+    } else if (comp.includes('jawa dwipa') || (comp.includes('dwipa') && pos.includes('digital'))) {
+      specificParagraph = `Sebagai pemuda berdomisili di Kabupaten Karanganyar dengan latar belakang pendidikan SMK Multimedia dan saat ini menempuh S1 Sistem Informasi UBSI Solo, saya memiliki perpaduan kompetensi teknis dan visual yang matang di bidang hospitality digital creation. Saya memiliki pengalaman lebih dari 8 bulan dalam produksi konten promosi media sosial (<strong>Instagram, TikTok, dan Website</strong>), terampil dalam pengambilan sudut kamera (angle footage) estetis, fotografi hotel/resort, serta editing video berkualitas menggunakan <strong>CapCut, Adobe Premiere, dan Canva</strong>. Saya juga memiliki keahlian copywriting persuasif bernuansa budaya heritage Jawa yang elegan, memahami estetika arsitektur khas Jawa Dwipa, serta siap bekerja secara fleksibel (sistem shift) bersama tim hotel di Karangpandan guna memperkuat citra dan okupansi Jawa Dwipa Heritage Resort & Convention.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini (Subject: Lamaran DIGI)',
+        'Portofolio Digital Creator: Footage Video Resort, Fotografi & Desain Grafis Heritage',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo) & Ijazah SMK Multimedia',
+        'Salinan Kartu Tanda Penduduk (KTP Domisili Karanganyar)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Piagam Penghargaan Juara 1 LKS Graphic Design Technology & Sertifikat BNSP'
+      ];
+    } else if (comp.includes('cakrawala') || (comp.includes('akshaya') && pos.includes('propert'))) {
+      specificParagraph = `Sebagai profesional muda berusia 19 tahun yang komunikatif, berpenampilan rapi, sopan, dan berorientasi pada target penjualan, saya memiliki komitmen kuat untuk berkarir sebagai Marketing Property di PT Cakrawala Mitra Akshaya. Latar belakang saya sebagai mahasiswa S1 Sistem Informasi UBSI Solo diperkaya dengan pengalaman lebih dari 8 bulan di bidang digital marketing dan promosi berbayar (<strong>Meta Ads Manager, Instagram, TikTok, dan Facebook</strong>) di wilayah Soloraya. Didukung kepemilikan <strong>kendaraan pribadi dan SIM C aktif</strong> serta jejaring sosial media yang aktif, saya memiliki kesiapan mobilitas yang tinggi untuk melakukan canvassing lapangan, membuka open booth, mendampingi calon pembeli saat survei lokasi perumahan, serta melakukan negosiasi persuasif hingga tahap closing unit residensial di Soloraya dan Jogja.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Portofolio Pemasaran Properti & Promosi Digital Media Sosial di Soloraya',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Surat Izin Mengemudi (SIM C Aktif) & Kartu Tanda Penduduk (KTP)',
+        'Piagam Penghargaan Juara 2 Tingkat Nasional Video Reels Kreatif (SobiFest)',
+        'Salinan Sertifikat Kompetensi Profesi BNSP Komputer & Basis Data'
+      ];
+    } else if (comp.includes('daihatsu') || comp.includes('dso') || (comp.includes('astra') && pos.includes('sales'))) {
+      specificParagraph = `Sebagai individu muda berusia 19 tahun yang berintegritas tinggi, percaya diri, gigih, berpenampilan rapi, dan berorientasi pada pencapaian target kerja yang menantang, saya memiliki antusiasme besar untuk bergabung dalam keluarga besar Astra Group melalui PT Astra International Tbk - Daihatsu Sales Operation (DSO). Sebagai mahasiswa S1 Sistem Informasi UBSI Solo, saya memiliki pemahaman teknis produk otomotif yang komprehensif, kemampuan komunikasi interpersonal yang persuasif, serta etos kerja disiplin tinggi. Didukung kepemilikan <strong>sepeda motor pribadi dan SIM C aktif</strong>, pengalaman lebih dari 8 bulan dalam promosi komersil di Solo Raya, serta kemampuan digital branding di media sosial, saya siap berjuang maksimal memperluas basis pelanggan Daihatsu, melayani kebutuhan konsumen dengan standar prima (service excellence), dan mencapai target penjualan unit di Daihatsu Solo Adi Sucipto maupun Klaten.`;
+      documentListItems = [
+        'Curriculum Vitae (CV) Format Standar ATS Terkini',
+        'Salinan Surat Lamaran Pekerjaan Resmi (Format PDF)',
+        'Salinan Transkrip Nilai Akademik Terkini (IPK Unggul UBSI Solo)',
+        'Salinan Ijazah Formal Pendidikan Terakhir',
+        'Salinan Kartu Tanda Penduduk (KTP) & Surat Izin Mengemudi (SIM C Aktif)',
+        'Portofolio Promosi Komersial di Solo Raya & Piagam Penghargaan Nasional'
+      ];
+    } else if (comp.includes('adiba') || (comp.includes('residence') && pos.includes('sosial media'))) {
       specificParagraph = `Sebagai pemuda berdomisili asli di Karanganyar (Krendowahono, Gondangrejo) dengan kepemilikan <strong>kendaraan pribadi dan SIM C aktif</strong>, saya memiliki kesiapan mobilitas yang sangat fleksibel untuk memproduksi konten properti langsung di perumahan Adiba Residence Karanganyar. Saya memiliki pengalaman lebih dari 8 bulan dalam pengelolaan media sosial dan promosi komersil, dengan keahlian teruji dalam pengoperasian aplikasi editing video (<strong>CapCut & VN</strong>) serta desain grafis (<strong>Canva & Illustrator</strong>). Saya memiliki rasa percaya diri tinggi untuk tampil di depan kamera, melakukan voice over informatif bernada hangat, menyusun copywriting promosi perumahan yang memikat, serta berkomunikasi secara ramah, santun, dan responsif dalam melayani calon konsumen melalui Direct Message (DM) maupun kolom komentar guna mendorong konversi closing unit Adiba Residence.`;
       documentListItems = [
         'Curriculum Vitae (CV) Format Standar ATS Terkini',
@@ -1326,7 +1552,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Additional note if key highlights or specific company entered
     let highlightSnippet = '';
-    if (comp.includes('adiba') || (comp.includes('residence') && pos.includes('sosial media'))) {
+    if (comp.includes('jumbo') || pos.includes('it support junior officer')) {
+      highlightSnippet = `<p class="letter-p">Menjawab persyaratan lowongan <strong>${company}</strong> untuk posisi IT Support Junior Officer, yakni kesiapan menangani komplain cabang, troubleshooting jaringan kabel & nirkabel di area operasional luas, pemeliharaan aset kerja (PC, barcode scanner, CCTV, printer industri), serta koordinasi proaktif dengan IT Senior Officer, saya menyatakan kesiapan penuh untuk segera bergabung dan bertugas.</p>`;
+    } else if (comp.includes('montreal') || comp.includes('pinoz')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi resmi rekrutmen <strong>${company}</strong> untuk penempatan Marketing Executive Karanganyar, yakni kepemilikan motor pribadi, HP Android, kemampuan direct selling, kesiapan training 3 hari di Karanganyar, serta ketahanan bekerja di bawah tekanan target, saya menyatakan kesungguhan dan kesiapan penuh untuk bekerja keras demi mencapai target omzet perusahaan.</p>`;
+    } else if (comp.includes('alas roso') || (comp.includes('selokaton') && pos.includes('marketing'))) {
+      highlightSnippet = `<p class="letter-p">Menjawab kualifikasi dari <strong>${company}</strong>, yakni keahlian membuat konten video sosial media, kemahiran operasional komputer (Word, Excel, PPT), kesiapan perjalanan dinas ke luar kota, kepemilikan kendaraan & SIM, serta domisili dekat di Gondangrejo Karanganyar, saya menyatakan kesiapan penuh untuk segera mendedikasikan tenaga dan kreativitas saya.</p>`;
+    } else if (comp.includes('juragan villa')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi pada poster rekrutmen <strong>${company}</strong>, yakni pria muslim rajin beribadah usia 19-30 tahun, mahir CapCut, dan aktif mengikuti tren media sosial, profil saya pada usia 19 tahun dengan portofolio video reels nasional sangat selaras untuk mengangkat daya tarik seluruh unit villa Juragan Villa Tawangmangu.</p>`;
+    } else if (comp.includes('jawa dwipa')) {
+      highlightSnippet = `<p class="letter-p">Menjawab kualifikasi pada poster rekrutmen resmi <strong>${company}</strong> untuk posisi Digital Creator (Subject: Lamaran DIGI), yakni penguasaan konten sosmed resort/web, kemampuan mengambil & mengedit footage video, fotografi, desain grafis (Adobe/Canva), copywriting, dan kesiapan sistem kerja perhotelan di Karangpandan Karanganyar, saya menyatakan kesiapan penuh untuk segera bertugas.</p>`;
+    } else if (comp.includes('cakrawala') || comp.includes('akshaya')) {
+      highlightSnippet = `<p class="letter-p">Berdasarkan persyaratan yang tercantum pada poster rekrutmen <strong>${company}</strong>, yakni kemampuan komunikasi & negosiasi, sikap berorientasi target penjualan perumahan, kepemilikan kendaraan pribadi, akun media sosial aktif, serta kesiapan mobilitas di Soloraya, saya siap langsung terjun memasarkan portofolio hunian terbaik PT Cakrawala Mitra Akshaya.</p>`;
+    } else if (comp.includes('daihatsu') || comp.includes('dso')) {
+      highlightSnippet = `<p class="letter-p">Menanggapi kualifikasi resmi rekrutmen <strong>${company}</strong> untuk posisi Sales Counter & Sales Force di Daihatsu Solo Adi Sucipto / Klaten (Subject: Sales_Muhammad Fahrel Yuliyanto_Daihatsu Solo Adi Sucipto), yakni percaya diri, gigih, persuasif, berorientasi target penjualan, dan siap berkembang dalam jenjang karir Astra Group, bersama ini saya sertakan berkas lengkap format PDF sebagai bukti kesiapan dan tekad kerja saya.</p>`;
+    } else if (comp.includes('adiba') || (comp.includes('residence') && pos.includes('sosial media'))) {
       highlightSnippet = `<p class="letter-p">Menjawab kualifikasi lowongan <strong>${company}</strong> untuk posisi Admin Sosial Media & Content Creator, yakni domisili Karanganyar dengan kepemilikan kendaraan pribadi & SIM C aktif, penguasaan aplikasi CapCut/VN/Canva, kemampuan voice over & tampil percaya diri di depan kamera, serta pelayanan ramah membalas pesan dan komentar calon pembeli, saya menyatakan kesiapan penuh untuk segera bergabung dan mendedikasikan kemampuan terbaik saya.</p>`;
     } else if (comp.includes('pelopor') || comp.includes('talenta pelopor')) {
       highlightSnippet = `<p class="letter-p">Berdasarkan kualifikasi pada poster rekrutmen <strong>${company}</strong> di Banyuanyar Surakarta, yakni pria muslim, memiliki keterampilan desain dan editing video berkualitas (CapCut, Canva, Illustrator), melampirkan portofolio karya terbaik, percaya diri di depan kamera, serta mampu bekerja secara mandiri maupun tim, saya menyatakan kesiapan penuh untuk segera berkontribusi dalam memajukan literasi dan konten Pelopor Book.</p>`;
@@ -1626,7 +1866,135 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===================================================================
   const DEFAULT_ARCHIVES = [
     {
+      id: 'jumbo-supercenter-itsupport',
+      title: 'Lamaran IT Support Junior Officer Jumbo Supercenter',
+      company: 'Jumbo Supercenter',
+      position: 'IT Support Junior Officer',
+      location: 'Surakarta / Solo Raya',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen IT Jumbo Supercenter',
+      source: 'Poster Rekrutmen Resmi IT Support Junior Officer Jumbo Supercenter',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran IT Support Junior Officer berfokus pada troubleshooting jaringan LAN/WLAN, pemeliharaan aset IT (PC, barcode scanner, CCTV, printer industri), penanganan komplain cabang, dan Sertifikasi BNSP DBA & SQA.',
+      highlights: 'Laki-laki, usia 19 tahun, sehat jasmani dan rohani\nPendidikan S1 Sistem Informasi UBSI Solo (IPK Unggul & Beasiswa Prestasi BJU)\nPengalaman pemeliharaan aset IT (PC, printer industri, barcode scanner, CCTV)\nMahir troubleshooting jaringan kabel (LAN) maupun nirkabel (WLAN) area luas\nKomunikatif, sigap menangani komplain cabang, dan siap koordinasi dengan IT Senior\nMemegang Sertifikasi Profesi BNSP Database Administrator & Software QA',
+      contactEmail: '',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'montreal-jaya-marketing',
+      title: 'Lamaran Marketing Executive PT. Montreal Jaya Indo',
+      company: 'PT. Montreal Jaya Indo (Pinoz)',
+      position: 'Marketing Executive Karanganyar',
+      location: 'Kabupaten Karanganyar',
+      recipient: 'Yth. Tim HRD & Manajemen PT. Montreal Jaya Indo',
+      source: 'Poster Rekrutmen Resmi Marketing Executive Karanganyar PT. Montreal Jaya Indo',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Pengajuan Marketing Executive Karanganyar dari warga asli Karanganyar, memiliki motor & SIM C, HP Android, siap direct selling produk pertanian PINOZ, training 3 hari di Karanganyar, dan tahan target kerja.',
+      highlights: 'Domisili asli Karanganyar (Krendowahono, Gondangrejo) & siap mobilitas penuh\nMemiliki HP Android, sepeda motor pribadi & SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo (komunikatif, tangguh & pantang menyerah)\\nPengalaman 8+ bulan pemasaran & promosi komersil di Solo Raya\nSiap direct selling ke lapangan dan siap mengikuti training 3 hari di Karanganyar\nBerorientasi target penjualan harian/bulanan dengan integritas tinggi',
+      contactEmail: '',
+      contactPhone: '081353477553',
+      contactLink: ''
+    },
+    {
+      id: 'alas-roso-marketing',
+      title: 'Lamaran Marketing Resto Alas Roso Selokaton',
+      company: 'Alas Roso Selokaton',
+      position: 'Marketing',
+      location: 'Selokaton, Gondangrejo, Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Alas Roso Selokaton',
+      source: 'Poster Lowongan Kerja Resmi Marketing Alas Roso Selokaton',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Marketing Resto dari domisili tetangga dekat di Gondangrejo Karanganyar, memiliki motor & SIM C aktif, mahir konten video sosial media (CapCut & Reels kuliner), serta mahir Microsoft Word, Excel, dan PPT.',
+      highlights: 'Domisili tetangga sangat dekat (Krendowahono, Gondangrejo, Karanganyar)\nMemiliki kendaraan bermotor & SIM C aktif (siap dinas luar kota)\nMahir memproduksi konten video promosi sosial media (CapCut, Reels, TikTok)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nMahir mengoperasikan komputer (Microsoft Word, Excel, PowerPoint terstruktur)\nKomunikatif, ramah, dan berorientasi pada peningkatan kunjungan resto',
+      contactEmail: '',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'juragan-villa-creator',
+      title: 'Lamaran Konten Kreator Juragan Villa Tawangmangu',
+      company: 'Juragan Villa Tawangmangu',
+      position: 'Konten Kreator',
+      location: 'Tawangmangu, Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Juragan Villa Tawangmangu',
+      source: 'Poster Rekrutmen Resmi Konten Kreator Juragan Villa Tawangmangu',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Konten Kreator tepat usia 19 tahun, pria muslim rajin beribadah, mahir CapCut & video reels sinematik villa, mengikuti tren medsos terkini, siap bertugas di Tawangmangu Karanganyar.',
+      highlights: 'Pria muslim taat rajin beribadah (sholat 5 waktu & amanah)\nTepat berusia 19 tahun, energik, jujur, dan berdisiplin tinggi\nMahir dan terbiasa editing video kreatif menggunakan CapCut\nSelalu update dan memahami tren algoritma media sosial (TikTok & IG Reels)\nJuara 2 Tingkat Nasional Video Reels Kreatif (SobiFest) & Juara 1 LKS Desain Grafis\nDomisili Karanganyar dengan kendaraan pribadi (siap mobilitas ke Tawangmangu)',
+      contactEmail: '',
+      contactPhone: '0895340890860',
+      contactLink: 'https://instagram.com/Juraganvillatawangmangu'
+    },
+    {
+      id: 'jawadwipa-resort-digital',
+      title: 'Lamaran Digital Creator Jawa Dwipa Resort',
+      company: 'Jawa Dwipa Heritage Resort & Convention',
+      position: 'Digital Creator',
+      location: 'Karangpandan, Karanganyar',
+      recipient: 'Yth. HRD & General Manager Jawa Dwipa Heritage Resort & Convention',
+      source: 'Poster Lowongan Kerja Resmi Digital Creator Jawa Dwipa Heritage Resort',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Digital Creator Jawa Dwipa Resort (Subject: Lamaran DIGI) mengoptimalkan keahlian multimedia, footage video, fotografi heritage, copywriting, dan desain grafis promosi pariwisata di Karangpandan.',
+      highlights: 'Domisili asli Karanganyar (Gondangrejo) dengan kendaraan pribadi & SIM C aktif\nPendidikan S1 Sistem Informasi UBSI Solo & lulusan SMK Multimedia\nPengalaman 8+ bulan kreasi konten sosmed (IG, TikTok, Website) industri pariwisata\nMahir mengambil & editing footage video berestetika tinggi (CapCut, Premiere, VN)\nMahir fotografi & desain grafis promosi (Adobe Photoshop, Illustrator, Canva)\nCopywriting memikat, ramah, dan siap bekerja tim/shift di Karangpandan',
+      contactEmail: 'jawadwiparesortmanagement@gmail.com',
+      contactPhone: '',
+      contactLink: ''
+    },
+    {
+      id: 'cakrawala-property-sales',
+      title: 'Lamaran Marketing Property PT Cakrawala Mitra Akshaya',
+      company: 'PT Cakrawala Mitra Akshaya',
+      position: 'Marketing Property (Residential Sales)',
+      location: 'Soloraya dan Jogja',
+      recipient: 'Yth. Tim Rekrutmen & Manajemen PT Cakrawala Mitra Akshaya',
+      source: 'Poster Rekrutmen Resmi Marketing Property PT Cakrawala Mitra Akshaya',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Pengajuan posisi Marketing Property mengandalkan keahlian promosi Meta Ads, komunikasi & negosiasi closing unit residensial, motor pribadi & SIM C aktif, serta kesiapan canvassing di Soloraya dan Jogja.',
+      highlights: 'Pria usia 19 tahun, berpenampilan rapi, komunikatif, dan persuasif\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nMemiliki akun media sosial aktif (TikTok, Instagram, Facebook) untuk promosi properti\nPengalaman 8+ bulan pemasaran komersil & kampanye Meta Ads di Solo Raya\nMemiliki kendaraan pribadi & SIM C aktif (mobilitas tinggi di Soloraya)\nBerorientasi target penjualan unit hunian dan gigih dalam negosiasi klien',
+      contactEmail: 'cakrawalamitraakshaya@gmail.com',
+      contactPhone: '085196213830',
+      contactLink: ''
+    },
+    {
+      id: 'daihatsu-dso-sales',
+      title: 'Lamaran Sales Counter & Sales Force Astra Daihatsu',
+      company: 'PT Astra International Tbk - Daihatsu Sales Operation (DSO)',
+      position: 'Sales Counter & Sales Force',
+      location: 'Daihatsu Solo Adi Sucipto / Klaten',
+      recipient: 'Yth. Tim HRD & Branch Manager PT Astra International Tbk - DSO',
+      source: 'Poster Rekrutmen Resmi Daihatsu Sahabatku (Astra DSO Solo / Klaten)',
+      date: '2026-11-20',
+      badge: 'Loker Baru (Belum Dilamar)',
+      badgeClass: 'badge-active',
+      desc: 'Lamaran Sales Counter & Sales Force Daihatsu DSO (Subject: Sales_Muhammad Fahrel Yuliyanto_Daihatsu Solo Adi Sucipto) berbekal percaya diri, kegigihan, kemampuan persuasif, motor pribadi & SIM C, serta etos kerja Astra Group.',
+      highlights: 'Pria usia 19 tahun, berpenampilan rapi, sopan, percaya diri tinggi & gigih\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi teknis otomotif)\nMemiliki kemampuan komunikasi interpersonal & negosiasi penjualan yang persuasif\nMemiliki sepeda motor pribadi & SIM C aktif untuk canvassing di Solo Raya\nBerorientasi target penjualan, disiplin kerja Astra Group, dan siap berkembang cepat\nPengalaman digital marketing & promosi komersil teruji di wilayah Solo Raya',
+      contactEmail: 'mukhammad.ariefrakhman@dso.astra.co.id',
+      contactPhone: '082134558787',
+      contactLink: ''
+    },
+    {
       id: 'adiba-residence-sosmed',
+      title: 'Lamaran Admin Sosmed & Content Creator Adiba Residence',
+      company: 'Adiba Residence Karanganyar',
+      position: 'Admin Sosial Media & Content Creator',
+      location: 'Karanganyar',
+      recipient: 'Yth. Pimpinan & Manajemen Adiba Residence Karanganyar',
+      source: 'Poster Rekrutmen Resmi Adiba Residence Karanganyar',
+      date: '2026-11-18',
+      badge: 'Sudah Dilamar',
+      badgeClass: 'badge-applied',
       title: 'Lamaran Admin Sosmed & Content Creator Adiba Residence',
       company: 'Adiba Residence Karanganyar',
       position: 'Admin Sosial Media & Content Creator',
@@ -1651,8 +2019,8 @@ document.addEventListener('DOMContentLoaded', () => {
       recipient: 'Yth. Tim Rekrutmen & Manajemen PT Talenta Pelopor Garuda',
       source: 'Poster Resmi We\'re Hiring Konten Kreator PT Talenta Pelopor Garuda',
       date: '2026-11-18',
-      badge: 'Loker Baru (Belum Dilamar)',
-      badgeClass: 'badge-active',
+      badge: 'Sudah Dilamar',
+      badgeClass: 'badge-applied',
       desc: 'Lamaran Konten Kreator dari pria muslim taat, berpengalaman 8+ bulan produksi video promosi, desain ilustrasi, editing CapCut/Canva, percaya diri di depan kamera, siap penempatan Banyuanyar Surakarta.',
       highlights: 'Pria Muslim taat berakhlak mulia (sholat 5 waktu & amanah)\nPendidikan S1 Sistem Informasi UBSI Solo (Semester 5, IPK Unggul & Beasiswa BJU)\nSkill desain, ilustrasi, dan editing video berkualitas (CapCut, Canva, Illustrator)\nMelampirkan hasil karya terbaik & portofolio interaktif 3D\nPercaya diri tampil di depan kamera\nMampu bekerja secara individu dan team di Banyuanyar Surakarta',
       contactEmail: 'adminpeloporbook@gmail.com',
@@ -1668,8 +2036,8 @@ document.addEventListener('DOMContentLoaded', () => {
       recipient: 'Yth. Pimpinan & Tim Rekrutmen Passtore Solo',
       source: 'Poster Resmi We Are Hiring Staff iPhone Store (Passtore Solo)',
       date: '2026-11-18',
-      badge: 'Loker Baru (Belum Dilamar)',
-      badgeClass: 'badge-active',
+      badge: 'Sudah Dilamar',
+      badgeClass: 'badge-applied',
       desc: 'Lamaran Staff iPhone Store Passtore Solo berbekal pemahaman teknologi gadget & ekosistem iOS, komunikasi ramah dan persuasif, kejujuran, ketelitian stok/transaksi, dan etos kerja sama tim.',
       highlights: 'Pria usia 19 tahun, ramah, berpenampilan rapi, sopan, dan komunikatif\nPendidikan S1 Sistem Informasi UBSI Solo (paham spesifikasi smartphone, gadget & ekosistem Apple iOS)\nJujur, teliti dalam pencatatan transaksi & stock opname, serta bertanggung jawab penuh\nBersedia dan terbiasa bekerja dalam tim (Ketua Umum HIMSI UBSI Solo)\nBerorientasi target penjualan, pelayanan prima (customer service), serta disiplin tinggi',
       contactEmail: '',
@@ -1685,8 +2053,8 @@ document.addEventListener('DOMContentLoaded', () => {
       recipient: 'Yth. Pimpinan & Tim Rekrutmen Ada Cellular Store',
       source: 'Poster Lowongan Kerja Resmi Social Media Staff Ada Cellular Store',
       date: '2026-11-18',
-      badge: 'Loker Baru (Belum Dilamar)',
-      badgeClass: 'badge-active',
+      badge: 'Sudah Dilamar',
+      badgeClass: 'badge-applied',
       desc: 'Lamaran Social Media Staff berfokus pada kreasi konten foto/video gadget terkini (CapCut), live/on-camera review, pemahaman tren viral TikTok/IG, dan peningkatan engagement Ada Cellular Store.',
       highlights: 'Pria usia 19 tahun, aktif dan selalu update tren media sosial (TikTok, Instagram, Facebook)\nKreatif, komunikatif, dan percaya diri di depan kamera untuk review gadget & promosi toko\nMahir memproduksi konten foto & video menarik menggunakan CapCut & Canva\nMengerti tren dan algoritma media sosial\nDisiplin, bertanggung jawab, dan terbiasa bekerja sama dengan tim toko',
       contactEmail: '',
@@ -1917,11 +2285,15 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // Archive Applied Status Management (localStorage)
-  const APPLIED_STORAGE_KEY = 'fahrel_applied_archive_ids_v2';
+  const APPLIED_STORAGE_KEY = 'fahrel_applied_archive_ids_v3';
   let currentArchiveFilter = 'all';
 
-  // Default applied items: all previous 13 applications are marked as applied
+  // Default applied items: all previous 17 applications are marked as applied
   const DEFAULT_APPLIED_IDS = [
+    'adiba-residence-sosmed',
+    'pelopor-book-creator',
+    'passtore-solo-iphone',
+    'ada-cellular-sosmed',
     'honda-ramayana-marketing',
     'analis-teknologi-talent',
     'kertabhumi-web-developer',
