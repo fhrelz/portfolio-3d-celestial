@@ -1238,7 +1238,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'Salinan Transkrip Nilai Akademik (IPK Unggul)',
       'Salinan Sertifikat Kompetensi Profesi BNSP (Database Administrator No. Reg: DMS.1241.00995 2026)',
       'Salinan Sertifikat Kompetensi Software Quality Assurance (PT Tanjung Mulia Informatika)',
-      'Salinan Surat Pencatatan Hak Cipta (HKI Kemenkumham RI No. EC002026096415 & EC002026053217)',
+      'Salinan Surat Pencatatan Hak Cipta (4 HKI Kemenkumham RI: No. EC002026229696, EC002026153831, EC002026096415, EC002026053217)',
       'Portofolio Proyek Interaktif & Piagam Penghargaan Nasional (Silver Medalist Universitas Mercu Buana)'
     ];
 
@@ -1547,7 +1547,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ];
     } else {
       // Default: Fullstack Web / Software Developer
-      specificParagraph = `Sebagai mahasiswa semester 5 S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo dengan predikat Beasiswa Prestasi BJU, saya memiliki rekam jejak teruji dalam rekayasa perangkat lunak berbasis web (Laravel, PHP, PostgreSQL, Tailwind CSS, JavaScript, REST API). Saya berhasil memimpin perancangan dan implementasi platform digitalisasi <em>Program Makan Bergizi Gratis (MBG) SPPG Nusukan Surakarta</em> yang meraih <strong>Medali Perak (Silver Medal) pada Pekan Inovasi Nasional Vol. 3 Universitas Mercu Buana (2026)</strong> serta tercatat resmi memiliki <strong>Hak Cipta Kemenkumham RI (No. EC002026096415)</strong>. Pengalaman magang saya di <strong>Unit Sistem Informasi PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta</strong> semakin mematangkan kemampuan saya dalam berkolaborasi pada lingkungan kerja enterprise dan memecahkan tantangan operasional sistem secara profesional.`;
+      specificParagraph = `Sebagai mahasiswa semester 5 S1 Sistem Informasi di Universitas Bina Sarana Informatika (UBSI) Kampus Solo dengan predikat Beasiswa Prestasi BJU, saya memiliki rekam jejak teruji dalam rekayasa perangkat lunak berbasis web (Laravel, PHP, PostgreSQL, Tailwind CSS, JavaScript, REST API). Saya memegang <strong>4 Hak Kekayaan Intelektual (HKI) resmi Kementerian Hukum RI</strong>, termasuk memimpin perancangan platform <em>Website Kriya Melikan PKM BIPEMAS (HKI No. EC002026229696)</em> dan platform digitalisasi <em>Program Makan Bergizi Gratis (MBG) SPPG Nusukan Surakarta</em> yang meraih <strong>Medali Perak (Silver Medal) pada Pekan Inovasi Nasional Vol. 3 Universitas Mercu Buana (2026)</strong> serta tercatat resmi memiliki <strong>Hak Cipta Kemenkumham RI (No. EC002026096415)</strong>. Selain itu, pengalaman magang yang telah saya selesaikan dengan <strong>Predikat Baik di Unit Sistem Informasi PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta (Surat Keterangan Lulus No. KE.105/08/0003023/MAG/KA-2026)</strong> semakin mematangkan kemampuan saya dalam berkolaborasi pada lingkungan kerja enterprise dan memecahkan tantangan operasional sistem secara profesional.`;
     }
 
     // Additional note if key highlights or specific company entered
@@ -2754,15 +2754,16 @@ Perkenalkan saya Muhammad Fahrel Yuliyanto, mahasiswa semester 5 S1 Sistem Infor
 
 Melalui email ini, saya bermaksud mengajukan lamaran pekerjaan untuk posisi ${position} di ${company} sebagaimana informasi lowongan pekerjaan yang saya peroleh.
 
-Berbekal kompetensi rekayasa perangkat lunak, administrasi basis data bersertifikasi BNSP (LSP UBSI / BNSP No. Reg: DMS.1241.00995 2026), Sertifikat Kompetensi Software Quality Assurance (SQA) PT Tanjung Mulia Informatika, kepemilikan 3 Hak Kekayaan Intelektual (HKI) resmi Kemenkumham RI, serta pengalaman magang di Unit Sistem Informasi PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta, saya yakin dapat memberikan kontribusi nyata dan profesional bagi ${company}.
+Berbekal kompetensi rekayasa perangkat lunak, administrasi basis data bersertifikasi BNSP (LSP UBSI / BNSP No. Reg: DMS.1241.00995 2026), Sertifikat Kompetensi Software Quality Assurance (SQA) PT Tanjung Mulia Informatika, kepemilikan 4 Hak Kekayaan Intelektual (HKI) resmi Kementerian Hukum RI, serta rekam jejak lulus magang berpredikat baik di Unit Sistem Informasi PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta (Surat Keterangan Lulus No. KE.105/08/0003023/MAG/KA-2026), saya yakin dapat memberikan kontribusi nyata dan profesional bagi ${company}.
 
 Bersama ini saya turut melampirkan berkas kelengkapan administrasi sebagai bahan pertimbangan Bapak/Ibu:
 1. Surat Lamaran Pekerjaan Resmi
 2. Curriculum Vitae (CV ATS Standar Industri)
 3. Salinan Transkrip Nilai Akademik Terkini
-4. Salinan Sertifikat Kompetensi BNSP & SQA
-5. Salinan Surat Pencatatan Ciptaan (HKI Kemenkumham RI)
-6. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
+4. Salinan Surat Keterangan Lulus Magang PT KAI (Persero) DAOP 6
+5. Salinan Sertifikat Kompetensi BNSP & SQA
+6. Salinan Surat Pencatatan Ciptaan (4 HKI Kementerian Hukum RI)
+7. Tautan Portofolio Proyek Interaktif: https://fhrelz.github.io/portfolio-3d-celestial/
 
 Besar harapan saya untuk diberikan kesempatan menghadiri tahapan wawancara guna mendiskusikan kualifikasi saya secara lebih komprehensif. Atas perhatian, waktu, dan kesempatan berharga yang Bapak/Ibu berikan, saya sampaikan terima kasih.
 

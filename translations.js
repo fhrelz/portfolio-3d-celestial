@@ -64,10 +64,18 @@ const translations = {
 
     // Section Headers
     sec_profile: "PROFIL",
-    profile_text: `Mahasiswa Sistem Informasi semester 5 di Universitas Bina Sarana Informatika (UBSI) dengan spesialisasi Mobile App & Web Development (Flutter, Dart, Laravel), Database Administration, Software Quality Assurance, Generative AI (Gemini, Google AI Studio, ChatGPT, Claude), dan Digital Marketing. Memiliki rekam jejak teruji dalam merancang ekosistem sistem informasi berbasis AI, Gamifikasi, dan Web, dibuktikan dengan pengakuan <strong>3 Hak Kekayaan Intelektual (HKI) resmi Kemenkumham</strong> (Platform MBG SPPG Surakarta, Smart Waste Management AI Kota Bersih Surakarta, & Web Official Desa Baran Klaten). Peraih Medal Silver (Silver Award) Pekan Inovasi Nasional Vol.3 2026 Universitas Mercu Buana, Diterima Magang di PT KAI (Persero) DAOP 6 Yogyakarta (Unit Sistem Informasi), dan Alumni BSI Explore 2026 (Lolos seleksi >2.000 peserta). Berpengalaman sebagai Pemateri Workshop AI/Content Creation, Narasumber Kampus, Ketua Umum HIMSI, serta praktisi Meta Ads dan kreator konten berprestasi tingkat nasional (Juara 2 SobiFest & Juara 1 LKS Desain Grafis).`,
+    profile_text: `Mahasiswa Sistem Informasi semester 5 di Universitas Bina Sarana Informatika (UBSI) dengan spesialisasi Mobile App & Web Development (Flutter, Dart, Laravel), Database Administration, Software Quality Assurance, Generative AI (Gemini, Google AI Studio, ChatGPT, Claude), dan Digital Marketing. Memiliki rekam jejak teruji dalam merancang ekosistem sistem informasi berbasis AI, Gamifikasi, dan Web, dibuktikan dengan pengakuan <strong>4 Hak Kekayaan Intelektual (HKI) resmi Kementerian Hukum RI</strong> (Website Kemitraan Kriya Melikan PKM BIPEMAS, Platform MBG SPPG Surakarta, Smart Waste Management AI Kota Bersih Surakarta, & Web Official Desa Baran Klaten). Peraih Medal Silver (Silver Award) Pekan Inovasi Nasional Vol.3 2026 Universitas Mercu Buana, <strong>Lulusan Magang Berpredikat Baik di PT KAI (Persero) DAOP 6 Yogyakarta (Unit Sistem Informasi)</strong>, dan Alumni BSI Explore 2026 (Lolos seleksi >2.000 peserta). Berpengalaman sebagai Pemateri Workshop AI/Content Creation, Narasumber Kampus, Ketua Umum HIMSI, serta praktisi Meta Ads dan kreator konten berprestasi tingkat nasional (Juara 2 SobiFest & Juara 1 LKS Desain Grafis).`,
 
     sec_projects: "RISET, INOVASI & PROYEK UNGGULAN",
     
+    // Project Melikan PKM BIPEMAS
+    pmelikan_title: "Lead Web Developer — Website Kemitraan Kerajinan Tanah Liat Desa Melikan",
+    pmelikan_sub: "Riset & Pengabdian Masyarakat (PKM) BIPEMAS — Dosen Universitas BSI & Sentra Gerabah Melikan",
+    pmelikan_period: "Oktober 2026 – November 2026",
+    pmelikan_b1: "Merancang dan mengembangkan platform website resmi kemitraan masyarakat bertajuk \"Optimalisasi Potensi Kerajinan Tanah Liat Berbasis Kearifan Lokal melalui Program Kemitraan Masyarakat di Desa Melikan\" bersama tim dosen (Maria Atik Sunarti Ekowati, S.T., M.Kom, Budi Al-Amin, MM dkk) guna memfasilitasi transformasi digital, etalase katalog online, dan promosi kerajinan gerabah lokal ke pasar nasional.",
+    pmelikan_b2: "<strong>Pencapaian:</strong> Memperoleh Surat Pencatatan Ciptaan / Hak Cipta (HKI) Resmi Kementerian Hukum RI (No. Permohonan: EC002026229696 / No. Pencatatan: 001616883, Tanggal 13 November 2026) Jenis Ciptaan Program Komputer berjudul \"Melestarikan Warisan Tanah Liat: Membangun Ekonomi Kreatif\".",
+    pmelikan_b3: "<strong>Akses Web Kriya Melikan:</strong>",
+
     // Project 1: Desa Baran
     p1_title: "Lead Web Developer — Website Official Desa Baran Cawas Klaten",
     p1_sub: "Program BSI Explore 2026 — Pengabdian Masyarakat & Digitalisasi Desa",
@@ -111,11 +119,12 @@ const translations = {
     sec_experience: "PENGALAMAN KERJA & FREELANCE",
     
     // Exp 1: PT KAI
-    exp1_title: "Junior Web Developer & IT Systems Intern",
+    exp1_title: "Junior Web Developer & IT Systems Intern (Lulus Predikat Baik)",
     exp1_sub: "PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta — Unit Sistem Informasi",
-    exp1_period: "13 September 2026 – 13 November 2026",
-    exp1_b1: "<strong>Kontribusi & Output:</strong> Diterima melalui seleksi pendaftaran InternHub KAI untuk penempatan pada Unit Sistem Informasi. Berkontribusi dalam membantu analisis kebutuhan sistem, pengembangan modul aplikasi web/mobile, pemeliharaan basis data (PostgreSQL/SQL), pengujian perangkat lunak (SQA Testing), serta penyusunan dokumentasi teknis sistem informasi operasional DAOP 6 Yogyakarta.",
-    exp1_b2: "<strong>Tools Digunakan:</strong> Laravel, Flutter, Dart, PostgreSQL, REST API, SQA Testing, Figma.",
+    exp1_period: "13 September 2026 – 13 November 2026 (Selesai Penuh)",
+    exp1_b1: "<strong>Keterangan Kelulusan Resmi:</strong> Dinyatakan <strong>Lulus Program Magang Resmi InternHub by KAI</strong> dengan Surat Keterangan Lulus Nomor: <strong>KE.105/08/0003023/MAG/KA-2026</strong> serta predikat resmi telah menyelesaikan program dengan baik dan menunjukkan sikap profesional serta kemampuan kerja yang baik pada Unit Sistem Informasi DAOP 6 Yogyakarta.",
+    exp1_b2: "<strong>Kontribusi & Output:</strong> Berkontribusi aktif dalam analisis kebutuhan sistem informasi enterprise, perancangan antarmuka modul web/mobile, pemeliharaan serta optimasi basis data (PostgreSQL/SQL), pengujian perangkat lunak terstandar (Software Quality Assurance / SQA Testing), dan penyusunan dokumentasi teknis sistem operasional DAOP 6 Yogyakarta.",
+    exp1_b3: "<strong>Tools & Teknologi:</strong> Laravel, Flutter, Dart, PostgreSQL, REST API, SQA Testing, Figma, Git.",
 
     // Exp 2: Volution
     exp2_title: "Digital Marketing Specialist & Content Creator",
@@ -183,6 +192,8 @@ const translations = {
 
     // Section Achievements & Patents
     sec_awards: "PRESTASI & HAK CIPTA (HKI)",
+    awd_melikan: "<strong>Hak Cipta (HKI) Resmi Kementerian Hukum RI:</strong> Program Komputer Website Kemitraan Melestarikan Warisan Tanah Liat: Membangun Ekonomi Kreatif — PKM BIPEMAS Desa Melikan (No. Permohonan: EC002026229696 / No. Pencatatan: 001616883 - 13 November 2026).",
+    awd_kai: "<strong>Surat Keterangan Lulus Magang PT KAI (Persero):</strong> Dinyatakan Lulus Program Magang Resmi InternHub by KAI Unit Sistem Informasi DAOP 6 Yogyakarta dengan Predikat Baik & Rekomendasi Kinerja Profesional (No: KE.105/08/0003023/MAG/KA-2026 - November 2026).",
     awd1: "<strong>Hak Cipta (HKI) Resmi Kemenkumham RI:</strong> Website Official Pusat Pelayanan Masyarakat & Digitalisasi Desa Baran Cawas Klaten (No: 001442180 / EC002026153831 - Agustus 2026).",
     awd2: "<strong>Hak Cipta (HKI) Resmi Kemenkumham RI:</strong> Web System Terintegrasi Program Makan Bergizi Gratis (MBG) SPPG Nusukan (No: 001300932 / EC002026096415 - Juni 2026).",
     awd3: "<strong>Medal Silver (Perak) Tingkat Nasional — Pekan Inovasi Nasional Vol.3 2026:</strong> Universitas Mercu Buana (Karya: Web Platform Terintegrasi Program Makan Bergizi Gratis / MBG SPPG Nusukan - 2026).",
@@ -269,10 +280,18 @@ const translations = {
 
     // Section Headers
     sec_profile: "PROFILE SUMMARY",
-    profile_text: `5th-semester Information Systems undergraduate at Bina Sarana Informatika University (UBSI) specializing in Mobile App & Web Development (Flutter, Dart, Laravel), Database Administration, Software Quality Assurance (SQA), Generative AI (Gemini, Google AI Studio, ChatGPT, Claude), and Digital Marketing. Holds a proven track record in engineering AI-driven, gamified, and web information system ecosystems, backed by <strong>3 Official Copyrights (HKI) from the Ministry of Law and Human Rights RI</strong> (MBG SPPG Platform, Kota Bersih AI Waste Management, & Desa Baran Official Website). National Silver Medalist at Pekan Inovasi Nasional Vol.3 2026 (Mercu Buana University), accepted IT Systems Intern at PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta, and BSI Explore 2026 Team Leader (Selected among top 200 out of 2,000+ national applicants). Experienced Workshop Speaker, HIMSI President, Meta Ads practitioner, and National Award-Winning Content Creator.`,
+    profile_text: `5th-semester Information Systems undergraduate at Bina Sarana Informatika University (UBSI) specializing in Mobile App & Web Development (Flutter, Dart, Laravel), Database Administration, Software Quality Assurance (SQA), Generative AI (Gemini, Google AI Studio, ChatGPT, Claude), and Digital Marketing. Holds a proven track record in engineering AI-driven, gamified, and web information system ecosystems, backed by <strong>4 Official Copyrights (HKI) from the Ministry of Law and Human Rights RI</strong> (Melikan Craft BIPEMAS Website, MBG SPPG Platform, Kota Bersih AI Waste Management, & Desa Baran Official Website). National Silver Medalist at Pekan Inovasi Nasional Vol.3 2026 (Mercu Buana University), <strong>Graduated with Distinction IT Systems Intern at PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta</strong>, and BSI Explore 2026 Team Leader (Selected among top 200 out of 2,000+ national applicants). Experienced Workshop Speaker, HIMSI President, Meta Ads practitioner, and National Award-Winning Content Creator.`,
 
     sec_projects: "FEATURED RESEARCH, INNOVATION & PROJECTS",
     
+    // Project Melikan PKM BIPEMAS
+    pmelikan_title: "Lead Web Developer — Pottery Heritage Partnership Website (Melikan Village)",
+    pmelikan_sub: "BIPEMAS Community Partnership & Research — UBSI Faculty & Melikan Pottery Center",
+    pmelikan_period: "October 2026 – November 2026",
+    pmelikan_b1: "Architected and engineered the official community partnership digital platform titled \"Optimizing Local Wisdom-Based Clay Craft Potential through Community Partnership Program in Melikan Village\" in collaboration with faculty researchers (Maria Atik Sunarti Ekowati, S.T., M.Kom, Budi Al-Amin, MM et al.) to accelerate digital transformation, showcase online catalogs, and expand market access for traditional pottery artisans.",
+    pmelikan_b2: "<strong>Achievement:</strong> Awarded Official Copyright (HKI) Certificate by the Ministry of Law and Human Rights RI (Reg No: EC002026229696 / Record No: 001616883, Nov 13, 2026) in Computer Program category titled \"Preserving Clay Heritage: Building Creative Economy\".",
+    pmelikan_b3: "<strong>Live Website Access:</strong>",
+
     // Project 1: Desa Baran
     p1_title: "Lead Fullstack Developer — Desa Baran Official Website (Cawas, Klaten)",
     p1_sub: "BSI Explore 2026 Program — Community Service & Village Digitalization",
@@ -316,11 +335,12 @@ const translations = {
     sec_experience: "WORK & INTERNSHIP EXPERIENCE",
     
     // Exp 1: PT KAI
-    exp1_title: "Junior Web Developer & IT Systems Intern",
+    exp1_title: "Junior Web Developer & IT Systems Intern (Graduated with Distinction)",
     exp1_sub: "PT Kereta Api Indonesia (Persero) DAOP 6 Yogyakarta — Information Systems Unit",
-    exp1_period: "Sept 13, 2026 – Nov 13, 2026",
-    exp1_b1: "<strong>Contributions & Impact:</strong> Selected via KAI InternHub to serve in the Information Systems Unit. Contributes to system requirements analysis, web/mobile application module development, database maintenance (PostgreSQL/SQL), Software Quality Assurance (SQA Testing), and technical documentation for railway operational information systems.",
-    exp1_b2: "<strong>Tools Used:</strong> Laravel, Flutter, Dart, PostgreSQL, REST API, SQA Testing, Figma.",
+    exp1_period: "Sept 13, 2026 – Nov 13, 2026 (Completed)",
+    exp1_b1: "<strong>Official Graduation Status:</strong> Formally graduated from the <strong>KAI InternHub Program</strong> with Certificate of Completion No: <strong>KE.105/08/0003023/MAG/KA-2026</strong>, receiving official praise for professional attitude and high-quality performance in the Information Systems Unit of DAOP 6 Yogyakarta.",
+    exp1_b2: "<strong>Contributions & Impact:</strong> Actively contributed to enterprise systems analysis, web/mobile application module engineering, relational database optimization (PostgreSQL/SQL), Software Quality Assurance (SQA Testing), and railway operational technical documentation.",
+    exp1_b3: "<strong>Tools & Technologies:</strong> Laravel, Flutter, Dart, PostgreSQL, REST API, SQA Testing, Figma, Git.",
 
     // Exp 2: Volution
     exp2_title: "Digital Marketing Specialist & Content Creator",
@@ -388,6 +408,8 @@ const translations = {
 
     // Section Achievements & Patents
     sec_awards: "HONORS, AWARDS & OFFICIAL COPYRIGHTS (HKI)",
+    awd_melikan: "<strong>Official Copyright (HKI) Ministry of Law & Human Rights RI:</strong> Computer Program for Pottery Heritage Partnership Platform — Melikan Village PKM BIPEMAS (Reg No: EC002026229696 / Record No: 001616883 - Nov 13, 2026).",
+    awd_kai: "<strong>PT KAI (Persero) Internship Graduation Certificate:</strong> Graduated with Distinction from InternHub at Information Systems Unit DAOP 6 Yogyakarta with Professional Work Recommendation (Certificate No: KE.105/08/0003023/MAG/KA-2026 - November 2026).",
     awd1: "<strong>Official Copyright (HKI) Ministry of Law & Human Rights RI:</strong> Desa Baran Official Website & Digital Services Platform (No: 001442180 / EC002026153831 - August 2026).",
     awd2: "<strong>Official Copyright (HKI) Ministry of Law & Human Rights RI:</strong> Free Nutritious Meal Program (MBG) Web System (No: 001300932 / EC002026096415 - June 2026).",
     awd3: "<strong>National Silver Medalist — Pekan Inovasi Nasional Vol.3 2026:</strong> Mercu Buana University (Project: MBG SPPG GIS Web Platform - 2026).",
