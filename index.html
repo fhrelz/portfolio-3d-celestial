@@ -185,6 +185,7 @@
           <li><a href="#about" class="nav-link" data-i18n="nav_profil">Profil</a></li>
           <li><a href="#projects" class="nav-link" data-i18n="nav_projek">Proyek & Riset</a></li>
           <li><a href="#live-websites" class="nav-link" data-i18n="nav_web_aktif">Website Aktif</a></li>
+          <li><a href="#video-editing" class="nav-link" data-i18n="nav_video">Edit Video</a></li>
           <li><a href="#experience" class="nav-link" data-i18n="nav_karir">Magang & Karir</a></li>
           <li><a href="#leadership" class="nav-link" data-i18n="nav_organisasi">Organisasi</a></li>
           <li><a href="#speaker" class="nav-link" data-i18n="nav_narasumber">Narasumber</a></li>
@@ -1278,6 +1279,75 @@
             </div>
           </div>
 
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION: PORTOFOLIO EDIT VIDEO & AI CREATIVE SHOWREEL
+         =================================================================== -->
+    <section id="video-editing" class="video-editing-section">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <i class="fa-solid fa-clapperboard"></i>
+            <span data-i18n="video_tag">PORTOFOLIO VIDEO EDITING & AI SHOWREEL</span>
+          </div>
+          <h2 class="section-title" data-i18n="video_title">Karya Edit Video Komersial, Reels &amp; Animasi AI</h2>
+          <p class="section-desc" data-i18n="video_desc">
+            Kurasi 21 proyek nyata hasil produksi video editing untuk brand komersial, agen travel, instansi pemerintah, influencer, hingga eksperimen Generative AI. Klik kartu thumbnail mana saja untuk membuka pemutar video overlay di halaman ini.
+          </p>
+          <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <a href="https://drive.google.com/drive/folders/1zZ_rcgJl_xVArdM1g6hM8L44CQSxF4ct?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.88rem;">
+              <i class="fa-brands fa-google-drive" style="color: #38bdf8;"></i> <span>Buka Folder Google Drive Asli (21 Video)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Video Summary Strip -->
+        <div class="video-stat-strip">
+          <div class="video-stat-pill">
+            <i class="fa-solid fa-film"></i>
+            <span><strong>21</strong> Video Proyek Klien</span>
+          </div>
+          <div class="video-stat-pill">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <span><strong>13</strong> Reels / TikTok (9:16)</span>
+          </div>
+          <div class="video-stat-pill">
+            <i class="fa-solid fa-desktop"></i>
+            <span><strong>8</strong> Widescreen / Cinematic (16:9)</span>
+          </div>
+          <div class="video-stat-pill">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Premiere Pro • After Effects • CapCut • AI</span>
+          </div>
+        </div>
+
+        <!-- Video Category Filter Pills -->
+        <div class="video-filter-bar" role="tablist" aria-label="Filter Kategori Video Editing">
+          <button class="video-filter-btn active" data-video-filter="all">
+            <i class="fa-solid fa-border-all"></i> Semua Video (21)
+          </button>
+          <button class="video-filter-btn" data-video-filter="ai">
+            <i class="fa-solid fa-robot"></i> AI &amp; Animasi Kreatif (3)
+          </button>
+          <button class="video-filter-btn" data-video-filter="commercial">
+            <i class="fa-solid fa-briefcase"></i> Komersial, Brand &amp; Travel (6)
+          </button>
+          <button class="video-filter-btn" data-video-filter="reels">
+            <i class="fa-solid fa-bolt"></i> Reels, Before-After &amp; Instansi (4)
+          </button>
+          <button class="video-filter-btn" data-video-filter="client">
+            <i class="fa-solid fa-clapperboard"></i> Proyek Agency Lainnya (8)
+          </button>
+        </div>
+
+        <!-- Dynamic Video Thumbnails Grid (Rendered via portfolio.js) -->
+        <div id="video-showcase-grid" class="video-showcase-grid">
+          <!-- Video cards injected cleanly by initVideoShowcase() -->
         </div>
 
       </div>
@@ -2600,6 +2670,72 @@
         </div>
         <div class="interview-bar-tags" id="liveModalTalkingPoints">
           <!-- Dynamically injected chips -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODAL: OVERLAY VIDEO SHOWCASE PLAYER (AUTO-ADAPTIVE 9:16 & 16:9)
+       =================================================================== -->
+  <div id="video-player-modal" class="video-modal-overlay" aria-hidden="true" role="dialog" aria-label="Video Showcase Player">
+    <div class="video-modal-container is-landscape" id="videoModalContainer">
+
+      <!-- Modal Top Header -->
+      <div class="video-modal-header">
+        <div class="video-modal-title-group">
+          <div class="video-modal-badges">
+            <span class="video-modal-badge-cat" id="videoModalCategory">Kategori</span>
+            <span class="video-modal-badge-ratio" id="videoModalRatio">16:9 HD</span>
+            <span class="video-modal-counter" id="videoModalCounter">1 / 21</span>
+          </div>
+          <h3 class="video-modal-title" id="videoModalTitle">Judul Video</h3>
+        </div>
+
+        <div class="video-modal-top-actions">
+          <a id="videoModalDriveLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary video-drive-btn" title="Buka file video di Google Drive">
+            <i class="fa-brands fa-google-drive"></i> <span>Buka di Drive</span>
+          </a>
+          <button id="btnCloseVideoModal" class="chrome-close-btn" aria-label="Tutup Video Player (Esc)" title="Tutup (Esc)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Video Theater Viewport -->
+      <div class="video-modal-stage" id="videoModalStage">
+        <!-- Thumbnail Ambient Loader Behind Iframe -->
+        <div class="video-modal-loader" id="videoModalLoader">
+          <img id="videoModalPosterBg" src="" alt="" class="video-loader-poster" referrerpolicy="no-referrer" />
+          <div class="video-loader-spinner-wrap">
+            <div class="video-spinner"></div>
+            <span>Menyiapkan pemutar video HD...</span>
+          </div>
+        </div>
+
+        <iframe
+          id="videoModalIframe"
+          src="about:blank"
+          title="Video Showcase Player"
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- Modal Bottom Metadata & Prev/Next Switcher -->
+      <div class="video-modal-footer">
+        <div class="video-modal-info">
+          <p class="video-modal-desc" id="videoModalDesc">Deskripsi proyek edit video.</p>
+          <div class="video-modal-tools" id="videoModalTools"></div>
+        </div>
+        <div class="video-modal-nav">
+          <button id="btnVideoPrev" class="btn btn-secondary video-nav-btn" title="Video Sebelumnya (Panah Kiri)">
+            <i class="fa-solid fa-chevron-left"></i> <span>Sebelumnya</span>
+          </button>
+          <button id="btnVideoNext" class="btn btn-primary video-nav-btn" title="Video Berikutnya (Panah Kanan)">
+            <span>Berikutnya</span> <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
       </div>
 

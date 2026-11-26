@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPressFilters();
   initLiveWebFilter();
   initLiveWebModal();
+  initVideoShowcase();
   initModalViewer();
   initNavbarScroll();
   initContactActions();
@@ -1864,7 +1865,7 @@ function initCosmicAudio() {
   }
 
   // Interactive Elements Hover SFX (Starlight harmonic ping)
-  const interactiveSelector = 'button, a, .project-card, .press-card, .avatar-card, .highlight-item, .contact-pill, .tab-btn, .press-tab-btn, .press-detail-btn, .press-source-link, .skill-pill, .badge-cosmic, .moon-ctrl-btn, .timeline-card, .nav-link, .float-tag, .cert-card, .nav-brand, .icon-btn, .btn';
+  const interactiveSelector = 'button, a, .project-card, .press-card, .video-card, .avatar-card, .highlight-item, .contact-pill, .tab-btn, .press-tab-btn, .video-filter-btn, .press-detail-btn, .press-source-link, .skill-pill, .badge-cosmic, .moon-ctrl-btn, .timeline-card, .nav-link, .float-tag, .cert-card, .nav-brand, .icon-btn, .btn';
   
   document.addEventListener('mouseover', (e) => {
     const target = e.target.closest(interactiveSelector);
@@ -1895,6 +1896,7 @@ const translations = {
     nav_profil: "Profil",
     nav_projek: "Proyek & Riset",
     nav_web_aktif: "Website Aktif",
+    nav_video: "Edit Video",
     nav_karir: "Magang & Karir",
     nav_organisasi: "Organisasi",
     nav_narasumber: "Narasumber",
@@ -1913,12 +1915,16 @@ const translations = {
     press_tag: "LIPUTAN MEDIA & REKAM JEJAK DIGITAL",
     press_title: "Publikasi Berita, Media Massa & Jejak Publik Terverifikasi",
     press_desc: "Hasil penelusuran digital komprehensif: seluruh artikel berita media pers nasional & regional, jurnal pengabdian masyarakat terakreditasi, rilis pers resmi universitas, serta catatan Hak Cipta resmi di Pangkalan Data Kekayaan Intelektual (PDKI) Kemenkumham RI atas nama Muhammad Fahrel Yuliyanto.",
-    tag_live_websites: "LIVE WEBSITE PORTFOLIO & INTERVIEW SHOWCASE"
+    tag_live_websites: "LIVE WEBSITE PORTFOLIO & INTERVIEW SHOWCASE",
+    video_tag: "PORTOFOLIO VIDEO EDITING & AI SHOWREEL",
+    video_title: "Karya Edit Video Komersial, Reels & Animasi AI",
+    video_desc: "Kurasi 21 proyek nyata hasil produksi video editing untuk brand komersial, agen travel, instansi pemerintah, influencer, hingga eksperimen Generative AI. Klik kartu thumbnail mana saja untuk membuka pemutar video overlay di halaman ini."
   },
   en: {
     nav_profil: "About",
     nav_projek: "Projects & Research",
     nav_web_aktif: "Live Websites",
+    nav_video: "Video Editing",
     nav_karir: "Career & Internships",
     nav_organisasi: "Leadership",
     nav_narasumber: "Speaker & Events",
@@ -1937,7 +1943,10 @@ const translations = {
     press_tag: "MEDIA COVERAGE & DIGITAL FOOTPRINT",
     press_title: "Verified News, Media Coverage & Public Records",
     press_desc: "Comprehensive digital footprint verification: national & regional press articles, peer-reviewed community service journals, official university press releases, and legal Copyright registrations at the Directorate General of Intellectual Property (PDKI) under the name Muhammad Fahrel Yuliyanto.",
-    tag_live_websites: "LIVE WEB PORTFOLIO & INTERVIEW PROOF"
+    tag_live_websites: "LIVE WEB PORTFOLIO & INTERVIEW PROOF",
+    video_tag: "VIDEO EDITING & AI CREATIVE SHOWREEL",
+    video_title: "Commercial Video Edits, Reels & AI Motion Showcase",
+    video_desc: "Curated collection of 21 real client video editing works across commercial brands, travel agencies, government institutions, influencers, and Generative AI productions. Click any thumbnail card to open the interactive overlay player."
   }
 };
 
@@ -2379,4 +2388,481 @@ function initLiveWebModal() {
     });
   });
 }
+
+/* ===================================================================
+   8. VIDEO EDITING PORTFOLIO & OVERLAY PLAYER ENGINE (21 DRIVE VIDEOS)
+   =================================================================== */
+function initVideoShowcase() {
+  const grid = document.getElementById('video-showcase-grid');
+  const filterBtns = document.querySelectorAll('.video-filter-btn');
+  const modal = document.getElementById('video-player-modal');
+  if (!grid || !modal) return;
+
+  const modalContainer = document.getElementById('videoModalContainer');
+  const modalCat = document.getElementById('videoModalCategory');
+  const modalRatio = document.getElementById('videoModalRatio');
+  const modalCounter = document.getElementById('videoModalCounter');
+  const modalTitle = document.getElementById('videoModalTitle');
+  const modalDriveLink = document.getElementById('videoModalDriveLink');
+  const modalLoader = document.getElementById('videoModalLoader');
+  const modalPosterBg = document.getElementById('videoModalPosterBg');
+  const modalIframe = document.getElementById('videoModalIframe');
+  const modalDesc = document.getElementById('videoModalDesc');
+  const modalTools = document.getElementById('videoModalTools');
+  const btnClose = document.getElementById('btnCloseVideoModal');
+  const btnPrev = document.getElementById('btnVideoPrev');
+  const btnNext = document.getElementById('btnVideoNext');
+
+  const videoShowcaseData = [
+    {
+      id: '1b98gAMcaaUfj4WZ_k6aaioXjBZpRDaYH',
+      fileName: '0322 BEFORE AFTER.mp4',
+      title: 'Before vs After Editing Breakdown Showcase',
+      category: 'reels',
+      categoryLabel: 'Before & After • Reels',
+      orientation: 'portrait',
+      size: '314 MB',
+      desc: 'Perbandingan visual mentah (raw footage) vs hasil akhir color grading, pacing cut, motion text, dan tata suara sinematik.',
+      tools: ['Premiere Pro', 'Color Grading', 'Motion Text', 'SFX Design']
+    },
+    {
+      id: '1YQTz5UmOKphaqCQwkStIc7y8WpUoUcFr',
+      fileName: 'ai BPBD Medan.mp4',
+      title: 'AI Public Service — BPBD Kota Medan',
+      category: 'ai',
+      categoryLabel: 'AI & Animasi Kreatif',
+      orientation: 'landscape',
+      size: '111 MB',
+      desc: 'Produksi video edukasi layanan publik kebencanaan berbasis AI Avatar, sintesis suara jernih, dan grafis informasi modern untuk BPBD Medan.',
+      tools: ['AI Avatar', 'Voice Synthesis', 'Generative Video', '16:9 HD']
+    },
+    {
+      id: '14voKyZqWi6PqNdyzWRykIRFF8eotNkIR',
+      fileName: 'cusr ai eng.mov',
+      title: 'AI Commercial & Motion (English Edition)',
+      category: 'ai',
+      categoryLabel: 'AI & Animasi Kreatif',
+      orientation: 'landscape',
+      size: '167 MB',
+      desc: 'Video komersial berbahasa Inggris memadukan visual generatif AI, dubbing voiceover AI natural, dan transisi dinamis.',
+      tools: ['AI Voiceover', 'Motion Graphics', 'English Script', '16:9 Master']
+    },
+    {
+      id: '1PWpE9ypsAsgaJtghMCfeG_7I5IdOCaH6',
+      fileName: 'cust ai dibalik jeruji.mp4',
+      title: 'AI Storytelling Cinematic — Di Balik Jeruji',
+      category: 'ai',
+      categoryLabel: 'AI & Animasi Kreatif',
+      orientation: 'landscape',
+      size: '279 MB',
+      desc: 'Karya storytelling naratif visual berbasis Generative AI dengan atmosfer dramatis, pacing emosional, dan sinkronisasi musik latar.',
+      tools: ['Generative AI', 'Storytelling', 'Audio Mixing', 'Cinematic Cut']
+    },
+    {
+      id: '1UZBcfPOGx_ZloOCpgkHyS1ch8GDJeMed',
+      fileName: 'cust haji tunas tour.mov',
+      title: 'Travel & Umrah Promo — PT Haji Tunas Tour',
+      category: 'commercial',
+      categoryLabel: 'Komersial • Travel',
+      orientation: 'portrait',
+      size: '66 MB',
+      desc: 'Video promosi vertikal paket perjalanan Haji & Umrah yang dikemas emosional dan informatif untuk meningkatkan kepercayaan calon jamaah.',
+      tools: ['Reels 9:16', 'Travel Marketing', 'Hook Copywriting', 'Warm Grading']
+    },
+    {
+      id: '1q06JhQI7O0mKEXVwK1S19jHElCNLCIWa',
+      fileName: 'cusrmission trip jepang.mp4',
+      title: 'Travel Highlight — Mission Trip Jepang',
+      category: 'commercial',
+      categoryLabel: 'Komersial • Travel',
+      orientation: 'portrait',
+      size: '81 MB',
+      desc: 'Highlight dokumentasi perjalanan internasional ke Jepang dengan transisi cepat mengikuti ketukan musik (beat-sync) dan nuansa sinematik.',
+      tools: ['Beat-Sync Cut', 'Travel Recap', 'Reels 9:16', 'Color Tone']
+    },
+    {
+      id: '1yKzkRmURBV1I4oOZkarnWbHU0_L-L9B_',
+      fileName: 'cust fnb.mov',
+      title: 'Culinary & F&B Commercial Reels',
+      category: 'commercial',
+      categoryLabel: 'Komersial • F&B',
+      orientation: 'portrait',
+      size: '81 MB',
+      desc: 'Video promosi produk kuliner bergaya menggugah selera, close-up detail dinamis, speed-ramping, dan ajakan beli persuasif.',
+      tools: ['F&B Ads', 'Speed Ramping', 'Crisp SFX', 'Reels 9:16']
+    },
+    {
+      id: '1YEBQMTkiOi90mqVECrxMVMR5JAuJWGUS',
+      fileName: 'cust lipbalm.mp4',
+      title: 'Beauty & Skincare Ads — Lipbalm Product',
+      category: 'commercial',
+      categoryLabel: 'Komersial • Beauty',
+      orientation: 'portrait',
+      size: '28 MB',
+      desc: 'Video iklan kecantikan vertikal Full HD dengan pencahayaan bersih, transisi estetis, dan fokus detail tekstur produk.',
+      tools: ['Meta Ads Ready', 'Skincare Visual', 'Clean Typography', 'Reels 9:16']
+    },
+    {
+      id: '1oYPdPal6v5yeOHDOw3lkUolhgjWHNwSU',
+      fileName: 'cust redmi.mp4',
+      title: 'Tech & Gadget Showcase — Xiaomi Redmi',
+      category: 'commercial',
+      categoryLabel: 'Komersial • Tech',
+      orientation: 'portrait',
+      size: '189 MB',
+      desc: 'Konten ulasan dan promosi gadget smartphone dengan B-roll produk tajam, grafik spesifikasi modern, dan ritme editing cepat.',
+      tools: ['Tech Review', 'Dynamic B-Roll', 'Text Overlay', 'Reels 9:16']
+    },
+    {
+      id: '1aZsb09g-RRlfoW4eKWWwA62HHFoaimfB',
+      fileName: 'cust trailer web.mov',
+      title: 'Product & Website Launch Trailer Promo',
+      category: 'commercial',
+      categoryLabel: 'Komersial • SaaS',
+      orientation: 'landscape',
+      size: '19 MB',
+      desc: 'Video trailer peluncuran platform web dan produk digital dengan animasi UI showcase modern serta alur presentasi profesional.',
+      tools: ['UI Motion', 'Launch Trailer', 'Tech Promo', '16:9 HD']
+    },
+    {
+      id: '1CLiFsJC7twreQRf0Z-s_dRSxL68AW4dN',
+      fileName: 'edit influencer.mp4',
+      title: 'Influencer High-Retention Social Reels',
+      category: 'reels',
+      categoryLabel: 'Reels • Influencer',
+      orientation: 'portrait',
+      size: '208 MB',
+      desc: 'Editing gaya kreator berfokus pada hook 3 detik pertama, subtitle dinamis pop-up, zoom-in ritmis, dan retensi penonton tinggi.',
+      tools: ['Retention Hooks', 'Dynamic Subtitle', 'SFX Punchy', 'Reels 9:16']
+    },
+    {
+      id: '1yLI7TndSnH-d4liOTASqs3LL74lvG5vq',
+      fileName: 'cust kemenkes poltekkes semarang.mp4',
+      title: 'Kemenkes Poltekkes Semarang — Edukasi Visual',
+      category: 'reels',
+      categoryLabel: 'Instansi • Edukasi',
+      orientation: 'portrait',
+      size: '42 MB',
+      desc: 'Konten edukasi dan profil institusi resmi Kemenkes Poltekkes Semarang dengan tampilan visual informatif, rapi, dan komunikatif.',
+      tools: ['Institutional', 'Motion Text', 'Clean Audio', 'Reels 9:16']
+    },
+    {
+      id: '13uLWNmajoc93R_iEbAkM_tIEVZtXhc0k',
+      fileName: 'cust duta sma1.mov',
+      title: 'Personal Branding Campaign — Duta SMA 1',
+      category: 'reels',
+      categoryLabel: 'Event • Campaign',
+      orientation: 'portrait',
+      size: '187 MB',
+      desc: 'Video profil dan kampanye personal branding Duta SMA dengan koreksi warna segar dan penekanan narasi inspiratif.',
+      tools: ['Campaign Video', 'Story Cut', 'Color Grading', 'Reels 9:16']
+    },
+    {
+      id: '1pZvHJ3gaLMK7jkNBMTWnvhCSvJcoBK0T',
+      fileName: 'cust 0319.mp4',
+      title: 'Agency Client Production #0319',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 16:9',
+      orientation: 'landscape',
+      size: '328 MB',
+      desc: 'Produksi video klien agensi format layar lebar mencakup pemotongan presisi, perataan warna, serta tata suara profesional.',
+      tools: ['Premiere Pro', '16:9 Widescreen', 'Client Project']
+    },
+    {
+      id: '1l8q7dxfUExj8HvJKGlknLgrcwXPpG6YT',
+      fileName: 'cust 0553.mp4',
+      title: 'Agency Client Vertical Reels #0553',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 9:16',
+      orientation: 'portrait',
+      size: '148 MB',
+      desc: 'Editing konten vertikal media sosial untuk klien agensi dengan transisi halus dan teks penekanan poin utama.',
+      tools: ['Reels 9:16', 'CapCut Pro', 'Client Project']
+    },
+    {
+      id: '19d_qdLbJlLx-GhPxZKgHBgeS28EG3Nf8',
+      fileName: 'cust 1029.mov',
+      title: 'Agency Client Vertical Reels #1029',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 9:16',
+      orientation: 'portrait',
+      size: '169 MB',
+      desc: 'Konten short-form vertikal untuk kebutuhan engagement Instagram Reels dan TikTok dengan ritme editing modern.',
+      tools: ['Reels 9:16', 'Pacing Cut', 'Client Project']
+    },
+    {
+      id: '1tWcDqixAB6zIg6AG-tcvdfiS2hoduHz0',
+      fileName: 'cust 1283.mov',
+      title: 'Agency Client Showcase #1283',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 16:9',
+      orientation: 'landscape',
+      size: '131 MB',
+      desc: 'Video format widescreen proyek komersial klien dengan pengemasan visual bersih dan audio terkalibrasi.',
+      tools: ['16:9 HD', 'Audio Sync', 'Client Project']
+    },
+    {
+      id: '1i7vS8bobwB26mtxPjk5W_vVkQZLgS1vL',
+      fileName: 'cust 2304.mov',
+      title: 'Agency Client Fast-Cut Reels #2304',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 9:16',
+      orientation: 'portrait',
+      size: '20 MB',
+      desc: 'Video pendek ritmis siap tayang untuk konten harian media sosial klien dengan optimasi 3 detik pembuka.',
+      tools: ['Reels 9:16', 'Fast Turnaround', 'Client Project']
+    },
+    {
+      id: '1KEgZ-UnmReyhUeCamu-IGPA94vSH7XaL',
+      fileName: 'cust 7504.mov',
+      title: 'Agency Client High-Bitrate Reels #7504',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 9:16',
+      orientation: 'portrait',
+      size: '403 MB',
+      desc: 'Proyek editing video vertikal beresolusi tinggi dengan detail tajam, teks keterangan sinkron, dan tata warna konsisten.',
+      tools: ['Reels 9:16', 'High-Res Cut', 'Client Project']
+    },
+    {
+      id: '1JKH-IVEuk5KzO_nj-DVGfyvJS_G3Vzb1',
+      fileName: 'cust 9172.mp4',
+      title: 'Agency Client Feature Edit #9172',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 16:9',
+      orientation: 'landscape',
+      size: '129 MB',
+      desc: 'Editing video lanskap multi-segmen untuk dokumentasi dan presentasi klien dengan visual bersih dan alur terstruktur.',
+      tools: ['16:9 Widescreen', 'Multi-Cut', 'Client Project']
+    },
+    {
+      id: '147jTJzplBAbG4glvXREKSpoDPC8eGVWw',
+      fileName: 'cust 9898.mov',
+      title: 'Agency Client Master Production #9898',
+      category: 'client',
+      categoryLabel: 'Proyek Agency • 16:9',
+      orientation: 'landscape',
+      size: '458 MB',
+      desc: 'Proyek editing video produksi utama berdurasi penuh dengan alur cerita terstruktur dan finishing audio-visual matang.',
+      tools: ['16:9 Master', 'Full Production', 'Client Project']
+    }
+  ];
+
+  function getThumbPrimary(id) {
+    return `https://lh3.googleusercontent.com/d/${id}=w800`;
+  }
+
+  function getThumbFallback(id) {
+    return `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
+  }
+
+  let currentFilter = 'all';
+  let currentActiveList = [...videoShowcaseData];
+  let currentIndex = 0;
+  let resumeBacksoundOnClose = false;
+  let loaderTimeoutId = null;
+
+  function renderCards() {
+    grid.innerHTML = '';
+    videoShowcaseData.forEach((item) => {
+      const thumbPrimary = getThumbPrimary(item.id);
+      const thumbFallback = getThumbFallback(item.id);
+      const isPortrait = item.orientation === 'portrait';
+      const ratioLabel = isPortrait ? '9:16 Reels' : '16:9 HD';
+      const ratioIcon = isPortrait ? 'fa-mobile-screen' : 'fa-display';
+
+      const card = document.createElement('article');
+      card.className = 'cosmic-card video-card';
+      card.setAttribute('data-video-category', item.category);
+      card.setAttribute('data-video-id', item.id);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `Putar video ${item.title}`);
+
+      card.innerHTML = `
+        <div class="video-thumb-stage">
+          ${isPortrait ? `<img src="${thumbPrimary}" alt="" class="video-thumb-bg" loading="lazy" referrerpolicy="no-referrer" aria-hidden="true" />` : ''}
+          <img
+            src="${thumbPrimary}"
+            data-fallback="${thumbFallback}"
+            alt="${item.title}"
+            class="video-thumb-img ${isPortrait ? 'is-portrait' : 'is-landscape'}"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+          <div class="video-thumb-scrim"></div>
+          <div class="video-top-badges">
+            <span class="video-cat-pill">${item.categoryLabel}</span>
+            <span class="video-ratio-pill"><i class="fa-solid ${ratioIcon}"></i> ${ratioLabel}</span>
+          </div>
+          <div class="video-play-btn" aria-hidden="true">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <div class="video-bottom-meta">
+            <span class="video-file-chip">${item.fileName}</span>
+            <span class="video-click-hint"><i class="fa-solid fa-circle-play"></i> Putar Video</span>
+          </div>
+        </div>
+        <div class="video-card-body">
+          <h3 class="video-card-title">${item.title}</h3>
+          <p class="video-card-desc">${item.desc}</p>
+          <div class="video-card-tools">
+            ${item.tools.map((t) => `<span class="tech-badge">${t}</span>`).join('')}
+          </div>
+          <div class="video-card-footer">
+            <span><i class="fa-solid fa-play-circle"></i> Putar di Overlay Player</span>
+            <span style="color: var(--text-subtle); font-weight: 500;">${item.size}</span>
+          </div>
+        </div>
+      `;
+
+      // Attach clean fallback chain for thumbnails
+      card.querySelectorAll('img').forEach((imgEl) => {
+        imgEl.addEventListener('error', () => {
+          const fb = imgEl.getAttribute('data-fallback');
+          if (fb && imgEl.src !== fb && !imgEl.dataset.fallbackTried) {
+            imgEl.dataset.fallbackTried = '1';
+            imgEl.src = fb;
+          } else {
+            imgEl.style.opacity = '0.2';
+          }
+        });
+      });
+
+      const handleOpen = () => openModalById(item.id);
+      card.addEventListener('click', handleOpen);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleOpen();
+        }
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
+  function applyFilter(filter) {
+    currentFilter = filter;
+    currentActiveList = filter === 'all'
+      ? [...videoShowcaseData]
+      : videoShowcaseData.filter((v) => v.category === filter);
+
+    const cards = grid.querySelectorAll('.video-card');
+    cards.forEach((card) => {
+      const cat = card.getAttribute('data-video-category') || '';
+      if (filter === 'all' || cat === filter) {
+        card.style.display = 'flex';
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 30);
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(14px)';
+        setTimeout(() => {
+          card.style.display = 'none';
+        }, 240);
+      }
+    });
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.getAttribute('data-video-filter') || 'all');
+    });
+  });
+
+  function loadVideoAtIndex(idx) {
+    if (!currentActiveList.length) return;
+    currentIndex = (idx + currentActiveList.length) % currentActiveList.length;
+    const item = currentActiveList[currentIndex];
+    const isPortrait = item.orientation === 'portrait';
+
+    // Update modal proportions
+    if (modalContainer) {
+      modalContainer.classList.toggle('is-portrait', isPortrait);
+      modalContainer.classList.toggle('is-landscape', !isPortrait);
+    }
+
+    if (modalCat) modalCat.textContent = item.categoryLabel;
+    if (modalRatio) modalRatio.textContent = isPortrait ? '9:16 Vertical Reels' : '16:9 Widescreen HD';
+    if (modalCounter) modalCounter.textContent = `${currentIndex + 1} / ${currentActiveList.length}`;
+    if (modalTitle) modalTitle.textContent = item.title;
+    if (modalDesc) modalDesc.textContent = item.desc;
+    if (modalDriveLink) modalDriveLink.href = `https://drive.google.com/file/d/${item.id}/view?usp=sharing`;
+    if (modalPosterBg) modalPosterBg.src = getThumbPrimary(item.id);
+    if (modalTools) {
+      modalTools.innerHTML = item.tools.map((t) => `<span class="tech-badge">${t}</span>`).join('');
+    }
+
+    // Show loader while Drive embed player mounts
+    if (modalLoader) modalLoader.classList.remove('hidden');
+    if (loaderTimeoutId) clearTimeout(loaderTimeoutId);
+
+    if (modalIframe) {
+      modalIframe.onload = () => {
+        if (modalLoader) modalLoader.classList.add('hidden');
+      };
+      modalIframe.src = `https://drive.google.com/file/d/${item.id}/preview?autoplay=1`;
+      loaderTimeoutId = setTimeout(() => {
+        if (modalLoader) modalLoader.classList.add('hidden');
+      }, 2800);
+    }
+  }
+
+  function openModalById(videoId) {
+    const idx = currentActiveList.findIndex((v) => v.id === videoId);
+    const targetIdx = idx >= 0 ? idx : 0;
+
+    // Pause cosmic ambient audio so it does not overlap with video audio
+    if (typeof CosmicAudio !== 'undefined' && CosmicAudio.isPlayingBacksound) {
+      resumeBacksoundOnClose = true;
+      CosmicAudio.stopBacksound();
+    }
+
+    loadVideoAtIndex(targetIdx);
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (loaderTimeoutId) clearTimeout(loaderTimeoutId);
+
+    setTimeout(() => {
+      if (modalIframe) {
+        modalIframe.onload = null;
+        modalIframe.src = 'about:blank';
+      }
+      if (modalLoader) modalLoader.classList.remove('hidden');
+    }, 260);
+
+    if (resumeBacksoundOnClose && typeof CosmicAudio !== 'undefined') {
+      resumeBacksoundOnClose = false;
+      CosmicAudio.startBacksound();
+    }
+  }
+
+  if (btnClose) btnClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  if (btnPrev) btnPrev.addEventListener('click', () => loadVideoAtIndex(currentIndex - 1));
+  if (btnNext) btnNext.addEventListener('click', () => loadVideoAtIndex(currentIndex + 1));
+
+  window.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') loadVideoAtIndex(currentIndex - 1);
+    if (e.key === 'ArrowRight') loadVideoAtIndex(currentIndex + 1);
+  });
+
+  renderCards();
+}
+
 
