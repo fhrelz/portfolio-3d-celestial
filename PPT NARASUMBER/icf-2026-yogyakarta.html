@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indonesia Cerdas Fest 2026 — Muhammad Fahrel Yuliyanto (UBSI Yogyakarta)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-void: #03060f;
+      --bg-stage: #070c1a;
+      --bg-glass: rgba(15, 23, 42, 0.72);
+      --bg-glass-strong: rgba(13, 20, 38, 0.9);
+      --sky-300: #7dd3fc;
+      --sky-400: #38bdf8;
+      --sky-500: #0ea5e9;
+      --sky-600: #0284c7;
+      --blue-royal: #2563eb;
+      --indigo-400: #818cf8;
+      --crimson-400: #fb7185;
+      --crimson-500: #ef4444;
+      --emerald-400: #34d399;
+      --amber-400: #fbbf24;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-subtle: #94a3b8;
+      --border-soft: rgba(148, 163, 184, 0.16);
+      --border-glow: rgba(56, 189, 248, 0.38);
+      --font-display: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+      --ease-mg: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-void);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Outer Stage Wrapper */
+    .ppt-outer {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 45%),
+                  radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.12), transparent 45%),
+                  #02050c;
+    }
+
+    /* Logical Fixed 16:9 Stage Scaled Cleanly to Fit Screen */
+    .ppt-stage {
+      width: 1366px;
+      height: 768px;
+      position: relative;
+      background: var(--bg-stage);
+      border-radius: 18px;
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.92), 0 0 80px rgba(14, 165, 233, 0.14);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    :fullscreen .ppt-stage,
+    .ppt-stage.is-fullscreen {
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* Animated Motion-Graphics Backdrop inside Stage */
+    #mgCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(95px);
+      will-change: transform;
+    }
+
+    .orb-blue {
+      width: 560px;
+      height: 560px;
+      top: -180px;
+      right: -120px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.24), rgba(37, 99, 235, 0.06) 70%, transparent);
+      animation: orbDriftA 16s ease-in-out infinite alternate;
+    }
+
+    .orb-crimson {
+      width: 460px;
+      height: 460px;
+      bottom: -180px;
+      left: -100px;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.16), rgba(99, 102, 241, 0.08) 70%, transparent);
+      animation: orbDriftB 19s ease-in-out infinite alternate;
+    }
+
+    .grid-mesh {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.85) 20%, transparent 82%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.85) 20%, transparent 82%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes orbDriftA {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(-60px, 45px, 0) scale(1.12); }
+    }
+    @keyframes orbDriftB {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(70px, -40px, 0) scale(1.14); }
+    }
+
+    /* Kinetic Light Sweep Overlay on Slide Transition */
+    .mg-light-sweep {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 25;
+      background: linear-gradient(108deg, transparent 35%, rgba(56, 189, 248, 0.14) 50%, rgba(255, 255, 255, 0.06) 52%, transparent 65%);
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+
+    .mg-light-sweep.sweep-active {
+      animation: lightSweep 0.8s var(--ease-mg) forwards;
+    }
+
+    @keyframes lightSweep {
+      0% { transform: translateX(-110%); opacity: 1; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    /* Top Chrome Bar (52px) */
+    .slide-topbar {
+      height: 52px;
+      min-height: 52px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(5, 9, 20, 0.85);
+      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(16px);
+      position: relative;
+      z-index: 30;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .event-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--sky-400);
+      box-shadow: 0 0 12px var(--sky-400);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.8); }
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13.5px;
+      letter-spacing: 0.4px;
+      color: var(--text-main);
+    }
+
+    .brand-title span {
+      color: var(--sky-400);
+    }
+
+    .session-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .session-pill {
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-mg);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .session-pill:hover {
+      color: #fff;
+    }
+
+    .session-pill.active {
+      background: linear-gradient(135deg, var(--sky-500), var(--blue-royal));
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+    }
+
+    .session-pill.session-2.active {
+      background: linear-gradient(135deg, #f43f5e, #6366f1);
+      box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sky-300);
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .top-icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    .top-icon-btn:hover {
+      background: var(--sky-500);
+      color: #fff;
+      border-color: var(--sky-400);
+    }
+
+    /* Animated Top Progress Line */
+    .progress-track {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 6.66%;
+      background: linear-gradient(90deg, var(--sky-400), var(--indigo-400), var(--crimson-500));
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.75);
+      transition: width 0.55s var(--ease-mg);
+    }
+
+    /* Viewport & Motion-Graphics Slide Transitions */
+    .slide-viewport {
+      flex: 1;
+      position: relative;
+      perspective: 1600px;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 26px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate3d(80px, 0, -60px) scale(0.96);
+      filter: blur(8px);
+      transition:
+        opacity 0.6s var(--ease-mg),
+        transform 0.68s var(--ease-mg),
+        filter 0.6s var(--ease-mg);
+      will-change: transform, opacity, filter;
+    }
+
+    .slide.from-left {
+      transform: translate3d(-80px, 0, -60px) scale(0.96);
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0px);
+      z-index: 3;
+    }
+
+    .slide.is-leaving-next {
+      opacity: 0;
+      transform: translate3d(-90px, 0, -90px) rotateY(4deg) scale(0.93);
+      filter: blur(8px);
+      z-index: 2;
+    }
+
+    .slide.is-leaving-prev {
+      opacity: 0;
+      transform: translate3d(90px, 0, -90px) rotateY(-4deg) scale(0.93);
+      filter: blur(8px);
+      z-index: 2;
+    }
+
+    /* Choreographed Staggered Motion-Graphics Reveals inside Active Slide */
+    [data-mg] {
+      opacity: 0;
+      will-change: transform, opacity, clip-path;
+      transition:
+        opacity 0.65s var(--ease-mg),
+        transform 0.72s var(--ease-mg),
+        clip-path 0.75s var(--ease-mg);
+      transition-delay: var(--d, 0.08s);
+    }
+
+    [data-mg="badge"] {
+      transform: translate3d(0, -18px, 0) scale(0.92);
+      transition-timing-function: var(--ease-spring);
+    }
+
+    [data-mg="clip"] {
+      clip-path: inset(0 0 100% 0);
+      transform: translate3d(0, 22px, 0);
+    }
+
+    [data-mg="rise"] {
+      transform: translate3d(0, 28px, 0);
+    }
+
+    [data-mg="scale"] {
+      transform: scale(0.91) translate3d(0, 14px, 0);
+    }
+
+    [data-mg="right"] {
+      transform: translate3d(38px, 0, 0);
+    }
+
+    [data-mg="line"] {
+      transform: scaleX(0);
+      transform-origin: left center;
+      opacity: 1;
+    }
+
+    .slide.is-active [data-mg] {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .slide.is-active [data-mg="clip"] {
+      clip-path: inset(0 0 0% 0);
+    }
+
+    .slide.is-active [data-mg="line"] {
+      transform: scaleX(1);
+    }
+
+    /* Reusable Slide Design Primitives */
+    .mg-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--sky-300);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .mg-tag.tag-red {
+      background: rgba(239, 68, 68, 0.14);
+      border-color: rgba(248, 113, 113, 0.38);
+      color: #fca5a5;
+    }
+
+    .mg-tag.tag-emerald {
+      background: rgba(16, 185, 129, 0.14);
+      border-color: rgba(52, 211, 153, 0.38);
+      color: var(--emerald-400);
+    }
+
+    .mg-tag.tag-gold {
+      background: rgba(245, 158, 11, 0.14);
+      border-color: rgba(251, 191, 36, 0.38);
+      color: var(--amber-400);
+    }
+
+    .slide-h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 46px;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: #fff;
+    }
+
+    .slide-h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 34px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .grad-sky {
+      background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 45%, #818cf8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grad-warm {
+      background: linear-gradient(135deg, #fbbf24 0%, #fb7185 55%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grad-emerald {
+      background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mg-divider {
+      width: 84px;
+      height: 3.5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--sky-400), var(--indigo-400));
+      margin: 12px 0;
+    }
+
+    .mg-divider.div-warm {
+      background: linear-gradient(90deg, var(--crimson-500), var(--amber-400));
+    }
+
+    .glass-box {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 20px 22px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s var(--ease-mg), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-box:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 18px 44px rgba(14, 165, 233, 0.16);
+    }
+
+    .zoomable {
+      cursor: zoom-in;
+      position: relative;
+    }
+
+    .zoomable::after {
+      content: '\f00e';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(7, 12, 26, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--sky-300);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .zoomable:hover::after {
+      opacity: 1;
+    }
+
+    /* Specific Slide Grids */
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 1.28fr 0.72fr;
+      gap: 36px;
+      align-items: center;
+      height: 100%;
+    }
+
+    .speaker-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 10px 18px 10px 10px;
+      margin-top: 18px;
+    }
+
+    .speaker-chip img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: center 20%;
+      border: 2px solid var(--sky-400);
+    }
+
+    .poster-frame {
+      height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    .poster-frame img {
+      max-height: 100%;
+      max-width: 100%;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .split-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .split-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .bento-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .bento-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bento-thumb {
+      height: 165px;
+      background: #040812;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .bento-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s var(--ease-mg);
+    }
+
+    .bento-card:hover .bento-thumb img {
+      transform: scale(1.05);
+    }
+
+    .hki-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(7, 12, 26, 0.88);
+      border: 1px solid rgba(251, 191, 36, 0.45);
+      color: var(--amber-400);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .quote-ribbon {
+      margin-top: 16px;
+      padding: 14px 20px;
+      border-left: 4px solid var(--sky-400);
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.14), rgba(15, 23, 42, 0.4));
+      border-radius: 0 12px 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.5;
+    }
+
+    .quote-ribbon.warm {
+      border-left-color: var(--crimson-500);
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.14), rgba(15, 23, 42, 0.4));
+    }
+
+    .list-clean {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .list-clean li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .list-clean li i {
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--sky-400);
+    }
+
+    /* Interactive Timer on Slide 14 */
+    .timer-widget {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      border-radius: 16px;
+    }
+
+    .timer-ring-wrap {
+      position: relative;
+      width: 132px;
+      height: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer-ring-svg {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg);
+    }
+
+    .timer-ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 8;
+    }
+
+    .timer-ring-progress {
+      fill: none;
+      stroke: var(--sky-400);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 345.57;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.25s linear, stroke 0.3s ease;
+    }
+
+    .timer-value {
+      font-family: var(--font-mono);
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .timer-btn-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ppt-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .ppt-btn-primary {
+      background: linear-gradient(135deg, var(--sky-500), var(--blue-royal));
+      color: #fff;
+    }
+
+    .ppt-btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45);
+    }
+
+    .ppt-btn-ghost {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      border: 1px solid var(--border-soft);
+    }
+
+    .ppt-btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+
+    /* Bottom Control Dock (44px) */
+    .slide-bottombar {
+      height: 44px;
+      min-height: 44px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(5, 9, 20, 0.88);
+      border-top: 1px solid var(--border-soft);
+      position: relative;
+      z-index: 30;
+      font-size: 12px;
+      color: var(--text-subtle);
+      transition: opacity 0.3s ease;
+    }
+
+    .ppt-stage.controls-dimmed .slide-bottombar {
+      opacity: 0.25;
+    }
+
+    .ppt-stage.controls-dimmed .slide-bottombar:hover {
+      opacity: 1;
+    }
+
+    .dot-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot-item {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.28);
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s var(--ease-mg);
+    }
+
+    .dot-item.is-s2 {
+      background: rgba(244, 63, 94, 0.26);
+    }
+
+    .dot-item.active {
+      width: 24px;
+      background: var(--sky-400);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.65);
+    }
+
+    .dot-item.is-s2.active {
+      background: var(--crimson-500);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.65);
+    }
+
+    .nav-arrows {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Slide Overview Grid Overlay (G key) */
+    .overview-overlay {
+      position: absolute;
+      inset: 52px 0 44px 0;
+      background: rgba(3, 6, 15, 0.94);
+      backdrop-filter: blur(18px);
+      z-index: 40;
+      padding: 24px 36px;
+      overflow-y: auto;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .overview-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .overview-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .overview-card:hover, .overview-card.current {
+      border-color: var(--sky-400);
+      background: rgba(14, 165, 233, 0.14);
+      transform: translateY(-2px);
+    }
+
+    /* Image Zoom Lightbox Modal */
+    .zoom-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 5, 12, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .zoom-modal.open {
+      display: flex;
+    }
+
+    .zoom-modal img {
+      max-width: 92vw;
+      max-height: 88vh;
+      border-radius: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95);
+    }
+
+    .zoom-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ppt-outer">
+    <div class="ppt-stage" id="pptStage">
+
+      <!-- Ambient Motion-Graphics Canvas & Orbs -->
+      <canvas id="mgCanvas"></canvas>
+      <div class="grid-mesh"></div>
+      <div class="aurora-orb orb-blue"></div>
+      <div class="aurora-orb orb-crimson"></div>
+      <div class="mg-light-sweep" id="mgLightSweep"></div>
+
+      <!-- Top Presentation Bar -->
+      <header class="slide-topbar">
+        <div class="topbar-left">
+          <span class="event-dot"></span>
+          <div class="brand-title">INDONESIA CERDAS FEST <span>2026</span> • UBSI YOGYAKARTA</div>
+        </div>
+
+        <div class="session-switcher">
+          <button class="session-pill active" id="btnSession1" title="Lompat ke Sesi 1 (Slide 1)">
+            <i class="fa-solid fa-microphone-lines"></i> Sesi 1: Talkshow Portofolio
+          </button>
+          <button class="session-pill session-2" id="btnSession2" title="Lompat ke Sesi 2 (Slide 8)">
+            <i class="fa-solid fa-bolt"></i> Sesi 2: Workshop Soft Skill Gen-Z
+          </button>
+        </div>
+
+        <div class="topbar-right">
+          <span class="slide-counter" id="slideCounter">SLIDE 01 / 15</span>
+          <button class="top-icon-btn" id="btnOverview" title="Daftar Semua Slide (G)">
+            <i class="fa-solid fa-grip"></i>
+          </button>
+          <button class="top-icon-btn" id="btnFullscreen" title="Layar Penuh / Proyektor (F)">
+            <i class="fa-solid fa-expand"></i>
+          </button>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </header>
+
+      <!-- Main Slide Viewport -->
+      <main class="slide-viewport" id="slideViewport">
+
+        <!-- =======================================================
+             SLIDE 1: COVER SESI 1 (TALKSHOW PORTOFOLIO)
+             ======================================================= -->
+        <section class="slide is-active" data-session="1" data-title="Cover Talkshow: Bangun Portofolio">
+          <div class="cover-grid">
+            <div>
+              <div class="mg-tag" data-mg="badge" style="--d: 0.05s;">
+                <i class="fa-solid fa-star"></i> SESI 1 • TALKSHOW PORTOFOLIO INSPIRATIF
+              </div>
+              <h1 class="slide-h1" data-mg="clip" style="--d: 0.14s; margin-top: 16px;">
+                Jangan Cuma Numpuk Sertifikat:<br />
+                <span class="grad-sky">Bangun Portofolio</span> yang<br />
+                "Berbicara" ke Industri
+              </h1>
+              <div class="mg-divider" data-mg="line" style="--d: 0.26s;"></div>
+              <p data-mg="rise" style="--d: 0.3s; font-size: 16.5px; color: var(--text-muted); line-height: 1.6; max-width: 680px;">
+                <em>"Grow Together. Share the Knowledge. Create the Impact."</em><br />
+                Bedah perjalanan nyata membangun portofolio Web, AI, 4 HKI Negara, magang BUMN PT KAI, hingga berkarir di dunia kreatif sejak bangku kuliah.
+              </p>
+
+              <div class="speaker-chip" data-mg="rise" style="--d: 0.4s;">
+                <img src="./ss-projek/foto_profile.png" alt="Muhammad Fahrel Yuliyanto" />
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 800; font-size: 16px; color: #fff;">
+                    Muhammad Fahrel Yuliyanto
+                  </div>
+                  <div style="font-size: 12.5px; color: var(--sky-300); font-weight: 600;">
+                    Mahasiswa BJU S1 Sistem Informasi UBSI (Sem. 5) • Ketum HIMSI Solo • Silver Medalist Nasional
+                  </div>
+                </div>
+              </div>
+
+              <div data-mg="rise" style="--d: 0.48s; margin-top: 14px; display: flex; gap: 18px; font-size: 12.5px; color: var(--text-subtle);">
+                <span><i class="fa-regular fa-calendar" style="color: var(--sky-400);"></i> Sabtu, 28 November 2026 • 08.00 – 12.00 WIB</span>
+                <span><i class="fa-solid fa-location-dot" style="color: var(--crimson-400);"></i> Wisma UBSI Yogyakarta</span>
+              </div>
+            </div>
+
+            <div class="poster-frame zoomable" data-mg="scale" style="--d: 0.22s;" data-zoom="./ss-projek/poster-icf-2026.jpg">
+              <img src="./ss-projek/poster-icf-2026.jpg" alt="Poster Resmi Indonesia Cerdas Fest 2026 UBSI Yogyakarta" />
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 2: TITIK AWAL & MOTIVASI
+             ======================================================= -->
+        <section class="slide" data-session="1" data-title="Titik Awal: Mulai dari Kesempatan yang Dikejar">
+          <div class="mg-tag" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-seedling"></i> TITIK AWAL PERJALANAN
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 10px;">
+            Bukan Start dari Privilege, Tapi dari <span class="grad-sky">Kesempatan yang Dikejar</span>
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-2" style="margin-top: 14px; flex: 1; min-height: 0;">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="glass-box" data-mg="rise" style="--d: 0.26s;">
+                <h3 style="font-size: 17px; color: var(--sky-300); margin-bottom: 8px;">
+                  <i class="fa-solid fa-graduation-cap"></i> SMK Multimedia → S1 Sistem Informasi (Beasiswa BJU)
+                </h3>
+                <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.55;">
+                  Masuk UBSI lewat <strong>Beasiswa Jalur Undangan (BJU)</strong> bukan karena merasa sudah sempurna, melainkan modal awal agar bisa fokus mengeksekusi lebih banyak karya nyata.
+                </p>
+              </div>
+
+              <div class="glass-box" data-mg="rise" style="--d: 0.34s;">
+                <h3 style="font-size: 17px; color: var(--amber-400); margin-bottom: 8px;">
+                  <i class="fa-solid fa-layer-group"></i> Kenapa Pilih Jalan yang "Ribet"?
+                </h3>
+                <ul class="list-clean">
+                  <li><i class="fa-solid fa-circle-check" style="color: var(--sky-400);"></i> <span>Kuliah, memimpin HIMSI, ikut riset dosen &amp; lomba, plus kerja kreatif berjalan beriringan.</span></li>
+                  <li><i class="fa-solid fa-circle-check" style="color: var(--sky-400);"></i> <span>Karena <em>skill</em> di kelas baru matang saat benar-benar diuji di masalah dunia nyata.</span></li>
+                </ul>
+              </div>
+
+              <div class="quote-ribbon" data-mg="rise" style="--d: 0.42s;">
+                "Masa kuliah adalah laboratorium paling aman untuk gagal, bereksperimen, dan mengumpulkan bukti karya."
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 14px; min-height: 0;">
+              <div class="glass-box zoomable" data-mg="scale" style="--d: 0.28s; padding: 10px; display: flex; flex-direction: column;" data-zoom="./ss-projek/himsi2026.jpg">
+                <img src="./ss-projek/himsi2026.jpg" alt="Ketua Umum HIMSI UBSI Solo 2026" style="width: 100%; height: 195px; object-fit: cover; border-radius: 10px;" />
+                <div style="margin-top: 8px; font-size: 12.5px; color: var(--sky-300); font-weight: 700;">Ketua Umum HIMSI UBSI Kampus Solo (Kominfo → Ketum)</div>
+              </div>
+              <div class="glass-box zoomable" data-mg="scale" style="--d: 0.38s; padding: 10px; display: flex; flex-direction: column;" data-zoom="./ss-projek/bsiexplore.JPG">
+                <img src="./ss-projek/bsiexplore.JPG" alt="BSI Explore 2026" style="width: 100%; height: 195px; object-fit: cover; border-radius: 10px;" />
+                <div style="margin-top: 8px; font-size: 12.5px; color: var(--emerald-400); font-weight: 700;">Alumni &amp; Ketua Tim BSI Explore 2026 (Lolos seleksi &gt;2.000 peserta)</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 3: MINDSET PORTOFOLIO VS IPK
+             ======================================================= -->
+        <section class="slide" data-session="1" data-title="Kenapa Portofolio Lebih Berbicara dari IPK">
+          <div class="mg-tag" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-scale-balanced"></i> MINDSET INDUSTRI 2026
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 10px;">
+            Kenapa <span class="grad-sky">Portofolio</span> Lebih "Berbicara" dari Sekadar Angka IPK?
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-2" style="margin-top: 18px; gap: 28px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.25s; border-color: rgba(148, 163, 184, 0.25);">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(148, 163, 184, 0.14); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--text-subtle);">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div>
+                  <div style="font-size: 12px; color: var(--text-subtle); font-weight: 700;">SYARAT ADMINISTRATIF</div>
+                  <h3 style="font-size: 22px;">Ijazah &amp; Transkrip IPK</h3>
+                </div>
+              </div>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-minus" style="color: var(--text-subtle);"></i> <span>Mengukur seberapa patuh &amp; konsisten kita mengikuti materi di ruang kelas.</span></li>
+                <li><i class="fa-solid fa-minus" style="color: var(--text-subtle);"></i> <span>Ribuan lulusan baru punya angka IPK dan judul mata kuliah yang hampir sama persis.</span></li>
+                <li><i class="fa-solid fa-minus" style="color: var(--text-subtle);"></i> <span>Hanya memberi tahu HRD bahwa kita <em>pernah belajar teori</em>.</span></li>
+              </ul>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.35s; border-color: rgba(56, 189, 248, 0.45); background: linear-gradient(155deg, rgba(14, 165, 233, 0.14), rgba(15, 23, 42, 0.88));">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--sky-500), var(--blue-royal)); display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff;">
+                  <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div>
+                  <div style="font-size: 12px; color: var(--sky-300); font-weight: 700;">PENENTU LOLOS INTERVIEW</div>
+                  <h3 style="font-size: 22px;">Portofolio &amp; Bukti Karya</h3>
+                </div>
+              </div>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span>Membuktikan secara visual apa yang <strong>sudah berhasil kita buat dan berdampak</strong>.</span></li>
+                <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span>Menghemat waktu rekruter: klik link → langsung lihat web, video, HKI, dan metrik hasilnya.</span></li>
+                <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span>Menunjukkan inisiatif nyata sebelum diminta perusahaan.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="quote-ribbon" data-mg="rise" style="--d: 0.46s; margin-top: 22px;">
+            <i class="fa-solid fa-lightbulb" style="color: var(--amber-400); margin-right: 8px;"></i>
+            HRD &amp; klien tidak membeli "judul jurusan"-mu. Mereka merekrut <strong>kemampuanmu memecahkan masalah mereka.</strong>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 4: PILAR 1 - 4 HKI & RISET BERDAMPAK
+             ======================================================= -->
+        <section class="slide" data-session="1" data-title="Pilar 1: 4 Karya Inovasi & HKI Resmi Negara">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;">
+            <div>
+              <div class="mg-tag tag-gold" data-mg="badge" style="--d: 0.05s;">
+                <i class="fa-solid fa-stamp"></i> PILAR PORTOFOLIO 1 • RISET, INOVASI &amp; HAK CIPTA
+              </div>
+              <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+                Mengubah Tugas &amp; Pengabdian Jadi <span class="grad-warm">4 HKI Resmi Negara</span>
+              </h2>
+            </div>
+            <div data-mg="badge" style="--d: 0.2s; font-size: 12.5px; color: var(--amber-400); font-weight: 700; white-space: nowrap;">
+              <i class="fa-solid fa-medal"></i> Silver Medalist Nasional + BRIDA Award
+            </div>
+          </div>
+          <div class="mg-divider div-warm" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="bento-4" style="margin-top: 10px;">
+            <!-- Card 1 -->
+            <div class="bento-card" data-mg="rise" style="--d: 0.24s;">
+              <div class="bento-thumb zoomable" data-zoom="./ss-projek/web-mbg.png">
+                <img src="./ss-projek/web-mbg.png" alt="MBG SPPG Platform" />
+                <span class="hki-badge">HKI #1 • Silver Medal</span>
+              </div>
+              <div style="padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                <h4 style="font-size: 15px; color: #fff;">Platform MBG SPPG Nusukan</h4>
+                <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.45;">
+                  Sistem Web &amp; GIS pemantau gizi AKG dan anggaran Makan Bergizi Gratis.
+                </p>
+                <div style="margin-top: auto; font-family: var(--font-mono); font-size: 11px; color: var(--sky-300);">
+                  No. EC002026096415 • Mercu Buana 2026
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bento-card" data-mg="rise" style="--d: 0.31s;">
+              <div class="bento-thumb zoomable" data-zoom="./ss-projek/ss-webkotabersihsurakarta.png">
+                <img src="./ss-projek/ss-webkotabersihsurakarta.png" alt="Kota Bersih Surakarta" />
+                <span class="hki-badge">HKI #2 • BRIDA Award</span>
+              </div>
+              <div style="padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                <h4 style="font-size: 15px; color: #fff;">Kota Bersih Surakarta AI</h4>
+                <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.45;">
+                  Pengolahan sampah cerdas berbasis AI Assistant (Gemini) &amp; pemetaan TPS.
+                </p>
+                <div style="margin-top: auto; font-family: var(--font-mono); font-size: 11px; color: var(--sky-300);">
+                  No. EC002026053217 • Riset BRIDA Solo
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bento-card" data-mg="rise" style="--d: 0.38s;">
+              <div class="bento-thumb zoomable" data-zoom="./ss-projek/ss-webdesabaran.png">
+                <img src="./ss-projek/ss-webdesabaran.png" alt="Web Desa Baran" />
+                <span class="hki-badge">HKI #3 • 1 Minggu</span>
+              </div>
+              <div style="padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                <h4 style="font-size: 15px; color: #fff;">Web Official Desa Baran</h4>
+                <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.45;">
+                  E-Government &amp; transparansi APBDes saat BSI Explore 2026, dikerjakan tunggal 1 minggu.
+                </p>
+                <div style="margin-top: auto; font-family: var(--font-mono); font-size: 11px; color: var(--sky-300);">
+                  No. EC002026153831 • Cawas, Klaten
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bento-card" data-mg="rise" style="--d: 0.45s; border-color: rgba(52, 211, 153, 0.38);">
+              <div class="bento-thumb zoomable" data-zoom="./ss-projek/hki.jpeg">
+                <img src="./ss-projek/hki.jpeg" alt="HKI Kriya Melikan BIPEMAS" />
+                <span class="hki-badge" style="color: var(--emerald-400); border-color: var(--emerald-400);">HKI #4 • Terbaru</span>
+              </div>
+              <div style="padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                <h4 style="font-size: 15px; color: #fff;">Kriya Melikan PKM BIPEMAS</h4>
+                <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.45;">
+                  Kolaborasi riset dosen UBSI digitalisasi sentra kerajinan gerabah Desa Melikan.
+                </p>
+                <div style="margin-top: auto; font-family: var(--font-mono); font-size: 11px; color: var(--emerald-400);">
+                  No. EC002026229696 • 13 Nov 2026
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-ribbon warm" data-mg="rise" style="--d: 0.52s; margin-top: 14px; font-size: 14.5px;">
+            <strong>Pelajaran Utama:</strong> Proyek tugas atau KKN jangan berhenti di laporan PDF. Rilis ke publik, ukur dampaknya, dan lindungi dengan HKI Kemenkumham RI!
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 5: PILAR 2 - DUNIA KERJA (PT KAI & JURAGAN VILLA)
+             ======================================================= -->
+        <section class="slide" data-session="1" data-title="Pilar 2: Rekam Jejak BUMN & Industri Kreatif">
+          <div class="mg-tag tag-emerald" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-briefcase"></i> PILAR PORTOFOLIO 2 • BUMN &amp; INDUSTRI KREATIF AKTIF
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            Teruji di <span class="grad-sky">Sistem Informasi BUMN</span> &amp; <span class="grad-emerald">Industri Kreatif</span>
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-2" style="margin-top: 10px; gap: 22px;">
+            <!-- Track A: PT KAI + BNSP -->
+            <div class="glass-box" data-mg="rise" style="--d: 0.26s; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <img src="./ss-projek/kai.png" alt="Logo PT KAI" style="height: 36px; width: auto; background: #fff; padding: 4px 8px; border-radius: 8px;" />
+                  <div>
+                    <div style="font-size: 11.5px; color: var(--emerald-400); font-weight: 800;">LULUS PREDIKAT BAIK • SEP–NOV 2026</div>
+                    <h3 style="font-size: 18px;">PT Kereta Api Indonesia (Persero)</h3>
+                  </div>
+                </div>
+              </div>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-certificate" style="color: var(--amber-400);"></i> <span>Resmi lulus program <em>InternHub by KAI</em> Unit Sistem Informasi DAOP 6 Yogyakarta (SKL: <code>KE.105/08/0003023/MAG/KA-2026</code>).</span></li>
+                <li><i class="fa-solid fa-database" style="color: var(--sky-400);"></i> <span>Rekayasa modul aplikasi (Laravel/Flutter), optimasi database PostgreSQL, SQA Testing, &amp; dokumentasi teknis enterprise.</span></li>
+                <li><i class="fa-solid fa-award" style="color: var(--emerald-400);"></i> <span>Didukung sertifikasi profesi nasional <strong>BNSP Database Administrator</strong> &amp; kompetensi SQA.</span></li>
+              </ul>
+            </div>
+
+            <!-- Track B: Juragan Villa + Brand -->
+            <div class="glass-box" data-mg="rise" style="--d: 0.36s; border-color: rgba(52, 211, 153, 0.35); display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="font-size: 11.5px; color: var(--sky-300); font-weight: 800;">POSISI AKTIF SAAT INI • CONTENT CREATOR</div>
+                  <h3 style="font-size: 18px;">Juragan Villa Tawangmangu (4 Akun Resmi)</h3>
+                </div>
+                <span class="mg-tag tag-emerald" style="font-size: 10px; padding: 3px 10px;">AKTIF</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div class="zoomable" data-zoom="../assets/jv-ig-utama.jpg" style="background: #040812; padding: 6px; border-radius: 10px; border: 1px solid var(--border-soft);">
+                  <img src="../assets/jv-ig-utama.jpg" alt="IG Juragan Villa 53.2K" style="width: 100%; height: 105px; object-fit: contain;" />
+                  <div style="font-size: 11px; color: var(--sky-300); font-weight: 700; text-align: center; margin-top: 4px;">IG Verified • 53,2 rb Followers</div>
+                </div>
+                <div class="zoomable" data-zoom="../assets/jv-tiktok-utama.jpg" style="background: #040812; padding: 6px; border-radius: 10px; border: 1px solid var(--border-soft);">
+                  <img src="../assets/jv-tiktok-utama.jpg" alt="TikTok Juragan Villa 34.4K" style="width: 100%; height: 105px; object-fit: contain;" />
+                  <div style="font-size: 11px; color: var(--emerald-400); font-weight: 700; text-align: center; margin-top: 4px;">TikTok • 34,4 rb • 418K Likes</div>
+                </div>
+              </div>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.45;">
+                Menangani 2 IG &amp; 2 TikTok properti wisata Tawangmangu-Kemuning, melanjutkan pengalaman di <strong>Volution Apparel</strong>, <strong>PT Tanur Tour</strong>, &amp; <strong>21+ video klien agency</strong>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 6: PILAR 3 - PORTOFOLIO WEB 3D INTERAKTIF & QR
+             ======================================================= -->
+        <section class="slide" data-session="1" data-title="Pilar 3: Kemas dalam Portofolio Digital 3D">
+          <div class="mg-tag" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-globe"></i> PILAR PORTOFOLIO 3 • PACKAGING &amp; AKSES 1-KLIK
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            Karya Hebat Perlu <span class="grad-sky">Etalase Digital</span> yang Siap Diklik Kapan Saja
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 26px; align-items: center; margin-top: 12px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="glass-box" data-mg="rise" style="--d: 0.24s;">
+                <div class="stat-num" style="font-size: 24px;"><i class="fa-solid fa-moon"></i> 3D Stage</div>
+                <h4 style="margin: 6px 0 4px; font-size: 15px;">Visual Pertama yang Memikat</h4>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.45;">Three.js Cosmic 3D + identitas terverifikasi &amp; optimasi SEO Google Search Console.</p>
+              </div>
+              <div class="glass-box" data-mg="rise" style="--d: 0.30s;">
+                <div class="stat-num" style="font-size: 24px; color: var(--emerald-400);"><i class="fa-solid fa-play"></i> 21 Video</div>
+                <h4 style="margin: 6px 0 4px; font-size: 15px;">Showreel &amp; Bukti Akun</h4>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.45;">Thumbnail Google Drive 9:16 &amp; 16:9 dengan pop-up theater + bukti akun IG/TikTok.</p>
+              </div>
+              <div class="glass-box" data-mg="rise" style="--d: 0.36s;">
+                <div class="stat-num" style="font-size: 24px; color: var(--amber-400);"><i class="fa-solid fa-file-invoice"></i> ATS Sync</div>
+                <h4 style="margin: 6px 0 4px; font-size: 15px;">CV ATS + OCR Lamaran AI</h4>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.45;">CV bilingual siap cetak &amp; portal ekstraksi poster loker otomatis ke surat resmi.</p>
+              </div>
+              <div class="glass-box" data-mg="rise" style="--d: 0.42s;">
+                <div class="stat-num" style="font-size: 24px; color: var(--indigo-400);"><i class="fa-solid fa-newspaper"></i> PDKI &amp; Pers</div>
+                <h4 style="margin: 6px 0 4px; font-size: 15px;">Jejak Digital Terverifikasi</h4>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.45;">Menghubungkan rilis berita media nasional, prosiding INOVATIF, &amp; sertifikat HKI.</p>
+              </div>
+            </div>
+
+            <div class="glass-box" data-mg="scale" style="--d: 0.32s; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; border-color: var(--border-glow);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--sky-300); font-weight: 700;">SCAN QR UNTUK LIHAT LIVE DEMO</div>
+              <img src="./ss-projek/qr-portofolio.png" alt="QR Code Portofolio 3D Fahrel" class="zoomable" data-zoom="./ss-projek/qr-portofolio.png" style="width: 210px; height: 210px; border-radius: 14px; padding: 8px; background: #fff;" />
+              <div style="font-family: var(--font-mono); font-size: 12px; color: #fff; background: rgba(14, 165, 233, 0.16); padding: 6px 12px; border-radius: 8px;">
+                fhrelz.github.io/portfolio-3d-celestial
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 7: FORMULA & PENUTUP SESI 1
+             ======================================================= -->
+        <section class="slide" data-session="1" data-title="Formula 4 Langkah Bangun Portofolio">
+          <div class="mg-tag" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-compass"></i> RANGKUMAN PRAKTIS SESI 1
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            4 Langkah Meniru Proses Ini Mulai dari <span class="grad-sky">Semester Awal</span>
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="bento-4" style="margin-top: 14px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.24s;">
+              <div class="stat-num">01</div>
+              <h4 style="font-size: 16px; margin: 8px 0;">Eksekusi Kesempatan Kecil</h4>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">Jangan tunggu proyek besar. Ubah tugas kuliah, proyek UMKM sekitar, atau PKM menjadi karya yang benar-benar selesai.</p>
+            </div>
+            <div class="glass-box" data-mg="rise" style="--d: 0.31s;">
+              <div class="stat-num" style="color: var(--emerald-400);">02</div>
+              <h4 style="font-size: 16px; margin: 8px 0;">Dokumentasikan Prosesnya</h4>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">Simpan screenshot, video demo, sebelum-sesudah (<em>before-after</em>), dan angka dampaknya sebelum hilang dari HP.</p>
+            </div>
+            <div class="glass-box" data-mg="rise" style="--d: 0.38s;">
+              <div class="stat-num" style="color: var(--amber-400);">03</div>
+              <h4 style="font-size: 16px; margin: 8px 0;">Gunakan AI sebagai Co-Pilot</h4>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">Pakai Gemini, AI Studio, Canva, CapCut, &amp; GitHub Pages untuk mempercepat eksekusi tanpa menggantikan usaha belajar.</p>
+            </div>
+            <div class="glass-box" data-mg="rise" style="--d: 0.45s;">
+              <div class="stat-num" style="color: var(--indigo-400);">04</div>
+              <h4 style="font-size: 16px; margin: 8px 0;">Satukan dalam 1 Link</h4>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">Kemas rapi dalam satu tautan portofolio digital agar mudah dikirimkan ke rekruter, dosen, maupun klien kapan saja.</p>
+            </div>
+          </div>
+
+          <div class="quote-ribbon" data-mg="rise" style="--d: 0.54s; margin-top: 24px; text-align: center; border-left: none; border-top: 2px solid var(--sky-400); border-radius: 12px;">
+            "Prestasi dan tawaran kerja bukanlah keajaiban — melainkan <strong>efek samping dari portofolio yang dirawat dengan konsisten.</strong>"
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 8: COVER SESI 2 (WORKSHOP SOFT SKILL GEN-Z)
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="Sesi 2 Workshop: Soft Skill Mahasiswa Gen-Z">
+          <div class="cover-grid">
+            <div>
+              <div class="mg-tag tag-red" data-mg="badge" style="--d: 0.05s;">
+                <i class="fa-solid fa-bolt"></i> SESI 2 • WORKSHOP INTERAKTIF GEN-Z
+              </div>
+              <h1 class="slide-h1" data-mg="clip" style="--d: 0.14s; margin-top: 16px;">
+                Upgrade <span class="grad-warm">Soft Skill Gen-Z:</span><br />
+                Senjata Manusia yang<br />
+                Tak Bisa Digantikan AI
+              </h1>
+              <div class="mg-divider div-warm" data-mg="line" style="--d: 0.26s;"></div>
+              <p data-mg="rise" style="--d: 0.32s; font-size: 16.5px; color: var(--text-muted); line-height: 1.6; max-width: 670px;">
+                Coding, desain, dan skrip bisa ditulis AI dalam hitungan detik. Lalu, <strong>kualitas apa yang membuat mahasiswa tetap dipilih, dipercaya tim, dan lolos dunia kerja?</strong>
+              </p>
+
+              <div class="glass-box" data-mg="rise" style="--d: 0.42s; margin-top: 20px; border-color: rgba(244, 63, 94, 0.35); display: flex; align-items: center; gap: 16px;">
+                <i class="fa-solid fa-chalkboard-user" style="font-size: 28px; color: var(--crimson-400);"></i>
+                <div>
+                  <div style="font-weight: 800; font-size: 15px; color: #fff;">Sesi Praktis &amp; Studi Kasus Nyata Lapangan</div>
+                  <div style="font-size: 13px; color: var(--text-subtle);">Lengkap dengan 4 Pilar Soft Skill + Simulasi Tantangan Langsung di Ruangan</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-box zoomable" data-mg="scale" style="--d: 0.24s; padding: 14px; display: flex; flex-direction: column; gap: 10px;" data-zoom="./ss-projek/workshop.png">
+              <img src="./ss-projek/workshop.png" alt="Workshop Digital Kreatif Fahrel" style="width: 100%; height: 420px; object-fit: cover; border-radius: 12px;" />
+              <div style="font-size: 12.5px; color: var(--amber-400); font-weight: 700; text-align: center;">
+                <i class="fa-solid fa-microphone"></i> Berbagi Pengalaman Nyata: Organisasi, BUMN, Riset &amp; Industri Kreatif
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 9: ICE BREAKING & REALITA GEN-Z DI ERA AI
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="Ice Breaking: Realita Mahasiswa Gen-Z & AI">
+          <div class="mg-tag tag-red" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-comments"></i> ICE BREAKING &amp; REFLEKSI JUJUR
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            Realita Mahasiswa <span class="grad-warm">Gen-Z</span> di Era Gempuran AI
+          </h2>
+          <div class="mg-divider div-warm" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-2" style="margin-top: 16px; gap: 24px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.26s; border-color: rgba(244, 63, 94, 0.35);">
+              <h3 style="font-size: 19px; color: var(--crimson-400); margin-bottom: 14px;">
+                <i class="fa-solid fa-hand"></i> Coba Angkat Tangan Jujur...
+              </h3>
+              <ul class="list-clean" style="gap: 14px;">
+                <li><i class="fa-solid fa-circle-question" style="color: var(--amber-400);"></i> <span>Siapa yang sebenarnya jago teknis (desain/edit/ngoding), tapi masih canggung saat harus presentasi atau menghubungi HRD via WhatsApp?</span></li>
+                <li><i class="fa-solid fa-circle-question" style="color: var(--amber-400);"></i> <span>Siapa yang sering semangat di 3 hari pertama, lalu kena revisi atau kritik sekali langsung <em>burnout</em> / kehilangan mood?</span></li>
+              </ul>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.36s; border-color: rgba(56, 189, 248, 0.35);">
+              <h3 style="font-size: 19px; color: var(--sky-300); margin-bottom: 14px;">
+                <i class="fa-solid fa-robot"></i> Paradoks Era Kecerdasan Buatan (2026)
+              </h3>
+              <ul class="list-clean" style="gap: 14px;">
+                <li><i class="fa-solid fa-bolt" style="color: var(--sky-400);"></i> <span><strong>Akses Teknis Setara:</strong> Semua mahasiswa sekarang bisa pakai Gemini, ChatGPT, CapCut, atau template siap pakai.</span></li>
+                <li><i class="fa-solid fa-trophy" style="color: var(--emerald-400);"></i> <span><strong>Nilai Manusia Naik Drastis:</strong> Karena teknis makin murah &amp; cepat, perusahaan jauh lebih mahal menghargai orang yang komunikatif, tahan deadline, dan bisa diandalkan.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="quote-ribbon warm" data-mg="rise" style="--d: 0.46s; margin-top: 22px;">
+            Banyak talenta teknis gagal bukan karena mereka tidak pintar — melainkan karena kalah saat <strong>komunikasi, ego tim, dan mental menghadapi tekanan.</strong>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 10: HARD SKILL VS SOFT SKILL FUNNEL
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="Hard Skill Membuka Pintu, Soft Skill Menentukan">
+          <div class="mg-tag tag-red" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-key"></i> PRINSIP UTAMA DUNIA KERJA
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            <span class="grad-sky">Hard Skill</span> Membuka Pintu, <span class="grad-warm">Soft Skill</span> yang Membuatmu Bertahan
+          </h2>
+          <div class="mg-divider div-warm" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-3" style="margin-top: 18px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.25s; text-align: center; padding: 26px 20px;">
+              <div style="width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 16px; background: rgba(14, 165, 233, 0.16); color: var(--sky-400); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                <i class="fa-solid fa-door-open"></i>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--sky-300); font-weight: 700;">TAHAP 1 • FILTER AWAL</div>
+              <h3 style="font-size: 20px; margin: 8px 0;">Hard Skill Menarik Perhatian</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">
+                Skill teknis (Web, Database, Editing, AI) membuat CV dan portofolio kita lolos skrining awal untuk dipanggil wawancara.
+              </p>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.34s; text-align: center; padding: 26px 20px; border-color: rgba(244, 63, 94, 0.4);">
+              <div style="width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 16px; background: rgba(244, 63, 94, 0.16); color: var(--crimson-400); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--crimson-400); font-weight: 700;">TAHAP 2 • WAWANCARA</div>
+              <h3 style="font-size: 20px; margin: 8px 0;">Komunikasi &amp; Sikap Meyakinkan</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">
+                Di ruang interview PT KAI maupun klien kreatif, pewawancara menilai cara bicara, kejelasan ide, sopan santun, &amp; antusiasme.
+              </p>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.43s; text-align: center; padding: 26px 20px; border-color: rgba(52, 211, 153, 0.4);">
+              <div style="width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 16px; background: rgba(16, 185, 129, 0.16); color: var(--emerald-400); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                <i class="fa-solid fa-crown"></i>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald-400); font-weight: 700;">TAHAP 3 • REKOMENDASI</div>
+              <h3 style="font-size: 20px; margin: 8px 0;">Attitude Menjaga Kepercayaan</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55;">
+                Tanggung jawab deadline, bisa bekerja lintas tim/dosen, dan kedewasaan sikap adalah penentu mendapat predikat baik &amp; karir lanjutan.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 11: 4 PILAR SOFT SKILL (PILAR 1 & 2)
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="4 Pilar Soft Skill Wajib Gen-Z (Bagian 1)">
+          <div class="mg-tag tag-red" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-cubes"></i> 4 PILAR SOFT SKILL GEN-Z • BAGIAN 1
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            Komunikasi Terstruktur &amp; <span class="grad-sky">Manajemen Waktu</span>
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-2" style="margin-top: 16px; gap: 24px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.26s; border-top: 3px solid var(--sky-400);">
+              <div class="stat-num" style="font-size: 28px;">01. Komunikasi Persuasif &amp; Public Speaking</div>
+              <p style="font-size: 14px; color: var(--sky-300); font-weight: 600; margin: 6px 0 12px;">
+                "Komunikasi bukan berarti harus paling cerewet — melainkan paling jelas didengar."
+              </p>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-check" style="color: var(--sky-400);"></i> <span><strong>Latihan Bertahap:</strong> Dari divisi Kominfo HIMSI → Ketua Umum → Pemateri AI &amp; Narasumber.</span></li>
+                <li><i class="fa-solid fa-check" style="color: var(--sky-400);"></i> <span><strong>Etika Chat Digital:</strong> Memahami cara membalas HRD/dosen lewat WhatsApp dengan sopan, singkat, dan solutif.</span></li>
+                <li><i class="fa-solid fa-check" style="color: var(--sky-400);"></i> <span><strong>Storytelling Karya:</strong> Bisa menjelaskan proyek rumit dalam 30 detik secara runtut.</span></li>
+              </ul>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.36s; border-top: 3px solid var(--emerald-400);">
+              <div class="stat-num" style="font-size: 28px; color: var(--emerald-400);">02. Manajemen Waktu &amp; Fokus Deadline</div>
+              <p style="font-size: 14px; color: var(--emerald-400); font-weight: 600; margin: 6px 0 12px;">
+                "Kuncinya bukan multitasking tanpa arah, tapi manajemen prioritas."
+              </p>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span><strong>Real Case:</strong> Kuliah BJU Semester 5 + Ketum HIMSI + Magang BUMN + Konten Harian 4 Akun.</span></li>
+                <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span><strong>Teknik Batching:</strong> Mengelompokkan kerja sejenis (1 hari pengambilan banyak <em>footage</em> untuk stok 1–2 minggu).</span></li>
+                <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span><strong>Disiplin Jam Tidur &amp; Kalender:</strong> Memisahkan waktu produksi fokus dari waktu hiburan/scrolling.</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 12: 4 PILAR SOFT SKILL (PILAR 3 & 4)
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="4 Pilar Soft Skill Wajib Gen-Z (Bagian 2)">
+          <div class="mg-tag tag-red" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-shield-halved"></i> 4 PILAR SOFT SKILL GEN-Z • BAGIAN 2
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            Ownership Mindset &amp; <span class="grad-warm">Resiliensi Mental</span>
+          </h2>
+          <div class="mg-divider div-warm" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-2" style="margin-top: 16px; gap: 24px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.26s; border-top: 3px solid var(--amber-400);">
+              <div class="stat-num" style="font-size: 28px; color: var(--amber-400);">03. Problem Solving &amp; Inisiatif</div>
+              <p style="font-size: 14px; color: var(--amber-400); font-weight: 600; margin: 6px 0 12px;">
+                "Jangan datang membawa keluhan — datanglah membawa opsi solusi."
+              </p>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-bolt" style="color: var(--amber-400);"></i> <span><strong>Mental Ownership:</strong> Membangun Web Desa Baran tuntas dalam 1 minggu saat tim membutuhkan solusi cepat.</span></li>
+                <li><i class="fa-solid fa-bolt" style="color: var(--amber-400);"></i> <span><strong>Kolaborasi Lintas Generasi:</strong> Luwes berdiskusi teknis dengan dosen (PKM BIPEMAS) maupun aparatur desa dan mitra UMKM.</span></li>
+                <li><i class="fa-solid fa-bolt" style="color: var(--amber-400);"></i> <span><strong>Negosiasi Cerdas:</strong> Saat jadwal bentrok/mendadak, langsung tawarkan opsi alternatif yang masuk akal bagi kedua pihak.</span></li>
+              </ul>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.36s; border-top: 3px solid var(--crimson-500);">
+              <div class="stat-num" style="font-size: 28px; color: var(--crimson-400);">04. Resiliensi &amp; Anti-Baper Saat Revisi</div>
+              <p style="font-size: 14px; color: var(--crimson-400); font-weight: 600; margin: 6px 0 12px;">
+                "Pisahkan kritik terhadap karyamu dari nilai harga dirimu."
+              </p>
+              <ul class="list-clean">
+                <li><i class="fa-solid fa-fire" style="color: var(--crimson-400);"></i> <span><strong>Lomba &amp; Penolakan:</strong> Juara 2 SobiFest &amp; Medali Silver lahir setelah berkali-kali mencoba &amp; belajar dari kekalahan sebelumnya.</span></li>
+                <li><i class="fa-solid fa-fire" style="color: var(--crimson-400);"></i> <span><strong>Realita Dunia Agency &amp; Klien:</strong> Revisi berkali-kali adalah bagian normal dari profesionalisme, bukan serangan pribadi.</span></li>
+                <li><i class="fa-solid fa-fire" style="color: var(--crimson-400);"></i> <span><strong>Growth Mindset:</strong> Setiap revisi dan penolakan lamaran kerja adalah data untuk memperbarui strategi berikutnya.</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 13: ARENA LATIHAN NYATA DI KAMPUS
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="Cara Melatih Soft Skill Sejak Kuliah">
+          <div class="mg-tag tag-emerald" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-dumbbell"></i> ACTION PLAN — BUKAN TEORI
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 8px;">
+            3 Arena Terbaik Melatih Soft Skill <span class="grad-emerald">Mulai Hari Ini</span>
+          </h2>
+          <div class="mg-divider" data-mg="line" style="--d: 0.22s;"></div>
+
+          <div class="split-3" style="margin-top: 16px;">
+            <div class="glass-box" data-mg="rise" style="--d: 0.25s; display: flex; flex-direction: column; gap: 10px;">
+              <img src="./ss-projek/himsi.JPG" alt="Organisasi HIMSI" class="zoomable" data-zoom="./ss-projek/himsi.JPG" style="width: 100%; height: 155px; object-fit: cover; border-radius: 10px;" />
+              <h3 style="font-size: 18px; color: var(--sky-300);">1. Organisasi &amp; Panitia Event</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5;">
+                Tempat paling aman melatih kepemimpinan, manajemen konflik tim, lobi mitra, dan berani pegang mikrofon sebelum masuk perusahaan.
+              </p>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.34s; display: flex; flex-direction: column; gap: 10px;">
+              <img src="./ss-projek/silvermedal.png" alt="Lomba Nasional" class="zoomable" data-zoom="./ss-projek/silvermedal.png" style="width: 100%; height: 155px; object-fit: cover; border-radius: 10px;" />
+              <h3 style="font-size: 18px; color: var(--amber-400);">2. Lomba &amp; Riset Dosen (PKM)</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5;">
+                Mengasah berpikir terstruktur, presentasi di depan juri, bekerja lintas latar belakang dengan dosen pembimbing, dan ketangguhan mental.
+              </p>
+            </div>
+
+            <div class="glass-box" data-mg="rise" style="--d: 0.43s; display: flex; flex-direction: column; gap: 10px;">
+              <img src="./ss-projek/seminarnasional2026.JPG" alt="Demonstrasi Lapangan" class="zoomable" data-zoom="./ss-projek/seminarnasional2026.JPG" style="width: 100%; height: 155px; object-fit: cover; border-radius: 10px;" />
+              <h3 style="font-size: 18px; color: var(--emerald-400);">3. Proyek Nyata, Magang &amp; Freelance</h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5;">
+                Berhadapan langsung dengan ekspektasi pengguna (siswa SMP, perangkat desa, klien agensi, hingga atasan PT KAI &amp; Juragan Villa).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 14: MINI WORKSHOP INTERAKTIF (+ LIVE TIMER 30s!)
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="Mini Praktik Workshop: Simulasi Pitching 30 Detik">
+          <div class="mg-tag tag-red" data-mg="badge" style="--d: 0.05s;">
+            <i class="fa-solid fa-play"></i> MINI PRAKTIK LANGSUNG • WAKTUNYA COBA!
+          </div>
+          <h2 class="slide-h2" data-mg="clip" style="--d: 0.14s; margin-top: 6px;">
+            Workshop Challenge: <span class="grad-warm">Pitching Diri 30 Detik</span> &amp; Etika Komunikasi
+          </h2>
+          <div class="mg-divider div-warm" data-mg="line" style="--d: 0.2s;"></div>
+
+          <div style="display: grid; grid-template-columns: 1.32fr 0.68fr; gap: 22px; margin-top: 10px; align-items: stretch;">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <!-- Etika Chat Comparison -->
+              <div class="glass-box" data-mg="rise" style="--d: 0.25s; padding: 16px 18px;">
+                <div style="font-size: 13.5px; font-weight: 800; color: var(--sky-300); margin-bottom: 10px;">
+                  <i class="fa-brands fa-whatsapp"></i> BEDAH NYATA: CHAT MENGHUBUNGI HRD / KLIEN
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
+                  <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); padding: 10px 12px; border-radius: 10px;">
+                    <div style="color: var(--crimson-400); font-weight: 800; margin-bottom: 4px;"><i class="fa-solid fa-xmark"></i> Jangan Begini:</div>
+                    <p style="color: var(--text-muted); line-height: 1.45;"><em>"P kak, info loker msh ada? sy ga bs bsk soalnya jauh 60km, online aja ya?"</em></p>
+                  </div>
+                  <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(52, 211, 153, 0.3); padding: 10px 12px; border-radius: 10px;">
+                    <div style="color: var(--emerald-400); font-weight: 800; margin-bottom: 4px;"><i class="fa-solid fa-check"></i> Versi Profesional:</div>
+                    <p style="color: var(--text-muted); line-height: 1.45;"><em>"Selamat malam Pak/Ibu, terima kasih undangannya. Mohon izin menanyakan apakah tahap awal memungkinkan via online, atau tatap muka di hari Senin?"</em></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4-Part Formula Pitch -->
+              <div class="glass-box" data-mg="rise" style="--d: 0.35s; padding: 16px 18px;">
+                <div style="font-size: 13.5px; font-weight: 800; color: var(--amber-400); margin-bottom: 8px;">
+                  <i class="fa-solid fa-microphone"></i> RUMUS PERKENALAN 30 DETIK (SILAKAN 2–3 PESERTA MAJU!)
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; font-size: 12.5px;">
+                  <div style="background: rgba(255,255,255,0.05); padding: 10px 8px; border-radius: 10px;">
+                    <strong style="color: var(--sky-300); display: block;">1. Siapa Kamu</strong>
+                    Nama + Prodi
+                  </div>
+                  <div style="background: rgba(255,255,255,0.05); padding: 10px 8px; border-radius: 10px;">
+                    <strong style="color: var(--emerald-400); display: block;">2. Skill Inti</strong>
+                    Keahlian utama
+                  </div>
+                  <div style="background: rgba(255,255,255,0.05); padding: 10px 8px; border-radius: 10px;">
+                    <strong style="color: var(--amber-400); display: block;">3. Bukti Nyata</strong>
+                    1 proyek/acara
+                  </div>
+                  <div style="background: rgba(255,255,255,0.05); padding: 10px 8px; border-radius: 10px;">
+                    <strong style="color: var(--crimson-400); display: block;">4. Nilai Tambah</strong>
+                    Siap berkontribusi
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Live Countdown Timer Widget -->
+            <div class="timer-widget" data-mg="scale" style="--d: 0.32s;">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--sky-300); font-weight: 700; letter-spacing: 0.6px;">
+                LIVE PITCH TIMER
+              </div>
+              <div class="timer-ring-wrap">
+                <svg class="timer-ring-svg" width="132" height="132" viewBox="0 0 132 132">
+                  <circle class="timer-ring-bg" cx="66" cy="66" r="55"></circle>
+                  <circle class="timer-ring-progress" id="timerRing" cx="66" cy="66" r="55"></circle>
+                </svg>
+                <div class="timer-value" id="timerDisplay">30s</div>
+              </div>
+              <div class="timer-btn-row">
+                <button class="ppt-btn ppt-btn-primary" id="btnStartTimer">
+                  <i class="fa-solid fa-play"></i> Mulai 30s
+                </button>
+                <button class="ppt-btn ppt-btn-ghost" id="btnResetTimer">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-subtle); text-align: center;">
+                Klik <strong>Mulai 30s</strong> saat peserta uji coba di panggung!
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =======================================================
+             SLIDE 15: PENUTUP, CHALLENGE 7 HARI & Q&A
+             ======================================================= -->
+        <section class="slide" data-session="2" data-title="Penutup, 7-Day Challenge & Sesi Q&A">
+          <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 32px; align-items: center; height: 100%;">
+            <div>
+              <div class="mg-tag tag-emerald" data-mg="badge" style="--d: 0.05s;">
+                <i class="fa-solid fa-flag-checkered"></i> PENUTUP &amp; TANTANGAN 7 HARI
+              </div>
+              <h1 class="slide-h1" data-mg="clip" style="--d: 0.14s; font-size: 40px; margin-top: 12px;">
+                AI Bisa Membantumu <span class="grad-sky">10x Lebih Cepat</span>,<br />
+                Tapi <span class="grad-warm">Attitude &amp; Konsistensimu</span><br />
+                yang Menentukan Kepercayaan.
+              </h1>
+              <div class="mg-divider" data-mg="line" style="--d: 0.24s;"></div>
+
+              <div class="glass-box" data-mg="rise" style="--d: 0.32s; margin-top: 10px;">
+                <h3 style="font-size: 16px; color: var(--amber-400); margin-bottom: 10px;">
+                  <i class="fa-solid fa-bolt"></i> Tantangan 7 Hari Setelah Indonesia Cerdas Fest 2026:
+                </h3>
+                <ul class="list-clean">
+                  <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span><strong>Hari 1–3:</strong> Pilih 1 karya terbaikmu (tugas/desain/video) lalu dokumentasikan jadi visual portofolio.</span></li>
+                  <li><i class="fa-solid fa-check" style="color: var(--emerald-400);"></i> <span><strong>Hari 4–7:</strong> Ambil 1 peran baru di himpunan/tim yang memaksamu berbicara atau memimpin proyek kecil.</span></li>
+                </ul>
+              </div>
+
+              <div data-mg="rise" style="--d: 0.42s; margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px;">
+                <span class="mg-tag" style="text-transform: none;"><i class="fa-brands fa-instagram"></i> @ryouko.chii</span>
+                <span class="mg-tag" style="text-transform: none;"><i class="fa-brands fa-tiktok"></i> @ryouko.chii</span>
+                <span class="mg-tag" style="text-transform: none;"><i class="fa-brands fa-linkedin"></i> Muhammad Fahrel Yuliyanto</span>
+              </div>
+            </div>
+
+            <div class="glass-box" data-mg="scale" style="--d: 0.28s; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; border-color: var(--border-glow); padding: 28px;">
+              <div style="font-family: var(--font-display); font-weight: 800; font-size: 22px; color: #fff;">
+                Terima Kasih! 🙌<br /><span class="grad-sky" style="font-size: 16px;">Mari Diskusi &amp; Sesi Tanya Jawab</span>
+              </div>
+              <img src="./ss-projek/qr-portofolio.png" alt="QR Code Portofolio" class="zoomable" data-zoom="./ss-projek/qr-portofolio.png" style="width: 215px; height: 215px; border-radius: 14px; padding: 8px; background: #fff;" />
+              <div style="font-size: 12px; color: var(--text-muted);">
+                Scan untuk lihat Web Portofolio 3D, Showreel Video &amp; CV ATS<br />
+                <span style="font-family: var(--font-mono); color: var(--sky-300);">fhrelz.github.io/portfolio-3d-celestial</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Overview Slide Sorter Modal -->
+      <div class="overview-overlay" id="overviewOverlay">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-family: var(--font-display); font-size: 20px; color: #fff;">
+            <i class="fa-solid fa-layer-group" style="color: var(--sky-400); margin-right: 8px;"></i>
+            Peta Semua Slide (Klik untuk Lompat Cepat)
+          </h3>
+          <button class="ppt-btn ppt-btn-ghost" id="btnCloseOverview"><i class="fa-solid fa-xmark"></i> Tutup (G / Esc)</button>
+        </div>
+        <div class="overview-grid" id="overviewGrid"></div>
+      </div>
+
+      <!-- Bottom Presenter Control Bar -->
+      <footer class="slide-bottombar">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span><i class="fa-solid fa-keyboard" style="color: var(--sky-400);"></i> Panah / Spasi: Geser</span>
+          <span>• <strong>F</strong>: Layar Penuh</span>
+          <span>• <strong>G</strong>: Semua Slide</span>
+        </div>
+
+        <div class="dot-nav" id="dotNav"></div>
+
+        <div class="nav-arrows">
+          <button class="ppt-btn ppt-btn-ghost" id="btnPrev" style="padding: 5px 12px;">
+            <i class="fa-solid fa-chevron-left"></i> Prev
+          </button>
+          <button class="ppt-btn ppt-btn-primary" id="btnNext" style="padding: 5px 14px;">
+            Next <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Image Zoom Modal -->
+  <div class="zoom-modal" id="zoomModal">
+    <button class="zoom-close" id="btnCloseZoom" aria-label="Tutup Zoom"><i class="fa-solid fa-xmark"></i></button>
+    <img id="zoomImg" src="" alt="Preview Diperbesar" />
+  </div>
+
+  <script>
+    (function () {
+      const stage = document.getElementById('pptStage');
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+      const counterEl = document.getElementById('slideCounter');
+      const progressFill = document.getElementById('progressFill');
+      const dotNav = document.getElementById('dotNav');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const btnSession1 = document.getElementById('btnSession1');
+      const btnSession2 = document.getElementById('btnSession2');
+      const btnFullscreen = document.getElementById('btnFullscreen');
+      const btnOverview = document.getElementById('btnOverview');
+      const btnCloseOverview = document.getElementById('btnCloseOverview');
+      const overviewOverlay = document.getElementById('overviewOverlay');
+      const overviewGrid = document.getElementById('overviewGrid');
+      const lightSweep = document.getElementById('mgLightSweep');
+      const zoomModal = document.getElementById('zoomModal');
+      const zoomImg = document.getElementById('zoomImg');
+      const btnCloseZoom = document.getElementById('btnCloseZoom');
+
+      let currentIdx = 0;
+      let isTransitioning = false;
+      let idleTimer = null;
+
+      // 1. Scale 1366x768 Stage Cleanly to Fit Any Screen or Projector
+      function fitStage() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const isFs = Boolean(document.fullscreenElement);
+        const pad = isFs ? 0 : 20;
+        const scale = Math.min((vw - pad) / 1366, (vh - pad) / 768);
+        stage.style.transform = `scale(${scale})`;
+        stage.classList.toggle('is-fullscreen', isFs);
+      }
+      window.addEventListener('resize', fitStage);
+      document.addEventListener('fullscreenchange', fitStage);
+      fitStage();
+
+      // 2. Build Dot Indicators & Slide Overview Sorter
+      slides.forEach((slide, i) => {
+        const isS2 = slide.dataset.session === '2';
+        const dot = document.createElement('button');
+        dot.className = 'dot-item' + (isS2 ? ' is-s2' : '') + (i === 0 ? ' active' : '');
+        dot.title = `Slide ${i + 1}: ${slide.dataset.title || ''}`;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotNav.appendChild(dot);
+
+        const card = document.createElement('button');
+        card.className = 'overview-card' + (i === 0 ? ' current' : '');
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:var(--font-mono); font-size:11px; font-weight:800; color:${isS2 ? 'var(--crimson-400)' : 'var(--sky-400)'};">
+              SLIDE ${String(i + 1).padStart(2, '0')}
+            </span>
+            <span style="font-size:10px; color:var(--text-subtle);">${isS2 ? 'Sesi 2: Workshop' : 'Sesi 1: Talkshow'}</span>
+          </div>
+          <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.35;">${slide.dataset.title || 'Slide'}</div>
+        `;
+        card.addEventListener('click', () => {
+          toggleOverview(false);
+          goToSlide(i);
+        });
+        overviewGrid.appendChild(card);
+      });
+
+      function updateChrome(idx) {
+        const num = String(idx + 1).padStart(2, '0');
+        counterEl.textContent = `SLIDE ${num} / ${totalSlides}`;
+        progressFill.style.width = `${((idx + 1) / totalSlides) * 100}%`;
+
+        const session = slides[idx].dataset.session;
+        btnSession1.classList.toggle('active', session === '1');
+        btnSession2.classList.toggle('active', session === '2');
+
+        dotNav.querySelectorAll('.dot-item').forEach((d, i) => d.classList.toggle('active', i === idx));
+        overviewGrid.querySelectorAll('.overview-card').forEach((c, i) => c.classList.toggle('current', i === idx));
+      }
+
+      // 3. Choreographed Motion-Graphics Slide Transition
+      function triggerLightSweep() {
+        if (!lightSweep) return;
+        lightSweep.classList.remove('sweep-active');
+        void lightSweep.offsetWidth;
+        lightSweep.classList.add('sweep-active');
+      }
+
+      function goToSlide(nextIdx) {
+        if (nextIdx < 0 || nextIdx >= totalSlides || nextIdx === currentIdx || isTransitioning) return;
+        isTransitioning = true;
+
+        const dir = nextIdx > currentIdx ? 1 : -1;
+        const outgoing = slides[currentIdx];
+        const incoming = slides[nextIdx];
+
+        // Position incoming at entry offset without transition first
+        incoming.style.transition = 'none';
+        incoming.classList.remove('is-leaving-next', 'is-leaving-prev', 'from-left');
+        if (dir < 0) incoming.classList.add('from-left');
+        void incoming.offsetWidth;
+        incoming.style.transition = '';
+
+        // Animate outgoing & incoming simultaneously
+        outgoing.classList.remove('is-active');
+        outgoing.classList.add(dir > 0 ? 'is-leaving-next' : 'is-leaving-prev');
+
+        incoming.classList.remove('from-left');
+        incoming.classList.add('is-active');
+
+        triggerLightSweep();
+        currentIdx = nextIdx;
+        updateChrome(currentIdx);
+
+        setTimeout(() => {
+          outgoing.classList.remove('is-leaving-next', 'is-leaving-prev');
+          isTransitioning = false;
+        }, 620);
+      }
+
+      btnNext.addEventListener('click', () => goToSlide(currentIdx + 1));
+      btnPrev.addEventListener('click', () => goToSlide(currentIdx - 1));
+      btnSession1.addEventListener('click', () => goToSlide(0));
+      btnSession2.addEventListener('click', () => goToSlide(7)); // Slide 8 (index 7) = Sesi 2 Workshop
+
+      // Keyboard Controls
+      function toggleOverview(force) {
+        const shouldOpen = typeof force === 'boolean' ? force : !overviewOverlay.classList.contains('open');
+        overviewOverlay.classList.toggle('open', shouldOpen);
+      }
+      btnOverview.addEventListener('click', () => toggleOverview());
+      btnCloseOverview.addEventListener('click', () => toggleOverview(false));
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      window.addEventListener('keydown', (e) => {
+        if (zoomModal.classList.contains('open')) {
+          if (e.key === 'Escape') zoomModal.classList.remove('open');
+          return;
+        }
+        if (overviewOverlay.classList.contains('open')) {
+          if (e.key === 'Escape' || e.key.toLowerCase() === 'g') toggleOverview(false);
+          return;
+        }
+        if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) {
+          e.preventDefault();
+          goToSlide(currentIdx + 1);
+        } else if (['ArrowLeft', 'PageUp'].includes(e.key)) {
+          e.preventDefault();
+          goToSlide(currentIdx - 1);
+        } else if (e.key.toLowerCase() === 'f') {
+          toggleFullscreen();
+        } else if (e.key.toLowerCase() === 'g') {
+          toggleOverview();
+        } else if (e.key === '1') {
+          goToSlide(0);
+        } else if (e.key === '2') {
+          goToSlide(7);
+        }
+      });
+
+      // Touch swipe support for mobile/tablet preview
+      let touchStartX = 0;
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      stage.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(dx) > 50) {
+          if (dx < 0) goToSlide(currentIdx + 1);
+          else goToSlide(currentIdx - 1);
+        }
+      }, { passive: true });
+
+      // Dim bottom controls when mouse idle
+      stage.addEventListener('mousemove', () => {
+        stage.classList.remove('controls-dimmed');
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          if (document.fullscreenElement) stage.classList.add('controls-dimmed');
+        }, 3000);
+      });
+
+      // 4. Image Zoom Modal
+      document.querySelectorAll('.zoomable').forEach((el) => {
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const src = el.getAttribute('data-zoom') || (el.querySelector('img') && el.querySelector('img').src);
+          if (src) {
+            zoomImg.src = src;
+            zoomModal.classList.add('open');
+          }
+        });
+      });
+      btnCloseZoom.addEventListener('click', () => zoomModal.classList.remove('open'));
+      zoomModal.addEventListener('click', (e) => {
+        if (e.target === zoomModal) zoomModal.classList.remove('open');
+      });
+
+      // 5. Slide 14 Live 30-Second Workshop Pitch Timer
+      const timerDisplay = document.getElementById('timerDisplay');
+      const timerRing = document.getElementById('timerRing');
+      const btnStartTimer = document.getElementById('btnStartTimer');
+      const btnResetTimer = document.getElementById('btnResetTimer');
+      const CIRCUMFERENCE = 2 * Math.PI * 55;
+      let timerLeft = 30;
+      let timerInterval = null;
+
+      function playChime() {
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          [523.25, 659.25, 783.99].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const g = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.12);
+            g.gain.setValueAtTime(0.25, ctx.currentTime + i * 0.12);
+            g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.45);
+            osc.connect(g);
+            g.connect(ctx.destination);
+            osc.start(ctx.currentTime + i * 0.12);
+            osc.stop(ctx.currentTime + i * 0.12 + 0.48);
+          });
+        } catch (err) {}
+      }
+
+      function renderTimer() {
+        if (!timerDisplay || !timerRing) return;
+        timerDisplay.textContent = `${timerLeft}s`;
+        const progress = (30 - timerLeft) / 30;
+        timerRing.style.strokeDashoffset = CIRCUMFERENCE * progress;
+        timerRing.style.stroke = timerLeft <= 5 ? '#ef4444' : (timerLeft <= 12 ? '#fbbf24' : '#38bdf8');
+      }
+
+      if (btnStartTimer && btnResetTimer) {
+        btnStartTimer.addEventListener('click', () => {
+          if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            btnStartTimer.innerHTML = '<i class="fa-solid fa-play"></i> Lanjut';
+            return;
+          }
+          if (timerLeft <= 0) timerLeft = 30;
+          renderTimer();
+          btnStartTimer.innerHTML = '<i class="fa-solid fa-pause"></i> Jeda';
+          timerInterval = setInterval(() => {
+            timerLeft--;
+            renderTimer();
+            if (timerLeft <= 0) {
+              clearInterval(timerInterval);
+              timerInterval = null;
+              btnStartTimer.innerHTML = '<i class="fa-solid fa-play"></i> Mulai 30s';
+              playChime();
+            }
+          }, 1000);
+        });
+
+        btnResetTimer.addEventListener('click', () => {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timerLeft = 30;
+          btnStartTimer.innerHTML = '<i class="fa-solid fa-play"></i> Mulai 30s';
+          renderTimer();
+        });
+      }
+
+      // 6. Lightweight Ambient Motion-Graphics Particles
+      const canvas = document.getElementById('mgCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 1366;
+      canvas.height = 768;
+
+      const particles = Array.from({ length: 42 }, () => ({
+        x: Math.random() * 1366,
+        y: Math.random() * 768,
+        r: Math.random() * 2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28,
+        alpha: Math.random() * 0.45 + 0.15
+      }));
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, 1366, 768);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = 1366;
+          if (p.x > 1366) p.x = 0;
+          if (p.y < 0) p.y = 768;
+          if (p.y > 768) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(125, 211, 252, ${p.alpha})`;
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = dx * dx + dy * dy;
+            if (dist < 14000) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(56, 189, 248, ${0.07 * (1 - dist / 14000)})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(drawParticles);
+      }
+      drawParticles();
+    })();
+  </script>
+</body>
+</html>
