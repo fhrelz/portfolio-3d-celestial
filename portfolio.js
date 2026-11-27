@@ -1865,7 +1865,7 @@ function initCosmicAudio() {
   }
 
   // Interactive Elements Hover SFX (Starlight harmonic ping)
-  const interactiveSelector = 'button, a, .project-card, .press-card, .video-card, .avatar-card, .highlight-item, .contact-pill, .tab-btn, .press-tab-btn, .video-filter-btn, .press-detail-btn, .press-source-link, .skill-pill, .badge-cosmic, .moon-ctrl-btn, .timeline-card, .nav-link, .float-tag, .cert-card, .nav-brand, .icon-btn, .btn';
+  const interactiveSelector = 'button, a, .project-card, .press-card, .video-card, .jv-account-card, .jv-proof-img-wrap, .avatar-card, .highlight-item, .contact-pill, .tab-btn, .press-tab-btn, .video-filter-btn, .press-detail-btn, .press-source-link, .skill-pill, .badge-cosmic, .moon-ctrl-btn, .timeline-card, .nav-link, .float-tag, .cert-card, .nav-brand, .icon-btn, .btn';
   
   document.addEventListener('mouseover', (e) => {
     const target = e.target.closest(interactiveSelector);
