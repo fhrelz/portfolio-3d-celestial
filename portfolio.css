@@ -4240,9 +4240,9 @@ img {
 
 .jv-proof-img-wrap {
   position: relative;
-  height: 175px;
+  height: 205px;
   background: #070b14;
-  padding: 10px;
+  padding: 36px 10px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
